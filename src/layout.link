@@ -1,0 +1,199 @@
+ROM0
+	org $0000
+	"rst00"
+	org $0008
+	"rst08"
+	org $0010
+	"rst10"
+	org $0018
+	"rst18"
+	org $0020
+	"rst20"
+	org $0028
+	"rst28"
+	org $0030
+	"rst30"
+	org $0038
+	"rst38"
+	org $0040
+	"vblank"
+	org $0048
+	"lcdc"
+	org $0050
+	"timer"
+	org $0058
+	"serial"
+	org $0060
+	"joypad"
+	org $0100
+	"romheader"
+	org $0150
+	"start"
+	org $3fe0
+	"Audio Callback"
+ROMX $01
+	"Game Loop"
+	"Duel Core"
+	"Menus Common"
+ROMX $02
+	"Menus 1"
+ROMX $03
+	"Overworld Scripting"
+ROMX $04
+	"Menus 2"
+	"Color"
+	"Gift Center Menu"
+	"Overworld Map"
+	"Save"
+	"Map Scripts"
+	"Menus 3"
+	"Sprite Animations"
+	"Scenes"
+	"Challenge Machine"
+	"Map Objects"
+ROMX $05
+	"AI Logic 1"
+ROMX $06
+	"Menus 4"
+	"Effect Commands"
+	"Animation Commands"
+	"IR Communications Core"
+	"Sprite Animations VBlank"
+	"Starter Deck"
+	"Link Functions"
+	"Promotional Card"
+	"Booster Pack Menu"
+	"Unused Save Validation"
+	"Input Name"
+	"Auto Deck Machines"
+ROMX $07
+	"Bank 7"
+	"Duel Animations"
+	"Start Menu"
+	"Intro Sequence"
+	"Unused Copyright"
+	"Credits Sequence"
+	"Booster Packs"
+ROMX $08
+	"AI Logic 2"
+ROMX $0b
+	"Effect Functions"
+ROMX $0c
+	"Decks"
+	"Cards"
+ROMX $0d
+	"Text 1"
+ROMX $0e
+	"Text 2"
+ROMX $0f
+	"Text 3"
+ROMX $10
+	"Text 4"
+ROMX $11
+	"Text 5"
+ROMX $12
+	"Text 6"
+ROMX $13
+	"Text 7"
+ROMX $14
+	"Text 8"
+ROMX $15
+	"Text 9"
+ROMX $16
+	"Text 10"
+ROMX $17
+	"Text 11"
+ROMX $18
+	"Text 12"
+ROMX $19
+	"Text 13"
+ROMX $1c
+	"SGB"
+ROMX $1d
+	"Gfx 1"
+ROMX $1e
+	"Gfx 2"
+ROMX $20
+	"Bank 20"
+	"Gfx"
+ROMX $21
+	"Gfx 3"
+ROMX $22
+	"Gfx 4"
+ROMX $23
+	"Gfx 5"
+ROMX $24
+	"Gfx 6"
+ROMX $25
+	"Gfx 7"
+ROMX $26
+	"Gfx 8"
+ROMX $27
+	"Gfx 9"
+ROMX $28
+	"Gfx 10"
+ROMX $29
+	"Gfx 11"
+ROMX $2a
+	"Gfx 12"
+	"Anims 1"
+ROMX $2b
+	"Anims 2"
+ROMX $2c
+	"Anims 3"
+ROMX $2d
+	"Anims 4"
+	"Palettes1"
+ROMX $2e
+	"Palettes2"
+ROMX $31
+	"Card Gfx 1"
+ROMX $32
+	"Card Gfx 2"
+ROMX $33
+	"Card Gfx 3"
+ROMX $34
+	"Card Gfx 4"
+ROMX $35
+	"Card Gfx 5"
+ROMX $36
+	"Card Gfx 6"
+ROMX $37
+	"Card Gfx 7"
+ROMX $38
+	"Card Gfx 8"
+ROMX $39
+	"Card Gfx 9"
+ROMX $3a
+	"Card Gfx 10"
+ROMX $3b
+	"Card Gfx 11"
+ROMX $3d
+	"Audio 1"
+ROMX $3e
+	"Audio 2"
+ROMX $3f
+	"Audio 3"
+WRAM0
+	"WRAM0"
+	"WRAM0 Duels 1"
+	"WRAM0 Text Engine"
+	"WRAM0 1"
+	"WRAM0 Serial Transfer"
+	"WRAM0 Duels 2"
+	"WRAM0 2"
+WRAMX 1
+	"WRAM1"
+	"WRAM1 Audio"
+VRAM $00
+	"VRAM0"
+VRAM $01
+	"VRAM1"
+SRAM $00
+	"SRAM0"
+SRAM $01
+	"SRAM1"
+SRAM $02
+	"SRAM2"
+SRAM $03
+	"SRAM3"
