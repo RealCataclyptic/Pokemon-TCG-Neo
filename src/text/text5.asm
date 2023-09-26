@@ -236,7 +236,7 @@ Text04b3: ; 44cdd (11:4cdd)
 
 Text04b4: ; 44ce9 (11:4ce9)
 	text "Shiny Pokémon are differently"
-	line "colored Pokémon cards. Thier attacks"
+	line "colored Pokémon cards. Their attacks"
 	line "are extremely powerful- but at a"
 	line "cost of requiring two different"
 	line "energy types to use."

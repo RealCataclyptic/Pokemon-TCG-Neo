@@ -583,7 +583,7 @@ SpearowsMirrorMoveDescription: ; 61a27 (18:5a27)
 	done 
 
 SpearowDescription: ; 61a93 (18:5a93)
-	text "Thier fur feels so good that if two"
+	text "Their fur feels so good that if two"
 	line "of them snuggle together, they won't"
 	line "want to be separated."
 	done 

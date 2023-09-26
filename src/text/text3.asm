@@ -561,7 +561,7 @@ TrafficLightDescriptionText: ; 3d039 (f:5039)
 
 FirePokemonDescriptionText: ; 3d078 (f:5078)
 	text "These attacks might cost a lot,"
-	line "but thier damage is worth it!"
+	line "but their damage is worth it!"
 	done
 
 FireChargeDescriptionText: ; 3d0bb (f:50bb)
@@ -591,7 +591,7 @@ PsychicMachampDescriptionText: ; 3d1af (f:51af)
 
 WaterBeetleDescriptionText: ; 3d1f0 (f:51f0)
 	text "A deck featuring bug Pokémon"
-	line "and thier water friends!"
+	line "and their water friends!"
 	done
 
 LegendaryMoltresDescriptionText: ; 3d22a (f:522a)

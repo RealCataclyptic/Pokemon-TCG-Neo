@@ -187,7 +187,7 @@ Text05f0: ; 4ce5a (13:4e5a)
 	done
 
 Text05f1: ; 4ce96 (13:4e96)
-	text "<RAMNAME> handed thier cards to "
+	text "<RAMNAME> handed their cards to "
 	line "Dr. Mason."
 	done
 
