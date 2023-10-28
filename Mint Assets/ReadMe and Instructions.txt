@@ -1,15 +1,15 @@
 This folder is seperated from the main folders because it contains all the assets and information designed to make Mint (Female MC) the playable character of the romhack, much like USC's Mint's Adventure hack. 
 
-This folder contains my version of the overworld and portrait sprites. It also contains backup files for Mark's (Male MC) sprites, just in case. 
+This folder contains my version of the overworld and portrait sprites. It also contains backup files for Mark's (Male MC) sprites, just in case. Do the reverse of these intructions to change Mint back into Mark.
 
 ===========================================================================================
 
 INSTRUCTIONS FOR ADDING MINT'S GRAPHICS TO THE GAME:
 
-Get the portrait and overworld sprites found in this folder. Then using any art program, or by dragging, dropping and renaming the files, go to:
+Get the portrait and overworld sprites found in this folder. Then using any art program, get the pictures into it, find the folders specified below and then choose 'Export As' onto the respective pictures (Will NOT work by dragging and dropping!)
 
-SRC -> GFX -> Duelists -> Player for the portrait sprite, replace it with Mint's portrait.
-GFX -> Overworld Sprites -> Player for the overworld srpite, replace it with Mint's portrait.
+SRC -> GFX -> Duelists -> Player for the portrait sprite, replace it with Mint's portrait. Rename this file to 'player' if nessesary.
+GFX -> Overworld Sprites -> Player for the overworld srpite, replace it with Mint's OW sprite. Rename this file to 'player' if nessesary.
 
 ===========================================================================================
 
@@ -31,7 +31,7 @@ Change it to
 
 This will change the overworld sprite's colors.
 
-Next, go to SRC -> Home (asm file, not folder) -> Palette119. You will see the following:
+Next, go to SRC -> gfx (asm file, not folder) -> Palette119. You will see the following:
 
 	db 0
 	db 1
