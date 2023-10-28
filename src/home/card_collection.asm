@@ -190,21 +190,21 @@ RemoveCardFromCollection:
 	ret
 
 ; return the amount of different cards that the player has collected in d
-; return NUM_CARDS in e, minus 1 if VENUSAUR_LV64 or MEW_LV15 has not been collected (minus 2 if neither)
+; return NUM_CARDS in e, minus 1 if CHIKORITA2 or HOOTHOOT has not been collected (minus 2 if neither)
 GetCardAlbumProgress:
 	push hl
 	call EnableSRAM
 	ld e, NUM_CARDS
 	ld h, HIGH(sCardCollection)
-	ld l, VULPIX
+	ld l, ENTEI2
 	bit CARD_NOT_OWNED_F, [hl]
 	jr z, .next1
-	dec e ; if VENUSAUR_LV64 not owned
+	dec e ; if CHIKORITA2 not owned
 .next1
-	ld l, IMAKUNI_CARD
+	ld l, SHADOW_LUGIA
 	bit CARD_NOT_OWNED_F, [hl]
 	jr z, .next2
-	dec e ; if MEW_LV15 not owned
+	dec e ; if HOOTHOOT not owned
 .next2
 	ld d, LOW(sCardCollection)
 	ld l, d

@@ -40,7 +40,7 @@ InitAITurnVars:
 	call GetCardIDFromDeckIndex
 	call SwapTurn
 	ld a, e
-	cp ALAKAZAM
+	cp SLOWBRO
 	jr nz, .check_flag
 	; Player used Barrier last turn
 
@@ -66,7 +66,7 @@ InitAITurnVars:
 	call GetCardIDFromDeckIndex
 	call SwapTurn
 	ld a, e
-	cp ALAKAZAM
+	cp SLOWBRO
 	jr nz, .reset_1
 	farcall CheckIfPlayerHasPokemonOtherThanMewtwoLv53
 	jr nc, .set_flag

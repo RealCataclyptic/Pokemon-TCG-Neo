@@ -1,9 +1,9 @@
 ; wPreviousAIFlags and wCurrentAIFlags constants
-DEF AI_FLAG_USED_PLUSPOWER     EQU 1 << 0
+DEF AI_FLAG_USED_STRENGTH_CHARM     EQU 1 << 0
 DEF AI_FLAG_USED_SWITCH        EQU 1 << 1
-DEF AI_FLAG_USED_PROFESSOR_OAK EQU 1 << 2
+DEF AI_FLAG_USED_PROFESSOR_ELM EQU 1 << 2
 DEF AI_FLAG_MODIFIED_HAND      EQU 1 << 3
-DEF AI_FLAG_USED_GUST_OF_WIND  EQU 1 << 4
+DEF AI_FLAG_USED_POKEMON_REVERSAL  EQU 1 << 4
 
 ; used as input for AIProcessEnergyCards to determine what to check
 ; and whether to play card after the routine is over.

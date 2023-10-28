@@ -95,7 +95,7 @@ HandleEnergyBurn:
 	call GetTurnDuelistVariable
 	call GetCardIDFromDeckIndex
 	ld a, e
-	cp CHARIZARD
+	cp ENTEI1
 	ret nz
 	xor a
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0

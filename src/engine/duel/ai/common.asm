@@ -13,7 +13,7 @@ CheckIfPlayerHasPokemonOtherThanMewtwoLv53:
 	cp TYPE_ENERGY
 	jp nc, .next ; can be a jr
 	ld a, [wLoadedCard2ID]
-	cp ALAKAZAM
+	cp SLOWBRO
 	jr nz, .not_mewtwo1
 .next
 	inc e

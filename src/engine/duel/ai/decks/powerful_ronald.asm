@@ -32,54 +32,54 @@ AIActionTable_PowerfulRonald:
 	ret
 
 .list_arena
-	db PRIMEAPE
-	db MANKEY
-	db MAGNEMITE_LV13
-	db SLOWPOKE_LV18
-	db GENGAR
+	db HITMONCHAN
 	db HITMONLEE
-	db DODUO
-	db KANGASKHAN
-	db TAUROS
-	db SPEAROW
+	db ELECTABUZZ
+	db MISDREAVUS
+	db JYNX
+	db MEWTWO
+	db SKARMORY
+	db SMEARGLE
+	db MILTANK
+	db TOGEPI1
 	db $00
 
 .list_bench
-	db PRIMEAPE
-	db MANKEY
-	db MAGNEMITE_LV13
-	db SLOWPOKE_LV18
-	db GENGAR
+	db HITMONCHAN
 	db HITMONLEE
-	db DODUO
-	db KANGASKHAN
-	db TAUROS
-	db SPEAROW
+	db ELECTABUZZ
+	db MISDREAVUS
+	db JYNX
+	db MEWTWO
+	db SKARMORY
+	db SMEARGLE
+	db MILTANK
+	db TOGEPI1
 	db $00
 
 .list_retreat
-	ai_retreat KANGASKHAN, -1
-	ai_retreat CHANSEY,      -1
-	ai_retreat TAUROS,     -1
+	ai_retreat SMEARGLE, -1
+	ai_retreat STANTLER,      -1
+	ai_retreat MILTANK,     -1
 	db $00
 
 .list_energy
-	ai_energy MAGNEMITE_LV13, 3, +1
-	ai_energy MANKEY,       3, +1
-	ai_energy PRIMEAPE,      4, +1
-	ai_energy SLOWPOKE_LV18,         2, +0
-	ai_energy GENGAR,            3, +0
-	ai_energy HITMONLEE,     3, +1
-	ai_energy SPEAROW,           2, -1
-	ai_energy CLEFAIRY,          3, +0
-	ai_energy DODUO,       3, +1
-	ai_energy KANGASKHAN,      3, -1
-	ai_energy TAUROS,          2, -1
+	ai_energy ELECTABUZZ, 2, +1
+	ai_energy HITMONLEE,       3, +1
+	ai_energy HITMONCHAN,      4, +1
+	ai_energy MISDREAVUS,         2, +0
+	ai_energy JYNX,            3, +0
+	ai_energy MEWTWO,     3, +1
+	ai_energy TOGEPI1,           2, -1
+	ai_energy TOGETIC1,          3, +0
+	ai_energy SKARMORY,       3, +1
+	ai_energy SMEARGLE,      3, -1
+	ai_energy MILTANK,          2, -1
 	db $00
 
 .list_prize
-	db ENERGY_SEARCH
-	db ENERGY_REMOVAL
+	db STRENGTH_CHARM
+	db ENERGY_REMOVAL2
 	db $00
 
 .store_list_pointers

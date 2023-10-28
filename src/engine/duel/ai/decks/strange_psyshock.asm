@@ -32,44 +32,45 @@ AIActionTable_StrangePsyshock:
 	ret
 
 .list_arena
-	db SLOWPOKE_LV18
-	db GASTLY_LV17
-	db EEVEE
-	db DROWZEE
-	db KADABRA
+	db MISDREAVUS
+	db WOBBUFFET
+	db CHANSEY
+	db GASTLY
+	db SLOWPOKE
 	db $00
 
 .list_bench
-	db KADABRA
-	db EEVEE
-	db GASTLY_LV17
-	db SLOWPOKE_LV18
-	db DROWZEE
+	db SLOWPOKE
+	db CHANSEY
+	db WOBBUFFET
+	db MISDREAVUS
+	db GASTLY
 	db $00
 
 .list_retreat
-	ai_retreat GASTLY_LV17,       -3
-	ai_retreat CHANSEY,    -3
-	ai_retreat DROWZEE, -1
-	ai_retreat SLOWPOKE_LV18,    -1
+	ai_retreat WOBBUFFET,       -1
+	ai_retreat STANTLER,    -3
+	ai_retreat GENGAR, -1
+	ai_retreat MISDREAVUS,    -1
 	db $00
 
 .list_energy
-	ai_energy KADABRA,       2, +1
-	ai_energy SLOWPOKE_LV9,    3, +2
-	ai_energy SLOWPOKE_LV18,   2, +1
-	ai_energy EEVEE,    4, -2
-	ai_energy DITTO,    3, -1
-	ai_energy GASTLY_LV17, 1, +1
-	ai_energy CHANSEY,    3, +3
-	ai_energy DROWZEE,	2, +0
+	ai_energy SLOWPOKE,       2, +1
+	ai_energy SLOWKING,    3, +2
+	ai_energy MISDREAVUS,   2, +1
+	ai_energy CHANSEY,    3, -1
+	ai_energy BLISSEY,    4, -2
+	ai_energy WOBBUFFET, 1, +1
+	ai_energy GASTLY,    1, +2
+	ai_energy HAUNTER,	2, +2
+	ai_energy GENGAR,	3, +3
 	db $00
 
 .list_prize
-	db PROFESSOR_OAK
-	db SCOOP_UP
-	db SLOWPOKE_LV9
-	db KADABRA
+	db PROFESSOR_ELM
+	db SUPER_SCOOP_UP
+	db SLOWKING
+	db SLOWPOKE
 	db $00
 
 .store_list_pointers

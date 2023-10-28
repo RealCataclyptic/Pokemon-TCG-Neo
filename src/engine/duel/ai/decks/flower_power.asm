@@ -32,49 +32,50 @@ AIActionTable_FlowerPower:
 	ret
 
 .list_arena
-	db KANGASKHAN
-	db NIDOKING
-	db NIDORINA
-	db IVYSAUR
-	db BELLSPROUT
-	db PIDGEOT_LV40
-	db NIDOKING
+	db HOPPIP
+	db HERACROSS
+	db ODDISH
+	db SMEARGLE
+	db CHIKORITA2
+	db JIGGLYPUFF
+	db HOPPIP
 	db $00
 
 .list_bench
-	db NIDORINA
-	db NIDOKING
-	db KANGASKHAN
-	db NIDOKING
-	db IVYSAUR
-	db BELLSPROUT
-	db PIDGEOT_LV40
+	db ODDISH
+	db HOPPIP
+	db SMEARGLE
+	db HOPPIP
+	db CHIKORITA2
+	db HERACROSS
+	db JIGGLYPUFF
 	db $00
 
 .list_retreat
-	ai_retreat NIDORINO,     -2
-	ai_retreat KANGASKHAN, -2
-	ai_retreat VENUSAUR_LV67, -2
-	ai_retreat RATTATA,   -2
+	ai_retreat BELLOSSOM,     -3
+	ai_retreat SMEARGLE, -2
+	ai_retreat BAYLEEF2, -2
+	ai_retreat WIGGLYTUFF,   -2
 	db $00
 
 .list_energy
-	ai_energy NIDORINA,      2, +1
-	ai_energy NIDOQUEEN,        3, +1
-	ai_energy NIDORINO,  3, +3
-	ai_energy KANGASKHAN,         3, +0
-	ai_energy IVYSAUR,          2, -1
-	ai_energy VENUSAUR_LV67,      3, +0
-	ai_energy CATERPIE,      4, +0
-	ai_energy PIDGEOT_LV40,     2, +0
-	ai_energy RATTATA,	3, +1
-	ai_energy NIDOKING,      1, +1
-	ai_energy ZUBAT,     2, +0
-	ai_energy GOLBAT,	2, +1
+	ai_energy ODDISH,      2, +2
+	ai_energy GLOOM,        2, +2
+	ai_energy BELLOSSOM,  3, +3
+	ai_energy SMEARGLE,         3, +0
+	ai_energy CHIKORITA2,          2, -1
+	ai_energy BAYLEEF2,      3, -1
+	ai_energy MEGANIUM1,      4, -1
+	ai_energy JIGGLYPUFF,     2, +0
+	ai_energy WIGGLYTUFF,	3, +1
+	ai_energy HERACROSS,	4, +0
+	ai_energy HOPPIP,      1, +1
+	ai_energy SKIPLOOM,     2, +1
+	ai_energy JUMPLUFF,	2, +2
 	db $00
 
 .list_prize
-	db NIDORINO
+	db BELLOSSOM
 	db $00
 
 .store_list_pointers

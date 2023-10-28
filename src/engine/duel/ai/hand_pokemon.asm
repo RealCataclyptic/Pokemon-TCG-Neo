@@ -328,7 +328,7 @@ AIDecideEvolution:
 	call GetTurnDuelistVariable
 	call LoadCardDataToBuffer1_FromDeckIndex
 	ld a, [wLoadedCard1ID]
-	cp MYSTERIOUS_FOSSIL
+	cp FOSSIL_EGG
 	jr z, .mysterious_fossil
 	ld a, [wLoadedCard1Unknown2]
 	cp $02
@@ -341,19 +341,19 @@ AIDecideEvolution:
 	ld a, 5
 	call AddToAIScore
 
-; in Pikachu Deck, decrease AI score for evolving Pikachu
+; in Pikachu Deck, decrease AI score for evolving Pikachu ; Useless in my game so changed to random stuff
 .pikachu_deck
 	ld a, [wOpponentDeckID]
 	cp PIKACHU_DECK_ID
 	jr nz, .check_score
 	ld a, [wLoadedCard1ID]
-	cp BULBASAUR
+	cp CHIKORITA1
 	jr z, .pikachu
-	cp IVYSAUR
+	cp CHIKORITA2
 	jr z, .pikachu
-	cp CATERPIE
+	cp MEGANIUM1
 	jr z, .pikachu
-	cp WEEDLE
+	cp LEDIAN
 	jr nz, .check_score
 .pikachu
 	ld a, 3
@@ -401,11 +401,11 @@ AIDecideSpecialEvolutions:
 
 .legendary_dragonite
 	ld a, [wLoadedCard2ID]
-	cp PONYTA
+	cp CHARMELEON
 	jr z, .charmeleon
-	cp KOFFING
+	cp CHARMANDER
 	jr z, .magikarp
-	cp MEOWTH_LV14
+	cp TEDDIURSA
 	jr z, .dragonair
 	ret
 
@@ -447,7 +447,7 @@ AIDecideSpecialEvolutions:
 
 .invincible_ronald
 	ld a, [wLoadedCard2ID]
-	cp PARAS
+	cp PINECO
 	jr z, .grimer
 	ret
 
@@ -462,7 +462,7 @@ AIDecideSpecialEvolutions:
 
 .legendary_ronald
 	ld a, [wLoadedCard2ID]
-	cp FARFETCHD
+	cp DELIBIRD
 	jr z, .dragonair
 	ret
 
@@ -500,7 +500,7 @@ AIDecideSpecialEvolutions:
 
 ; if there's no Muk, raise score
 .check_muk
-	ld a, BULBASAUR
+	ld a, MAIL_FROM_BILL
 	call CountPokemonIDInBothPlayAreas
 	jr c, .lower_score
 	ld a, 1
@@ -539,11 +539,11 @@ AIDecidePlayLegendaryBirds:
 ; check if card applies
 .begin
 	ld a, [wLoadedCard1ID]
-	cp BULBASAUR
+	cp BLISSEY
 	jr z, .articuno
-	cp BULBASAUR
+	cp CHIKORITA1
 	jr z, .moltres
-	cp IMAKUNI_CARD
+	cp SHADOW_LUGIA
 	jr z, .zapdos
 	ret
 
@@ -589,7 +589,7 @@ AIDecidePlayLegendaryBirds:
 
 .check_muk_and_snorlax
 	; checks for Muk in both Play Areas
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	jr c, .subtract
 	; checks if player's active card is Snorlax
@@ -599,7 +599,7 @@ AIDecidePlayLegendaryBirds:
 	call GetCardIDFromDeckIndex
 	call SwapTurn
 	ld a, e
-	cp BULBASAUR
+	cp CHIKORITA1
 	jr z, .subtract
 
 ; add
@@ -621,7 +621,7 @@ AIDecidePlayLegendaryBirds:
 
 .zapdos
 	; checks for Muk in both Play Areas
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	jr c, .subtract
 	ret

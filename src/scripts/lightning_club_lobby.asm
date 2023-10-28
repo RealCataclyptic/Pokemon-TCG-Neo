@@ -40,21 +40,21 @@ Script_Chap2:
 	quit_script_fully
 
 .ows_e3b6
-	jump_if_card_owned ARTICUNO_LV37, .ows_e3be
+	jump_if_card_owned PICHU, .ows_e3be
 	print_npc_text Text0613
 	quit_script_fully
 
 .ows_e3be
-	jump_if_card_in_collection ARTICUNO_LV37, .ows_e3c6
+	jump_if_card_in_collection PICHU, .ows_e3c6
 	print_npc_text Text0614
 	quit_script_fully
 
 .ows_e3c6
 	set_event EVENT_CHAP2_TRADE_STATE, CHAP2_TRADE_COMPLETED
 	print_npc_text Text0615
-	take_card ARTICUNO_LV37
-	give_card MAGNEMITE_LV15
-	show_card_received_screen MAGNEMITE_LV15
+	take_card PICHU
+	give_card RAIKOU
+	show_card_received_screen RAIKOU
 	print_npc_text Text0616
 	quit_script_fully
 

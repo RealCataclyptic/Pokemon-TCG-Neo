@@ -15,12 +15,12 @@ ENDM
 	deck_const SAMS_PRACTICE_DECK          ; $02
 	deck_const PRACTICE_PLAYER_DECK        ; $03
 	deck_const SAMS_NORMAL_DECK            ; $04
-	deck_const CHARMANDER_AND_FRIENDS_DECK ; $05
-	deck_const CHARMANDER_EXTRA_DECK       ; $06
-	deck_const SQUIRTLE_AND_FRIENDS_DECK   ; $07
-	deck_const SQUIRTLE_EXTRA_DECK         ; $08
-	deck_const BULBASAUR_AND_FRIENDS_DECK  ; $09
-	deck_const BULBASAUR_EXTRA_DECK        ; $0A
+	deck_const HOUNDOUR2_AND_FRIENDS_DECK ; $05
+	deck_const HOUNDOUR2_EXTRA_DECK       ; $06
+	deck_const TOTODILE2_AND_FRIENDS_DECK   ; $07
+	deck_const TOTODILE2_EXTRA_DECK         ; $08
+	deck_const CHIKORITA1_AND_FRIENDS_DECK  ; $09
+	deck_const CHIKORITA1_EXTRA_DECK        ; $0A
 	deck_const LIGHTNING_AND_FIRE_DECK     ; $0B
 	deck_const WATER_AND_FIGHTING_DECK     ; $0C
 	deck_const GRASS_AND_PSYCHIC_DECK      ; $0D

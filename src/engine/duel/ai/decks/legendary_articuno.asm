@@ -32,40 +32,40 @@ AIActionTable_LegendaryArticuno:
 	ret
 
 .list_arena
-	db DRAGONAIR
-	db MAGIKARP
-	db PIKACHU_LV12
-	db TENTACRUEL
-	db HORSEA
+	db LUGIA_C
+	db SUICUNE
+	db PIKACHU
+	db POLIWAG
+	db REMORAID
 	db $00
 
 .list_bench
-	db DRAGONAIR
-	db MAGIKARP
-	db TENTACRUEL
-	db PIKACHU_LV12
-	db HORSEA
+	db LUGIA_C
+	db SUICUNE
+	db POLIWAG
+	db PIKACHU
+	db REMORAID
 	db $00
 
 .list_retreat
-	ai_retreat MAGIKARP,  -3
-	ai_retreat DRAGONAIR, -3
+	ai_retreat SUICUNE,  -3
+	ai_retreat LUGIA_C, -3
 	db $00
 
 .list_energy
-	ai_energy DRAGONAIR,          3, +4
-	ai_energy TENTACRUEL,       2, +0
-	ai_energy SEEL,        3, +0
-	ai_energy DEWGONG, 	3, -1
-	ai_energy PIKACHU_LV12, 	3, +1
-	ai_energy MAGNETON_LV28,       4, +3
-	ai_energy MAGIKARP,         3, +1
-	ai_energy HORSEA,		2, +0
-	ai_energy SEADRA,		5, +3
+	ai_energy LUGIA_C,          3, +4
+	ai_energy POLIWAG,       2, +0
+	ai_energy POLIWHIRL,        2, +0
+	ai_energy POLITOED, 	3, -1
+	ai_energy PIKACHU, 	3, +1
+	ai_energy RAICHU_S,       4, +3
+	ai_energy SUICUNE,         3, +1
+	ai_energy REMORAID,		2, +0
+	ai_energy OCTILLERY,		5, +3
 	db $00
 
 .list_prize
-	db DRAGONAIR
+	db LUGIA_C
 	db SUPER_ENERGY_RETRIEVAL
 	db $00
 
@@ -96,13 +96,13 @@ ScoreLegendaryArticunoCards:
 ; otherwise, check if Articuno or Dewgong
 ; have more than half HP and can use second attack
 ; and if so, the next Pokémon to check is Lapras
-	ld a, SNORLAX
+	ld a, SUICUNE
 	call CheckForBenchIDAtHalfHPAndCanUseSecondAttack
 	jr c, .articuno
-	ld a, STARYU
+	ld a, SEADRA
 	call CheckForBenchIDAtHalfHPAndCanUseSecondAttack
 	jr c, .lapras
-	ld a, JIGGLYPUFF_LV12
+	ld a, KINGDRA
 	call CheckForBenchIDAtHalfHPAndCanUseSecondAttack
 	jr c, .lapras
 	jr .articuno
@@ -113,7 +113,7 @@ ScoreLegendaryArticunoCards:
 ; attached energy count, which skips calling the routine
 ; if this count is >= 3
 .lapras
-	ld a, STARYU
+	ld a, HORSEA
 	ld b, PLAY_AREA_BENCH_1
 	call LookForCardIDInPlayArea_Bank5
 	jr nc, .articuno
@@ -121,34 +121,34 @@ ScoreLegendaryArticunoCards:
 	call CountNumberOfEnergyCardsAttached
 	cp 3
 	jr nc, .articuno
-	ld a, STARYU
+	ld a, SEADRA
 	call RaiseAIScoreToAllMatchingIDsInBench
 	ret
 
 .articuno
-	ld a, SNORLAX
+	ld a, SEADRA
 	ld b, PLAY_AREA_BENCH_1
 	call LookForCardIDInPlayArea_Bank5
 	jr nc, .dewgong
-	ld a, SNORLAX
+	ld a, KINGDRA
 	call RaiseAIScoreToAllMatchingIDsInBench
 	ret
 
 .dewgong
-	ld a, SEAKING
+	ld a, SUICUNE
 	ld b, PLAY_AREA_BENCH_1
 	call LookForCardIDInPlayArea_Bank5
 	jr nc, .seel
-	ld a, SEAKING
+	ld a, SUICUNE
 	call RaiseAIScoreToAllMatchingIDsInBench
 	ret
 
 .seel
-	ld a, STARMIE
+	ld a, SUICUNE
 	ld b, PLAY_AREA_BENCH_1
 	call LookForCardIDInPlayArea_Bank5
 	ret nc
-	ld a, STARMIE
+	ld a, SUICUNE
 	call RaiseAIScoreToAllMatchingIDsInBench
 	ret
 
@@ -183,7 +183,7 @@ AIDoTurn_LegendaryArticuno:
 	call AIProcessHandTrainerCards
 ; if used Professor Oak, process new hand
 	ld a, [wPreviousAIFlags]
-	and AI_FLAG_USED_PROFESSOR_OAK
+	and AI_FLAG_USED_PROFESSOR_ELM
 	jr z, .try_attack
 	ld a, AI_TRAINER_CARD_PHASE_01
 	call AIProcessHandTrainerCards

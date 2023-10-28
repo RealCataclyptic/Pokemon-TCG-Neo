@@ -1024,11 +1024,11 @@ PutHandPokemonCardInPlayArea:
 	add e
 	ld l, a
 	ld [hl], $0
-	ld a, DUELVARS_ARENA_CARD_ATTACHED_PLUSPOWER
+	ld a, DUELVARS_ARENA_CARD_ATTACHED_STRENGTH_CHARM
 	add e
 	ld l, a
 	ld [hl], $0
-	ld a, DUELVARS_ARENA_CARD_ATTACHED_DEFENDER
+	ld a, DUELVARS_ARENA_CARD_ATTACHED_CRYSTAL_SHARD
 	add e
 	ld l, a
 	ld [hl], $0
@@ -1102,9 +1102,9 @@ EmptyPlayAreaSlot:
 	call .init_duelvar
 	ld a, DUELVARS_ARENA_CARD_CHANGED_TYPE
 	call .init_duelvar
-	ld a, DUELVARS_ARENA_CARD_ATTACHED_DEFENDER
+	ld a, DUELVARS_ARENA_CARD_ATTACHED_CRYSTAL_SHARD
 	call .init_duelvar
-	ld a, DUELVARS_ARENA_CARD_ATTACHED_PLUSPOWER
+	ld a, DUELVARS_ARENA_CARD_ATTACHED_STRENGTH_CHARM
 .init_duelvar
 	add e
 	ld l, a
@@ -1169,9 +1169,9 @@ SwapPlayAreaPokemon:
 	call .swap_duelvar
 	ld a, DUELVARS_ARENA_CARD_CHANGED_TYPE
 	call .swap_duelvar
-	ld a, DUELVARS_ARENA_CARD_ATTACHED_PLUSPOWER
+	ld a, DUELVARS_ARENA_CARD_ATTACHED_STRENGTH_CHARM
 	call .swap_duelvar
-	ld a, DUELVARS_ARENA_CARD_ATTACHED_DEFENDER
+	ld a, DUELVARS_ARENA_CARD_ATTACHED_CRYSTAL_SHARD
 	call .swap_duelvar
 	set CARD_LOCATION_PLAY_AREA_F, d
 	set CARD_LOCATION_PLAY_AREA_F, e
@@ -1365,7 +1365,7 @@ Func_161e:
 	call DrawWideTextBox_WaitForInput
 	call ExchangeRNG
 	ld a, [wLoadedCard1ID]
-	cp MUK
+	cp CYNDAQUIL1
 	jr z, .use_pokemon_power
 	ld a, $01 ; check only Muk
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
@@ -1891,7 +1891,7 @@ ApplyDamageModifiers_DamageToTarget:
 	call SwapTurn
 	and b
 	jr z, .check_pluspower_and_defender ; jump if not resistant
-	ld hl, -30
+	ld hl, -20
 	add hl, de
 	ld e, l
 	ld d, h
@@ -1976,7 +1976,7 @@ ApplyDamageModifiers_DamageToSelf:
 ApplyAttachedPluspower:
 	push de
 	call GetTurnDuelistVariable
-	ld de, PLUSPOWER
+	ld de, STRENGTH_CHARM
 	call CountCardIDInLocation
 	ld l, a
 	ld h, 10
@@ -1991,7 +1991,7 @@ ApplyAttachedPluspower:
 ApplyAttachedDefender:
 	push de
 	call GetTurnDuelistVariable
-	ld de, DEFENDER
+	ld de, CRYSTAL_SHARD
 	call CountCardIDInLocation
 	ld l, a
 	ld h, 20

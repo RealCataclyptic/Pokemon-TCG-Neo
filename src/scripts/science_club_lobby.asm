@@ -86,10 +86,10 @@ Script_Specs2:
 	print_text_quit_fully Text074d
 
 Data_ebe7:
-	db PORYGON
-	db DITTO
-	db MUK
-	db WEEZING
+	db LUGIA
+	db CHANSEY
+	db CYNDAQUIL1
+	db TYPHLOSION1
 
 NPCMovement_ebeb:
 	db WEST | NO_MOVE

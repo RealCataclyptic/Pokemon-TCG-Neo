@@ -120,11 +120,11 @@ Script_Ishihara:
 	print_text_quit_fully Text072c
 
 .check_if_clefable_owned
-	jump_if_card_owned EEVEE, .check_if_clefable_in_collection
+	jump_if_card_owned BLISSEY, .check_if_clefable_in_collection
 	print_text_quit_fully Text072d
 
 .check_if_clefable_in_collection
-	jump_if_card_in_collection EEVEE, .do_clefable_trade
+	jump_if_card_in_collection BLISSEY, .do_clefable_trade
 	print_text_quit_fully Text072e
 
 .do_clefable_trade
@@ -133,9 +133,9 @@ Script_Ishihara:
 	zero_out_event_value EVENT_ISHIHARA_WANTS_TO_TRADE
 	print_npc_text Text072f
 	print_text Text0730
-	take_card EEVEE
-	give_card IMAKUNI_CARD
-	show_card_received_screen IMAKUNI_CARD
+	take_card BLISSEY
+	give_card SHADOW_LUGIA
+	show_card_received_screen SHADOW_LUGIA
 	print_text_quit_fully Text0731
 
 .ows_dbcc
@@ -146,11 +146,11 @@ Script_Ishihara:
 	print_text_quit_fully Text072c
 
 .check_if_ditto_owned
-	jump_if_card_owned ELECTABUZZ_LV35, .check_if_ditto_in_collection
+	jump_if_card_owned STEELIX, .check_if_ditto_in_collection
 	print_text_quit_fully Text0734
 
 .check_if_ditto_in_collection
-	jump_if_card_in_collection ELECTABUZZ_LV35, .do_ditto_trade
+	jump_if_card_in_collection STEELIX, .do_ditto_trade
 	print_text_quit_fully Text0735
 
 .do_ditto_trade
@@ -159,9 +159,9 @@ Script_Ishihara:
 	zero_out_event_value EVENT_ISHIHARA_WANTS_TO_TRADE
 	print_npc_text Text072f
 	print_text Text0736
-	take_card ELECTABUZZ_LV35
-	give_card VULPIX
-	show_card_received_screen VULPIX
+	take_card STEELIX
+	give_card ENTEI2
+	show_card_received_screen ENTEI2
 	print_text_quit_fully Text0737
 
 .ows_dc05
@@ -172,11 +172,11 @@ Script_Ishihara:
 	print_text_quit_fully Text072c
 
 .check_if_chansey_owned
-	jump_if_card_owned VENOMOTH, .check_if_chansey_in_collection
+	jump_if_card_owned SCIZOR, .check_if_chansey_in_collection
 	print_text_quit_fully Text073a
 
 .check_if_chansey_in_collection
-	jump_if_card_in_collection VENOMOTH, .do_chansey_trade
+	jump_if_card_in_collection SCIZOR, .do_chansey_trade
 	print_text_quit_fully Text073b
 
 .do_chansey_trade
@@ -185,9 +185,9 @@ Script_Ishihara:
 	zero_out_event_value EVENT_ISHIHARA_WANTS_TO_TRADE
 	print_npc_text Text072f
 	print_text Text073c
-	take_card VENOMOTH
-	give_card IMAKUNI_CARD
-	show_card_received_screen IMAKUNI_CARD
+	take_card SCIZOR
+	give_card SHADOW_LUGIA
+	show_card_received_screen SHADOW_LUGIA
 	print_text_quit_fully Text073d
 
 .ows_dc3e
@@ -229,11 +229,11 @@ Script_Ronald:
 
 Script_BeatRonald1:
 	start_script
-	print_npc_text BlizzardDescription
+	print_npc_text RonaldNewLostText
 	give_one_of_each_trainer_booster
 	print_npc_text Text0659
 	quit_script_fully
 
 Script_LostToRonald1:
 	start_script
-	print_text_quit_fully RapidashsAgilityDescription
+	print_text_quit_fully RonaldNewWinText

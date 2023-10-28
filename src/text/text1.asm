@@ -577,7 +577,7 @@ WasKnockedOutText: ; 36eaa (d:6eaa)
 	done
 
 HavePokemonPowerText: ; 36ebe (d:6ebe)
-	text "<RAMTEXT> have"
+	text "<RAMTEXT> has a"
 	line "Pokémon Power."
 	done
 
@@ -670,7 +670,7 @@ Text0096: ; 37025 (d:7025)
 	text "Other"
 	line "Poison"
 	line "Sleep"
-	line "Payalysis"
+	line "Paralysis"
 	line "Confusion"
 	line "Double Poison"
 	line "Clear"
@@ -823,7 +823,7 @@ NoEnergyAttachedToOpponentsActiveText: ; 3742a (d:742a)
 
 ThereAreNoEnergyCardsInDiscardPileText: ; 3746a (d:746a)
 	text "There are no Energy cards"
-	line "in the the Discard Pile."
+	line "in the Discard Pile."
 	done
 
 ThereAreNoBasicEnergyCardsInDiscardPileText: ; 3749e (d:749e)
@@ -923,8 +923,8 @@ ThereAreNoTrainerCardsInDiscardPileText: ; 377ea (d:77ea)
 	line "in the Discard Pile."
 	done
 
-NoAttackMayBeChoosenText: ; 3781b (d:781b)
-	text "No Attacks may be choosen."
+NoAttackMayBeChosenText: ; 3781b (d:781b)
+	text "No Attacks may be chosen."
 	done
 
 YouDidNotReceiveAnAttackToMirrorMoveText: ; 37837 (d:7837)
@@ -955,7 +955,7 @@ CannotUseDueToStatusText: ; 378bc (d:78bc)
 	done
 
 CannotBeUsedInTurnWhichWasPlayedText: ; 378ef (d:78ef)
-	text "Cannot be used in the turn in"
+	text "Cannot be used in the turn on"
 	line "which it was played."
 	done
 
@@ -986,7 +986,7 @@ ThereAreNoPokemonOnBenchText: ; 379ce (d:79ce)
 	done
 
 OpponentIsNotAsleepText: ; 379f2 (d:79f2)
-	text "Opponent is not Asleep"
+	text "Opponent is not Asleep."
 	done
 
 UnableDueToToxicGasText: ; 37a0a (d:7a0a)
@@ -1031,10 +1031,11 @@ PrintingWasInterruptedText: ; 37b42 (d:7b42)
 	text "Printing was interrupted."
 	done
 
-CardPopCannotBePlayedWithTheGameBoyText: ; 37b5d (d:7b5d)
-	text "Yay! I've all the cards"
-	line "I wanted! Thank you"
-	line "a bunch!"
+CardPopCannotBePlayedWithTheGameBoyText: ; 37b5d (d:7b5d) ; Free text
+	text "Card Pop! cannot be played"
+	line "with the Game Boy."
+	line "Please use a"
+	line "Game Boy Color."
 	done
 
 SandAttackCheckText: ; 37ba9 (d:7ba9)

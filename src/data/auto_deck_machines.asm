@@ -28,12 +28,12 @@ AutoDeckMachineEntries: ; 1b8e8 (6:78e8)
 	auto_deck BlueWaterCardList,            BlueWaterText,            BlueWaterDescriptionText
 	auto_deck OnTheBeachCardList,           OnTheBeachText,           OnTheBeachDescriptionText
 	auto_deck ParalyzeCardList,             ParalyzeText,             ParalyzeDescriptionText
-	auto_deck EnergyRemovalCardList,        EnergyRemovalText,        EnergyRemovalDescriptionText
+	auto_deck EnergyRemoval2CardList,        EnergyRemovalText,        EnergyRemoval2DescriptionText
 	auto_deck RainDancerCardList,           RainDancerText,           RainDancerDescriptionText
 
 ; Lightning Auto Deck Machine
 	auto_deck CutePokemonCardList,          CutePokemonText,          CutePokemonDescriptionText
-	auto_deck PokemonFluteCardList,         PokemonFluteText,         PokemonFluteDescriptionText
+	auto_deck PokemonFluteChannelCardList,         PokemonFluteText,         PokemonFluteChannelDescriptionText
 	auto_deck YellowFlashCardList,          YellowFlashText,          YellowFlashDescriptionText
 	auto_deck ElectricShockCardList,        ElectricShockText,        ElectricShockDescriptionText
 	auto_deck ZappingSelfdestructCardList,  ZappingSelfdestructText,  ZappingSelfdestructDescriptionText
@@ -47,8 +47,8 @@ AutoDeckMachineEntries: ; 1b8e8 (6:78e8)
 
 ; Psychic Auto Deck Machine
 	auto_deck PsychicPowerCardList,         PsychicPowerText,         PsychicPowerDescriptionText
-	auto_deck DreamEaterHaunterCardList,    DreamEaterHaunterText,    DreamEaterHaunterDescriptionText
-	auto_deck ScavengingSlowbroCardList,    ScavengingSlowbroText,    ScavengingSlowbroDescriptionText
+	auto_deck DreamEaterHaunterCardList,    DreamEaterHaunterText,    DreamEaterUnownADescriptionText
+	auto_deck ScavengingUnownACardList,    ScavengingSlowbroText,    ScavengingSlowbroDeckDescriptionText
 	auto_deck StrangePowerCardList,         StrangePowerText,         StrangePowerDescriptionText
 	auto_deck StrangePsyshockCardList,      StrangePsyshockText,      StrangePsyshockDescriptionText
 
@@ -70,12 +70,12 @@ AutoDeckMachineEntries: ; 1b8e8 (6:78e8)
 	auto_deck CharmanderAndFriendsCardList, CharmanderAndFriendsText, CharmanderAndFriendsDescriptionText
 	auto_deck SquirtleAndFriendsCardList,   SquirtleAndFriendsText,   SquirtleAndFriendsDescriptionText
 	auto_deck BulbasaurAndFriendsCardList,  BulbasaurAndFriendsText,  BulbasaurAndFriendsDescriptionText
-	auto_deck PsychicMachampCardList,       PsychicMachampText,       PsychicMachampDescriptionText
+	auto_deck PsychicPupitarCardList,       PsychicMachampText,       PsychicPupitarDescriptionText
 	auto_deck WaterBeetleCardList,          WaterBeetleText,          WaterBeetleDescriptionText
 
 ; Legendary Auto Deck Machine
 	auto_deck LegendaryMoltresCardList,     LegendaryMoltresText,     LegendaryMoltresDescriptionText
 	auto_deck LegendaryZapdosCardList,      LegendaryZapdosText,      LegendaryZapdosDescriptionText
 	auto_deck LegendaryArticunoCardList,    LegendaryArticunoText,    LegendaryArticunoDescriptionText
-	auto_deck LegendaryDragoniteCardList,   LegendaryDragoniteText,   LegendaryDragoniteDescriptionText
+	auto_deck LegendaryDragoniteCardList,   LegendaryDragoniteText,   LegendaryCelebiCDescriptionText
 	auto_deck MysteriousPokemonCardList,    MysteriousPokemonText,    MysteriousPokemonDescriptionText

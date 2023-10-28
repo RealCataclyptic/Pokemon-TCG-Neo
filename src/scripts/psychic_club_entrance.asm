@@ -147,8 +147,8 @@ Script_FirstRonaldDuel:
 Script_BeatFirstRonaldDuel:
 	start_script
 	print_npc_text Text064c
-	give_card SUPER_ENERGY_REMOVAL
-	show_card_received_screen SUPER_ENERGY_REMOVAL
+	give_card MASTER_BALL
+	show_card_received_screen MASTER_BALL
 	print_npc_text Text064d
 	script_jump Script_LostToFirstRonaldDuel.ows_e8fb
 
@@ -211,8 +211,8 @@ Script_SecondRonaldDuel:
 Script_BeatSecondRonaldDuel:
 	start_script
 	print_npc_text Text0651
-	give_card GASTLY_LV8
-	show_card_received_screen GASTLY_LV8
+	give_card UNOWN_J
+	show_card_received_screen UNOWN_J
 	print_npc_text Text0652
 	script_jump Script_LostToSecondRonaldDuel.ows_e959
 

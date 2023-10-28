@@ -167,10 +167,10 @@ AIProcessEnergyCards: ; 164fc (5:64fc)
 ; and there's VenusaurLv67 in own Play Area,
 ; add to AI score
 .check_venusaur
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	jr c, .check_if_active
-	ld a, CATERPIE
+	ld a, MEGANIUM1
 	call CountPokemonIDInPlayArea
 	jr nc, .check_if_active
 	ld a, 1
@@ -471,7 +471,7 @@ DetermineAIScoreOfAttackEnergyRequirement: ; 16695 (5:6695)
 ; if there is no surplus energy, encourage playing energy.
 .discard_energy
 	ld a, [wLoadedCard1ID]
-	cp EEVEE
+	cp BLISSEY
 	jr z, .check_evolution
 	call CheckIfNoSurplusEnergyForAttack
 	jr c, .asm_166cd
@@ -729,11 +729,11 @@ GetEnergyCardForDiscardOrEnergyBoostAttack: ; 1683b (5:683b)
 ; for these to be treated differently.
 ; for both attacks, load its energy cost.
 	ld a, b
-	cp EEVEE
+	cp LUGIA
 	jr z, .zapdos2
-	cp CHARIZARD
+	cp ENTEI1
 	jr z, .charizard_or_exeggutor
-	cp FLAREON_LV28
+	cp KABUTOPS
 	jr z, .charizard_or_exeggutor
 	ld hl, wLoadedCard2Atk2EnergyCost
 	jr .fire
@@ -979,9 +979,9 @@ CheckSpecificDecksToAttachDoubleColorless: ; 1696e (5:696e)
 	ld a, [wOpponentDeckID]
 	cp LEGENDARY_DRAGONITE_DECK_ID
 	jr z, .legendary_dragonite_deck
-	cp FIRE_CHARGE_DECK_ID
+	cp STRANGE_POWER_DECK_ID ; changed from base	
 	jr z, .fire_charge_deck
-	cp LEGENDARY_RONALD_DECK_ID
+	cp FLYIN_POKEMON_DECK_ID
 	jr z, .legendary_ronald_deck
 
 .no_carry
@@ -995,9 +995,9 @@ CheckSpecificDecksToAttachDoubleColorless: ; 1696e (5:696e)
 ; check for Charmander and Dratini.
 .legendary_dragonite_deck
 	call .get_id
-	cp MEOWTH_LV14
+	cp URSARING
 	jr z, .check_colorless_attached
-	cp MEOWTH_LV15
+	cp TEDDIURSA
 	jr z, .check_colorless_attached
 	jr .no_carry
 
@@ -1005,7 +1005,7 @@ CheckSpecificDecksToAttachDoubleColorless: ; 1696e (5:696e)
 ; check for Growlithe.
 .fire_charge_deck
 	call .get_id
-	cp GROWLITHE
+	cp NOCTOWL
 	jr z, .check_colorless_attached
 	jr .no_carry
 
@@ -1013,7 +1013,7 @@ CheckSpecificDecksToAttachDoubleColorless: ; 1696e (5:696e)
 ; check for Dratini.
 .legendary_ronald_deck
 	call .get_id
-	cp FARFETCHD
+	cp YANMA
 	jr z, .check_colorless_attached
 	jr .no_carry
 

@@ -66,7 +66,7 @@ SetSamsStartingPlayArea:
 	cp $ff
 	ret z
 	call LoadCardDataToBuffer1_FromDeckIndex
-	cp CHARMANDER
+	cp HOUNDOUR2
 	jr nz, .loop_hand
 	ldh a, [hTempCardIndex_ff98]
 	call PutHandPokemonCardInPlayArea
@@ -77,12 +77,12 @@ SetSamsStartingPlayArea:
 ; outputs in a Play Area location of Raticate or Rattata
 ; in the Bench. If neither is found, just output PLAY_AREA_BENCH_1.
 GetPlayAreaLocationOfRaticateOrRattata:
-	ld a, RATICATE
+	ld a, WIGGLYTUFF
 	ld b, PLAY_AREA_BENCH_1
 	call LookForCardIDInPlayArea_Bank5
 	cp $ff
 	jr nz, .found
-	ld a, RATTATA
+	ld a, JIGGLYPUFF
 	ld b, PLAY_AREA_BENCH_1
 	call LookForCardIDInPlayArea_Bank5
 	cp $ff
@@ -124,50 +124,50 @@ AIPerformScriptedTurn:
 	dw .turn_7
 
 .turn_1
-	ld d, MACHOP
+	ld d, HITMONTOP
 	ld e, FIGHTING_ENERGY
 	call AIAttachEnergyInHandToCardInPlayArea
 	ret
 
 .turn_2
-	ld a, RATTATA
+	ld a, JIGGLYPUFF
 	call LookForCardIDInHandList_Bank5
 	ldh [hTemp_ffa0], a
 	ld a, OPPACTION_PLAY_BASIC_PKMN
 	bank1call AIMakeDecision
-	ld d, RATTATA
+	ld d, JIGGLYPUFF
 	ld e, FIGHTING_ENERGY
 	call AIAttachEnergyInHandToCardInPlayArea
 	ret
 
 .turn_3
-	ld a, RATTATA
+	ld a, JIGGLYPUFF
 	ld b, PLAY_AREA_ARENA
 	call LookForCardIDInPlayArea_Bank5
 	ldh [hTempPlayAreaLocation_ffa1], a
-	ld a, RATICATE
+	ld a, WIGGLYTUFF
 	call LookForCardIDInHandList_Bank5
 	ldh [hTemp_ffa0], a
 	ld a, OPPACTION_EVOLVE_PKMN
 	bank1call AIMakeDecision
-	ld d, RATICATE
+	ld d, WIGGLYTUFF
 	ld e, LIGHTNING_ENERGY
 	call AIAttachEnergyInHandToCardInPlayArea
 	ret
 
 .turn_4
-	ld d, RATICATE
+	ld d, WIGGLYTUFF
 	ld e, LIGHTNING_ENERGY
 	call AIAttachEnergyInHandToCardInPlayArea
 	ret
 
 .turn_5
-	ld a, MACHOP
+	ld a, HITMONTOP
 	call LookForCardIDInHandList_Bank5
 	ldh [hTemp_ffa0], a
 	ld a, OPPACTION_PLAY_BASIC_PKMN
 	bank1call AIMakeDecision
-	ld d, MACHOP
+	ld d, HITMONTOP
 	ld e, FIGHTING_ENERGY
 	call AIAttachEnergyInHandToCardInBench
 
@@ -183,7 +183,7 @@ AIPerformScriptedTurn:
 ; but due to 'inc a' always being skipped, it will switch to Raticate.
 	ld a, DUELVARS_ARENA_CARD
 	call GetTurnDuelistVariable
-	cp MACHOP ; wrong
+	cp HITMONTOP ; wrong
 	ld a, PLAY_AREA_BENCH_1
 	jr nz, .retreat
 	inc a ; PLAY_AREA_BENCH_2
@@ -193,13 +193,13 @@ AIPerformScriptedTurn:
 	ret
 
 .turn_6
-	ld d, MACHOP
+	ld d, HITMONTOP
 	ld e, FIGHTING_ENERGY
 	call AIAttachEnergyInHandToCardInPlayArea
 	ret
 
 .turn_7
-	ld d, MACHOP
+	ld d, HITMONTOP
 	ld e, FIGHTING_ENERGY
 	call AIAttachEnergyInHandToCardInPlayArea
 	ret

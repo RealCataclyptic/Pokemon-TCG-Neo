@@ -32,46 +32,46 @@ AIActionTable_LegendaryDragonite:
 	ret
 
 .list_arena
-	db ARCANINE_LV45
-	db CHARIZARD
+	db MAREEP2
+	db HOUNDOUR2
+	db ENTEI1
+	db TEDDIURSA
 	db CHARMANDER
-	db MAGNEMITE_LV15
-	db PIKACHU_ALT_LV16
-	db MEOWTH_LV14
 	db $00
 
 .list_bench
-	db ARCANINE_LV45
-	db CHARIZARD
 	db CHARMANDER
-	db MAGNEMITE_LV15
-	db PIKACHU_ALT_LV16
-	db MEOWTH_LV14
+	db ENTEI1
+	db HOUNDOUR2
+	db TEDDIURSA
+	db MAREEP2
 	db $00
 
 .list_retreat
-	ai_retreat DRATINI, -2
-	ai_retreat CHARIZARD,   -3
+	ai_retreat CHARIZARD_C, -2
+	ai_retreat AMPHAROS2,   -3
+	ai_retreat URSARING,   -3
 	db $00
 
 .list_energy
-	ai_energy DRATINI,     4, +4
-	ai_energy PIKACHU_ALT_LV16,	2, +0
-	ai_energy ARCANINE_LV45,     2, +1
-	ai_energy PONYTA,      3, +1
-	ai_energy RAPIDASH,       4, +1
-	ai_energy CHARIZARD,       3, +0
-	ai_energy VULPIX,        3, +1
-	ai_energy SURFING_PIKACHU_LV13,      3, +0
-	ai_energy RAICHU_LV40,     3, +1
-	ai_energy MEOWTH_LV15,         3, +0
-	ai_energy PERSIAN, 	4, +3
+	ai_energy CHARIZARD_C,     4, +4
+	ai_energy CHARMANDER,     2, +2
+	ai_energy CHARMELEON,      3, +2
+	ai_energy CHARIZARD_S,       4, +3
+	ai_energy ENTEI1,       3, +1
+	ai_energy HOUNDOUR2,        2, +0
+	ai_energy HOUNDOOM,        3, +1
+	ai_energy MAREEP2,	2, +0
+	ai_energy FLAAFFY2,      3, +0
+	ai_energy AMPHAROS2,     3, +1
+	ai_energy TEDDIURSA,         3, +1
+	ai_energy URSARING, 	4, +3
 	db $00
 
 .list_prize
-	db ARCANINE_LV45
-	db POKEMON_BREEDER
-	db COMPUTER_SEARCH
+	db CHARMANDER
+	db STAR_PIECE
+	db POKEGEAR
 	db $00
 
 .store_list_pointers
@@ -114,7 +114,7 @@ AIDoTurn_LegendaryDragonite:
 	ld a, DUELVARS_ARENA_CARD
 	call GetTurnDuelistVariable
 	call GetCardIDFromDeckIndex
-	ld a, CHARIZARD
+	ld a, ENTEI1
 	cp e
 	jr nz, .attach_normally
 	call CreateEnergyCardListFromHand
@@ -138,7 +138,7 @@ AIDoTurn_LegendaryDragonite:
 ; if used Professor Oak, process new hand
 ; if not, then proceed to attack.
 	ld a, [wPreviousAIFlags]
-	and AI_FLAG_USED_PROFESSOR_OAK
+	and AI_FLAG_USED_PROFESSOR_ELM
 	jr z, .try_attack
 	ld a, AI_TRAINER_CARD_PHASE_01
 	call AIProcessHandTrainerCards

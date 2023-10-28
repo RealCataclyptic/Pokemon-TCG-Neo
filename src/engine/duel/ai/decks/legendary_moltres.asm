@@ -32,53 +32,54 @@ AIActionTable_LegendaryMoltres:
 	ret
 
 .list_arena
-	db DRAGONITE_LV41
-	db CHARIZARD
-	db VULPIX
-	db PRIMEAPE
-	db GRIMER
-	db MANKEY
-	db MACHOP
+	db HOOH_C
+	db ENTEI1
+	db ENTEI2
+	db HITMONCHAN
+	db MAGMAR
+	db HITMONLEE
+	db HITMONTOP
 	db $00
 
 .list_bench
-	db DRAGONITE_LV41
-	db CHARIZARD
-	db VULPIX
-	db PRIMEAPE
-	db MACHOP
-	db MANKEY
-	db GRIMER
+	db HOOH_C
+	db ENTEI1
+	db ENTEI2
+	db HITMONCHAN
+	db HITMONTOP
+	db HITMONLEE
+	db MAGMAR
 	db $00
 
 .list_play_hand
-	db DRAGONITE_LV41
-	db CHARIZARD
-	db VULPIX
-	db PRIMEAPE
-	db MACHOP
-	db MANKEY
-	db GRIMER
+	db HOOH_C
+	db ENTEI1
+	db ENTEI2
+	db HITMONCHAN
+	db HITMONTOP
+	db HITMONLEE
+	db MAGMAR
 	db $00
 
 .list_retreat
-	ai_retreat MACHOP,	-5
-	ai_retreat VULPIX,   	-5
+	ai_retreat HITMONTOP,	-5
+	ai_retreat ENTEI2,   	-5
 	db $00
 
 .list_energy
-	ai_energy DRAGONITE_LV41, 	4, +3
-	ai_energy CHARIZARD, 		3, +0
-	ai_energy VULPIX,      		3, +1
-	ai_energy PRIMEAPE,  		4, +1
-	ai_energy GRIMER,    		3, +1
-	ai_energy VOLTORB,    		3, -4
-	ai_energy MANKEY,   		3, +0
-	ai_energy MACHOP,   		3, +0
+	ai_energy HOOH_C, 		4, +3
+	ai_energy ENTEI1, 		3, +0
+	ai_energy ENTEI2,      		3, +1
+	ai_energy HITMONCHAN,  		3, +1
+	ai_energy MAGMAR,    		2, +1
+	ai_energy AERODACTYL,    	2, -3
+	ai_energy HITMONLEE,   		3, +0
+	ai_energy HITMONTOP,   		3, +1
+	ai_energy FOSSIL_EGG,   	2, -2
 	db $00
 
 .list_prize
-	db DRAGONITE_LV41
+	db HOOH_C
 	db ENERGY_SEARCH
 	db $00
 
@@ -113,10 +114,10 @@ AIDoTurn_LegendaryMoltres:
 	call GetTurnDuelistVariable
 	cp DECK_SIZE - 9
 	jr nc, .skip_moltres ; skip if cards in deck <= 9
-	ld a, GOLDUCK
+	ld a, ARCADE_GAME
 	call CountPokemonIDInBothPlayAreas
 	jr c, .skip_moltres ; skip if Muk in play
-	ld a, MANKEY
+	ld a, HITMONLEE
 	call LookForCardIDInHandList_Bank5
 	jr nc, .skip_moltres ; skip if no MoltresLv37 in hand
 	ldh [hTemp_ffa0], a
@@ -146,7 +147,7 @@ AIDoTurn_LegendaryMoltres:
 	ld a, DUELVARS_ARENA_CARD
 	call GetTurnDuelistVariable
 	call GetCardIDFromDeckIndex
-	ld a, MACHOP
+	ld a, HITMONTOP
 	cp e
 	jr nz, .attach_normally
 	; MagmarLv31 is the Arena card

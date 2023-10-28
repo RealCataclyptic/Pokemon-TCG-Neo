@@ -32,44 +32,41 @@ AIActionTable_LegendaryZapdos:
 	ret
 
 .list_arena
-	db DRAGONITE_LV45
-	db SLOWPOKE_LV18
-	db GASTLY_LV8
-	db DITTO
-	db BULBASAUR
-	db HITMONLEE
+	db CELEBI_C
+	db MISDREAVUS
+	db CHANSEY
+	db CHIKORITA1
+	db MEWTWO
 	db $00
 
 .list_bench
-	db DRAGONITE_LV45
-	db BULBASAUR
-	db HITMONLEE
-	db SLOWPOKE_LV18
-	db DITTO
-	db GASTLY_LV8
+	db CELEBI_C
+	db CHIKORITA1
+	db MEWTWO
+	db MISDREAVUS
+	db CHANSEY
 	db $00
 
 .list_retreat
-	ai_retreat DRAGONITE_LV45,           -5
-	ai_retreat SLOWPOKE_LV18,         -5
-	ai_retreat HITMONLEE, -5
+	ai_retreat CELEBI_C,           -1
+	ai_retreat MISDREAVUS,         -3
+	ai_retreat MEWTWO, -3
 	db $00
 
 .list_energy
-	ai_energy DRAGONITE_LV45,         3, +3
-	ai_energy BULBASAUR,  2, +0
-	ai_energy VENUSAUR_LV67, 3, +0
-	ai_energy METAPOD,    4, +0
-	ai_energy HITMONLEE,     3, +2
-	ai_energy SLOWPOKE_LV18,     2, +2
-	ai_energy GASTLY_LV8,     2, +1
-	ai_energy EEVEE,           4, +0
-	ai_energy DITTO,	3, +0
+	ai_energy CELEBI_C,         3, +3
+	ai_energy CHIKORITA1,  2, +0
+	ai_energy BAYLEEF1, 3, +0
+	ai_energy MEGANIUM2,    4, +1
+	ai_energy MEWTWO,     3, +2
+	ai_energy MISDREAVUS,     3, +2
+	ai_energy BLISSEY,           4, +0
+	ai_energy CHANSEY,	3, +0
 	db $00
 
 .list_prize
-	db SUPER_ENERGY_REMOVAL
-	db DRAGONITE_LV45
+	db MASTER_BALL
+	db CELEBI_C
 	db $00
 
 .store_list_pointers
@@ -112,15 +109,15 @@ AIDoTurn_LegendaryZapdos:
 	ld a, DUELVARS_ARENA_CARD
 	call GetTurnDuelistVariable
 	call GetCardIDFromDeckIndex
-	ld a, DRAGONITE_LV45
+	ld a, CELEBI_C
 	cp e
 	jr nz, .check_electabuzz
-	ld a, HITMONLEE
+	ld a, MEWTWO
 	call LookForCardIDInHandList_Bank5
 	jr nc, .attach_normally
 	jr .voltorb_or_electabuzz
 .check_electabuzz
-	ld a, SLOWPOKE_LV18
+	ld a, MISDREAVUS
 	cp e
 	jr nz, .attach_normally
 

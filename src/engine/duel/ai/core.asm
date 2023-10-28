@@ -194,34 +194,40 @@ CheckIfEnergyIsUseful:
 	ld a, [wTempCardID]
 
 	ld d, PSYCHIC_ENERGY
-	cp DRAGONAIR
+	cp LUGIA_C
 	jr z, .check_energy
-	cp DRAGONITE_LV45
+	cp CELEBI_C
+	jr z, .check_energy
+	cp SHADOW_LUGIA
 	jr z, .check_energy
 
 	ld d, FIRE_ENERGY
-	cp DRAGONITE_LV41
+	cp HOOH_C
 	jr z, .check_energy
-	cp DRATINI
+	cp CHARIZARD_C
 	jr z, .check_energy
 
 	ld d, WATER_ENERGY
-	cp DRAGONAIR
+	cp LANTURN1
 	jr z, .check_energy
 
 	ld d, LIGHTNING_ENERGY
-	cp DRATINI
+	cp CHARIZARD_C
+	jr z, .check_energy
+	cp LUGIA_C
 	jr z, .check_energy
 
 	ld d, FIGHTING_ENERGY
-	cp DRAGONITE_LV41
+	cp HOOH_C
+	jr z, .check_energy
+	cp SHADOW_LUGIA
 	jr z, .check_energy
 
 	ld d, GRASS_ENERGY
-	cp DRAGONITE_LV45
+	cp CELEBI_C
 	jr z, .check_energy
 
-	cp JIGGLYPUFF_LV12
+	cp LUGIA
 	jr nz, .check_type
 	ld a, e
 	cp WATER_ENERGY
@@ -1347,7 +1353,7 @@ CheckDamageToMrMime:
 	call GetCardIDFromDeckIndex
 	call SwapTurn
 	ld a, e
-	cp ARTICUNO_LV37
+	cp PICHU
 	pop bc
 	jr nz, .set_carry
 	ld a, b
@@ -2032,16 +2038,28 @@ AISelectSpecialAttackParameters:
 	call GetTurnDuelistVariable
 	call GetCardIDFromDeckIndex
 	ld a, e
-	cp MAGMAR_LV31
+	cp MEW
 	jr z, .DevolutionBeam
-	cp EEVEE
+	cp LUGIA
 	jr z, .EnergyAbsorption
-	cp PIDGEOTTO
-	jr z, .EnergySpike
-	cp SANDSLASH
+	cp AMPHAROS1
+	jr z, .EnergyAbsorption
+	cp TOGEPI2
+	jr z, .EnergySpikeLI
+	cp JOLTEON
+	jr z, .EnergySpikeLI
+	cp AZUMARILL2
+	jp z, .Teleport
+	cp DONPHAN1
 	jr z, .Teleport
-	cp SPEAROW
-	jr z, .EnergySpike
+	cp HORSEA
+	jr z, .Teleport
+	cp SCYTHER
+	jp z, .Teleport
+	cp SUNFLORA
+	jr z, .EnergySpikeGR
+	cp CELEBI_C
+	jp z, .EnergySpikeGR
 	; fallthrough
 
 .no_carry
@@ -2077,7 +2095,7 @@ AISelectSpecialAttackParameters:
 	ldh [hTempRetreatCostCards], a
 
 ; search for Psychic energy cards in Discard Pile
-	ld e, WATER_ENERGY
+	ld e, LIGHTNING_ENERGY
 	ld a, CARD_LOCATION_DISCARD_PILE
 	call CheckIfAnyCardIDinLocation
 	ldh [hTemp_ffa0], a
@@ -2120,12 +2138,11 @@ AISelectSpecialAttackParameters:
 	scf
 	ret
 
-.EnergySpike
+.EnergySpikeLI
 ; in case selected attack is Energy Spike
 ; decide basic energy card to fetch from Deck.
 	ld a, [wSelectedAttack]
 	or a
-	jp z, .no_carry  ; can be jr
 
 	ld a, CARD_LOCATION_DECK
 	ld e, LIGHTNING_ENERGY
@@ -2153,6 +2170,40 @@ AISelectSpecialAttackParameters:
 ;	[wSelectedAttack]         = attack index to check
 ; output:
 ;	a = number of extra energy cards attached
+
+.EnergySpikeGR
+; in case selected attack is Energy Spike
+; decide basic energy card to fetch from Deck.
+	ld a, [wSelectedAttack]
+	or a
+
+	ld a, CARD_LOCATION_DECK
+	ld e, GRASS_ENERGY
+
+; if none were found in Deck, return carry...
+	call CheckIfAnyCardIDinLocation
+	ldh [hTemp_ffa0], a
+	jp nc, .no_carry  ; can be jr
+
+; ...else find a suitable Play Area Pokemon to
+; attach the energy card to.
+	call AIProcessButDontPlayEnergy_SkipEvolution
+	jp nc, .no_carry  ; can be jr
+	ldh a, [hTempPlayAreaLocation_ff9d]
+	ldh [hTempPlayAreaLocation_ffa1], a
+	scf
+	ret
+
+; return carry if Pokémon at play area location
+; in hTempPlayAreaLocation_ff9d does not have
+; energy required for the attack index in wSelectedAttack
+; or has exactly the same amount of energy needed
+; input:
+;	[hTempPlayAreaLocation_ff9d] = play area location
+;	[wSelectedAttack]         = attack index to check
+; output:
+;	a = number of extra energy cards attached
+
 CheckIfNoSurplusEnergyForAttack:
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	add DUELVARS_ARENA_CARD

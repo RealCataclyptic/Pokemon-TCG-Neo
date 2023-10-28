@@ -1187,11 +1187,11 @@ ScriptCommand_PickNextMan1RequestedCard:
 	jp IncreaseScriptPointerBy1
 
 Man1RequestedCardsList:
-	db MACHOKE
-	db OMASTAR
-	db PARASECT
-	db NINETALES_LV35
-	db VENONAT
+	db LARVITAR
+	db LANTURN1
+	db FORRETRESS
+	db GROWLITHE
+	db SCYTHER
 .end
 
 ScriptCommand_LoadMan1RequestedCardIntoTxRamSlot:
@@ -1467,49 +1467,49 @@ ScriptCommand_PickChallengeCupPrizeCard:
 	jp IncreaseScriptPointerBy1
 
 ChallengeCupPrizeCards:
-	db SUPER_ENERGY_REMOVAL
+	db MASTER_BALL
 	tx MewtwoTradeCardName
 
-	db GASTLY_LV8
+	db UNOWN_J
 	tx MewTradeCardName
 
-	db VULPIX
+	db ENTEI2
 	tx ArcanineTradeCardName
 
-	db SUPER_ENERGY_REMOVAL
+	db MASTER_BALL
 	tx MewtwoTradeCardName
 
-	db GASTLY_LV8
+	db UNOWN_J
 	tx MewTradeCardName
 
-	db VULPIX
+	db ENTEI2
 	tx ArcanineTradeCardName
 
-	db SUPER_ENERGY_REMOVAL
+	db MASTER_BALL
 	tx MewtwoTradeCardName
 
-	db GASTLY_LV8
+	db UNOWN_J
 	tx MewTradeCardName
 
-	db VULPIX
+	db ENTEI2
 	tx ArcanineTradeCardName
 
-	db SUPER_ENERGY_REMOVAL
+	db MASTER_BALL
 	tx MewtwoTradeCardName
 
-	db GASTLY_LV8
+	db UNOWN_J
 	tx MewTradeCardName
 
-	db VULPIX
+	db ENTEI2
 	tx ArcanineTradeCardName
 
-	db SUPER_ENERGY_REMOVAL
+	db MASTER_BALL
 	tx MewtwoTradeCardName
 
-	db GASTLY_LV8
+	db UNOWN_J
 	tx MewTradeCardName
 
-	db VULPIX
+	db ENTEI2
 	tx ArcanineTradeCardName
 .end
 
@@ -1543,16 +1543,16 @@ ScriptCommand_PickLegendaryCard:
 	jr ScriptCommand_PickChallengeCupPrizeCard.get_card_from_list
 
 LegendaryCards:
-	db DRATINI
+	db CHARIZARD_C
 	tx ZapdosLegendaryCardName
 
-	db DRAGONAIR
+	db LUGIA_C
 	tx MoltresLegendaryCardName
 
-	db DRAGONITE_LV45
+	db CELEBI_C
 	tx ArticunoLegendaryCardName
 
-	db DRAGONITE_LV41
+	db HOOH_C
 	tx DragoniteLegendaryCardName
 
 LegendaryCardEvents:

@@ -32,56 +32,55 @@ AIActionTable_LegendaryRonald:
 	ret
 
 .list_arena
-	db GASTLY_LV17
+	db MILTANK
+	db MEWTWO
 	db HITMONLEE
-	db MANKEY
-	db JIGGLYPUFF_LV13
-	db MACHOKE
-	db IMAKUNI_CARD
+	db SHADOW_LUGIA
+	db EEVEE
+	db LARVITAR
 	db $00
 
 .list_bench
-	db GASTLY_LV17
-	db MACHOKE
+	db MILTANK
+	db LARVITAR
+	db MEWTWO
 	db HITMONLEE
-	db MANKEY
-	db JIGGLYPUFF_LV13
-	db IMAKUNI_CARD
+	db EEVEE
+	db SHADOW_LUGIA
 	db $00
 
 .list_play_hand
-	db IMAKUNI_CARD
-	db MACHOKE
-	db GASTLY_LV17
+	db SHADOW_LUGIA
+	db LARVITAR
+	db MILTANK
+	db MEWTWO
 	db HITMONLEE
-	db MANKEY
-	db JIGGLYPUFF_LV13
+	db EEVEE
 
 .list_retreat
-	ai_retreat IMAKUNI_CARD, -5
-	ai_retreat GASTLY_LV17, -5
-	ai_retreat GEODUDE, -5
+	ai_retreat SHADOW_LUGIA, -3
+	ai_retreat MILTANK, -5
+	ai_retreat TYRANITAR, -5
 	db $00
 
 .list_energy
-	ai_energy IMAKUNI_CARD,   6, +3
-	ai_energy HITMONLEE,   3, +1
-	ai_energy GASTLY_LV17,  2, +0
-	ai_energy JIGGLYPUFF_LV13,  2, +0
-	ai_energy KABUTOPS,   3, +1
-	ai_energy AERODACTYL,    3, +1
-	ai_energy MANKEY,          3, +0
-	ai_energy MACHOKE,      2, +1
-	ai_energy MACHAMP,	3, +2
-	ai_energy GEODUDE, 	4, +3
+	ai_energy SHADOW_LUGIA,   5, +4
+	ai_energy MEWTWO,   3, +1
+	ai_energy MILTANK,  2, +0
+	ai_energy EEVEE,  2, +0
+	ai_energy ESPEON2,   3, +1
+	ai_energy UMBREON,    3, +1
+	ai_energy HITMONLEE,          3, +0
+	ai_energy LARVITAR,      2, +1
+	ai_energy PUPITAR,	3, +2
+	ai_energy TYRANITAR, 	4, +3
 	db $00
 
 .list_prize
-	db BILL
-	db PROFESSOR_OAK
-	db ENERGY_REMOVAL
-	db SUPER_ENERGY_REMOVAL
-	db IMAKUNI_CARD
+	db STRENGTH_CHARM
+	db PROFESSOR_ELM
+	db MASTER_BALL
+	db SHADOW_LUGIA
 	db $00
 
 .store_list_pointers
@@ -114,10 +113,10 @@ AIDoTurn_LegendaryRonald:
 	call GetTurnDuelistVariable
 	cp DECK_SIZE - 9
 	jr nc, .skip_moltres_1 ; skip if cards in deck <= 9
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	jr c, .skip_moltres_1 ; skip if Muk in play
-	ld a, IMAKUNI_CARD
+	ld a, SHADOW_LUGIA
 	call LookForCardIDInHandList_Bank5
 	jr nc, .skip_moltres_1 ; skip if no MoltresLv37 in hand
 	ldh [hTemp_ffa0], a
@@ -150,7 +149,7 @@ AIDoTurn_LegendaryRonald:
 ; if not, then proceed to attack.
 	call AIProcessHandTrainerCards
 	ld a, [wPreviousAIFlags]
-	and AI_FLAG_USED_PROFESSOR_OAK
+	and AI_FLAG_USED_PROFESSOR_ELM
 	jr z, .try_attack
 	ld a, AI_TRAINER_CARD_PHASE_01
 	call AIProcessHandTrainerCards
@@ -169,10 +168,10 @@ AIDoTurn_LegendaryRonald:
 	call GetTurnDuelistVariable
 	cp DECK_SIZE - 9
 	jr nc, .skip_moltres_2 ; skip if cards in deck <= 9
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	jr c, .skip_moltres_2 ; skip if Muk in play
-	ld a, IMAKUNI_CARD
+	ld a, SHADOW_LUGIA
 	call LookForCardIDInHandList_Bank5
 	jr nc, .skip_moltres_2 ; skip if no MoltresLv37 in hand
 	ldh [hTemp_ffa0], a

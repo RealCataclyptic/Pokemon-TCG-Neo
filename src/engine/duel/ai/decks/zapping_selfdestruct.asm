@@ -32,37 +32,38 @@ AIActionTable_ZappingSelfdestruct:
 	ret
 
 .list_arena
-	db MAGNEMITE_LV13
-	db VAPOREON_LV42
-	db PIKACHU_LV16
-	db PIDGEOTTO
+	db TOGEPI1
+	db ELECTABUZZ
+	db CHINCHOU1
+	db MAREEP1
 	db $00
 
 .list_bench
-	db PIKACHU_LV16
-	db VAPOREON_LV42
-	db MAGNEMITE_LV13
-	db PIDGEOTTO
+	db MAREEP1
+	db CHINCHOU1
+	db ELECTABUZZ
+	db TOGEPI1
 	db $00
 
 .list_retreat
-	ai_retreat PIDGEOTTO, -1
+	ai_retreat AMPHAROS1, -2
+	ai_retreat AMPHAROS2, -2
 	db $00
 
 .list_energy
-	ai_energy PIDGEOTTO,   2, +1
-	ai_energy PIDGEOT_LV38,   3, +1
-	ai_energy PIKACHU_LV16,         2, +1
-	ai_energy FLYING_PIKACHU,  3, +0
-	ai_energy RAICHU_LV40, 4, +3
-	ai_energy VAPOREON_LV42, 	2, +0
-	ai_energy ARTICUNO_LV35,      2, +1
-	ai_energy SURFING_PIKACHU_ALT_LV13,          4, +3
-	ai_energy MAGNEMITE_LV13,	3, +1
+	ai_energy MAREEP1,       	  2, +1
+	ai_energy FLAAFFY1,  		3, +0
+	ai_energy AMPHAROS1, 		4, +3
+	ai_energy AMPHAROS2, 		4, +3
+	ai_energy ELECTABUZZ,		3, +1
+	ai_energy CHINCHOU1, 		2, +0
+	ai_energy LANTURN2,     	 2, +1
+	ai_energy TOGEPI2,     	 	1, +2
+	ai_energy TOGETIC2,     	 2, +0
 	db $00
 
 .list_prize
-	db PIDGEOTTO
+	db PROFESSOR_ELM
 	db $00
 
 .store_list_pointers

@@ -63,8 +63,8 @@ Script_Man1:
 
 .ows_dcd7
 	print_npc_text Text0463
-	give_card VULPIX
-	show_card_received_screen VULPIX
+	give_card ENTEI2
+	show_card_received_screen ENTEI2
 	print_npc_text Text0464
 	set_event EVENT_MAN1_GIFT_SEQUENCE_STATE, MAN1_GIFT_SEQUENCE_COMPLETE
 	quit_script_fully
@@ -130,8 +130,8 @@ Script_BeatImakuni:
 	print_npc_text Text046e
 .give_imakuni_card
 	print_npc_text Text046f
-	give_card IMAKUNI_CARD
-	show_card_received_screen IMAKUNI_CARD
+	give_card SHADOW_LUGIA
+	show_card_received_screen SHADOW_LUGIA
 .done
 	print_npc_text Text0470
 	script_jump Script_LostToImakuni.imakuni_common

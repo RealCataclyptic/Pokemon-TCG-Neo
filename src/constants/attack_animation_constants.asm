@@ -143,7 +143,7 @@
 	const ATK_ANIM_FULL_HEAL              ; $8a
 	const ATK_ANIM_139                    ; $8b
 	const ATK_ANIM_SPIT_POISON_SUCCESS    ; $8c
-	const ATK_ANIM_GUST_OF_WIND           ; $8d
+	const ATK_ANIM_POKEMON_REVERSAL           ; $8d
 	const ATK_ANIM_HEAL_BOTH_SIDES        ; $8e
 	const ATK_ANIM_143                    ; $8f
 	const ATK_ANIM_144                    ; $90

@@ -159,7 +159,7 @@ _CalculateDamage_VersusDefendingPokemon: ; 14462 (5:4462)
 	call SwapTurn
 	and b
 	jr z, .not_resistant
-	ld hl, -30
+	ld hl, -20
 	add hl, de
 	ld e, l
 	ld d, h
@@ -397,7 +397,7 @@ CalculateDamage_FromDefendingPokemon: ; 1458c (5:458c)
 .unchanged_res
 	and b
 	jr z, .not_resistant
-	ld hl, -30
+	ld hl, -20
 	add hl, de
 	ld e, l
 	ld d, h

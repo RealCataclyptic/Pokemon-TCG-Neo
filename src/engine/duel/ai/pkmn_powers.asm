@@ -18,11 +18,11 @@ HandleAIEnergyTrans:
 	dec a
 	ret z ; return if no Bench cards
 
-	ld a, CATERPIE
+	ld a, MEGANIUM1
 	call CountPokemonIDInPlayArea
 	ret nc ; return if no VenusaurLv67 found in own Play Area
 
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	ret c ; return if Muk found in any Play Area
 
@@ -60,7 +60,7 @@ HandleAIEnergyTrans:
 	ldh [hTempCardIndex_ff9f], a
 	call GetCardIDFromDeckIndex
 	ld a, e
-	cp CATERPIE
+	cp MEGANIUM1
 	jr z, .use_pkmn_power
 
 	ld a, b
@@ -149,7 +149,7 @@ HandleAIEnergyTrans:
 	call GetTurnDuelistVariable
 	call GetCardIDFromDeckIndex
 	ld a, e
-	cp FLAREON_LV28
+	cp KABUTOPS
 	jr z, .is_exeggutor
 
 	xor a ; PLAY_AREA_ARENA
@@ -170,7 +170,7 @@ HandleAIEnergyTrans:
 	or a
 	jr z, .attack_false
 	ld a, e
-	cp WATER_ENERGY
+	cp GRASS_ENERGY
 	jr nz, .attack_false
 	ld c, b
 	jr .count_if_enough
@@ -219,7 +219,7 @@ HandleAIEnergyTrans:
 	call GetCardIDFromDeckIndex
 	ld a, e
 	pop de
-	cp WATER_ENERGY
+	cp GRASS_ENERGY
 	jr nz, .count_next
 	inc d
 .count_next
@@ -303,7 +303,7 @@ AIEnergyTransTransferEnergyToBench:
 	ld [wAIVenusaurLv67DeckIndex], a
 	call GetCardIDFromDeckIndex
 	ld a, e
-	cp CATERPIE
+	cp MEGANIUM1
 	jr z, .use_pkmn_power
 
 	ld a, b
@@ -410,7 +410,7 @@ AIEnergyTransTransferEnergyToBench:
 ;	- Curse.
 ; returns carry if turn ended.
 HandleAIPkmnPowers:
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	ccf
 	ret nc ; return no carry if Muk is in play
@@ -461,27 +461,27 @@ HandleAIPkmnPowers:
 	push bc
 
 ; check heal
-	cp MEWTWO_LV53
-	jr nz, .check_shift
+	cp DRAGONAIR ; Heal doesnt work apparently
+	jr nz, .check_peek
 	call HandleAIHeal
 	jr .next_1
-.check_shift
-	cp DRAGONITE_LV45
+.check_shift ; Shift doesn't work apparently
+	cp HOOH_C
 	jr nz, .check_peek
 	call HandleAIShift
 	jr .next_1
 .check_peek
-	cp MEW_LV23
+	cp NOCTOWL
 	jr nz, .check_strange_behavior
 	call HandleAIPeek
 	jr .next_1
 .check_strange_behavior
-	cp CLEFAIRY
+	cp TOGETIC2
 	jr nz, .check_curse
 	call HandleAIStrangeBehavior
 	jr .next_1
 .check_curse
-	cp MAROWAK_LV32
+	cp GENGAR
 	jr nz, .next_1
 	call z, HandleAICurse
 	jr c, .done
@@ -666,7 +666,7 @@ HandleAIShift:
 
 ; returns carry if turn Duelist has a Pokemon
 ; with same color as wAIDefendingPokemonWeakness.
-.CheckWhetherTurnDuelistHasColor ; 224c6 (8:64c6)
+.CheckWhetherTurnDuelistHasColor
 	ld a, [wAIDefendingPokemonWeakness]
 	ld b, a
 	ld a, DUELVARS_ARENA_CARD
@@ -951,7 +951,7 @@ HandleAICurse:
 
 ; handles AI logic for Cowardice
 HandleAICowardice:
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	ret c ; return if there's Muk in play
 
@@ -977,7 +977,7 @@ HandleAICowardice:
 	call GetCardIDFromDeckIndex
 	ld a, e
 	push bc
-	cp DROWZEE
+	cp ARCADE_GAME
 	call z, .CheckWhetherToUseCowardice
 	pop bc
 	jr nc, .next
@@ -1048,10 +1048,10 @@ HandleAIDamageSwap:
 	farcall AIChooseRandomlyNotToDoAction
 	ret c
 
-	ld a, SLOWPOKE_LV9
+	ld a, SLOWKING
 	call CountPokemonIDInPlayArea
 	ret nc ; return if no Alakazam
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	ret c ; return if there's Muk in play
 
@@ -1060,13 +1060,13 @@ HandleAIDamageSwap:
 	call GetTurnDuelistVariable
 	call GetCardIDFromDeckIndex
 	ld a, e
-	cp SLOWPOKE_LV9
+	cp SLOWKING
 	jr z, .ok
-	cp SLOWPOKE_LV18
+	cp MISDREAVUS
 	jr z, .ok
-	cp LICKITUNG
+	cp PORYGON_2
 	jr z, .ok
-	cp KADABRA
+	cp GENGAR
 	ret nz
 
 .ok
@@ -1077,7 +1077,7 @@ HandleAIDamageSwap:
 
 	call ConvertHPToCounters
 	ld [wce06], a
-	ld a, SLOWPOKE_LV9
+	ld a, SLOWKING
 	ld b, PLAY_AREA_BENCH_1
 	farcall LookForCardIDInPlayArea_Bank5
 	jr c, .is_in_bench
@@ -1157,13 +1157,13 @@ HandleAIDamageSwap:
 	call GetCardIDFromDeckIndex
 	ld a, e
 	pop de
-	cp GASTLY_LV17
+	cp WOBBUFFET
 	jr z, .found_candidate
-	cp TAUROS
+	cp BLISSEY
 	jr z, .found_candidate
-	cp DITTO
+	cp CHANSEY
 	jr z, .found_candidate
-	cp SLOWPOKE_LV9
+	cp SLOWKING
 	jr z, .found_candidate
 
 .next_play_area
@@ -1214,10 +1214,10 @@ HandleAIGoGoRainDanceEnergy:
 	cp GO_GO_RAIN_DANCE_DECK_ID
 	ret nz ; return if not Go Go Rain Dance deck
 
-	ld a, DEWGONG
+	ld a, POLITOED
 	call CountPokemonIDInPlayArea
 	ret nc ; return if no Blastoise
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	ret c ; return if there's Muk in play
 

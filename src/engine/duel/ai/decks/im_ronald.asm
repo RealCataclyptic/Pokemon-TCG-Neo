@@ -32,42 +32,42 @@ AIActionTable_ImRonald:
 	ret
 
 .list_arena
-	db PRIMEAPE
-	db MACHOP
 	db HITMONCHAN
-	db JIGGLYPUFF_LV13
-	db CUBONE
-	db FARFETCHD
-	db JOLTEON_LV24
+	db HITMONTOP
+	db MEW
+	db EEVEE
+	db GASTLY
+	db DELIBIRD
+	db SHUCKLE
 	db $00
 
 .list_bench
-	db PRIMEAPE
-	db MACHOP
 	db HITMONCHAN
-	db JIGGLYPUFF_LV13
-	db CUBONE
-	db FARFETCHD
-	db JOLTEON_LV24
+	db HITMONTOP
+	db MEW
+	db EEVEE
+	db GASTLY
+	db DELIBIRD
+	db SHUCKLE
 	db $00
 
 .list_retreat
 	db $00
 
 .list_energy
-	ai_energy CUBONE,   	  2, +0
-	ai_energy MAROWAK_LV26,   2, +0
-	ai_energy JIGGLYPUFF_LV13,    2, +1
-	ai_energy KABUTOPS,	  3, +1
-	ai_energy FARFETCHD,      3, +1
-	ai_energy PRIMEAPE,      4, +1
-	ai_energy MACHOP,           3, +0
-	ai_energy JOLTEON_LV24,        2, -1
-	ai_energy HITMONCHAN,         2, +0
+	ai_energy GASTLY,   	  1, +0
+	ai_energy HAUNTER,   2, +0
+	ai_energy EEVEE,    2, +1
+	ai_energy ESPEON2,	  3, +1
+	ai_energy DELIBIRD,      3, +1
+	ai_energy HITMONCHAN,      4, +1
+	ai_energy HITMONTOP,           3, +0
+	ai_energy SHUCKLE,        2, -1
+	ai_energy MEW,         2, +0
 	db $00
 
 .list_prize
-	db LAPRAS
+	db EEVEE
 	db $00
 
 .store_list_pointers

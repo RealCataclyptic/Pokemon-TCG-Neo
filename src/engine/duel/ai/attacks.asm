@@ -54,7 +54,7 @@ AIProcessAndTryToUseAttack:
 AIProcessAttacks:
 ; if AI used Pluspower, load its attack index
 	ld a, [wPreviousAIFlags]
-	and AI_FLAG_USED_PLUSPOWER
+	and AI_FLAG_USED_STRENGTH_CHARM
 	jr z, .no_pluspower
 	ld a, [wAIPluspowerAttack]
 	ld [wSelectedAttack], a
@@ -361,7 +361,7 @@ GetAIScoreOfAttack:
 	call GetTurnDuelistVariable
 	call GetCardIDFromDeckIndex
 	ld a, e
-	cp MAGNEMITE_LV13
+	cp PINECO
 	jr z, .magnemite1
 	ld b, 10 ; bench damage
 .magnemite1
@@ -400,11 +400,11 @@ GetAIScoreOfAttack:
 	call GetTurnDuelistVariable
 	call GetCardIDFromDeckIndex
 	ld a, e
-	cp PARAS
+	cp PINECO
 	jr z, .chansey
-	cp GOLEM
+	cp QUAGSIRE
 	jr z, .magnemite1_or_weezing
-	cp ZAPDOS_LV40
+	cp PILOSWINE
 	jr z, .magnemite1_or_weezing
 	ld b, 10 ; bench damage
 	jr .check_bench_kos
@@ -605,7 +605,7 @@ GetAIScoreOfAttack:
 	call SwapTurn
 	ld a, e
 	; skip if player has Snorlax
-	cp SNORLAX
+	cp NOCTOWL_S
 	jp z, .handle_special_atks
 
 	ld a, DUELVARS_ARENA_CARD_STATUS

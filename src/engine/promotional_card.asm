@@ -9,29 +9,29 @@ _ShowPromotionalCardScreen:
 	pop af
 	or a
 	jr nz, .else
-	ld a, DRATINI
+	ld a, CHARIZARD_C
 	call .legendary_card_text
-	ld a, DRAGONAIR
+	ld a, LUGIA_C
 	call .legendary_card_text
-	ld a, DRAGONITE_LV45
+	ld a, CELEBI_C
 	call .legendary_card_text
-	ld a, DRAGONITE_LV41
+	ld a, HOOH_C
 .legendary_card_text
 	ldtx hl, ReceivedLegendaryCardText
 	jr .print_text
 .else
 	ldtx hl, ReceivedCardText
-	cp NIDORINO
+	cp BELLOSSOM
 	jr z, .print_text
-	cp LAPRAS
-	jr z, .print_text
-	ldtx hl, ReceivedCardText
-	cp SUPER_ENERGY_REMOVAL
+	cp GYARADOS_S
 	jr z, .print_text
 	ldtx hl, ReceivedCardText
-	cp VULPIX
+	cp MASTER_BALL
 	jr z, .print_text
-	cp GASTLY_LV8
+	ldtx hl, ReceivedCardText
+	cp ENTEI2
+	jr z, .print_text
+	cp UNOWN_J
 	jr z, .print_text
 	ldtx hl, ReceivedCardText
 .print_text

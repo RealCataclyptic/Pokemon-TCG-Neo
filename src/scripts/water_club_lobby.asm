@@ -40,12 +40,12 @@ Script_Gal1:
 	quit_script_fully
 
 .ows_e0eb
-	jump_if_card_owned KINGLER, .ows_e0f3
+	jump_if_card_owned SNEASEL, .ows_e0f3
 	print_npc_text Gal1DontOwnCardText
 	quit_script_fully
 
 .ows_e0f3
-	jump_if_card_in_collection KINGLER, .ows_e0fb
+	jump_if_card_in_collection SNEASEL, .ows_e0fb
 	print_npc_text Gal1CardInDeckText
 	quit_script_fully
 
@@ -53,9 +53,9 @@ Script_Gal1:
 	set_event EVENT_GAL1_TRADE_STATE, GAL1_TRADE_COMPLETED
 	print_npc_text Gal1LetsTradeText
 	print_text Gal1TradeCompleteText
-	take_card KINGLER
-	give_card VULPIX
-	show_card_received_screen VULPIX
+	take_card SNEASEL
+	give_card ENTEI2
+	show_card_received_screen ENTEI2
 	print_npc_text Gal1ThanksText
 	quit_script_fully
 

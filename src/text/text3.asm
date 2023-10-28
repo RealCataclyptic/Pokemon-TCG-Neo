@@ -290,7 +290,7 @@ StrangePsyshockText: ; 3c699 (f:4699)
 	done
 
 LovelyNidoranText: ; 3c6ab (f:46ab)
-	text "Entymology"
+	text "Entomology"
 	done
 
 ScienceCorpsText: ; 3c6bb (f:46bb)
@@ -434,7 +434,7 @@ ParalyzeDescriptionText: ; 3ca90 (f:4a90)
 	line "Stop 'em and drop 'em!"
 	done
 
-EnergyRemovalDescriptionText: ; 3cac9 (f:4ac9)
+EnergyRemoval2DescriptionText: ; 3cac9 (f:4ac9)
 	text "Uses attacks and trainers to"
 	line "remove opponents' Energy cards."
 	done
@@ -449,7 +449,7 @@ CutePokemonDescriptionText: ; 3cb48 (f:4b48)
 	line ""
 	done
 
-PokemonFluteDescriptionText: ; 3cb7b (f:4b7b)
+PokemonFluteChannelDescriptionText: ; 3cb7b (f:4b7b)
 	text "Use Dragonite's ability to"
 	line "have free retreat!"
 	done
@@ -499,12 +499,12 @@ PsychicPowerDescriptionText: ; 3cd97 (f:4d97)
 	line "Psychic Pokémon to Attack!"
 	done
 
-DreamEaterHaunterDescriptionText: ; 3cdd0 (f:4dd0)
+DreamEaterUnownADescriptionText: ; 3cdd0 (f:4dd0)
 	text "Supernatural forces are at work."
 	line "Exorcise your opponents!"
 	done
 
-ScavengingSlowbroDescriptionText: ; 3ce03 (f:4e03)
+ScavengingSlowbroDeckDescriptionText: ; 3ce03 (f:4e03)
 	text "Damage your opponent in "
 	line "every way possible."
 	done
@@ -584,7 +584,7 @@ BulbasaurAndFriendsDescriptionText: ; 3d16d (f:516d)
 	line "featuring Chikorita."
 	done
 
-PsychicMachampDescriptionText: ; 3d1af (f:51af)
+PsychicPupitarDescriptionText: ; 3d1af (f:51af)
 	text "Why pick one over the other, "
 	line "when you can have both?"
 	done
@@ -609,7 +609,7 @@ LegendaryArticunoDescriptionText: ; 3d284 (f:5284)
 	line "your opponent resources!"
 	done
 
-LegendaryDragoniteDescriptionText: ; 3d2b5 (f:52b5)
+LegendaryCelebiCDescriptionText: ; 3d2b5 (f:52b5)
 	text "Hit your opponent as hard"
 	line "as possible!"
 	done

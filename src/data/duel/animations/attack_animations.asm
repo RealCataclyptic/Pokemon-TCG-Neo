@@ -107,7 +107,7 @@ PointerTable_AttackAnimation:
 	dw AttackAnimation_Whirlwind           ; ATK_ANIM_WHIRLWIND	;X
 	dw AttackAnimation_Cry                 ; ATK_ANIM_CRY		;X
 	dw AttackAnimation_Amnesia             ; ATK_ANIM_AMNESIA	;X
-	dw AttackAnimation_Selfdestruct        ; ATK_ANIM_SELFDESTRUCT	;O
+	dw AttackAnimation_Selfdestruct        ; ATK_ANIM_SELFDESTRUCT	;X
 	dw AttackAnimation_BigSelfdestruct     ; ATK_ANIM_BIG_SELFDESTRUCTION	;X
 	dw AttackAnimation_Recover             ; ATK_ANIM_RECOVER	;X
 	dw AttackAnimation_Drain               ; ATK_ANIM_DRAIN		;X
@@ -156,13 +156,13 @@ PointerTable_AttackAnimation:
 	dw AttackAnimation_FiregiverPlayer     ; ATK_ANIM_FIREGIVER_PLAYER	;X
 	dw AttackAnimation_FiregiverOpp        ; ATK_ANIM_FIREGIVER_OPP		;X
 	dw AttackAnimation_HealingWindPlayArea ; ATK_ANIM_HEALING_WIND_PLAY_AREA	;X
-	dw AttackAnimation_Gale                ; ATK_ANIM_GALE		;O (maybe?)
+	dw AttackAnimation_Gale                ; ATK_ANIM_GALE		;O (Now open)
 	dw AttackAnimation_Expand              ; ATK_ANIM_EXPAND	;X
 	dw AttackAnimation_564f                ; ATK_ANIM_137		;?
 	dw AttackAnimation_FullHeal            ; ATK_ANIM_FULL_HEAL	;X
 	dw AttackAnimation_5659                ; ATK_ANIM_139		;?
 	dw AttackAnimation_SpitPoisonSuccess   ; ATK_ANIM_SPIT_POISON_SUCCESS 	;X but only in functions
-	dw AttackAnimation_GustOfWind          ; ATK_ANIM_GUST_OF_WIND		;X
+	dw AttackAnimation_GustOfWind          ; ATK_ANIM_POKEMON_REVERSAL		;X
 	dw AttackAnimation_HealBothSides       ; ATK_ANIM_HEAL_BOTH_SIDES	;O
 	dw AttackAnimation_5673                ; ATK_ANIM_143		;?
 	dw AttackAnimation_5673                ; ATK_ANIM_144		;?
@@ -595,10 +595,10 @@ AttackAnimation_Amnesia:
 
 AttackAnimation_Selfdestruct:
 	anim_player         DUEL_ANIM_GLOW
-	anim_player         DUEL_ANIM_SELFDESTRUCT
 	anim_opponent       DUEL_ANIM_HIT
 	anim_normal         DUEL_ANIM_SHAKE1
 	anim_opponent       DUEL_ANIM_SHOW_DAMAGE
+	anim_player         DUEL_ANIM_HIT
 	anim_end
 
 AttackAnimation_BigSelfdestruct:

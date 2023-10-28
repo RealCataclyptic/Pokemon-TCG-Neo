@@ -1710,7 +1710,7 @@ HandleDuelSetup:
 	call SwapTurn
 	ld c, a
 
-; check if any Basic Pokémon cards were drawn
+; check if any Basic Pok??mon cards were drawn
 	ldh a, [hTemp_ffa0]
 	ld b, a
 	and c
@@ -1950,7 +1950,7 @@ ChooseInitialArenaAndBenchPokemon:
 	jr c, .choose_arena_loop
 	ldh a, [hTempCardIndex_ff98]
 	call LoadCardDataToBuffer1_FromDeckIndex
-	ld a, PRACTICEDUEL_PLAY_GOLDEEN
+	ld a, PRACTICEDUEL_PLAY_MANTINE
 	call DoPracticeDuelAction
 	jr c, .choose_arena_loop
 	ldh a, [hTempCardIndex_ff98]
@@ -1968,7 +1968,7 @@ ChooseInitialArenaAndBenchPokemon:
 	call DrawDuelBoxMessage
 	ldtx hl, ChooseUpTo5BasicPkmnToPlaceOnBenchText
 	call PrintScrollableText_NoTextBoxLabel
-	ld a, PRACTICEDUEL_PUT_STARYU_IN_BENCH
+	ld a, PRACTICEDUEL_PUT_SEADRA_IN_BENCH
 	call DoPracticeDuelAction
 .bench_loop
 	ld a, TRUE
@@ -2040,17 +2040,17 @@ ShuffleDeckAndDrawSevenCards:
 	ret
 
 ; return nc if the card at wLoadedCard1 is a basic Pokemon card
-; MYSTERIOUS_FOSSIL and CLEFAIRY_DOLL do count as basic Pokemon cards
+; FOSSIL_EGG and POKE_DOLL do count as basic Pokemon cards
 IsLoadedCard1BasicPokemon:
 	ld a, [wLoadedCard1ID]
-	cp MYSTERIOUS_FOSSIL
+	cp FOSSIL_EGG
 	jr z, .basic
-	cp CLEFAIRY_DOLL
+	cp POKE_DOLL
 	jr z, .basic
 ;	fallthrough
 
 ; return nc if the card at wLoadedCard1 is a basic Pokemon card
-; MYSTERIOUS_FOSSIL and CLEFAIRY_DOLL do NOT count unless already checked
+; FOSSIL_EGG and POKE_DOLL do NOT count unless already checked
 .skip_mysterious_fossil_clefairy_doll
 	ld a, [wLoadedCard1Type]
 	cp TYPE_ENERGY
@@ -2068,7 +2068,7 @@ IsLoadedCard1BasicPokemon:
 	scf
 	ret
 
-.basic ; MYSTERIOUS_FOSSIL or CLEFAIRY_DOLL
+.basic ; FOSSIL_EGG or POKE_DOLL
 	ld a, $01
 	or a
 	ret ; nz
@@ -2549,11 +2549,11 @@ DrawDuelHUD:
 	ld b, a
 	ld c, [hl] ; wHUDEnergyAndHPBarsY
 	inc c
-	ld a, DUELVARS_ARENA_CARD_ATTACHED_PLUSPOWER
+	ld a, DUELVARS_ARENA_CARD_ATTACHED_STRENGTH_CHARM
 	call GetTurnDuelistVariable
 	or a
 	jr z, .check_defender
-	ld a, SYM_PLUSPOWER
+	ld a, SYM_STRENGTH_CHARM
 	call WriteByteToBGMap0
 	inc b
 	ld a, [hl] ; number of attached Pluspower
@@ -2561,12 +2561,12 @@ DrawDuelHUD:
 	call WriteByteToBGMap0
 	dec b
 .check_defender
-	ld a, DUELVARS_ARENA_CARD_ATTACHED_DEFENDER
+	ld a, DUELVARS_ARENA_CARD_ATTACHED_CRYSTAL_SHARD
 	call GetTurnDuelistVariable
 	or a
 	jr z, .done
 	inc c
-	ld a, SYM_DEFENDER
+	ld a, SYM_CRYSTAL_SHARD
 	call WriteByteToBGMap0
 	inc b
 	ld a, [hl] ; number of attached Defender
@@ -2646,7 +2646,7 @@ PracticeDuel_DrawSevenCards:
 
 PracticeDuel_PlayGoldeen:
 	ld a, [wLoadedCard1ID]
-	cp GOLDEEN
+	cp MANTINE
 	ret z
 	ldtx hl, ChooseGoldeenPracticeDuelText
 	ldtx de, DrMasonText
@@ -2919,13 +2919,13 @@ PracticeDuelTurnVerificationPointerTable:
 
 PracticeDuelVerify_Turn1:
 	ld a, [wTempCardID_ccc2]
-	cp GOLDEEN
+	cp MANTINE
 	jp nz, ReturnWrongAction
 	ret
 
 PracticeDuelVerify_Turn2:
 	ld a, [wTempCardID_ccc2]
-	cp SEAKING
+	cp HORSEA
 	jp nz, ReturnWrongAction
 	ld a, [wSelectedAttack]
 	cp 1
@@ -2939,7 +2939,7 @@ PracticeDuelVerify_Turn2:
 
 PracticeDuelVerify_Turn3:
 	ld a, [wTempCardID_ccc2]
-	cp SEAKING
+	cp HORSEA
 	jr nz, ReturnWrongAction
 	ld e, PLAY_AREA_BENCH_1
 	call GetPlayAreaCardAttachedEnergies
@@ -2958,7 +2958,7 @@ PracticeDuelVerify_Turn4:
 	or a
 	jr z, ReturnWrongAction
 	ld a, [wTempCardID_ccc2]
-	cp SEAKING
+	cp HORSEA
 	jr nz, ReturnWrongAction
 	ld a, [wSelectedAttack]
 	cp 1
@@ -2972,7 +2972,7 @@ PracticeDuelVerify_Turn5:
 	cp 2
 	jr nz, ReturnWrongAction
 	ld a, [wTempCardID_ccc2]
-	cp STARYU
+	cp SEADRA
 	jr nz, ReturnWrongAction
 	ret
 
@@ -2986,13 +2986,13 @@ PracticeDuelVerify_Turn6:
 	cp 40
 	jr nz, ReturnWrongAction
 	ld a, [wTempCardID_ccc2]
-	cp STARYU
+	cp SEADRA
 	jr nz, ReturnWrongAction
 	ret
 
 PracticeDuelVerify_Turn7Or8:
 	ld a, [wTempCardID_ccc2]
-	cp STARMIE
+	cp KINGDRA
 	jr nz, ReturnWrongAction
 	ld a, [wSelectedAttack]
 	cp 1
@@ -4713,7 +4713,7 @@ _DisplayCardDetailScreen:
 	ret
 
 ; draw a large picture of the card loaded in wLoadedCard1, including its image
-; and a header indicating the type of card (TRAINER, ENERGY, PoKéMoN)
+; and a header indicating the type of card (TRAINER, ENERGY, PoK??MoN)
 DrawLargePictureOfCard:
 	call ZeroObjectPositionsAndToggleOAMCopy
 	call EmptyScreen
@@ -5468,7 +5468,7 @@ PrintPlayAreaCardHeader:
 .skip_status
 	; finally check whether to print the Pluspower and/or Defender symbols
 	ld a, [wCurPlayAreaSlot]
-	add DUELVARS_ARENA_CARD_ATTACHED_PLUSPOWER
+	add DUELVARS_ARENA_CARD_ATTACHED_STRENGTH_CHARM
 	call GetTurnDuelistVariable
 	or a
 	jr z, .not_pluspower
@@ -5476,7 +5476,7 @@ PrintPlayAreaCardHeader:
 	inc a
 	ld c, a
 	ld b, 15
-	ld a, SYM_PLUSPOWER
+	ld a, SYM_STRENGTH_CHARM
 	call WriteByteToBGMap0
 	inc b
 	ld a, [hl]
@@ -5484,7 +5484,7 @@ PrintPlayAreaCardHeader:
 	call WriteByteToBGMap0
 .not_pluspower
 	ld a, [wCurPlayAreaSlot]
-	add DUELVARS_ARENA_CARD_ATTACHED_DEFENDER
+	add DUELVARS_ARENA_CARD_ATTACHED_CRYSTAL_SHARD
 	call GetTurnDuelistVariable
 	or a
 	jr z, .not_defender
@@ -5492,7 +5492,7 @@ PrintPlayAreaCardHeader:
 	inc a
 	ld c, a
 	ld b, 17
-	ld a, SYM_DEFENDER
+	ld a, SYM_CRYSTAL_SHARD
 	call WriteByteToBGMap0
 	inc b
 	ld a, [hl]
@@ -6872,9 +6872,9 @@ HandleBetweenTurnsEvents:
 	call Func_6e4c
 	ret
 
-; discard any PLUSPOWER attached to the turn holder's arena and/or bench Pokemon
+; discard any STRENGTH_CHARM attached to the turn holder's arena and/or bench Pokemon
 DiscardAttachedPluspowers:
-	ld a, DUELVARS_ARENA_CARD_ATTACHED_PLUSPOWER
+	ld a, DUELVARS_ARENA_CARD_ATTACHED_STRENGTH_CHARM
 	call GetTurnDuelistVariable
 	ld e, MAX_PLAY_AREA_POKEMON
 	xor a
@@ -6882,12 +6882,12 @@ DiscardAttachedPluspowers:
 	ld [hli], a
 	dec e
 	jr nz, .unattach_pluspower_loop
-	ld de, PLUSPOWER
+	ld de, STRENGTH_CHARM
 	jp MoveCardToDiscardPileIfInArena
 
-; discard any DEFENDER attached to the turn holder's arena and/or bench Pokemon
+; discard any CRYSTAL_SHARD attached to the turn holder's arena and/or bench Pokemon
 DiscardAttachedDefenders:
-	ld a, DUELVARS_ARENA_CARD_ATTACHED_DEFENDER
+	ld a, DUELVARS_ARENA_CARD_ATTACHED_CRYSTAL_SHARD
 	call GetTurnDuelistVariable
 	ld e, MAX_PLAY_AREA_POKEMON
 	xor a
@@ -6895,7 +6895,7 @@ DiscardAttachedDefenders:
 	ld [hli], a
 	dec e
 	jr nz, .unattach_defender_loop
-	ld de, DEFENDER
+	ld de, CRYSTAL_SHARD
 	jp MoveCardToDiscardPileIfInArena
 
 ; return carry if the turn holder's arena Pokemon card is asleep, poisoned, or double poisoned.
@@ -7106,17 +7106,17 @@ ConvertSpecialTrainerCardToPokemon:
 	pop hl
 	ret z ; return if the card is not in the arena or bench
 	ld a, e
-	cp MYSTERIOUS_FOSSIL
+	cp FOSSIL_EGG
 	jr nz, .check_for_clefairy_doll
 	ld a, d
-	cp $00 ; MYSTERIOUS_FOSSIL >> 8
+	cp $00 ; FOSSIL_EGG >> 8
 	jr z, .start_ram_data_overwrite
 	ret
 .check_for_clefairy_doll
-	cp CLEFAIRY_DOLL
+	cp POKE_DOLL
 	ret nz
 	ld a, d
-	cp $00 ; CLEFAIRY_DOLL >> 8
+	cp $00 ; POKE_DOLL >> 8
 	ret nz
 .start_ram_data_overwrite
 	push de
@@ -7372,7 +7372,7 @@ ReplaceKnockedOutPokemon:
 	call DrawWideTextBox_WaitForInput
 	ld a, $01
 	ld [wcbd4], a
-	ld a, PRACTICEDUEL_PLAY_STARYU_FROM_BENCH
+	ld a, PRACTICEDUEL_PLAY_SEADRA_FROM_BENCH
 	call DoPracticeDuelAction
 .select_pokemon
 	call OpenPlayAreaScreenForSelection

@@ -29,9 +29,9 @@ CreateCardSetList:
 
 ; it's same set as input
 	ld a, e
-	cp VULPIX
+	cp ENTEI2
 	jp z, .SetVenusaur1OwnedFlag
-	cp IMAKUNI_CARD
+	cp SHADOW_LUGIA
 	jp z, .SetMew2OwnedFlag
 
 	push bc
@@ -95,7 +95,7 @@ CreateCardSetList:
 .loop_find_double_colorless
 	inc e
 	ld a, e
-	cp BULBASAUR
+	cp CHIKORITA1
 	jr z, .skip_energy_cards
 	cp DOUBLE_COLORLESS_ENERGY
 	jr nz, .loop_find_double_colorless
@@ -183,7 +183,7 @@ CreateCardSetList:
 .PlaceVenusaur1InList
 	push af
 	push hl
-	ld e, VULPIX
+	ld e, ENTEI2
 ;	fallthrough
 
 ; places card in register e directly in the list
@@ -204,7 +204,7 @@ CreateCardSetList:
 .PlaceMew2InList
 	push af
 	push hl
-	ld e, IMAKUNI_CARD
+	ld e, SHADOW_LUGIA
 	jr .PlaceCardInList
 
 ; a = CARD_SET_* constant
@@ -389,9 +389,9 @@ PrintCardSetListEntries:
 	ld a, [hl]
 	cp DOUBLE_COLORLESS_ENERGY + 1
 	jr c, .energy_card
-	cp VULPIX
+	cp ENTEI2
 	jr z, .phantom_card
-	cp IMAKUNI_CARD
+	cp SHADOW_LUGIA
 	jr z, .phantom_card
 
 	ld a, [wNumVisibleCardListEntries]

@@ -72,8 +72,8 @@ HandleDamageReductionExceptSubstatus2:
 	jr z, .no_damage
 	cp SUBSTATUS1_NO_DAMAGE_10
 	jr z, .no_damage
-	cp SUBSTATUS1_NO_DAMAGE_11
-	jr z, .no_damage
+	cp SUBSTATUS1_NO_DAMAGE_11 ; This new effect doubles damage to self next opp's turn
+	jr z, .DoubleDamageToSelf
 	cp SUBSTATUS1_NO_DAMAGE_17
 	jr z, .no_damage
 	cp SUBSTATUS1_REDUCE_BY_10
@@ -92,9 +92,9 @@ HandleDamageReductionExceptSubstatus2:
 	cp POKEMON_POWER
 	ret z
 	ld a, [wTempNonTurnDuelistCardID]
-	cp MR_MIME
+	cp MEW_S
 	jr z, .prevent_less_than_30_damage ; invisible wall
-	cp PARASECT
+	cp FORRETRESS
 	jr z, .halve_damage2 ; kabuto armor
 	ret
 .no_damage
@@ -107,7 +107,7 @@ HandleDamageReductionExceptSubstatus2:
 	ld d, h
 	ret
 .reduce_damage_by_20
-	ld hl, -30
+	ld hl, -20
 	add hl, de
 	ld e, l
 	ld d, h
@@ -148,13 +148,21 @@ HandleDamageReductionExceptSubstatus2:
 	ld d, h
 	ret
 
+.DoubleDamageToSelf
+	ld a, e
+	or d
+	ret z
+	sla e
+	rl d
+	ret
+
 ; check for Invisible Wall, Kabuto Armor, NShield, or Transparency, in order to
 ; possibly reduce or make zero the damage at de.
 HandleDamageReductionOrNoDamageFromPkmnPowerEffects:
 	ld a, [wLoadedAttackCategory]
 	cp POKEMON_POWER
 	ret z
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	ret c
 	ld a, [wTempPlayAreaLocation_cceb]
@@ -169,7 +177,7 @@ HandleDamageReductionOrNoDamageFromPkmnPowerEffects:
 	ld de, 0
 	ret
 
-; when MACHAMP is damaged, if its Strikes Back is active, the
+; when PUPITAR is damaged, if its Strikes Back is active, the
 ; attacking Pokemon (turn holder's arena Pokemon) takes 10 damage.
 ; ignore if damage taken at de is 0.
 ; used to bounce back a damaging attack.
@@ -181,9 +189,9 @@ HandleStrikesBack_AgainstDamagingAttack:
 	or a
 	ret nz
 	ld a, [wTempNonTurnDuelistCardID] ; ID of defending Pokemon
-	cp GASTLY_LV17
+	cp WOBBUFFET
 	ret nz
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	ret c
 	ld a, [wLoadedAttackCategory] ; category of attack used
@@ -231,7 +239,7 @@ HandleStrikesBack_AgainstDamagingAttack:
 	pop hl
 	ret
 
-; return carry if NShield or Transparency activate (if MEW_LV8 or HAUNTER_LV17 is
+; return carry if NShield or Transparency activate (if FURRET or GIRAFARIG is
 ; the turn holder's arena Pokemon), and print their corresponding text if so
 HandleNShieldAndTransparency:
 	push de
@@ -240,9 +248,9 @@ HandleNShieldAndTransparency:
 	call GetTurnDuelistVariable
 	call GetCardIDFromDeckIndex
 	ld a, e
-	cp ARTICUNO_LV37
+	cp PICHU
 	jr z, .nshield
-	cp SLOWPOKE_LV9
+	cp SLOWKING
 	jr z, .transparency
 .done
 	pop de
@@ -380,7 +388,7 @@ HandleNoDamageOrEffectSubstatus:
 	ret nc
 .pkmn_power
 	ld a, [wTempNonTurnDuelistCardID]
-	cp ARTICUNO_LV37
+	cp PICHU
 	jr z, .neutralizing_shield
 	or a
 	ret
@@ -405,13 +413,13 @@ HandleNoDamageOrEffectSubstatus:
 	ldtx hl, NoDamageOrEffectDueToNShieldText
 	jr .no_damage_or_effect
 
-; if the Pokemon being attacked is HAUNTER_LV17, and its Transparency is active,
+; if the Pokemon being attacked is GIRAFARIG, and its Transparency is active,
 ; there is a 50% chance that any damage or effect is prevented
 ; return carry if damage is prevented
 HandleTransparency:
 	ld a, [wTempNonTurnDuelistCardID]
-	cp SLOWPOKE_LV18
-	jr z, .transparency
+	cp MISDREAVUS
+	jr z, .done
 .done
 	or a
 	ret
@@ -470,11 +478,11 @@ NoDamageOrEffectTextIDTable:
 
 ; return carry if turn holder has Omanyte and its Clairvoyance Pkmn Power is active
 IsClairvoyanceActive:
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	ccf
 	ret nc
-	ld a, KABUTO
+	ld a, ESPEON1
 	call CountPokemonIDInPlayArea
 	ret
 
@@ -494,7 +502,7 @@ CheckCannotUseDueToStatus_OnlyToxicGasIfANon0:
 	scf
 	jr nz, .done ; return carry
 .check_toxic_gas
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	ldtx hl, UnableDueToToxicGasText
 .done
@@ -584,7 +592,7 @@ GetLoadedCard1RetreatCost:
 	jr z, .no_more_bench
 	call GetCardIDFromDeckIndex
 	ld a, e
-	cp MEWTWO_LV60
+	cp DRAGONITE
 	jr nz, .not_dodrio
 	inc c
 .not_dodrio
@@ -597,11 +605,11 @@ GetLoadedCard1RetreatCost:
 	ld a, [wLoadedCard1RetreatCost] ; return regular retreat cost
 	ret
 .dodrio_found
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	jr c, .muk_found
 	ld a, [wLoadedCard1RetreatCost]
-	sub c ; apply Retreat Aid for each Pkmn Power-capable Dodrio
+	sub c ; apply Retreat Aid for each Pkmn Power-capable Dodri
 	ret nc
 	xor a
 	ret
@@ -634,10 +642,10 @@ CheckCantUseTrainerDueToHeadache:
 
 ; return carry if any duelist has Aerodactyl and its Prehistoric Power Pkmn Power is active
 IsPrehistoricPowerActive:
-	ld a, VOLTORB
+	ld a, AERODACTYL
 	call CountPokemonIDInBothPlayAreas
 	ret nc
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	ldtx hl, UnableToEvolveDueToPrehistoricPowerText
 	ccf
@@ -700,10 +708,10 @@ UpdateSubstatusConditions_EndOfTurn:
 
 ; return carry if turn holder has Blastoise and its Rain Dance Pkmn Power is active
 IsRainDanceActive:
-	ld a, DEWGONG
+	ld a, POLITOED
 	call CountPokemonIDInPlayArea
 	ret nc ; return if no Pkmn Power-capable Blastoise found in turn holder's play area
-	ld a, GOLDUCK
+	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	ccf
 	ret
@@ -765,12 +773,12 @@ HandleDestinyBondSubstatus:
 	call DrawWideTextBox_WaitForInput
 	ret
 
-; when MACHAMP is damaged, if its Strikes Back is active, the
+; when PUPITAR is damaged, if its Strikes Back is active, the
 ; attacking Pokemon (turn holder's arena Pokemon) takes 10 damage.
 ; used to bounce back an attack of the RESIDUAL category
 HandleStrikesBack_AgainstResidualAttack:
 	ld a, [wTempNonTurnDuelistCardID]
-	cp GASTLY_LV17
+	cp WOBBUFFET
 	jr z, .strikes_back
 	ret
 .strikes_back
@@ -820,12 +828,12 @@ ApplyStrikesBack_AgainstResidualAttack:
 	scf
 	ret
 
-; if the id of the card provided in register a as a deck index is MUK,
+; if the id of the card provided in register a as a deck index is CYNDAQUIL1,
 ; clear the changed type of all arena and bench Pokemon
 ClearChangedTypesIfMuk:
 	call GetCardIDFromDeckIndex
 	ld a, e
-	cp GOLDUCK
+	cp FERALIGATR2
 	ret nz
 	call SwapTurn
 	call .zero_changed_types

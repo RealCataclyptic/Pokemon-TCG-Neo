@@ -26,7 +26,7 @@ Text0407: ; 401a3 (10:41a3)
 	line "I have some information for you"
 	line "about Amy's deck - she's the "
 	line "Master of the Water Club. Her"
-	line "deck uses Rain Dance -Politoed's"
+	line "deck uses Rain Dance, Politoed's"
 	line "Pokémon Power. This ability"
 	line "allows her to keep attaching"
 	line "Water Energy to her water Pokémon"

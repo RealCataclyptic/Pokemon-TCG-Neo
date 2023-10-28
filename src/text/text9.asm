@@ -1,3 +1,5 @@
+; Free = Butterfreemegadraindesc
+
 Text073f: ; 54000 (15:4000)
 	text "Who?"
 	line "Oh! It's you, <RAMNAME>..."
@@ -899,7 +901,7 @@ TranslationDraftText: ; 56c5e (15:6c5e)
 	line "            TRANSLATION/DRAFT"
 	line ""
 	line ""
-	line "               BILL RITCH"
+	line "               MAIL_FROM_BILL RITCH"
 	done
 
 MasteringText: ; 56c9a (15:6c9a)
@@ -1237,7 +1239,7 @@ DoubleColorlessEnergyDescription: ; 57496 (15:7496)
 	line "Colorless Energy costs.)"
 	done
 
-BulbasaurName: ; 57552 (15:7552)
+ChikoritaName: ; 57552 (15:7552)
 	text "Chikorita"
 	done
 
@@ -1245,7 +1247,7 @@ LeechSeedName: ; 5755d (15:755d)
 	text "Leech Seed"
 	done
 
-BulbasaursLeechSeedDescription: ; 57569 (15:7569)
+Heal20IfSuccessDesc: ; 57569 (15:7569)
 	text "Unless all damage from this attack"
 	line "is prevented, you may remove 2"
 	line "damage counters from Kabutops."
@@ -1255,18 +1257,18 @@ SeedName: ; 575cb (15:75cb)
 	text "Seed"
 	done
 
-BulbasaurDescription: ; 575d1 (15:75d1)
+Chikorita1Description: ; 575d1 (15:75d1)
 	text ""
 	line "Its pleasently aromatic leaves have"
 	line "the ability to check the humidity"
 	line "and temperature."
 	done
 
-IvysaurName: ; 5763b (15:763b)
+BayleefName: ; 5763b (15:763b)
 	text "Bayleef"
 	done
 
-VineWhipName: ; 57644 (15:7644)
+TailGrabName: ; 57644 (15:7644)
 	text "Tail Grab"
 	done
 
@@ -1279,28 +1281,28 @@ InflictPoisonDescription: ; 5765d (15:765d)
 	line "Poisoned."
 	done
 
-IvysaurDescription: ; 57685 (15:7685)
+Chikorita2Description: ; 57685 (15:7685)
 	text "A sweet aroma gently wafts from the"
 	line "leaf on its head. It is docile and"
 	line "loves to soak up the sun's rays."
 	done
 
-VenusaurName: ; 576ee (15:76ee)
+MeganiumName: ; 576ee (15:76ee)
 	text "Meganium"
 	done
 
-SolarPowerName: ; 576f8 (15:76f8)
+AromatherapyName: ; 576f8 (15:76f8)
 	text "Aromatherapy"
 	done
 
-SolarPowerDescription: ; 57705 (15:7705)
+AromatherapyDescription: ; 57705 (15:7705)
 	text "Once during your turn (before your"
 	line "attack), you may use this power."
 	line "Your Active Pokémon is no longer"
 	line "affected by special conditions."
 	done
 
-SolarPowerDescriptionCont: ; 577b0 (15:77b0)
+AromatherapyDescriptionCont: ; 577b0 (15:77b0)
 	text "This power can't be used if"
 	line "Meganium is Asleep, Confused,"
 	line "or Paralyzed."
@@ -1310,22 +1312,18 @@ MegaDrainName: ; 577f9 (15:77f9)
 	text "Mega Drain"
 	done
 
-VenusaursMegaDrainDescription: ; 57805 (15:7805)
-	text "Remove a number of damage counters"
-	line "from Venusaur equal to half the"
-	line "damage done to the Defending Pokémon"
-	line "(after applying Weakness and"
-	line "Resistance) (rounded up to the"
-	line "nearest 10)."
+QuadrupleAttackX10Description: ; 57805 (15:7805)
+	text "Flip 4 coins. This attack does 10"
+	line "damage times the number of heads."
 	done
 
-VenusaursMegaDrainDescriptionCont: ; 578b7 (15:78b7)
-	text "If Venusaur has fewer damage"
-	line "counters than that, remove all of"
-	line "them."
+UnownJDescription: ; 578b7 (15:78b7)
+	text "Thier shapes look like hieroglyphs"
+	line "on ancient tablets. It is said"
+	line "that the two are somehow related."
 	done
 
-VenusaurLv64Description: ; 578fd (15:78fd)
+Bayleef1Description: ; 578fd (15:78fd)
 	text "A spicy aroma emanates from around"
 	line "its neck. The aroma acts as a"
 	line "stimulant to restore health."
@@ -1349,13 +1347,13 @@ SolarBeamName: ; 57a51 (15:7a51)
 	text "Solarbeam"
 	done
 
-VenusaurLv67Description: ; 57a5c (15:7a5c)
+Bayleef2Description: ; 57a5c (15:7a5c)
 	text "The scent of spices comes from"
 	line "around its neck. Somehow, sniffing"
 	line "it makes you want to fight."
 	done 
 
-CaterpieName: ; 57ab9 (15:7ab9)
+TotodileName: ; 57ab9 (15:7ab9)
 	text "Totodile"
 	done
 
@@ -1368,54 +1366,54 @@ MayInflictParalysisDescription: ; 57ad0 (15:7ad0)
 	line "Pokémon is now Paralyzed."
 	done
 
-WormName: ; 57b10 (15:7b10)
+DarkName: ; 57b10 (15:7b10)
 	text "Dark"
 	done
 
-CaterpieDescription: ; 57b16 (15:7b16)
+Meganium1Description: ; 57b16 (15:7b16)
 	text "The aroma that rises from its petals"
 	line "contains a substance that calms"
 	line "aggressive feelings."
 	done 
 
-MetapodName: ; 57b78 (15:7b78)
+QuilavaName: ; 57b78 (15:7b78)
 	text "Quilava"
 	done
 
-StiffenName: ; 57b81 (15:7b81)
+CurlUpName: ; 57b81 (15:7b81)
 	text "Curl-Up"
 	done
 
-MetapodsStiffenDescription: ; 57b8a (15:7b8a)
+PreventDamageButNotEffectsDesc: ; 57b8a (15:7b8a)
 	text "Flip a coin. If heads, prevent all"
 	line "damage done to this Pokémon during"
 	line "your opponent's next turn. (Other"
 	line "effects of attacks still happen.)"
 	done
 
-StunSporeName: ; 57c14 (15:7c14)
+StunDarkDescentName: ; 57c14 (15:7c14)
 	text "Stun Spore"
 	done
 
-CocoonName: ; 57c20 (15:7c20)
+RainbowName: ; 57c20 (15:7c20)
 	text "Rainbow"
 	done
 
-MetapodDescription: ; 57c28 (15:7c28)
+Meganium2Description: ; 57c28 (15:7c28)
 	text "Meganium's breath has the power to"
 	line "revive dead grass and plants. It can"
 	line "make them healthy again."
 	done 
 
-ButterfreeName: ; 57c82 (15:7c82)
+CyndaquilName: ; 57c82 (15:7c82)
 	text "Cyndaquil"
 	done
 
-WhirlwindName: ; 57c8e (15:7c8e)
-	text "Self-Destruct"
+AncientpowerName: ; 57c8e (15:7c8e)
+	text "Ancientpower"
 	done
 
-WhirlwindDescription: ; 57c99 (15:7c99)
+SwitchAfterDamageDesc: ; 57c99 (15:7c99)
 	text "If your opponent has any Benched"
 	line "Pokémon, he or she chooses 1 of them"
 	line "and switches it with the Defending"
@@ -1424,31 +1422,27 @@ WhirlwindDescription: ; 57c99 (15:7c99)
 	done
 
 ButterfreesMegaDrainDescription: ; 57d3a (15:7d3a)
-	text "Remove a number of damage counters"
-	line "from Butterfree equal to half the"
-	line "damage done to the Defending Pokémon"
-	line "(after applying Weakness and"
-	line "Resistance) (rounded up to the"
-	line "nearest 10)."
+	text "Remove damage counters from this"
+	line "Pokémon equal to half the damage"
+	line "done to the Defending Pokémon (after"
+	line "applying Weakness and Resistance)."
 	done
 
-ButterfreesMegaDrainDescriptionCont: ; 57dee (15:7dee)
-	text "If Butterfree has fewer damage"
-	line "counters than that, remove all of"
-	line "them."
+UTurnName: ; 57dee (15:7dee)
+	text "U-Turn"
 	done
 
-ButterflyName: ; 57e36 (15:7e36)
+AquamouseName: ; 57e36 (15:7e36)
 	text "Aquamouse"
 	done
 
-ButterfreeDescription: ; 57e41 (15:7e41)
+LedybaDescription: ; 57e41 (15:7e41)
 	text "It is very timid. It's afraid to"
 	line "move if alone, but it's active if in"
 	line "a group."
 	done 
 
-WeedleName: ; 57e99 (15:7e99)
+MareepName: ; 57e99 (15:7e99)
 	text "Mareep"
 	done
 
@@ -1461,25 +1455,23 @@ MayInflictPoisonDescription: ; 57eaf (15:7eaf)
 	line "Pokémon is now Poisoned."
 	done
 
-HairyBugName: ; 57eee (15:7eee)
+HandstandName: ; 57eee (15:7eee)
 	text "Handstand"
 	done
 
-WeedleDescription: ; 57ef9 (15:7ef9)
+LedianDescription: ; 57ef9 (15:7ef9)
 	text "When the stars flicker in the night"
 	line "sky, Ledian flutters about,"
 	line "scattering a glowing powder."
 	done 
 
-KakunaName: ; 57f4f (15:7f4f)
+TogepiName: ; 57f4f (15:7f4f)
 	text "Togepi"
 	done
 
-KakunasStiffenDescription: ; 57f57 (15:7f57)
+CFHPlus30DamageDesc: ; 57f57 (15:7f57)
 	text "Flip a coin. If heads, this attack"
 	line "does 30 more damage."
-	line ""
-	line ""
 	done
 
 	ds $20

@@ -32,39 +32,39 @@ AIActionTable_RockCrusher:
 	ret
 
 .list_arena
-	db JIGGLYPUFF_LV12
-	db SANDSHREW
-	db ELECTABUZZ_LV20
-	db MACHOKE
+	db AIPOM
+	db PHANPY2
+	db ONIX
+	db LARVITAR
 	db $00
 
 .list_bench
-	db MACHOKE
-	db ELECTABUZZ_LV20
-	db SANDSHREW
-	db JIGGLYPUFF_LV12
+	db LARVITAR
+	db ONIX
+	db PHANPY2
+	db AIPOM
 	db $00
 
 .list_retreat
-	ai_retreat ELECTABUZZ_LV35, -5
-	ai_retreat GEODUDE, -5
-	ai_retreat JIGGLYPUFF_LV12, -5
+	ai_retreat STEELIX, -5
+	ai_retreat TYRANITAR, -5
+	ai_retreat AIPOM, -2
 	db $00
 
 .list_energy
-	ai_energy ELECTABUZZ_LV20,  2, +1
-	ai_energy ELECTABUZZ_LV35,  4, +5
-	ai_energy MACHOKE,  2, -1
-	ai_energy MACHAMP, 2, +1
-	ai_energy GEODUDE,    4, +4
-	ai_energy SANDSHREW,     2, -1
-	ai_energy SANDSLASH,  3, +0
-	ai_energy JIGGLYPUFF_LV12,	2, +1
+	ai_energy ONIX,  2, +1
+	ai_energy STEELIX,  4, +5
+	ai_energy LARVITAR,  2, -1
+	ai_energy PUPITAR, 2, +1
+	ai_energy TYRANITAR,    4, +4
+	ai_energy PHANPY2,     2, -1
+	ai_energy DONPHAN1,  3, +0
+	ai_energy AIPOM,	2, +1
 	db $00
 
 .list_prize
-	db ENERGY_REMOVAL
-	db GEODUDE
+	db ENERGY_REMOVAL2
+	db STEELIX
 	db $00
 
 .store_list_pointers

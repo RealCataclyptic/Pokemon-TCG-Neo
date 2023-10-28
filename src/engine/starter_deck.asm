@@ -55,9 +55,9 @@ _AddStarterDeck:
 
 .StarterCardIDs
 	; main deck, extra cards
-	db CHARMANDER_AND_FRIENDS_DECK_ID, CHARMANDER_EXTRA_DECK_ID
-	db SQUIRTLE_AND_FRIENDS_DECK_ID,   SQUIRTLE_EXTRA_DECK_ID
-	db BULBASAUR_AND_FRIENDS_DECK_ID,  BULBASAUR_EXTRA_DECK_ID
+	db HOUNDOUR2_AND_FRIENDS_DECK_ID, HOUNDOUR2_EXTRA_DECK_ID
+	db TOTODILE2_AND_FRIENDS_DECK_ID,   TOTODILE2_EXTRA_DECK_ID
+	db CHIKORITA1_AND_FRIENDS_DECK_ID,  CHIKORITA1_EXTRA_DECK_ID
 
 ; clears saved data (card Collection/saved decks/Card Pop! data/etc)
 ; then adds the starter decks as saved decks
@@ -78,13 +78,13 @@ InitSaveData:
 	jr nz, .loop_clear
 
 ; add the starter decks
-	ld a, CHARMANDER_AND_FRIENDS_DECK
+	ld a, HOUNDOUR2_AND_FRIENDS_DECK
 	ld hl, sSavedDeck1
 	call CopyDeckNameAndCards
-	ld a, SQUIRTLE_AND_FRIENDS_DECK
+	ld a, TOTODILE2_AND_FRIENDS_DECK
 	ld hl, sSavedDeck2
 	call CopyDeckNameAndCards
-	ld a, BULBASAUR_AND_FRIENDS_DECK
+	ld a, CHIKORITA1_AND_FRIENDS_DECK
 	ld hl, sSavedDeck3
 	call CopyDeckNameAndCards
 

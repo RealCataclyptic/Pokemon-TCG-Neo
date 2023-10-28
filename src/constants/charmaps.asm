@@ -354,8 +354,8 @@ ENDM
 	txsymbol Lv         ; $11
 	txsymbol E          ; $12
 	txsymbol No         ; $13
-	txsymbol PLUSPOWER  ; $14
-	txsymbol DEFENDER   ; $15
+	txsymbol STRENGTH_CHARM  ; $14
+	txsymbol CRYSTAL_SHARD   ; $15
 	txsymbol HP_OK      ; $16
 	txsymbol HP_NOK     ; $17
 	txsymbol BOX_TOP_L  ; $18

@@ -91,7 +91,7 @@ AIDoTurn_GeneralNoRetreat:
 ; if used Professor Oak, process new hand
 ; if not, then proceed to attack.
 	ld a, [wPreviousAIFlags]
-	and AI_FLAG_USED_PROFESSOR_OAK
+	and AI_FLAG_USED_PROFESSOR_ELM
 	jr z, .try_attack
 	ld a, AI_TRAINER_CARD_PHASE_01
 	call AIProcessHandTrainerCards

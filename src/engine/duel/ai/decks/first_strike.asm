@@ -32,40 +32,40 @@ AIActionTable_FirstStrike:
 	ret
 
 .list_arena
-	db MACHOP
-	db MANKEY
-	db PRIMEAPE
-	db DODUO
-	db FARFETCHD
+	db HITMONTOP
+	db HITMONLEE
+	db HITMONCHAN
+	db SKARMORY
+	db STANTLER
 	db $00
 
 .list_bench
-	db MACHOP
-	db MANKEY
-	db PRIMEAPE
-	db DODUO
-	db FARFETCHD
+	db HITMONTOP
+	db HITMONLEE
+	db HITMONCHAN
+	db SKARMORY
+	db STANTLER
 	db $00
 
 .list_retreat
-	ai_retreat MACHOP,  -1
-	ai_retreat PRIMEAPE, -1
-	ai_retreat FARFETCHD,  -2
+	ai_retreat HITMONTOP,  -1
+	ai_retreat HITMONCHAN, -1
+	ai_retreat STANTLER,  -2
 	db $00
 
 .list_energy
-	ai_energy MANKEY,     3, +1
-	ai_energy PRIMEAPE,    3, +1
-	ai_energy MACHOP,    3, +3
-	ai_energy VOLTORB , 3, -2
-	ai_energy DODUO,  3, +1
-	ai_energy FARFETCHD,     3, +0
-	ai_energy MYSTERIOUS_FOSSIL,   2, -3
+	ai_energy HITMONLEE,     3, +1
+	ai_energy HITMONCHAN,    3, +1
+	ai_energy HITMONTOP,    3, +3
+	ai_energy AERODACTYL , 3, -2
+	ai_energy SKARMORY,  3, +1
+	ai_energy STANTLER,     3, +0
+	ai_energy FOSSIL_EGG,   2, -2
 	db $00
 
 .list_prize
-	db VOLTORB
-	db MACHOP
+	db AERODACTYL
+	db HITMONTOP
 	db $00
 
 .store_list_pointers

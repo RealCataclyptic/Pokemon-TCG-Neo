@@ -32,41 +32,43 @@ AIActionTable_InvincibleRonald:
 	ret
 
 .list_arena
-	db JIGGLYPUFF_LV12
-	db ODDISH
-	db PARAS
-	db MUK
-	db EXEGGCUTE
-	db GRIMER
+	db AIPOM
+	db MAGMAR
+	db SUNKERN
+	db PINECO
+	db CYNDAQUIL1
+	db CYNDAQUIL2
 	db $00
 
 .list_bench
-	db ODDISH
-	db JIGGLYPUFF_LV12
-	db PARAS
-	db MUK
-	db EXEGGCUTE
-	db GRIMER
+	db SUNKERN
+	db AIPOM
+	db MAGMAR
+	db PINECO
+	db CYNDAQUIL1
+	db CYNDAQUIL2
 	db $00
 
 .list_retreat
-	ai_retreat GRIMER, 0
+	ai_retreat MAGMAR, 0
 	db $00
 
 .list_energy
-	ai_energy ODDISH,         1, -1
-	ai_energy GLOOM,            3, -1
-	ai_energy PARAS,        2, -1
-	ai_energy PARASECT,    3, +1
-	ai_energy MUK,        2, +0
-	ai_energy EXEGGCUTE,       2, +0
-	ai_energy KOFFING,        3, +1
-	ai_energy TANGELA_LV8,     4, +1
-	ai_energy CLEFABLE, 	2, +0
+	ai_energy SUNKERN,         2, +0
+	ai_energy SUNFLORA,            3, +1
+	ai_energy PINECO,        2, +0
+	ai_energy FORRETRESS,    2, +1		
+	ai_energy MAGMAR, 	2, +1
+	ai_energy CYNDAQUIL1,        2, +0
+	ai_energy CYNDAQUIL2,       2, +0
+	ai_energy QUILAVA2,        3, +1
+	ai_energy TYPHLOSION2,     2, +4
+	ai_energy AIPOM, 	2, +0
 	db $00
 
 .list_prize
-	db TANGELA_LV8
+	db TYPHLOSION2
+	db SUNFLORA
 	db $00
 
 .store_list_pointers

@@ -61,8 +61,8 @@ Script_Pappy1:
 .ows_e9cb
 	test_if_event_zero EVENT_PAPPY1_STATE
 	print_variable_npc_text Text0660, Text0661
-	give_card HYPNO
-	show_card_received_screen HYPNO
+	give_card MEWTWO_S
+	show_card_received_screen MEWTWO_S
 	set_event EVENT_PAPPY1_STATE, PAPPY1_CHALLENGE_COMPLETE
 	print_text_quit_fully Text0662
 

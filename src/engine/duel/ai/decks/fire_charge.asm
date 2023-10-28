@@ -32,36 +32,40 @@ AIActionTable_FireCharge:
 	ret
 
 .list_arena
-	db GRIMER
-	db NINETALES_LV32
-	db MUK
-	db PINSIR
-	db TAUROS
+	db MAGMAR
+	db HOOH
+	db CHANSEY
+	db CYNDAQUIL1
+	db HOUNDOUR1
+	db ENTEI2
 	db $00
 
 .list_bench
-	db GRIMER
-	db MUK
-	db PINSIR
-	db TAUROS
-	db NINETALES_LV32
+	db MAGMAR
+	db CYNDAQUIL1
+	db HOUNDOUR1
+	db ENTEI2
+	db HOOH
+	db CHANSEY
 	db $00
 
 .list_retreat
-	ai_retreat NINETALES_LV32, -1
-	ai_retreat TAUROS,         -1
-	ai_retreat WEEZING,       -1
+	ai_retreat HOOH, -1
+	ai_retreat MILTANK,         -1
+	ai_retreat TYPHLOSION1,       -1
 	db $00
 
 .list_energy
-	ai_energy MUK,       2, +0
-	ai_energy EXEGGUTOR,   3, +1
-	ai_energy WEEZING,     4, +3
-	ai_energy PINSIR, 2, -1
-	ai_energy CHARMELEON, 3, +0
-	ai_energy TAUROS,      3, -2
-	ai_energy DITTO,         4, -2
-	ai_energy NINETALES_LV32,          5, +1
+	ai_energy CYNDAQUIL1,       2, +0
+	ai_energy QUILAVA1,   3, +1
+	ai_energy TYPHLOSION1,     4, +3
+	ai_energy HOUNDOUR1, 2, -1
+	ai_energy HOUNDOOM, 3, +0
+	ai_energy ENTEI2,      3, +0
+	ai_energy CHANSEY,         4, -2
+	ai_energy BLISSEY,         4, -2
+	ai_energy HOOH,          5, +1
+	ai_energy MAGMAR,          2, +2
 	db $00
 
 .list_prize

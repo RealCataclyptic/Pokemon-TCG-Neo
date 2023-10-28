@@ -32,39 +32,41 @@ AIActionTable_GoGoRainDance:
 	ret
 
 .list_arena
-	db KINGLER
-	db SEAKING
-	db TENTACRUEL
+	db SNEASEL
+	db HORSEA
+	db POLIWAG
 	db $00
 
 .list_bench
-	db TENTACRUEL
-	db KINGLER
-	db SEAKING
+	db POLIWAG
+	db SNEASEL
+	db HORSEA
 	db $00
 
 .list_retreat
-	ai_retreat TENTACRUEL,  -3
-	ai_retreat SEEL, -2
-	ai_retreat DEWGONG,    -1
+	ai_retreat KABUTOPS,  -3
+	ai_retreat SNEASEL, -1
+	ai_retreat KINGDRA,    -2
 	db $00
 
 .list_energy
-	ai_energy TENTACRUEL, 2, +0
-	ai_energy SEEL, 3, +0
-	ai_energy DEWGONG, 3, -1
-	ai_energy SEAKING,   2, +1
-	ai_energy STARMIE,   4, +3
-	ai_energy FLAREON_LV22,    2, +0
-	ai_energy FLAREON_LV28,    5, +3
-	ai_energy KINGLER,    3, +0
+	ai_energy POLIWAG, 2, +0
+	ai_energy POLIWHIRL, 2, +0
+	ai_energy POLITOED, 3, -1
+	ai_energy HORSEA,   2, +1
+	ai_energy SEADRA,   3, +2
+	ai_energy KINGDRA,   4, +3
+	ai_energy KABUTO,    2, +0
+	ai_energy KABUTOPS,    5, +3
+	ai_energy SNEASEL,    3, +1
+	ai_energy FOSSIL_EGG,    2, +2
 	db $00
 
 .list_prize
-	db GAMBLER
-	db ENERGY_RETRIEVAL
+	db FOSSIL_EGG
+	db STAR_PIECE
 	db SUPER_ENERGY_RETRIEVAL
-	db DEWGONG
+	db POLITOED
 	db $00
 
 .store_list_pointers

@@ -32,40 +32,41 @@ AIActionTable_WondersOfScience:
 	ret
 
 .list_arena
-	db VILEPLUME
-	db WEEPINBELL
-	db HITMONLEE
-	db EKANS
-	db KANGASKHAN
-	db DODRIO
+	db YANMA
+	db CELEBI_S
+	db MEWTWO
+	db ZUBAT
+	db SMEARGLE
+	db PORYGON
 	db $00
 
 .list_bench
-	db WEEPINBELL
-	db EKANS
-	db HITMONLEE
-	db DODRIO
-	db VILEPLUME
-	db KANGASKHAN
+	db CELEBI_S
+	db ZUBAT
+	db MEWTWO
+	db PORYGON
+	db YANMA
+	db SMEARGLE
 	db $00
 
 .list_retreat
 	db $00
 
 .list_energy
-	ai_energy EKANS,          2, +1
-	ai_energy ARBOK,             2, +1
-	ai_energy NIDORANF,         3, +4
-	ai_energy VILEPLUME,         3, +0
-	ai_energy HITMONLEE,     3, +2
-	ai_energy WEEPINBELL  , 2, +1
-	ai_energy KANGASKHAN,     2, +0
-	ai_energy LICKITUNG,         3, +1
-	ai_energy DODRIO,	2, +0
+	ai_energy ZUBAT,         	 2, +1
+	ai_energy GOLBAT,             2, +1
+	ai_energy CROBAT,        	 3, +4
+	ai_energy YANMA,         	3, +1
+	ai_energy MEWTWO,     		3, +0
+	ai_energy CELEBI_S,   		2, +2
+	ai_energy SMEARGLE,    		 2, +0
+	ai_energy PORYGON,		2, +1
+	ai_energy PORYGON_2,         3, +2
 	db $00
 
 .list_prize
-	db WEEPINBELL
+	db CELEBI_S
+	db CROBAT
 	db $00
 
 .store_list_pointers

@@ -11,45 +11,55 @@ HandleSpecialAIAttacks:
 	call GetCardIDFromDeckIndex
 	ld a, e
 
-	cp SPEAROW
-	jp z, .EnergySpike
-	cp CLEFABLE
+	cp JOLTEON
+	jp z, .EnergySpikeLI
+	cp TOGEPI2
+	jp z, .EnergySpikeLI
+	cp SUNFLORA
+	jp z, .EnergySpikeGR
+	cp CELEBI_C
+	jp z, .EnergySpikeGR
+	cp AIPOM
 	jp z, .Fetch
-	cp MEWTWO_LV60
+	cp SENTRET
 	jp z, .Fetch
-	cp SANDSLASH
+	cp DONPHAN1
 	jp z, .Teleport
-	cp BELLSPROUT
+	cp SCYTHER
+	jp z, .Teleport
+	cp AZUMARILL2
+	jp z, .Teleport
+	cp HORSEA
+	jp z, .Teleport
+	cp HERACROSS
 	jp z, .SwordsDanceAndFocusEnergy
-	cp MAGMAR_LV31
+	cp MEW
 	jp z, .DevolutionBeam
-	cp HITMONCHAN
-	jp z, .DevolutionBeam
-	cp KABUTOPS
+	cp ESPEON2
 	jp z, .ChainLightning
-	cp DUGTRIO
+	cp TYROGUE
 	jr z, .CallForFriend
-	cp ZAPDOS_LV40
+	cp PILOSWINE
 	jp z, .Earthquake
-	cp CLOYSTER
+	cp QUAGSIRE
 	jp z, .Earthquake
-	cp PORYGON
+	cp LUGIA
 	jp z, .EnergyAbsorption
-	cp SURFING_PIKACHU_ALT_LV13
+	cp AMPHAROS1
 	jp z, .EnergyAbsorption
-	cp PIKACHU_LV14
+	cp RAICHU
 	jp z, .BigThunder
-	cp GEODUDE
+	cp TYRANITAR
 	jp z, .HyperBeam
-	cp ONIX
+	cp TYRANITAR_S
 	jp z, .HyperBeam
-	cp HAUNTER_LV22
+	cp SMOOCHUM
 	jp z, .HyperBeam
-	cp DRAGONAIR
+	cp LUGIA_C
 	jp z, .HyperBeam
-	cp STARMIE
+	cp KINGDRA
 	jp z, .HyperBeam
-	cp GOLDUCK
+	cp FERALIGATR2
 	jp z, .HyperBeam
 
 ; return zero score.
@@ -76,11 +86,11 @@ HandleSpecialAIAttacks:
 ; if any of NidoranM or NidoranF is found in deck,
 ; return a score of $80 + slots available in bench.
 .NidoranFCallForFamily:
-	ld e, NIDORANM
+	ld e, VILEPLUME
 	ld a, CARD_LOCATION_DECK
 	call CheckIfAnyCardIDinLocation
 	jr c, .found_nidoran
-	ld e, NIDORANF
+	ld e, CROBAT
 	ld a, CARD_LOCATION_DECK
 	call CheckIfAnyCardIDinLocation
 	jr nc, .zero_score
@@ -99,19 +109,19 @@ HandleSpecialAIAttacks:
 ; if any of them are found, return a score of
 ; $80 + slots available in bench.
 .CallForFriend:
-	ld e, GEODUDE
+	ld e, PHANPY1
 	ld a, CARD_LOCATION_DECK
 	call CheckIfAnyCardIDinLocation
 	jr c, .found_fighting_card
-	ld e, ONIX
+	ld e, HITMONTOP
 	ld a, CARD_LOCATION_DECK
 	call CheckIfAnyCardIDinLocation
 	jr c, .found_fighting_card
-	ld e, CUBONE
+	ld e, GLIGAR
 	ld a, CARD_LOCATION_DECK
 	call CheckIfAnyCardIDinLocation
 	jr c, .found_fighting_card
-	ld e, RHYHORN
+	ld e, HITMONCHAN
 	ld a, CARD_LOCATION_DECK
 	call CheckIfAnyCardIDinLocation
 	jr c, .found_fighting_card
@@ -144,8 +154,6 @@ HandleSpecialAIAttacks:
 
 ; if AI decides to retreat, return a score of $80 + 10.
 .Teleport:
-	call AIDecideWhetherToRetreat
-	jp nc, .zero_score
 	ld a, $8a
 	ret
 
@@ -176,24 +184,6 @@ HandleSpecialAIAttacks:
 ; with that same color.
 ; if none are found, returns score of $80 + 2.
 .ChainLightning:
-	call SwapTurn
-	call GetArenaCardColor
-	call SwapTurn
-	ld b, a
-	ld a, DUELVARS_BENCH
-	call GetTurnDuelistVariable
-.loop_chain_lightning_bench
-	ld a, [hli]
-	cp $ff
-	jr z, .chain_lightning_success
-	push bc
-	call GetCardIDFromDeckIndex
-	call GetCardType
-	pop bc
-	cp b
-	jr nz, .loop_chain_lightning_bench
-	jp .zero_score
-.chain_lightning_success
 	ld a, $82
 	ret
 
@@ -235,7 +225,7 @@ HandleSpecialAIAttacks:
 	ret
 
 .low_conversion_score
-	ld a, $81
+	ld a, $8a
 	ret
 
 ; if any Psychic Energy is found in the Discard Pile,
@@ -328,12 +318,12 @@ HandleSpecialAIAttacks:
 	ld a, $83
 	ret
 
-; dismiss attack if cards in deck <= 20.
+; dismiss attack if cards in deck <= 20. ; changed to 15
 ; otherwise return a score of $80 + 0.
 .Fetch:
 	ld a, DUELVARS_NUMBER_OF_CARDS_NOT_IN_DECK
 	call GetTurnDuelistVariable
-	cp 41
+	cp 45
 	jp nc, .zero_score
 	ld a, $80
 	ret
@@ -354,7 +344,7 @@ HandleSpecialAIAttacks:
 	ld a, e
 	add DUELVARS_ARENA_CARD_HP
 	call GetTurnDuelistVariable
-	cp 20
+	cp 10
 	jr nc, .loop_earthquake
 	inc d
 	jr .loop_earthquake
@@ -371,13 +361,19 @@ HandleSpecialAIAttacks:
 
 ; if there's any lightning energy cards in deck,
 ; return a score of $80 + 3.
-.EnergySpike:
+.EnergySpikeLI:
 	ld a, CARD_LOCATION_DECK
 	ld e, LIGHTNING_ENERGY
 	call CheckIfAnyCardIDinLocation
-	jp nc, .zero_score
 	call AIProcessButDontPlayEnergy_SkipEvolution
-	jp nc, .zero_score
+	ld a, $83
+	ret
+
+.EnergySpikeGR:
+	ld a, CARD_LOCATION_DECK
+	ld e, GRASS_ENERGY
+	call CheckIfAnyCardIDinLocation
+	call AIProcessButDontPlayEnergy_SkipEvolution
 	ld a, $83
 	ret
 
