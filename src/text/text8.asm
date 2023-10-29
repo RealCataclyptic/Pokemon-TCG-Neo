@@ -799,10 +799,10 @@ Text0702: ; 52632 (14:6632)
 	done
 
 Text0703: ; 5268a (14:668a)
-	text "You have to be really good with"
-	line "grass types to join this club."
-	line "But we're not accepting"
-	line "applications now, anyway. Sorry!"
+	text "Botany, beauty and battling!"
+	line "You have to be the best to join"
+	line "this club! But we're not accepting"
+	line "applications now... Sorry!"
 	done
 
 Text0704: ; 526f4 (14:66f4)
@@ -845,12 +845,12 @@ Text0709: ; 528bf (14:68bf)
 	done
 
 Text070a: ; 528ed (14:68ed)
-	text "The Pokémon Trading Card Game is "
+	text "The Pokémon Trading Card Game is"
 	line "fun, but so is taking care of trees!"
 	done
 
 Text070b: ; 52935 (14:6935)
-	text "I believe Nikki is at "
+	text "I believe Nikki is at"
 	line "ISHIHARA's house."
 	line "Maybe you should go meet her there,"
 	line "since she's late getting back."

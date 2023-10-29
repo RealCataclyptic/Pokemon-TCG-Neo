@@ -4,33 +4,33 @@ DeckPointers: ; 30000 (c:4000)
 	dw SamsPracticeDeck
 	dw PracticePlayerDeck
 	dw SamsPracticeDeck
-	dw CharmanderAndFriendsDeck
-	dw CharmanderExtraDeck
-	dw SquirtleAndFriendsDeck
-	dw SquirtleExtraDeck
-	dw BulbasaurAndFriendsDeck
-	dw BulbasaurExtraDeck
+	dw CharmanderAndFriendsDeck ; 'Cyndaquil Starter Deck'
+	dw CharmanderExtraDeck ; ^^ Extra
+	dw SquirtleAndFriendsDeck ; 'Totodile Starter Deck'
+	dw SquirtleExtraDeck ; ^^ Extra
+	dw BulbasaurAndFriendsDeck ; 'Chikorita Starter Deck'
+	dw BulbasaurExtraDeck ; ^^ Extra
 	dw LightningAndFireDeck
 	dw WaterAndFightingDeck
 	dw GrassAndPsychicDeck
-	dw LegendaryMoltresDeck
-	dw LegendaryZapdosDeck
-	dw LegendaryArticunoDeck
-	dw LegendaryDragoniteDeck
+	dw LegendaryMoltresDeck ; 'Legendary Ho-oh'. 
+	dw LegendaryZapdosDeck ; 'Legendary Celebi'.
+	dw LegendaryArticunoDeck ; 'Legendary Lugia'
+	dw LegendaryDragoniteDeck ; 'Legendary Charizard'
 	dw FirstStrikeDeck
 	dw RockCrusherDeck
 	dw GoGoRainDanceDeck
-	dw ZappingSelfdestructDeck
+	dw ZappingSelfdestructDeck ; 'Supercharged'.
 	dw FlowerPowerDeck
 	dw StrangePsyshockDeck
-	dw WondersofScienceDeck
-	dw FireChargeDeck
+	dw WondersofScienceDeck ; 'Revolutionary Theory'. 
+	dw FireChargeDeck ; 'Overheat'.
 	dw ImRonaldDeck
 	dw PowerfulRonaldDeck
 	dw InvincibleRonaldDeck
 	dw LegendaryRonaldDeck
 	dw MusclesforBrainsDeck
-	dw HeatedBattleDeck
+	dw HeatedBattleDeck ; 'War and Peace'.
 	dw LovetoBattleDeck
 	dw ExcavationDeck
 	dw BlisteringPokemonDeck
@@ -38,21 +38,21 @@ DeckPointers: ; 30000 (c:4000)
 	dw WaterfrontPokemonDeck
 	dw LonelyFriendsDeck
 	dw SoundoftheWavesDeck
-	dw PikachuDeck
-	dw BoomBoomSelfdestructDeck
+	dw PikachuDeck ; 'Pikachu (?)'
+	dw BoomBoomSelfdestructDeck ; 'Bench Storm'
 	dw PowerGeneratorDeck
 	dw EtceteraDeck
 	dw FlowerGardenDeck
 	dw KaleidoscopeDeck
 	dw GhostDeck
 	dw NapTimeDeck
-	dw StrangePowerDeck
-	dw FlyinPokemonDeck
-	dw LovelyNidoranDeck
-	dw PoisonDeck
+	dw StrangePowerDeck ; 'Sun and Moon'
+	dw FlyinPokemonDeck ; 'Aerodynamics'
+	dw LovelyNidoranDeck ; 'Entomology'
+	dw PoisonDeck ; 'Toxicology'
 	dw AngerDeck
-	dw FlamethrowerDeck
-	dw ReshuffleDeck
+	dw FlamethrowerDeck ; 'Burn it Down!'.
+	dw ReshuffleDeck ; 'Plasma'.
 	dw ImakuniDeck
 	dw NULL
 
@@ -604,7 +604,7 @@ SamsPracticeDeck: ; 303b5 (c:43b5)
 	db 0 ; end
 	tx SamsPracticeDeckName
 
-CharmanderAndFriendsDeck: ; 30428 (c:4428)
+CharmanderAndFriendsDeck: ; 30428 (c:4428) ; = Cyndaquil Starter Deck. Given to player at beginning.
 	db 12, FIRE_ENERGY
 	db 12, PSYCHIC_ENERGY
 	db 2, CYNDAQUIL1
@@ -634,7 +634,7 @@ CharmanderAndFriendsDeck: ; 30428 (c:4428)
 	db 0 ; end
 	tx CharmanderAndFriendsDeckName
 
-CharmanderExtraDeck: ; 30465 (c:4465)
+CharmanderExtraDeck: ; 30465 (c:4465) ; = Cyndaquil extras. Given to player at beginning.
 	db 4, GRASS_ENERGY
 	db 4, WATER_ENERGY
 	db 4, FIGHTING_ENERGY
@@ -652,7 +652,7 @@ CharmanderExtraDeck: ; 30465 (c:4465)
 	db 0 ; end
 	tx CharmanderExtraDeckName
 
-SquirtleAndFriendsDeck: ; 3048c (c:448c)
+SquirtleAndFriendsDeck: ; 3048c (c:448c) ; = Totodile Starter Deck. Given to player at beginning.
 	db 12, WATER_ENERGY
 	db 12, LIGHTNING_ENERGY
 	db 2, TOTODILE1
@@ -685,7 +685,7 @@ SquirtleAndFriendsDeck: ; 3048c (c:448c)
 	db 0 ; end
 	tx SquirtleAndFriendsDeckName
 
-SquirtleExtraDeck: ; 304cf (c:44cf)
+SquirtleExtraDeck: ; 304cf (c:44cf) ; = Totodile extras. Given to player at beginning.
 	db 3, GRASS_ENERGY
 	db 4, FIRE_ENERGY
 	db 4, PSYCHIC_ENERGY
@@ -708,7 +708,7 @@ SquirtleExtraDeck: ; 304cf (c:44cf)
 	db 0 ; end
 	tx SquirtleExtraDeckName
 
-BulbasaurAndFriendsDeck: ; 304fa (c:44fa)
+BulbasaurAndFriendsDeck: ; 304fa (c:44fa) ; = Chikorita Starter Deck. Given to player at beginning.
 	db 12, GRASS_ENERGY
 	db 12, FIGHTING_ENERGY
 	db 2, CHIKORITA1
@@ -740,7 +740,7 @@ BulbasaurAndFriendsDeck: ; 304fa (c:44fa)
 	db 0 ; end
 	tx BulbasaurAndFriendsDeckName
 
-BulbasaurExtraDeck: ; 3053b (c:453b)
+BulbasaurExtraDeck: ; 3053b (c:453b)  ; = Chikorita extras. Given to player at beginning.
 	db 4, LIGHTNING_ENERGY
 	db 4, PSYCHIC_ENERGY
 	db 3, WATER_ENERGY
@@ -763,7 +763,7 @@ BulbasaurExtraDeck: ; 3053b (c:453b)
 	db 0 ; end
 	tx BulbasaurExtraDeckName
 
-LightningAndFireDeck: ; 30564 (c:4564)
+LightningAndFireDeck: ; 30564 (c:4564) ; Used by Mason Laboratory's Aaron.
 	db 10, FIRE_ENERGY
 	db 10, LIGHTNING_ENERGY
 	db 2, DOUBLE_COLORLESS_ENERGY
@@ -793,7 +793,7 @@ LightningAndFireDeck: ; 30564 (c:4564)
 	db 0 ; end
 	tx LightningAndFireDeckName
 
-WaterAndFightingDeck: ; 305a1 (c:45a1)
+WaterAndFightingDeck: ; 305a1 (c:45a1) ; Used by Mason Laboratory's Aaron.
 	db 12, WATER_ENERGY
 	db 10, FIGHTING_ENERGY
 	db 2, DOUBLE_COLORLESS_ENERGY
@@ -821,7 +821,7 @@ WaterAndFightingDeck: ; 305a1 (c:45a1)
 	db 0 ; end
 	tx WaterAndFightingDeckName
 
-GrassAndPsychicDeck: ; 305d6 (c:45d6)
+GrassAndPsychicDeck: ; 305d6 (c:45d6) ; Used by Mason Laboratory's Aaron.
 	db 12, GRASS_ENERGY
 	db 12, PSYCHIC_ENERGY
 	db 2, CHIKORITA1
@@ -845,7 +845,7 @@ GrassAndPsychicDeck: ; 305d6 (c:45d6)
 	db 0 ; end
 	tx GrassAndPsychicDeckName
 
-LegendaryMoltresDeck: ; 30609 (c:4609)
+LegendaryMoltresDeck: ; 30609 (c:4609) ; = Legendary Hooh. Used by Grand Master Courtney.
 	db 7, FIRE_ENERGY
 	db 13, FIGHTING_ENERGY
 	db 4, HOOH_C
@@ -866,7 +866,7 @@ LegendaryMoltresDeck: ; 30609 (c:4609)
 	db 0 ; end
 	tx LegendaryMoltresDeckName
 
-LegendaryZapdosDeck: ; 30630 (c:4630)
+LegendaryZapdosDeck: ; 30630 (c:4630) ; = Legendary Celebi. Used by Grand Master Steve.
 	db 10, GRASS_ENERGY
 	db 8, PSYCHIC_ENERGY
 	db 2, DOUBLE_COLORLESS_ENERGY
@@ -886,7 +886,7 @@ LegendaryZapdosDeck: ; 30630 (c:4630)
 	db 0 ; end
 	tx LegendaryZapdosDeckName
 
-LegendaryArticunoDeck: ; 30651 (c:4651)
+LegendaryArticunoDeck: ; 30651 (c:4651) ; = Legendary Lugia. Used by Grand Master Jack.
 	db 13, WATER_ENERGY
 	db 7, LIGHTNING_ENERGY
 	db 4, LUGIA_C
@@ -907,7 +907,7 @@ LegendaryArticunoDeck: ; 30651 (c:4651)
 	db 0 ; end
 	tx LegendaryArticunoDeckName
 
-LegendaryDragoniteDeck: ; 30670 (c:4670)
+LegendaryDragoniteDeck: ; 30670 (c:4670) ; = Legendary Charizard. Used by Grand Master Rod.
 	db 10, FIRE_ENERGY
 	db 8, LIGHTNING_ENERGY
 	db 2, DOUBLE_COLORLESS_ENERGY
@@ -931,7 +931,7 @@ LegendaryDragoniteDeck: ; 30670 (c:4670)
 	db 0 ; end
 	tx LegendaryDragoniteDeckName
 
-FirstStrikeDeck: ; 30699 (c:4699)
+FirstStrikeDeck: ; 30699 (c:4699) ; Used by Fighting Club leader Mitch.
 	db 19, FIGHTING_ENERGY
 	db 4, HITMONLEE
 	db 4, HITMONCHAN
@@ -949,7 +949,7 @@ FirstStrikeDeck: ; 30699 (c:4699)
 	db 0 ; end
 	tx FirstStrikeDeckName
 
-RockCrusherDeck: ; 306b8 (c:46b8)
+RockCrusherDeck: ; 306b8 (c:46b8) ; Used by Rock Club leader Gene.
 	db 20, FIGHTING_ENERGY
 	db 4, ONIX
 	db 3, STEELIX
@@ -968,7 +968,7 @@ RockCrusherDeck: ; 306b8 (c:46b8)
 	db 0 ; end
 	tx RockCrusherDeckName
 
-GoGoRainDanceDeck: ; 306dd (c:46dd)
+GoGoRainDanceDeck: ; 306dd (c:46dd) ; ; Used by Water Club leader Amy.
 	db 19, WATER_ENERGY
 	db 4, POLIWAG
 	db 3, POLIWHIRL
@@ -988,7 +988,7 @@ GoGoRainDanceDeck: ; 306dd (c:46dd)
 	db 0 ; end
 	tx GoGoRainDanceDeckName
 
-ZappingSelfdestructDeck: ; 30704 (c:4704)
+ZappingSelfdestructDeck: ; 30704 (c:4704) ; = Supercharged deck. Used by Lightning Club leader Isaac.
 	db 18, LIGHTNING_ENERGY
 	db 4, MAREEP1
 	db 3, FLAAFFY1
@@ -1009,7 +1009,7 @@ ZappingSelfdestructDeck: ; 30704 (c:4704)
 	db 0 ; end
 	tx ZappingSelfdestructDeckName
 
-FlowerPowerDeck: ; 30725 (c:4725)
+FlowerPowerDeck: ; 30725 (c:4725) ; Used by Grass Club leader Nikki.
 	db 18, GRASS_ENERGY
 	db 4, ODDISH
 	db 3, GLOOM
@@ -1031,7 +1031,7 @@ FlowerPowerDeck: ; 30725 (c:4725)
 	db 0 ; end
 	tx FlowerPowerDeckName
 
-StrangePsyshockDeck: ; 30748 (c:4748)
+StrangePsyshockDeck: ; 30748 (c:4748) ; Used by Psychic Club leader Murray.
 	db 17, PSYCHIC_ENERGY
 	db 3, SLOWPOKE
 	db 3, SLOWKING
@@ -1053,7 +1053,7 @@ StrangePsyshockDeck: ; 30748 (c:4748)
 	db 0 ; end
 	tx StrangePsyshockDeckName
 
-WondersofScienceDeck: ; 30769 (c:4769)
+WondersofScienceDeck: ; 30769 (c:4769) ; = Revolutionary Theory. Used by Science Club leader Rick.
 	db 13, GRASS_ENERGY
 	db 7, PSYCHIC_ENERGY
 	db 4, ZUBAT
@@ -1075,7 +1075,7 @@ WondersofScienceDeck: ; 30769 (c:4769)
 	db 0 ; end
 	tx WondersofScienceDeckName
 
-FireChargeDeck: ; 30792 (c:4792)
+FireChargeDeck: ; 30792 (c:4792) ; = Overheat. Used by Fire Club leader Ken.
 	db 19, FIRE_ENERGY
 	db 4, CYNDAQUIL1
 	db 3, QUILAVA1
@@ -1096,7 +1096,7 @@ FireChargeDeck: ; 30792 (c:4792)
 	db 0 ; end
 	tx FireChargeDeckName
 
-ImRonaldDeck: ; 307bd (c:47bd)
+ImRonaldDeck: ; 307bd (c:47bd) ; The first deck used against you by Rival Ronald.
 	db 14, PSYCHIC_ENERGY
 	db 13, FIGHTING_ENERGY
 	db 3, GASTLY
@@ -1116,7 +1116,7 @@ ImRonaldDeck: ; 307bd (c:47bd)
 	db 0 ; end
 	tx ImRonaldDeckName
 
-PowerfulRonaldDeck: ; 307ea (c:47ea)
+PowerfulRonaldDeck: ; 307ea (c:47ea) ; The second deck used against you by Rival Ronald.
 	db 7, LIGHTNING_ENERGY
 	db 9, FIGHTING_ENERGY
 	db 7, PSYCHIC_ENERGY
@@ -1141,7 +1141,7 @@ PowerfulRonaldDeck: ; 307ea (c:47ea)
 	db 0 ; end
 	tx PowerfulRonaldDeckName
 
-InvincibleRonaldDeck: ; 3081d (c:481d)
+InvincibleRonaldDeck: ; 3081d (c:481d) ; The deck Rival Ronald uses against you during Challenge Cup matches.
 	db 11, GRASS_ENERGY
 	db 10, FIRE_ENERGY
 	db 4, SUNKERN
@@ -1162,7 +1162,7 @@ InvincibleRonaldDeck: ; 3081d (c:481d)
 	db 0 ; end
 	tx InvincibleRonaldDeckName
 
-LegendaryRonaldDeck: ; 30848 (c:4848)
+LegendaryRonaldDeck: ; 30848 (c:4848) ; The final deck used against you by Rival Ronald.
 	db 11, PSYCHIC_ENERGY	
 	db 9, FIGHTING_ENERGY
 	db 4, SHADOW_LUGIA
@@ -1184,7 +1184,7 @@ LegendaryRonaldDeck: ; 30848 (c:4848)
 	db 0 ; end
 	tx LegendaryRonaldDeckName
 
-MusclesforBrainsDeck: ; 30873 (c:4873)
+MusclesforBrainsDeck: ; 30873 (c:4873) ; Used by Fighting Club member Chris.
 	db 26, FIGHTING_ENERGY
 	db 2, DOUBLE_COLORLESS_ENERGY
 	db 1, TYROGUE
@@ -1205,7 +1205,7 @@ MusclesforBrainsDeck: ; 30873 (c:4873)
 	db 0 ; end
 	tx MusclesforBrainsDeckName
 
-HeatedBattleDeck: ; 308a2 (c:48a2)
+HeatedBattleDeck: ; 308a2 (c:48a2) ; = War and Peace. Used by Fighting Club member Michael.
 	db 21, FIGHTING_ENERGY
 	db 4, DOUBLE_COLORLESS_ENERGY
 	db 2, POLIWAG
@@ -1225,7 +1225,7 @@ HeatedBattleDeck: ; 308a2 (c:48a2)
 	db 0 ; end
 	tx HeatedBattleDeckName
 
-LovetoBattleDeck: ; 308c5 (c:48c5)
+LovetoBattleDeck: ; 308c5 (c:48c5) ; Used by Fightning Club member Jessica.
 	db 26, FIGHTING_ENERGY
 	db 3, TYROGUE
 	db 4, PHANPY1
@@ -1243,7 +1243,7 @@ LovetoBattleDeck: ; 308c5 (c:48c5)
 	db 0 ; end
 	tx LovetoBattleDeckName
 
-ExcavationDeck: ; 308e6 (c:48e6)
+ExcavationDeck: ; 308e6 (c:48e6) ; Used by Rock Club member Ryan.
 	db 12, FIGHTING_ENERGY
 	db 11, WATER_ENERGY
 	db 4, OMANYTE
@@ -1263,7 +1263,7 @@ ExcavationDeck: ; 308e6 (c:48e6)
 	db 0 ; end
 	tx ExcavationDeckName
 
-BlisteringPokemonDeck: ; 3090d (c:490d)
+BlisteringPokemonDeck: ; 3090d (c:490d) ; Used by Rock Club member Andrew.
 	db 6, LIGHTNING_ENERGY
 	db 11, FIGHTING_ENERGY
 	db 2, DOUBLE_COLORLESS_ENERGY
@@ -1285,7 +1285,7 @@ BlisteringPokemonDeck: ; 3090d (c:490d)
 	db 0 ; end
 	tx BlisteringPokemonDeckName
 
-HardPokemonDeck: ; 30938 (c:4938)
+HardPokemonDeck: ; 30938 (c:4938) ; Used by Rock Club member Matthew.
 	db 25, FIGHTING_ENERGY
 	db 4, ONIX
 	db 3, STEELIX
@@ -1302,7 +1302,7 @@ HardPokemonDeck: ; 30938 (c:4938)
 	db 0 ; end
 	tx HardPokemonDeckName
 
-WaterfrontPokemonDeck: ; 30959 (c:4959)
+WaterfrontPokemonDeck: ; 30959 (c:4959) ; Used by Water Club member Sara.
 	db 18, WATER_ENERGY
 	db 7, PSYCHIC_ENERGY
 	db 4, REMORAID
@@ -1320,7 +1320,7 @@ WaterfrontPokemonDeck: ; 30959 (c:4959)
 	db 0 ; end
 	tx WaterfrontPokemonDeckName
 
-LonelyFriendsDeck: ; 30990 (c:4990)
+LonelyFriendsDeck: ; 30990 (c:4990) ; Used by Water Club Member Amanda.
 	db 8, GRASS_ENERGY
 	db 9, WATER_ENERGY
 	db 4, DOUBLE_COLORLESS_ENERGY
@@ -1341,7 +1341,7 @@ LonelyFriendsDeck: ; 30990 (c:4990)
 	db 0 ; end
 	tx LonelyFriendsDeckName
 
-SoundoftheWavesDeck: ; 309b7 (c:49b7)
+SoundoftheWavesDeck: ; 309b7 (c:49b7) ; Used by Water Club Member Joshua.
 	db 24, WATER_ENERGY
 	db 2, HORSEA
 	db 1, SEADRA
@@ -1362,7 +1362,7 @@ SoundoftheWavesDeck: ; 309b7 (c:49b7)
 	db 0 ; end
 	tx SoundoftheWavesDeckName
 
-PikachuDeck: ; 309dc (c:49dc)
+PikachuDeck: ; 309dc (c:49dc) ; = Pikachu (?) deck. Used by Lightning Club member Jennifer.
 	db 7, WATER_ENERGY
 	db 16, LIGHTNING_ENERGY
 	db 3, PICHU
@@ -1380,7 +1380,7 @@ PikachuDeck: ; 309dc (c:49dc)
 	db 0 ; end
 	tx PikachuDeckName
 
-BoomBoomSelfdestructDeck: ; 30a01 (c:4a01)
+BoomBoomSelfdestructDeck: ; 30a01 (c:4a01) ; = Bench Storm. Used by Lightning club member Nicholas.
 	db 8, GRASS_ENERGY
 	db 14, LIGHTNING_ENERGY
 	db 8, FIGHTING_ENERGY
@@ -1397,7 +1397,7 @@ BoomBoomSelfdestructDeck: ; 30a01 (c:4a01)
 	db 0 ; end
 	tx BoomBoomSelfdestructDeckName
 
-PowerGeneratorDeck: ; 30a20 (c:4a20)
+PowerGeneratorDeck: ; 30a20 (c:4a20) ; Used by Lightning club member Brandon.
 	db 15, LIGHTNING_ENERGY
 	db 10, WATER_ENERGY
 	db 2, CHINCHOU1
@@ -1416,7 +1416,7 @@ PowerGeneratorDeck: ; 30a20 (c:4a20)
 	db 0 ; end
 	tx PowerGeneratorDeckName
 
-EtceteraDeck: ; 30a4b (c:4a4b)
+EtceteraDeck: ; 30a4b (c:4a4b) ; Used by Grass Club member Brittany.
 	db 20, GRASS_ENERGY
 	db 2, CHIKORITA1
 	db 2, LEDYBA
@@ -1438,7 +1438,7 @@ EtceteraDeck: ; 30a4b (c:4a4b)
 	db 0 ; end
 	tx EtceteraDeckName
 
-FlowerGardenDeck: ; 30a7e (c:4a7e)
+FlowerGardenDeck: ; 30a7e (c:4a7e) ; Used by Grass Club member Kristin.
 	db 20, GRASS_ENERGY
 	db 4, SUNKERN
 	db 2, SUNFLORA
@@ -1460,7 +1460,7 @@ FlowerGardenDeck: ; 30a7e (c:4a7e)
 	db 0 ; end
 	tx FlowerGardenDeckName
 
-KaleidoscopeDeck: ; 30aa9 (c:4aa9) ; BLISSEYLUTION DECK IRL
+KaleidoscopeDeck: ; 30aa9 (c:4aa9) ; Used by Grass Club member Heather.
 	db 10, GRASS_ENERGY
 	db 12, PSYCHIC_ENERGY
 	db 4, CHIKORITA2
@@ -1480,7 +1480,7 @@ KaleidoscopeDeck: ; 30aa9 (c:4aa9) ; BLISSEYLUTION DECK IRL
 	db 0 ; end
 	tx KaleidoscopeDeckName
 
-GhostDeck: ; 30ad6 (c:4ad6)
+GhostDeck: ; 30ad6 (c:4ad6) ; Used by Psychic Club member Robert.
 	db 21, PSYCHIC_ENERGY
 	db 3, DOUBLE_COLORLESS_ENERGY
 	db 4, GASTLY
@@ -1500,7 +1500,7 @@ GhostDeck: ; 30ad6 (c:4ad6)
 	db 0 ; end
 	tx GhostDeckName
 
-NapTimeDeck: ; 30aff (c:4aff)
+NapTimeDeck: ; 30aff (c:4aff) ; Used by Psychic Club member Daniel.
 	db 18, PSYCHIC_ENERGY
 	db 8, GRASS_ENERGY
 	db 4, SLOWPOKE
@@ -1517,7 +1517,7 @@ NapTimeDeck: ; 30aff (c:4aff)
 	db 0 ; end
 	tx NapTimeDeckName
 
-StrangePowerDeck: ; 30b1e (c:4b1e)
+StrangePowerDeck: ; 30b1e (c:4b1e) ; = Sun and Moon. Used by Psychic Club member Stephanie.
 	db 19, PSYCHIC_ENERGY
 	db 4, DOUBLE_COLORLESS_ENERGY
 	db 4, EEVEE
@@ -1540,7 +1540,7 @@ StrangePowerDeck: ; 30b1e (c:4b1e)
 	db 0 ; end
 	tx StrangePowerDeckName
 
-FlyinPokemonDeck: ; 30b49 (c:4b49)
+FlyinPokemonDeck: ; 30b49 (c:4b49) ; = Aerodynamics. Used by Science club member Joseph.
 	db 21, GRASS_ENERGY
 	db 4, DOUBLE_COLORLESS_ENERGY
 	db 4, HOPPIP
@@ -1558,7 +1558,7 @@ FlyinPokemonDeck: ; 30b49 (c:4b49)
 	db 0 ; end
 	tx FlyinPokemonDeckName
 
-LovelyNidoranDeck: ; 30b6c (c:4b6c)
+LovelyNidoranDeck: ; 30b6c (c:4b6c) ; = Entomology. Used by Science Club member David.
 	db 20, GRASS_ENERGY
 	db 4, SCYTHER
 	db 2, SCIZOR
@@ -1581,7 +1581,7 @@ LovelyNidoranDeck: ; 30b6c (c:4b6c)
 	db 0 ; end
 	tx LovelyNidoranDeckName
 
-PoisonDeck: ; 30b99 (c:4b99)
+PoisonDeck: ; 30b99 (c:4b99) ; = Toxicology. Used by Science Club member Erik.
 	db 23, GRASS_ENERGY
 	db 4, SPINARAK
 	db 2, ARIADOS
@@ -1601,7 +1601,7 @@ PoisonDeck: ; 30b99 (c:4b99)
 	db 0 ; end
 	tx PoisonDeckName
 
-AngerDeck: ; 30bbe (c:4bbe)
+AngerDeck: ; 30bbe (c:4bbe) ; Used by Fire Club Member John.
 	db 22, FIRE_ENERGY
 	db 4, CYNDAQUIL2
 	db 3, QUILAVA2
@@ -1620,7 +1620,7 @@ AngerDeck: ; 30bbe (c:4bbe)
 	db 0 ; end
 	tx AngerDeckName
 
-FlamethrowerDeck: ; 30be5 (c:4be5)
+FlamethrowerDeck: ; 30be5 (c:4be5) ; = Burn it Down! Used by Fire Club member Adam.
 	db 15, FIRE_ENERGY
 	db 6, FIGHTING_ENERGY
 	db 2, SLUGMA
@@ -1641,7 +1641,7 @@ FlamethrowerDeck: ; 30be5 (c:4be5)
 	db 0 ; end
 	tx FlamethrowerDeckName
 
-ReshuffleDeck: ; 30c0e (c:4c0e)
+ReshuffleDeck: ; 30c0e (c:4c0e) ; = Plasma. Used by Fire Club member Jonathan.
 	db 15, FIRE_ENERGY
 	db 7, LIGHTNING_ENERGY
 	db 4, CHARMANDER
@@ -1666,7 +1666,7 @@ ReshuffleDeck: ; 30c0e (c:4c0e)
 	db 0 ; end
 	tx ReshuffleDeckName
 
-ImakuniDeck: ; 30c3d (c:4c3d)
+ImakuniDeck: ; 30c3d (c:4c3d) ; Used by Strange Life Form Imakuni.
 	db 10, FIGHTING_ENERGY
 	db 16, WATER_ENERGY
 	db 3, JIGGLYPUFF

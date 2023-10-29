@@ -2897,7 +2897,7 @@ OmastarCard: ; 31b5c (c:5b5c)
 	db EVOLUTION | NONE ; sets
 	db OMASTAR
 	db 90 ; hp
-	db STAGE1 ; stage
+	db STAGE2 ; stage
 	tx OmanyteName ; pre-evo name
 
 	; attack 1
