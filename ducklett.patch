@@ -1,0 +1,325 @@
+diff --git a/Makefile b/Makefile
+index 3a5e810..b78b483 100644
+--- a/Makefile
++++ b/Makefile
+@@ -104,10 +104,12 @@ src/gfx/booster_packs/evolution2.2bpp: rgbgfx += -x 10
+ src/gfx/booster_packs/laboratory2.2bpp: rgbgfx += -x 10
+ src/gfx/booster_packs/mystery2.2bpp: rgbgfx += -x 10
+ 
+ src/gfx/cards/%.2bpp: rgbgfx += -Z -P
+ 
++src/custom/gfx/cards/%.2bpp: rgbgfx += -Z -P
++
+ src/gfx/duel/anims/result.2bpp: rgbgfx += -x 10
+ src/gfx/duel/dmg_sgb_symbols.2bpp: rgbgfx += -x 7
+ src/gfx/duel/other.2bpp: rgbgfx += -x 7
+ 
+ src/gfx/fonts/full_width/4.1bpp: rgbgfx += -x 3
+diff --git a/src/constants/card_constants.asm b/src/constants/card_constants.asm
+index 1cb28a2..352e437 100644
+--- a/src/constants/card_constants.asm
++++ b/src/constants/card_constants.asm
+@@ -225,6 +225,7 @@
+ 	const REVIVE                      ; $e0
+ 	const MAINTENANCE                 ; $e1
+ 	const POKEMON_FLUTE               ; $e2
+ 	const GAMBLER                     ; $e3
+ 	const RECYCLE                     ; $e4
++	const DUCKLETT                    ; $e5
+ DEF NUM_CARDS EQU const_value - 1
+diff --git a/src/custom/gfx.asm b/src/custom/gfx.asm
+new file mode 100644
+index 0000000..84da9ba
+--- /dev/null
++++ b/src/custom/gfx.asm
+@@ -0,0 +1,3 @@
++DucklettCardGfx:
++	INCBIN "custom/gfx/cards/ducklett.2bpp"
++	INCBIN "custom/gfx/cards/ducklett.pal"
+diff --git a/src/custom/gfx/cards/ducklett.png b/src/custom/gfx/cards/ducklett.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..0f5d3756f045d1062d6d535bd6c2202efaa08340
+GIT binary patch
+literal 1250
+zcmV<81ReW{P)<h;3K|Lk000e1NJLTq002M$001xo0{{R3+$EHZ0004nX+uL$Nkc;*
+zaB^>EX>4Tx04R}tkv&MmP!xqvQ>7vm2Rn#3WT;LSii!v>T7@E12(?114kj=CgC-40
+zii@M*T5#}ZvFhOBtgC~oAPD||xVktgx=4xlC509-UU<BZ^X@skcOM`$DonGw;((^x
+zW;&S=v$<6<^a=q%1Q5rJ%q(M0l2Y)kuY2mGx{L8F|Gqz~Pt98l2#Cb9%rI@@4dSUy
+z+u*!U9APC{B|aw}GwFiFk6c$ge&bwpS>TxwGn1Ytju4B*4pustl}wFzk~perI^_#l
+zk5$fFoV7}gweHDZ7|!b}%Uq{5j3gGZ1PLM()KEqRHe$5vq*zGPdBVp(<oYFYDdZ}H
+zkz)Z>Xpmh$_#gb9tyP#9_maX1p!>yfK1P7hF3_wy&iAq7G*5uwGjOH1{nZ9A{YiSg
+ztwoQ3{%zpmx~(aDz~v4w_+-eY>`FmeLZJY>pV2qvfPq_}cg>qy>l~*KK!#?Ox&aOj
+zfzcvmulu~ar*m%q_O#~r1B+*Jv8Pc3wEzGB3{Xr|MNCRWd&0KU!e!Cd){Nujy8r+H
+z32;bRa{vGf6951U69E94oEQKA00(qQO+^Ri0s{g7A0cd{j{pDy*hxe|R4C77lV3<v
+zQ5?sQx{(FxZf=>DC{qR@m<l4=#!WjHHOySQM;kU0oMJsBgmVPRjZ!j*B&KnPg_aSz
+zhY*AwR;cw*JyZj2t!0;Kl>Y)Pnq10z_v_5w>i72h^7($xIX`{}p?`~E^q6C?S!E0$
+z2%sPhuE3b*EegT1I}%aigq34Bi-H^6p++j`IfI@M0~_`Bx=8R$6ltv-$1wG~g9%P4
+zL>ehUctS`8gg=BOLTsmz0drJI1xeC6f-Z8067gaILbK_Ogy@lhklStTAggK%=OP?N
+zrt@28y&}Dn#Cr*Etw$Nl9b$D7P()m0vPFy%El6{H5+vw$j^VnMD9VkQj+J`=B5=xH
+z_GG*nvC<yj>S%vNk@=}r|40tX4x119ieIWxRTO?dTG1f36W*p>RX09KPTx}I=VoM?
+zgdgL%>wX9|OmD1GOX*1=W=#6#{~8nlV#^A$^st~Q@cSOxTebk`#IlSm1lD}_dt2#y
+z;=+NB0KiO6p4~><8CF3>5CDaRYppcmC)-bl46HykXG6(EU$S~aLFo!bFTgYVyEa$4
+z>`~ATDnvR{W{G{UZjt0YMVWCznz)xjL)4~=W^@=>kT>nSEcPLQLDOr*!W#ggp<a~*
+zfbd*0VqX-_%bVd+RT`#ayE}mj1kg@{Yfg3xAjq|^sD*~O?Hx*%LzX31Ph1FqD%BR%
+z3`=szW=4k~>H(q4Q)RV)BiO2-e1I?Ax71e7=61WfbR(32kGlQxQNlYUH*wyGXTb9f
+zwS<r=LU5`=h56W}RK-C!D;ap7FCufz^cH;I7bJwY9j_Gowk<F;Lsx=lbk(bQ+rrYh
+zDBTKzxdPwVUjmjf?J=&?T#g@0iyI(%tJP3$)S*(^u9q1z7_FYcYYE9H4d8KMW$v#d
+zjMmWPrxsHzBYbmo>Ve<O?M)m*3n&*r)YU#}Umx4Ka3!I5=D*+Z2P<-xc_4e`d;kCd
+M07*qoM6N<$f)C3wod5s;
+
+literal 0
+HcmV?d00001
+
+diff --git a/src/custom/text1.asm b/src/custom/text1.asm
+new file mode 100644
+index 0000000..cf07e60
+--- /dev/null
++++ b/src/custom/text1.asm
+@@ -0,0 +1,15 @@
++DucklettName:
++	text "Ducklett"
++	done
++
++FlapName:
++	text "Flap"
++	done
++	
++;         01234567890123456789012345678901234
++DucklettDescription:
++	text "They are better at swimming than"
++	line "flying, and they happily eat"
++	line "their favorite food, peat moss,"
++	line "as they dive underwater."
++	done
+diff --git a/src/data/cards.asm b/src/data/cards.asm
+index 48be497..f3f34c8 100644
+--- a/src/data/cards.asm
++++ b/src/data/cards.asm
+@@ -230,10 +230,11 @@ CardPointers::
+ 	dw ReviveCard
+ 	dw MaintenanceCard
+ 	dw PokemonFluteCard
+ 	dw GamblerCard
+ 	dw RecycleCard
++	dw DucklettCard
+ 	dw NULL
+ 	assert_table_length NUM_CARDS + 2
+ 
+ BulbasaurCard:
+ 	db TYPE_PKMN_GRASS ; type
+@@ -10220,5 +10221,59 @@ RecycleCard:
+ 	db LABORATORY | FOSSIL ; sets
+ 	db RECYCLE
+ 	dw RecycleEffectCommands ; effect commands
+ 	tx RecycleDescription ; description
+ 	dw NONE ; description (cont)
++	
++	
++DucklettCard:
++	db TYPE_PKMN_COLORLESS ; type
++	gfx DucklettCardGfx ; card gfx 1
++	tx DucklettName ; card name 2
++	db CIRCLE ; rarity
++	db EVOLUTION | NONE ; sets
++	db DUCKLETT
++	db 50 ; hp
++	db BASIC ; stage
++	dw NONE ; pre-evo name
++
++	; attack 1
++	energy COLORLESS, 1 ; energies
++	tx FlapName ; 3 name
++	dw NONE ; description
++	dw NONE ; description (cont)
++	db 20 ; damage
++	db DAMAGE_NORMAL ; category
++	dw NONE ; effect commands
++	db NONE ; flags 1
++	db NONE ; flags 2
++	db NONE ; flags 3
++	db 0
++	db ATK_ANIM_HIT ; animation
++	
++	; attack 2
++	energy 0 ; energies
++	dw NONE ; name
++	dw NONE ; description
++	dw NONE ; description (cont)
++	db 0 ; damage
++	db DAMAGE_NORMAL ; category
++	dw NONE ; effect commands
++	db NONE ; flags 1
++	db NONE ; flags 2
++	db NONE ; flags 3
++	db 0
++	db ATK_ANIM_NONE ; animation
++
++	db 1 ; retreat cost
++	db WR_LIGHTNING ; weakness
++	db WR_FIGHTING ; resistance
++	tx DuckName ; category
++	db 69 ; Pokedex number
++	db 0
++	db 12 ; level
++	db 1, 8 ; length
++	dw 12 * 10 ; weight
++	tx DucklettDescription ; description 4
++	db 19
++	
++
+diff --git a/src/data/decks.asm b/src/data/decks.asm
+index e73161e..c467a39 100644
+--- a/src/data/decks.asm
++++ b/src/data/decks.asm
+@@ -499,11 +499,11 @@ PracticePlayerDeck:
+ 	card_item WATER_ENERGY,   2
+ 	card_item PSYCHIC_ENERGY, 1
+ 	card_item SEAKING,        1
+ 	card_item STARYU,         1
+ 	card_item FULL_HEAL,      1
+-	card_item GOLDEEN,        1
++	card_item DUCKLETT,       1
+ 	card_item WATER_ENERGY,   5
+ 	card_item DROWZEE,        1
+ 	card_item POTION,         1
+ 	card_item SEAKING,        1
+ 	card_item STARMIE,        1
+@@ -536,14 +536,14 @@ PracticePlayerDeck:
+ 	card_item POTION,         1
+ 	card_item PSYCHIC_ENERGY, 1
+ 	card_item DROWZEE,        1
+ 	card_item PSYCHIC_ENERGY, 1
+ 	card_item RATTATA,        1
+-	card_item GOLDEEN,        1
++	card_item DUCKLETT,       1
+ 	card_item SEEL,           1
+ 	card_item DEWGONG,        1
+-	card_item GOLDEEN,        1
++	card_item DUCKLETT,       1
+ 	card_item STARYU,         1
+ 	card_item LAPRAS,         1
+ 	card_item ABRA,           1
+ 	card_item DROWZEE,        1
+ 	card_item HYPNO,          1
+diff --git a/src/gfx.asm b/src/gfx.asm
+index e66a491..c0217ad 100644
+--- a/src/gfx.asm
++++ b/src/gfx.asm
+@@ -502,12 +502,12 @@ TitleScreenTilemap::
+ 	dw NULL
+ 	db FALSE ; cgb mode
+ 	INCBIN "data/maps/tiles/title_screen.bin"
+ 
+ TitleScreenCGBTilemap::
+-	db $14 ; width
+-	db $12 ; height
++	db $14 ; width (in hex, dec 20)
++	db $12 ; height (in hex, dec 18)
+ 	dw NULL
+ 	db TRUE ; cgb mode
+ 	INCBIN "data/maps/tiles/title_screen_cgb.bin"
+ 
+ CopyrightTilemap::
+diff --git a/src/layout.link b/src/layout.link
+index 58b325a..8dd5ecc 100644
+--- a/src/layout.link
++++ b/src/layout.link
+@@ -78,11 +78,10 @@ ROMX $08
+ 	"AI Logic 2"
+ ROMX $0b
+ 	"Effect Functions"
+ ROMX $0c
+ 	"Decks"
+-	"Cards"
+ ROMX $0d
+ 	"Text 1"
+ ROMX $0e
+ 	"Text 2"
+ ROMX $0f
+@@ -172,10 +171,18 @@ ROMX $3d
+ 	"Audio 1"
+ ROMX $3e
+ 	"Audio 2"
+ ROMX $3f
+ 	"Audio 3"
++ROMX $41
++	"Moved Text Offsets"
++ROMX $42
++	"Moved Cards"
++ROMX $43
++	"Custom Text 1"
++ROMX $44
++	"Custom Gfx"
+ WRAM0
+ 	"WRAM0"
+ 	"WRAM0 Duels 1"
+ 	"WRAM0 Text Engine"
+ 	"WRAM0 1"
+diff --git a/src/main.asm b/src/main.asm
+index c27c3e5..e7f9070 100644
+--- a/src/main.asm
++++ b/src/main.asm
+@@ -158,19 +158,22 @@ SECTION "Effect Functions", ROMX
+ INCLUDE "engine/duel/effect_functions.asm"
+ 
+ SECTION "Decks", ROMX
+ INCLUDE "data/decks.asm"
+ 
+-SECTION "Cards", ROMX
++SECTION "Moved Cards", ROMX
+ INCLUDE "data/cards.asm"
+ 
+ SECTION "SGB", ROMX
+ INCLUDE "engine/sgb.asm"
+ 
+ SECTION "Bank 20", ROMX
+ INCLUDE "engine/bank20.asm"
+ 
++SECTION "Custom Gfx", ROMX
++INCLUDE "custom/gfx.asm"
++
+ SECTION "Gfx", ROMX
+ INCLUDE "engine/gfx/gfx_table_pointers.asm"
+ INCLUDE "engine/gfx/tilemaps.asm"
+ INCLUDE "engine/gfx/tilesets.asm"
+ INCLUDE "engine/gfx/sprites.asm"
+diff --git a/src/text.asm b/src/text.asm
+index 7d2140e..469d8fe 100644
+--- a/src/text.asm
++++ b/src/text.asm
+@@ -1,10 +1,12 @@
+ INCLUDE "macros.asm"
+ INCLUDE "constants.asm"
+ 
+-SECTION "Text 1", ROMX
++SECTION "Moved Text Offsets", ROMX
+ INCLUDE "text/text_offsets.asm"
++
++SECTION "Text 1", ROMX
+ INCLUDE "text/text1.asm"
+ 
+ SECTION "Text 2", ROMX
+ INCLUDE "text/text2.asm"
+ 
+@@ -38,5 +40,8 @@ INCLUDE "text/text11.asm"
+ SECTION "Text 12", ROMX
+ INCLUDE "text/text12.asm"
+ 
+ SECTION "Text 13", ROMX
+ INCLUDE "text/text13.asm"
++
++SECTION "Custom Text 1", ROMX
++INCLUDE "custom/text1.asm"
+diff --git a/src/text/text_offsets.asm b/src/text/text_offsets.asm
+index ed6cadc..11654c5 100644
+--- a/src/text/text_offsets.asm
++++ b/src/text/text_offsets.asm
+@@ -2989,5 +2989,8 @@ TextOffsets::
+ 	textpointer PokemonFluteDescription                            ; 0x0ba9
+ 	textpointer GamblerName                                        ; 0x0baa
+ 	textpointer GamblerDescription                                 ; 0x0bab
+ 	textpointer RecycleName                                        ; 0x0bac
+ 	textpointer RecycleDescription                                 ; 0x0bad
++	textpointer DucklettName                                       ; 0x0bae
++	textpointer FlapName                                           ; 0x0baf
++	textpointer DucklettDescription                                ; 0x0bb0
