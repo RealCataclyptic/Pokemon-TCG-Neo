@@ -36,7 +36,7 @@ all: $(rom) compare
 tcg: $(rom) compare
 
 clean: tidy
-	find src/gfx \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pal' \) -delete
+	find src \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pal' \) -delete
 
 tidy:
 	rm -f $(rom) $(rom_obj) $(rom:.gbc=.map) $(rom:.gbc=.sym) src/rgbdscheck.o
@@ -96,7 +96,7 @@ src/gfx/booster_packs/laboratory2.2bpp: rgbgfx += -x 10
 src/gfx/booster_packs/mystery2.2bpp: rgbgfx += -x 10
 
 src/gfx/cards/%.2bpp: rgbgfx += -h -P
-
+src/custom/gfx/cards/%.2bpp: rgbgfx += -h -P
 src/gfx/duel/anims/51.2bpp: rgbgfx += -x 10
 src/gfx/duel/dmg_sgb_symbols.2bpp: rgbgfx += -x 7
 src/gfx/duel/other.2bpp: rgbgfx += -x 7
