@@ -1452,7 +1452,7 @@ Palette119::
 
 	rgb 31, 29, 25
 	rgb 28, 17, 14
-	rgb 0,  14,  31
+	rgb 30,  5,  9
 	rgb  0,  0,  8
 
 SECTION "Anims 4", ROMX

@@ -709,6 +709,7 @@ LookForCardsInDeck:
 	dw .SearchDeckForBasicFighting
 	dw .SearchDeckForBasicEnergy
 	dw .SearchDeckForPokemon
+	dw .SearchDeckForEeveelution
 
 .set_carry
 	scf
@@ -791,6 +792,36 @@ LookForCardsInDeck:
 	call GetCardType
 	cp TYPE_ENERGY
 	jr nc, .loop_deck_pkmn
+	or a
+	ret
+
+.SearchDeckForEeveelution
+	ld hl, wDuelTempList
+.loop_deck_eeveelution
+	ld a, [hli]
+	cp $ff
+	jr z, .set_carry
+	call GetCardIDFromDeckIndex
+	ld a, e
+	cp FLAREON
+	jr z, .found_eeveelution
+	ld a, e
+	cp JOLTEON
+	jr z, .found_eeveelution
+	ld a, e
+	cp VAPOREON
+	jr z, .found_eeveelution
+	ld a, e
+	cp ESPEON1
+	jr z, .found_eeveelution
+	ld a, e
+	cp ESPEON2
+	jr z, .found_eeveelution
+	ld a, e
+	cp UMBREON
+	jr z, .found_eeveelution
+	jr nz, .loop_deck_eeveelution
+.found_eeveelution
 	or a
 	ret
 
@@ -1578,6 +1609,7 @@ FoulOdorEffect:
 	jr .loop_return_deck
 
 .draw_cards
+	call Func_2c0bd
 	ld a, 7
 	bank1call DisplayDrawNCardsScreen
 	ld c, 7

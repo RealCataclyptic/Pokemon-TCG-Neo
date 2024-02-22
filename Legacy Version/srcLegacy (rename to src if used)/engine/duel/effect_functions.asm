@@ -742,11 +742,21 @@ LookForCardsInDeck:
 	ld a, e
 	cp FLAREON
 	jr z, .found_nidoran
+	ld a, e
 	cp JOLTEON
+	jr z, .found_nidoran
+	ld a, e
 	cp VAPOREON
+	jr z, .found_nidoran
+	ld a, e
 	cp ESPEON1
+	jr z, .found_nidoran
+	ld a, e
 	cp ESPEON2
+	jr z, .found_nidoran
+	ld a, e
 	cp UMBREON
+	jr z, .found_nidoran
 	jr nz, .loop_deck_nidoran
 .found_nidoran
 	or a
@@ -1543,6 +1553,7 @@ FoulOdorEffect:
 	jr .loop_return_deck
 
 .draw_cards
+	call Func_2c0bd
 	ld a, 7
 	bank1call DisplayDrawNCardsScreen
 	ld c, 7
@@ -2394,7 +2405,9 @@ GiantTail_AIEffect:
 	jp SetExpectedAIDamage
 	
 PP_AIEffect:
-	farcall PP_AIEffect2
+	ld a, 20 / 2
+	lb de, 0, 20
+	jp SetExpectedAIDamage
 	ret
 
 PP_NoDamage50PercentEffect:
@@ -5785,8 +5798,6 @@ AbsorbEffect:
 	ret
 
 SnivelEffect:
-	call TossCoin_BankB
-	ret nc
 	ld a, SUBSTATUS2_REDUCE_BY_20
 	call ApplySubstatus2ToDefendingCard
 	ret

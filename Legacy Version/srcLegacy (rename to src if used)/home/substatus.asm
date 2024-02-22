@@ -691,7 +691,8 @@ CheckMindGamesScenario::
 	ret
 
 ; return carry if any duelist has Aerodactyl and its Prehistoric Power Pkmn Power is active
-IsPrehistoricPowerActive:: ; deleted to save space
+IsPrehistoricPowerActive:: ; Effectively deleted to save space, also it's not even in this version
+	xor a
 	ret
 
 ; clears some SUBSTATUS2 conditions from the turn holder's active Pokemon.

@@ -1513,7 +1513,7 @@ EnergySearchEffectCommands:		;Search for a basic energy in the deck, add to your
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, EnergySearch_PlayerSelection
 	db  $00
 
-ProfessorOakEffectCommands:	; Discard hand and draw 6 cards. Mofified from base to draw 1 less card.
+ProfessorOakEffectCommands:	; Discard hand and draw 7 cards.
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, ProfessorOakEffect
 	db  $00
 

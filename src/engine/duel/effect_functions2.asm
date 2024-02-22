@@ -226,7 +226,7 @@ EeveelutionPlayerSelectEffect2:
 	farcall CreateDeckCardList
 	ldtx hl, ChooseEeveelutionFromDeckText
 	ldtx bc, Eeveelutiontext
-	lb de, SEARCHEFFECT_POKEMON, $00
+	lb de, SEARCHEFFECT_EEVEELUTION, $00
 	farcall LookForCardsInDeck
 	ret c
 

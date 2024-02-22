@@ -685,13 +685,8 @@ MagneticWaveEffect2:
 	jr nc, .no_underflow
 	xor a
 .no_underflow
-	jp SetDefiniteDamage
+	farcall SetDefiniteDamage
 	ret
-
-PP_AIEffect2:
-	ld a, 20 / 2
-	lb de, 0, 20
-	jp SetExpectedAIDamage
 
 PP_NoDamage50PercentEffect2:
 	ldtx de, DamageCheckIfTailsNoDamageText
