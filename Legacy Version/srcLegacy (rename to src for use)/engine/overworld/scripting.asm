@@ -1528,16 +1528,6 @@ ScriptCommand_PickLegendaryCard:
 	dec b
 	jr .loop
 .done
-	ld a, d
-	and e ; has this legendary been given already?
-	jr nz, .new_random
-	push bc
-	ld b, 0
-	ld hl, LegendaryCardEvents
-	add hl, bc
-	ld a, [hl]
-	call MaxOutEventValue ; also modifies EVENT_LEGENDARY_CARDS_RECEIVED_FLAGS
-	pop bc
 	ld hl, LegendaryCards
 	ld a, c
 	jr ScriptCommand_PickChallengeCupPrizeCard.get_card_from_list

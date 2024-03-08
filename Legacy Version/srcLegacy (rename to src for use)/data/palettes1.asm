@@ -1306,10 +1306,10 @@ Palette29::
 	rgb 30, 27, 24
 	rgb  4, 19,  3
 	rgb  0,  0,  0
-
+; Player colors.
 	rgb  6, 14, 11
 	rgb 30, 27, 24
-	rgb 30,  5,  9
+	rgb  6, 15, 25
 	rgb  0,  0,  0
 
 	rgb  6, 14, 11
