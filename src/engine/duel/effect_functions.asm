@@ -7227,19 +7227,13 @@ MagnetonSonicboom_NullEffect:
 	ret
 
 MagnetonLv35SelfdestructEffect:
-
-; own bench
-	ld a, $01
-	ld [wIsDamageToSelf], a
-	ld a, 10
-	call DealDamageToAllBenchedPokemon
-
 ; opponent's bench
 	call SwapTurn
 	xor a
 	ld [wIsDamageToSelf], a
-	ld a, 20
+	ld a, 10
 	call DealDamageToAllBenchedPokemon
+	farcall Func_6e4c
 	call SwapTurn
 	ret
 

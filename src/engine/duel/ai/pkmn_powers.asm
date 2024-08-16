@@ -461,7 +461,7 @@ HandleAIPkmnPowers:
 	push bc
 
 ; check heal
-	cp PROFESSOR_ELM ; Heal doesnt work on AI so it's been deleted. EDIT: Even editing it it still doesn't work?
+	cp ENTEI2 ; I messed up something in Heal a long time ago, so it's been deleted. AI logic is now Step In.
 	jr nz, .check_peek
 	call HandleAIHeal
 	jr .next_1
@@ -509,20 +509,27 @@ HandleAIPkmnPowers:
 HandleAIHeal:
 	ld a, c
 	ldh [hTemp_ffa0], a
-	call .CheckHealTarget
-	ret nc ; return if no target to heal
-	push af
+	xor a
+	ldh [hTempPlayAreaLocation_ff9d], a
+	call CheckIfDefendingPokemonCanKnockOut
+	ret nc ; Defending Pokemon cannot KO
+	ldh a, [hTemp_ffa0]
+	ld e, a
+	call GetPlayAreaCardAttachedEnergies
+	ld a, [wTotalAttachedEnergies]
+	cp 3
+	ccf
+	ret nc ; Dragonite doesn't have enough Energy to attack
 	ld a, [wce08]
 	ldh [hTempCardIndex_ff9f], a
 	ld a, OPPACTION_USE_PKMN_POWER
 	bank1call AIMakeDecision
-	pop af
-	ldh [hPlayAreaEffectTarget], a
 	ld a, OPPACTION_EXECUTE_PKMN_POWER_EFFECT
 	bank1call AIMakeDecision
 	ld a, OPPACTION_DUEL_MAIN_SCENE
 	bank1call AIMakeDecision
 	ret
+
 
 ; finds a target suitable for AI to use Heal on.
 ; only heals Arena card if the Defending Pokemon

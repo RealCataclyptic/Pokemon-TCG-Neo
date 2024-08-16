@@ -49,4 +49,5 @@ PortraitGfxData:
 	portrait TILESET_STEPHANIE, PALETTE_159, SGBData_StephaniePortraitPals    ; STEPHANIE_PIC
 	portrait TILESET_AARON,     PALETTE_160, SGBData_AaronPortraitPals        ; AARON_PIC
 	portrait TILESET_PLAYER,    PALETTE_120, SGBData_LinkOpponentPortraitPals ; LINK_OPP_PIC
+	portrait TILESET_MINT,      PALETTE_161, SGBData_PlayerPortraitPals       ; MINT_PIC
 	assert_table_length NUM_PICS

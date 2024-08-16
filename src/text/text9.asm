@@ -937,7 +937,7 @@ CreatedInCooperationWithText:
 	line ""
 	line ""
 	line "          Well what else am I"
-	line "         suppsed to put here!?"
+	line "         supposed to put here!?"
 	line "             "
 	done
 

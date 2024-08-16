@@ -2046,6 +2046,8 @@ AISelectSpecialAttackParameters:
 	jr z, .EnergyAbsorption
 	cp TOGEPI2
 	jr z, .EnergySpikeLI
+	cp ELECTRODE
+	jr z, .EnergySpikeLI
 	cp JOLTEON
 	jr z, .EnergySpikeLI
 	cp AZUMARILL2

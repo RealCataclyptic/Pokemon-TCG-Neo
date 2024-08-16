@@ -345,7 +345,7 @@ TangelaStunSporeEffectCommands:		; Does extra damage if a T energy is attached, 
 	dbw EFFECTCMDTYPE_AI, ExtraDamageIfTEnergiesAIEffect
 	db  $00
 
-TangelaPoisonWhipEffectCommands:		; Must discard a F or L energy. If F, +20 damage. If L, heal 20 HP.
+DiscardLorFforStuffEffectCommands:		; Must discard a F or L energy. If F, +20 damage. If L, heal 20 HP.
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, HoohMoreDamageEffect
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, HoohRecoverEffect
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, PlayerForLSelectionHoohCEffect
@@ -565,7 +565,7 @@ LaprasConfuseRayEffectCommands:		;Free
 
 ETB10ToOppBenchEffectCommands:		; When the card enters play, Pokepower triggers, does 10 to each bench. 
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, Quickfreeze_InitialEffect
-	dbw EFFECTCMDTYPE_PKMN_POWER_TRIGGER, MagnetonLv28SelfdestructEffect
+	dbw EFFECTCMDTYPE_PKMN_POWER_TRIGGER, MagnetonLv35SelfdestructEffect
 	db  $00
 
 ArticunoIceBreathEffectCommands:		;Free
@@ -991,7 +991,7 @@ Do30ToABenchEffectCommands:		; Does 30 to a benched opp. Modified Stretch kick c
 	dbw EFFECTCMDTYPE_AI_SELECTION, StretchKick_AISelectEffect
 	db  $00
 
-SandshrewSandAttackEffectCommands:	;Free
+SandshrewSandAttackEffectCommands:	;Same as smokescreen, but sand attack name specific
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, SandAttackEffect
 	db  $00
 

@@ -97,28 +97,7 @@ AIDoTurn_LegendaryMoltres:
 	ld a, AI_TRAINER_CARD_PHASE_04
 	call AIProcessHandTrainerCards
 
-; check if AI can play MoltresLv37
-; from hand and if so, play it.
-	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
-	call GetTurnDuelistVariable
-	cp MAX_PLAY_AREA_POKEMON
-	jr nc, .skip_moltres ; skip if bench is full
-	ld a, DUELVARS_NUMBER_OF_CARDS_NOT_IN_DECK
-	call GetTurnDuelistVariable
-	cp DECK_SIZE - 9
-	jr nc, .skip_moltres ; skip if cards in deck <= 9
-	ld a, ARCADE_GAME
-	call CountPokemonIDInBothPlayAreas
-	jr c, .skip_moltres ; skip if Muk in play
-	ld a, MAIL_FROM_BILL
-	call LookForCardIDInHandList_Bank5
-	jr nc, .skip_moltres ; skip if no MoltresLv37 in hand
-	ldh [hTemp_ffa0], a
-	ld a, OPPACTION_PLAY_BASIC_PKMN
-	bank1call AIMakeDecision
 
-.skip_moltres
-; play Pokemon from hand
 	call AIDecidePlayPokemonCard
 	ret c ; return if turn ended
 ; process Trainer cards

@@ -96,7 +96,7 @@ NoDamageOrEffectDueToBarrierText:
 
 NoDamageOrEffectDueToAgilityText:
 	text "No damage or effect on next Attack"
-	line "due to the effects of Agility."
+	line "due to a protection effect."
 	done
 
 UnableToUseAttackDueToNShieldText:
@@ -1795,19 +1795,19 @@ BoosterPackTitleText:
 	done
 
 Item1ColosseumText:
-	text "1. Colosseum"
+	text "1. Genesis"
 	done
 
 Item2EvolutionText:
-	text "2. Evolution"
+	text "2. Discovery"
 	done
 
 Item3MysteryText:
-	text "3. Mystery"
+	text "3. Revelation"
 	done
 
 Item4LaboratoryText:
-	text "4. Laboratory"
+	text "4. Destiny"
 	done
 
 Item5PromotionalCardText:

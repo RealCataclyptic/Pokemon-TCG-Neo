@@ -32,7 +32,7 @@ AIActionTable_LegendaryRonald:
 	ret
 
 .list_arena
-	db TOGEPI2
+	db MURKROW
 	db PHANPY1
 	db EEVEE
 	db MEWTWO
@@ -44,7 +44,7 @@ AIActionTable_LegendaryRonald:
 	db EEVEE
 	db PHANPY1
 	db MEWTWO
-	db TOGEPI2
+	db MURKROW
 	db HITMONLEE
 	db SHADOW_LUGIA
 	db $00
@@ -52,7 +52,7 @@ AIActionTable_LegendaryRonald:
 .list_play_hand
 	db SHADOW_LUGIA
 	db EEVEE
-	db TOGEPI2
+	db MURKROW
 	db PHANPY1
 	db MEWTWO
 	db HITMONLEE
@@ -72,7 +72,7 @@ AIActionTable_LegendaryRonald:
 	ai_energy HITMONLEE,            3, +0
 	ai_energy EEVEE,    		2, +1
 	ai_energy UMBREON,		3, +3
-	ai_energy TOGEPI2,		1, +3
+	ai_energy MURKROW,		2, +2
 	db $00
 
 .list_prize

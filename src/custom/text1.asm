@@ -986,3 +986,13 @@ AttackSearchAttachEnergyDesc:
 	line "it to 1 of your Pokémon. Shuffle"
 	line "your deck afterward."
 	done
+
+SwitchDFPYesNoText:
+	text "Switch the Defending Pokémon?"
+	line "            Yes     No"
+	done
+
+NoAttackOnFirstTurnText:
+	text "You cannot attack on"
+	line "your first turn."
+	done

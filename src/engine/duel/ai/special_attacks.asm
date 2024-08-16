@@ -15,6 +15,8 @@ HandleSpecialAIAttacks: ; TCG Neo note: Deleting the special AI handling flags i
 	jp z, .EnergySpikeLI
 	cp TOGEPI2
 	jp z, .EnergySpikeLI
+	cp ELECTRODE
+	jp z, .EnergySpikeLI
 	cp SUNFLORA
 	jp z, .EnergySpikeGR
 	cp CELEBI_C
@@ -405,9 +407,7 @@ HandleSpecialAIAttacks: ; TCG Neo note: Deleting the special AI handling flags i
 	ld a, CARD_LOCATION_DECK
 	ld e, GRASS_ENERGY
 	call CheckIfAnyCardIDinLocation
-			 
 	call AIProcessButDontPlayEnergy_SkipEvolution
- 
 	ld a, $83
 	ret
 ; only incentivize attack if player's active card,

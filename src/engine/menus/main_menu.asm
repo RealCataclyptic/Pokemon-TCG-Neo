@@ -31,6 +31,7 @@ MainMenuFunctionTable:
 
 MainMenu_NewGame:
 	farcall Func_c1b1
+	call PlayerGenderSelection
 	call DisplayPlayerNamingScreen
 	farcall InitSaveData
 	call EnableSRAM

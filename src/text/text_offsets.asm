@@ -3185,3 +3185,8 @@ TextOffsets::
 	textpointer GigaDrainName
 	textpointer FullBloomName
 	textpointer AttackSearchAttachEnergyDesc
+	textpointer SwitchDFPYesNoText
+	textpointer NoAttackOnFirstTurnText
+	textpointer AreYouBoyOrGirlText
+	textpointer BoyText
+	textpointer GirlText

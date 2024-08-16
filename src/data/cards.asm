@@ -2182,7 +2182,7 @@ Typhlosion1Card: ; 3170b (c:570b)
 	tx EruptionName ; name
 	tx Minus10PerSelfDamageDesc ; description
 	dw NONE ; description (cont)
-	db 100 ; damage
+	db 90 ; damage
 	db DAMAGE_MINUS ; category
 	dw Do10LessPerSelfDamageEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -3559,7 +3559,7 @@ Feraligatr1Card: ; 31d64 (c:5d64)
 	tx RampageName ; name
 	tx Do10MorePerSelfDamageDesc ; description
 	dw NONE ; description (cont)
-	db 30 ; damage
+	db 20 ; damage
 	db DAMAGE_PLUS ; category
 	dw Do10MorePerSelfDamageEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -4006,7 +4006,7 @@ VaporeonCard: ; 31c1f (c:5c1f)
 	dw NONE ; description (cont)
 	db 10 ; damage
 	db DAMAGE_NORMAL ; category
-	dw SmokescreenEffectCommands ; effect commands
+	dw SandshrewSandAttackEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NULLIFY_OR_WEAKEN_ATTACK ; flags 2
 	db NONE ; flags 3
@@ -4414,7 +4414,7 @@ WooperCard: ; 31fad (c:5fad)
 	dw NONE ; description (cont)
 	db 10 ; damage
 	db DAMAGE_NORMAL ; category
-	dw SmokescreenEffectCommands ; effect commands
+	dw SandshrewSandAttackEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NULLIFY_OR_WEAKEN_ATTACK ; flags 2
 	db NONE ; flags 3
@@ -5026,7 +5026,7 @@ MagikarpSCard: ; 32278 (c:6278)
 	dw NONE ; description (cont)
 	db 0 ; damage
 	db RESIDUAL ; category
-	dw Draw2EffectCommands ; effect commands
+	dw BillEffectCommands ; effect commands
 	db DRAW_CARD ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
@@ -5071,11 +5071,11 @@ GyaradosSCard: ; 322b9 (c:62b9)
 	tx MagikarpName ; pre-evo name
 
 	; attack 2
-	energy WATER, 1, FIRE, 1, COLORLESS, 1 ; energies
+	energy WATER, 1, FIRE, 1 ; energies
 	tx RampageName ; name
 	tx Do10PerSelfDamageThenMayConfuse ; description
 	dw NONE ; description (cont)
-	db 30 ; damage
+	db 20 ; damage
 	db DAMAGE_PLUS ; category
 	dw Do10PerSelfDamageThenMayConfuseEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -6959,17 +6959,17 @@ Phanpy1Card: ; 32a16 (c:6a16)
 
 	; attack 1
 	energy COLORLESS, 1 ; energies
-	tx TackleName ; name
-	dw NONE ; description
+	tx SnivelName ; name
+	tx ReduceBy20Descr ; description
 	dw NONE ; description (cont)
-	db 10 ; damage
+	db 0 ; damage
 	db DAMAGE_NORMAL ; category
-	dw NONE ; effect commands
+	dw ReduceDamageBy20EffectCommands ; effect commands
 	db NONE ; flags 1
-	db NONE ; flags 2
+	db NULLIFY_OR_WEAKEN_ATTACK ; flags 2
 	db NONE ; flags 3
-	db 0
-	db ATK_ANIM_HIT ; animation
+	db 10
+	db ATK_ANIM_CRY ; animation
 
 	; attack 2
 	energy FIGHTING, 1, COLORLESS, 1 ; energies
@@ -7015,7 +7015,7 @@ Phanpy2Card: ; 32a57 (c:6a57)
 	dw NONE ; description (cont)
 	db 10 ; damage
 	db DAMAGE_NORMAL ; category
-	dw SmokescreenEffectCommands ; effect commands
+	dw SandshrewSandAttackEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NULLIFY_OR_WEAKEN_ATTACK ; flags 2
 	db NONE ; flags 3
@@ -10189,7 +10189,7 @@ Togetic2Card: ; 3378b (c:778b)
 	tx SweetKissName ; name
 	tx AttackDraw2Description ; description
 	dw NONE ; description (cont)
-	db 30 ; damage
+	db 20 ; damage
 	db DAMAGE_NORMAL ; category
 	dw Draw2EffectCommands ; effect commands
 	db NONE ; flags 1
@@ -11263,7 +11263,7 @@ HoohCCard: ; 33d21 (c:7d21)
 	dw NONE ; description (cont)
 	db 40 ; damage
 	db DAMAGE_PLUS ; category
-	dw TangelaPoisonWhipEffectCommands ; effect commands
+	dw DiscardLorFforStuffEffectCommands ; effect commands
 	db NONE  ; flags 1
 	db NONE  ; flags 2
 	db NONE ; flags 3

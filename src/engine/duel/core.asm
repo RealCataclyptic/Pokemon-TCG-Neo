@@ -979,6 +979,12 @@ EnergyDiscardCardListParameters:
 
 ; triggered by selecting the "Attack" item in the duel menu
 DuelMenu_Attack:
+	;can't attack on first turn code
+	ld a, [wDuelTurns]
+	or a
+	ldtx hl, NoAttackOnFirstTurnText
+	jr z, .alert_cant_attack_and_cancel_menu
+
 	call HandleCantAttackSubstatus
 	jr c, .alert_cant_attack_and_cancel_menu
 	call CheckIfActiveCardParalyzedOrAsleep

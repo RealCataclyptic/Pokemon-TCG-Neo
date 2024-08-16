@@ -1,3 +1,13 @@
+FlyImmunityEffect2:	
+	ldtx de, IfHeadsDoNotReceiveDamageOrEffectText
+	farcall TossCoin_BankB
+	ret nc
+	ld a, ATK_ANIM_AGILITY_PROTECT
+	ld [wLoadedAttackAnimation], a
+	ld a, SUBSTATUS1_FLY
+	farcall ApplySubstatus1ToDefendingCard
+	ret
+
 CrossAttackEffect2:
 	ld hl, 40
 	farcall LoadTxRam3

@@ -233,19 +233,17 @@ CharmanderAndFriendsDeck: ; = Cyndaquil Starter Deck.
 	card_item CYNDAQUIL2, 2
 	card_item QUILAVA2, 2
 	card_item TYPHLOSION1, 1
-	card_item SLUGMA, 2
 	card_item PONYTA, 1
 	card_item CHARMANDER, 2
 	card_item FLAREON, 1
-	card_item EEVEE, 2
+	card_item EEVEE, 3
 	card_item NATU, 2
 	card_item XATU, 2
-	card_item MURKROW, 1
-	card_item ABRA, 1
+	card_item MURKROW, 2
 	card_item ESPEON1, 1
 	card_item PORYGON, 2
 	card_item PORYGON_2, 1
-	card_item PROFESSOR_ELM, 1
+	card_item PROFESSOR_ELM, 2
 	card_item MAIL_FROM_BILL, 2
 	card_item SWITCH, 1
 	card_item ENERGY_SEARCH, 1		   
@@ -285,24 +283,20 @@ SquirtleAndFriendsDeck: ; = Totodile Starter Deck. Given to player at beginning.
 	card_item TOTODILE2, 		2
 	card_item CROCONAW1, 		2
 	card_item FERALIGATR1, 		1
-	card_item MARILL1, 		1
-	card_item MARILL2, 		1
-	card_item WOOPER,		1
-	card_item SQUIRTLE, 		2
+	card_item MARILL2, 		2
 	card_item QWILFISH, 		1
-	card_item JOLTEON, 		1
+	card_item JOLTEON, 		2
 	card_item EEVEE, 		2
 	card_item CHINCHOU1, 		2
 	card_item LANTURN1, 		1
 	card_item PICHU, 		1
-	card_item VOLTORB, 		1
 	card_item MAREEP1, 		2
-	card_item FLAAFFY2, 		1
+	card_item FLAAFFY2, 		2
 	card_item TEDDIURSA, 		2
 	card_item URSARING, 		1
-	card_item PROFESSOR_ELM, 	1
+	card_item PROFESSOR_ELM, 	2
 	card_item MAIL_FROM_BILL, 	1
-	card_item SWITCH, 		1
+	card_item SWITCH, 		2
 	card_item POKE_BALL, 		1
 	card_item SUPER_SCOOP_UP, 	1
 	card_item RUIN_WALL, 		1
@@ -345,20 +339,17 @@ BulbasaurAndFriendsDeck: ; = Chikorita Starter Deck. Given to player at beginnin
 	card_item MEGANIUM1, 1
 	card_item HOPPIP, 2
 	card_item SKIPLOOM, 2
-	card_item BULBASAUR, 1
 	card_item SCYTHER, 1
 	card_item MACHOP, 1
 	card_item ONIX, 1
 	card_item PHANPY2, 2
 	card_item DONPHAN2, 1
 	card_item SWINUB, 2
-	card_item TOGEPI1, 1
-	card_item TOGEPI2, 1
-	card_item AIPOM, 1
-	card_item STANTLER, 1
-	card_item JIGGLYPUFF, 2			  
+	card_item TOGEPI1, 2
+	card_item STANTLER, 2		  
 	card_item SKARMORY, 1			  
-	card_item PROFESSOR_ELM, 1			  
+	card_item PROFESSOR_ELM, 2
+	card_item MAIL_FROM_BILL, 2				  
 	card_item SWITCH, 1
 	card_item POKE_BALL, 1
 	card_item STRENGTH_CHARM, 2
@@ -825,7 +816,7 @@ LegendaryRonaldDeck: ; The final deck used against you by Rival Ronald.
 	card_item SHADOW_LUGIA, 4
 	card_item PHANPY2, 2
 	card_item DONPHAN1, 2
-	card_item TOGEPI2, 2
+	card_item MURKROW, 2
 	card_item MEWTWO, 1
 	card_item HITMONLEE, 2
 	card_item EEVEE, 3

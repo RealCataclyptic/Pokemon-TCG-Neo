@@ -208,7 +208,7 @@ FoundLv9SlowpokeText:
 	line "checked the wall!"
 	line ""
 	text "<RAMNAME>"
-	line "found a Master Ball!"
+	line "found a Charizard!"
 	done
 
 Text06a3:

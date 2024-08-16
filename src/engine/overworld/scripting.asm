@@ -506,6 +506,7 @@ EventVarMasks:
 	event_def $1b, %11111111 ; EVENT_CONSOLE
 	event_def $1c, %11110000 ; EVENT_SAM_MENU_CHOICE
 	event_def $1c, %00001111 ; EVENT_AARON_DECK_MENU_CHOICE
+	event_def $1d, %00000001 ; EVENT_PLAYER_GENDER
 	assert_table_length NUM_EVENT_FLAGS
 
 ; Used for basic level objects that just print text and quit
@@ -1191,6 +1192,7 @@ ScriptCommand_PickNextMan1RequestedCard:
 Man1RequestedCardsList:
 	db LARVITAR
 	db FORRETRESS
+	db RAPIDASH
 .end
 
 ScriptCommand_LoadMan1RequestedCardIntoTxRamSlot:
@@ -1528,16 +1530,6 @@ ScriptCommand_PickLegendaryCard:
 	dec b
 	jr .loop
 .done
-	ld a, d
-	and e ; has this legendary been given already?
-	jr nz, .new_random
-	push bc
-	ld b, 0
-	ld hl, LegendaryCardEvents
-	add hl, bc
-	ld a, [hl]
-	call MaxOutEventValue ; also modifies EVENT_LEGENDARY_CARDS_RECEIVED_FLAGS
-	pop bc
 	ld hl, LegendaryCards
 	ld a, c
 	jr ScriptCommand_PickChallengeCupPrizeCard.get_card_from_list

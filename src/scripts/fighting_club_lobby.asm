@@ -58,7 +58,7 @@ Script_Man1:
 	max_out_event_value EVENT_TEMP_GIFTED_TO_MAN1
 	zero_out_event_value EVENT_MAN1_WAITING_FOR_CARD
 	increment_event_value EVENT_MAN1_GIFT_SEQUENCE_STATE
-	jump_if_event_equal EVENT_MAN1_GIFT_SEQUENCE_STATE, 5, .ows_dcd7
+	jump_if_event_equal EVENT_MAN1_GIFT_SEQUENCE_STATE, 3, .ows_dcd7
 	quit_script_fully
 
 .ows_dcd7
