@@ -1,6 +1,6 @@
 # Pokémon TCG [![Build Status][ci-badge]][ci]
 
-This is a disassembly of Pokémon TCG.
+This is a disassembly of Pokémon TCG, which will build the custom hack Pokémon TCG Neo and Pokémon TCG Legacy.
 
 It builds the following ROM:
 
@@ -10,6 +10,10 @@ To assemble, first download RGBDS (https://github.com/gbdev/rgbds/releases) and 
 Run `make` in your shell.
 
 This will output a file named "poketcg.gbc".
+
+To build the Legacy version, delete the current src, then go into the Legacy version folder and put srcLegacy into the main folder. Rename it to src. 
+
+This hack was created by using RGBDS version 0.6.1, as such you will need to use that specific version to build this rom.
 
 
 ## See also
