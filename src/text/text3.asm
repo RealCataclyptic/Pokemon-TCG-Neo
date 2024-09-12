@@ -390,8 +390,8 @@ HeatedBattleDescriptionText:
 	done
 
 FirstStrikeDescriptionText:
-	text "A Deck with basic fighting "
-	line "Pokémon that denies evolutions."
+	text "A deck designed to take lots"
+	line "of damage, then dish it back!"
 	done
 
 SqueakingMouseDescriptionText:
@@ -1049,6 +1049,7 @@ PauseMenuOptionsText:
 	line "Diary"
 	line "Deck"
 	line "Card"
+	line "Decklists"
 	line "Config"
 	line "Exit"
 	done

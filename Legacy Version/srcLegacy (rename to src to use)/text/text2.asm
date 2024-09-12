@@ -913,14 +913,14 @@ DrawSevenCardsPracticeDuelText:
 	line "Choose your Active Pokémon."
 	line "You can only choose Basic Pokémon"
 	line "as your Active Pokémon,"
-	line "so you can choose either Goldeen"
-	line "or Staryu."
+	line "so you can choose either Machop"
+	line "or Horsea."
 	line "For our practice duel,"
-	line "choose Goldeen."
+	line "choose Machop."
 	done
 
 ChooseGoldeenPracticeDuelText:
-	text "Choose Goldeen for this"
+	text "Choose Machop for this"
 	line "practice duel, OK?"
 	done
 
@@ -931,12 +931,12 @@ PutPokemonOnBenchPracticeDuelText:
 	line "with your Active Pokémon."
 	line "Again, only Basic Pokémon can be"
 	line "placed on your Bench."
-	line "Choose Staryu from your hand and"
+	line "Choose Horsea from your hand and"
 	line "put it there."
 	done
 
 ChooseStaryuPracticeDuelText:
-	text "Choose Staryu for this"
+	text "Choose Horsea for this"
 	line "practice duel, OK?"
 	done
 
@@ -948,61 +948,59 @@ PressBToFinishPracticeDuelText:
 
 Turn1Instr1PracticeDuelText:
 	text "1. Choose Hand from the Menu."
-	line "   Select a Water Energy card."
+	line "   Select a Fighting Energy card."
 	done
 
 Turn1Instr2PracticeDuelText:
-	text "2. Attach a Water Energy card to"
-	line "   your Active Pokémon, Goldeen."
+	text "2. Attach a Fighting Energy card to"
+	line "   your Active Pokémon, Machop."
 	done
 
 Turn1Instr3PracticeDuelText:
 	text "3. Choose Attack from the Menu"
-	line "   and select Horn Attack."
+	line "   and select Chop."
 	done
 
 Turn2Instr1PracticeDuelText:
-	text "1. Evolve Goldeen by"
-	line "   attaching Seaking to it."
+	text "1. Evolve Machop by"
+	line "   attaching Machoke to it."
 	done
 
 Turn2Instr2PracticeDuelText:
-	text "2. Attach a Psychic Energy card"
-	line "   to the evolved Seaking."
+	text "2. Attach a Double Colorless "
+	line "   Energy card to Machoke."
 	done
 
 Turn2Instr3PracticeDuelText:
 	text "3. Choose Attack and select"
-	line "   Waterfall to attack your"
-	line "   opponent."
+	line "   Mega Punch."
 	done
 
 Turn3Instr1PracticeDuelText:
-	text "1. Attach a Water Energy card to"
-	line "   your Benched Staryu."
+	text "1. Whoever gets all of their own"
+	line "   prize cards wins the game."
 	done
 
 Turn3Instr2PracticeDuelText:
-	text "2. Choose Attack and attack your"
-	line "   opponent with Horn Attack."
+	text "2. Some Pokémon have weaknesses"
+	line "   and resistances."
 	done
 
 Turn3Instr3PracticeDuelText:
+	text "3. In order to win, set up Horsea"
+	line "   and attack with Mega Punch."
 	done
 
 Turn4Instr1PracticeDuelText:
-	text "1. Take Drowzee from your hand"
-	line "   and put it on your Bench."
+	text "1. Attach another <WATER> energy to your"
+	line "   Benched Horsea."
 	done
 
 Turn4Instr2PracticeDuelText:
-	text "2. Attach a Water Energy card to"
-	line "   your Benched Drowzee."
+	text "2. Use Machoke's Mega Punch again."
 	done
 
 Turn4Instr3PracticeDuelText:
-	text "3. Choose Seaking and attack your"
-	line "   opponent with Waterfall."
 	done
 
 Turn5Instr1PracticeDuelText:
@@ -1070,74 +1068,71 @@ Turn1DrMason1PracticeDuelText:
 	line "Pokémon."
 	line ""
 	line "Choose Cards from the Menu, and"
-	line "select a Water Energy card."
+	line "select a Fighting Energy card."
 	done
 
 Turn1DrMason2PracticeDuelText:
 	text "Next, choose your Active Pokémon,"
-	line "Goldeen, and press the A Button."
-	line "Then the Water Energy card will"
-	line "be attached to Goldeen."
+	line "Machop, and press the A Button."
+	line "Then the Fighting Energy card will"
+	line "be attached to Machop. <COLORLESS> means"
+	line "any energy, but we will need it to"
+	line "have <FIGHTING> energy for later..."
 	done
 
 Turn1DrMason3PracticeDuelText:
 	text "Finally, attack your opponent by"
 	line "selecting an attack command."
 	line "Choose Attack from the Menu, and"
-	line "select Horn Attack."
+	line "select Chop."
 	done
 
 Turn2DrMason1PracticeDuelText:
-	text "Your Goldeen's gonna get Knocked"
+	text "Your Machop's gonna get Knocked"
 	line "Out. Let's evolve it!"
-	line "Choose Seaking from your hand and"
-	line "attach it to Goldeen to"
+	line "Choose Machoke from your hand and"
+	line "attach it to Machop to"
 	line "Evolve it."
-	line "Its HP increases from 40 to 70."
+	line "Its HP increases from 40 to 80."
 	done
 
 Turn2DrMason2PracticeDuelText:
-	text "Your Seaking doesn't have enough"
-	line "Energy to use Waterfall."
-	line "You need to attach a Psychic Energy"
-	line "card to Seaking."
-	line "<COLORLESS> means any Energy card."
-	line "Now you can use Waterfall."
-	line "Keep the Water Energy card for"
-	line "other Pokémon."
+	text "Your Machoke doesn't have enough"
+	line "Energy to use Mega Punch. You"
+	line "need to attach a Double Colorless"
+	line "energy card to Machoke."
+	line "This is a special energy that"
+	line "provides <COLORLESS><COLORLESS>!"
 	done
 
 Turn2DrMason3PracticeDuelText:
-	text "Now let's attack your opponent with"
-	line "Seaking's Waterfall!"
+	text "Attach the Double Colorless"
+	line "energy and use Mega Punch!"
 	done
 
 Turn3DrMason1PracticeDuelText:
-	text "Seaking's got enough Energy, so"
-	line "you don't need to attach any more."
-	line "Attach Energy cards to your Benched"
-	line "Pokémon to get them ready for"
-	line "battle."
-	line ""
-	line "Attach a Water Energy card to your"
-	line "Benched Staryu."
+	text "When you Knock Out the Defending"
+	line "Pokémon, you can pick up a"
+	line "Prize. Whoever gets all their prize"
+	line "cards wins the game!"
 	done
 
 Turn3DrMason2PracticeDuelText:
-	text "Next, select the attack command."
-	line "Machop has 10 HP left."
-	line "Seaking's Horn Attack will be"
-	line "enough to Knock out Machop."
-	line "Now, choose Seaking's"
-	line "Horn Attack."
+	text "But, oh no! Your opponent's new"
+	line "active Pokémon can not only hit"
+	line "your Machoke for weakness, it"
+	line "even has a resistance to <FIGHTING> types!"
+	line "We'll have to build up a new Pokémon"
+	line "in order to win."
 	done
 
 Turn3DrMason3PracticeDuelText:
-	text "Now Machop's HP is 0 and it is"
-	line "Knocked Out."
-	line "When you Knock Out the Defending"
-	line "Pokémon, you can pick up a"
-	line "Prize."
+	text "Horsea is a <WATER> type, so it"
+	line "can hit for neutral damage on Natu."
+	line "Attach a water energy to it to set"
+	line "it up."
+	line "Then, attack with Mega Punch to get"
+	line "at least some damage in."
 	done
 
 Turn4DrMason1PracticeDuelText:
@@ -1145,20 +1140,20 @@ Turn4DrMason1PracticeDuelText:
 	line "Out and there are no Pokémon on your"
 	line "Bench, you lose the game."
 	line ""
-	line "Put Drowzee, the Basic Pokémon"
-	line "you just drew, on your Bench."
+	line "We need to keep setting up Horsea,"
+	line "because Machoke will be KO'ed."
 	done
 
 Turn4DrMason2PracticeDuelText:
 	text "Attach a Water Energy card to"
-	line "Drowzee to get it ready to"
+	line "Horsea to get it ready to"
 	line "attack."
 	done
 
 Turn4DrMason3PracticeDuelText:
-	text "Choose your Active Seaking and"
+	text "Choose your Active Machoke and"
 	line "attack your opponent with"
-	line "Waterfall."
+	line "Mega Punch."
 	done
 
 Turn5DrMason1PracticeDuelText:

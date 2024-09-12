@@ -51,11 +51,11 @@ DEF NUM_DECK_SAVE_MACHINE_SLOTS EQU 60
 DEF NUM_DECK_MACHINE_SLOTS      EQU 5
 
 ; TODO find a way to not have these hardcoded?
-DEF NUM_CARDS_COLOSSEUM   EQU 67
-DEF NUM_CARDS_EVOLUTION   EQU 62
-DEF NUM_CARDS_MYSTERY     EQU 59
-DEF NUM_CARDS_LABORATORY  EQU 58
-DEF NUM_CARDS_PROMOTIONAL EQU 8
+DEF NUM_CARDS_COLOSSEUM   EQU 67 ; Max cards without glitching = 74
+DEF NUM_CARDS_EVOLUTION   EQU 62 ; Max cards without glitching = 64
+DEF NUM_CARDS_MYSTERY     EQU 57 ; Max cards without glitching = 57
+DEF NUM_CARDS_LABORATORY  EQU 60 ; Max cards without glitching = 60
+DEF NUM_CARDS_PROMOTIONAL EQU 8  ; Max cards without glitching = Untested
 
 ; wOwnedPhantomCardFlags flags
 	const_def

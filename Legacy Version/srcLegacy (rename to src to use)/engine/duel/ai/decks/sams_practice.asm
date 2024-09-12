@@ -66,7 +66,7 @@ SetSamsStartingPlayArea:
 	cp $ff
 	ret z
 	call LoadCardDataToBuffer1_FromDeckIndex
-	cp HOUNDOUR2
+	cp PINECO
 	jr nz, .loop_hand
 	ldh a, [hTempCardIndex_ff98]
 	call PutHandPokemonCardInPlayArea
@@ -77,12 +77,12 @@ SetSamsStartingPlayArea:
 ; outputs in a Play Area location of Raticate or Rattata
 ; in the Bench. If neither is found, just output PLAY_AREA_BENCH_1.
 GetPlayAreaLocationOfRaticateOrRattata:
-	ld a, WIGGLYTUFF
+	ld a, FURRET
 	ld b, PLAY_AREA_BENCH_1
 	call LookForCardIDInPlayArea_Bank5
 	cp $ff
 	jr nz, .found
-	ld a, JIGGLYPUFF
+	ld a, SENTRET
 	ld b, PLAY_AREA_BENCH_1
 	call LookForCardIDInPlayArea_Bank5
 	cp $ff
@@ -124,18 +124,13 @@ AIPerformScriptedTurn:
 	dw .turn_7
 
 .turn_1
-	ld d, HITMONTOP
-	ld e, FIGHTING_ENERGY
+	ld d, PINECO
+	ld e, DOUBLE_COLORLESS_ENERGY
 	call AIAttachEnergyInHandToCardInPlayArea
 	ret
 
 .turn_2
-	ld a, JIGGLYPUFF
-	call LookForCardIDInHandList_Bank5
-	ldh [hTemp_ffa0], a
-	ld a, OPPACTION_PLAY_BASIC_PKMN
-	bank1call AIMakeDecision
-	ld d, JIGGLYPUFF
+	ld d, SENTRET
 	ld e, FIGHTING_ENERGY
 	call AIAttachEnergyInHandToCardInPlayArea
 	ret

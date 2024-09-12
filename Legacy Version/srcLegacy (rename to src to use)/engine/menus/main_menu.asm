@@ -58,6 +58,7 @@ MainMenu_ContinueFromDiary:
 	call PlaySong
 	call ValidateBackupGeneralSaveData
 	jr nc, MainMenu_NewGame
+	farcall Func_c1ed			  
 	farcall SetMainSGBBorder
 	call EnableSRAM
 	xor a

@@ -2648,7 +2648,7 @@ PracticeDuel_DrawSevenCards:
 
 PracticeDuel_PlayGoldeen:
 	ld a, [wLoadedCard1ID]
-	cp MANTINE
+	cp MACHOP
 	ret z
 	ldtx hl, ChooseGoldeenPracticeDuelText
 	ldtx de, DrMasonText
@@ -2921,27 +2921,27 @@ PracticeDuelTurnVerificationPointerTable:
 
 PracticeDuelVerify_Turn1:
 	ld a, [wTempCardID_ccc2]
-	cp MANTINE
+	cp MACHOP
 	jp nz, ReturnWrongAction
 	ret
 
 PracticeDuelVerify_Turn2:
 	ld a, [wTempCardID_ccc2]
-	cp HORSEA
+	cp MACHOKE
 	jp nz, ReturnWrongAction
 	ld a, [wSelectedAttack]
 	cp 1
 	jp nz, ReturnWrongAction
 	ld e, PLAY_AREA_ARENA
 	call GetPlayAreaCardAttachedEnergies
-	ld a, [wAttachedEnergies + PSYCHIC]
+	ld a, [wAttachedEnergies + COLORLESS]
 	or a
 	jr z, ReturnWrongAction
 	ret
 
 PracticeDuelVerify_Turn3:
 	ld a, [wTempCardID_ccc2]
-	cp HORSEA
+	cp MACHOKE
 	jr nz, ReturnWrongAction
 	ld e, PLAY_AREA_BENCH_1
 	call GetPlayAreaCardAttachedEnergies
@@ -2951,20 +2951,14 @@ PracticeDuelVerify_Turn3:
 	ret
 
 PracticeDuelVerify_Turn4:
-	ld a, [wPlayerNumberOfPokemonInPlayArea]
-	cp 3
+	ld a, [wTempCardID_ccc2]
+	cp MACHOKE
 	jr nz, ReturnWrongAction
-	ld e, PLAY_AREA_BENCH_2
+	ld e, PLAY_AREA_BENCH_1
 	call GetPlayAreaCardAttachedEnergies
 	ld a, [wAttachedEnergies + WATER]
 	or a
 	jr z, ReturnWrongAction
-	ld a, [wTempCardID_ccc2]
-	cp HORSEA
-	jr nz, ReturnWrongAction
-	ld a, [wSelectedAttack]
-	cp 1
-	jr nz, ReturnWrongAction
 	ret
 
 PracticeDuelVerify_Turn5:

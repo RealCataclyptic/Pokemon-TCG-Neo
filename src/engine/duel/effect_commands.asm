@@ -1268,7 +1268,7 @@ DoduoFuryAttackEffectCommands:		;Free
 	dbw EFFECTCMDTYPE_AI, FuryAttack_AIEffect
 	db  $00
 
-ReduceRCBy1EffectCommands:		;Reduced Retreat by 1. Messing with this code in substatus breaks the game in very interesting ways. Not reccomended to hack.
+ReduceRCBy2EffectCommands:		;Reduced Retreat by 1. Messing with this code in substatus breaks the game in very interesting ways. Not reccomended to hack.
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, RetreatAidEffect
 	db  $00
 

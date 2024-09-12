@@ -2462,7 +2462,7 @@ Houndour2Card: ; 31850 (c:5850)
 	gfx Houndour2CardGfx ; gfx
 	tx HoundourName ; name
 	db CIRCLE ; rarity
-	db MYSTERY | NONE ; sets
+	db LABORATORY | NONE ; sets
 	db HOUNDOUR2
 	db 40 ; hp
 	db BASIC ; stage
@@ -2513,7 +2513,7 @@ HoundoomCard: ; 31891 (c:5891)
 	gfx HoundoomCardGfx ; gfx
 	tx HoundoomName ; name
 	db STAR ; rarity
-	db MYSTERY | NONE ; sets
+	db LABORATORY | NONE ; sets
 	db HOUNDOOM
 	db 60 ; hp
 	db STAGE1 ; stage

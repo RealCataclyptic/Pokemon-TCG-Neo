@@ -953,11 +953,10 @@ Tech1AutoDeckMachineExplanationText:
 	text "You finally inherited the"
 	line "Legendary Pokémon Cards!"
 	line "Did you see the Legendary Auto"
-	line "Deck Machine?"
-	line "It is rumored that it's in the "
-	line "Hall of Honor at Pokémon Dome."
-	line "It supposedly holds the secret "
-	line "to a very powerful deck!"
+	line "Deck Machines in the Hall of"
+	line "Honor at the Pokémon Dome?"
+	line "It supposedly holds secrets to "
+	line "very powerful decks!"
 	done
 
 Tech1FewEnergyCardsText:
@@ -1067,7 +1066,7 @@ Text05cb:
 	done
 
 Text05cc:
-
+	text "Practice with Sam?"
 	done
 
 Text05cd:
@@ -1082,12 +1081,11 @@ Text05ce:
 	done
 
 Text05cf:
-
 	done
 
 Text05d0:
-	
-	
+	text "Come see me any time."
+	line "The basics are very important!"
 	done
 
 Text05d1:

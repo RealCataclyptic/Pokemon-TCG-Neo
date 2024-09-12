@@ -596,6 +596,7 @@ GetLoadedCard1RetreatCost::
 	cp DRAGONITE
 	jr nz, .not_dodrio
 	inc c
+	inc c
 .not_dodrio
 	jr .check_bench_loop
 .no_more_bench

@@ -7162,7 +7162,7 @@ ConvertSpecialTrainerCardToPokemon::
 	ret
 
 .trainer_to_pkmn_data
-	db 30                 ; CARD_DATA_HP
+	db 10                 ; CARD_DATA_HP
 	ds $07                ; CARD_DATA_ATTACK1_NAME - (CARD_DATA_HP + 1)
 	tx DiscardName        ; CARD_DATA_ATTACK1_NAME
 	tx DiscardDescription ; CARD_DATA_ATTACK1_DESCRIPTION
@@ -8451,12 +8451,13 @@ DecideLinkDuelVariables:
 	or a
 	ret
 
-	ret ; stray ret
+
 
 HandleOnPlayEnergyEffects:
-	farcall CheckCannotUseDueToStatus_OnlyToxicGasIfANon0 ; calls to see if Toxic Gas is active or if mon is agffected by a status.
+	farcall CheckCannotUseDueToStatus_OnlyToxicGasIfANon0 ; calls to see if Toxic Gas is active or if mon is affected by a status.
 	jr c, .Return ; if yes, return.
 
+.ConductivityScenario
 	call SwapTurn
 	ld a, AMPHAROS2
 	call CountPokemonIDInPlayArea ; counts pokemon in opp's play area only.

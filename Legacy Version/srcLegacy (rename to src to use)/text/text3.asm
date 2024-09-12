@@ -390,8 +390,8 @@ HeatedBattleDescriptionText:
 	done
 
 FirstStrikeDescriptionText:
-	text "A Deck with basic fighting "
-	line "Pokémon that denies evolutions."
+	text "A Deck that uses powerful basic"
+	line "Pokémon."
 	done
 
 SqueakingMouseDescriptionText:
@@ -1049,6 +1049,7 @@ PauseMenuOptionsText:
 	line "Diary"
 	line "Deck"
 	line "Card"
+	line "Decklists"
 	line "Config"
 	line "Exit"
 	done
@@ -1953,8 +1954,8 @@ HowCanIHelpText:
 	done
 
 SamNormalMenuText:
-	text "Talk"
-	line "Best card?"
+	text "Normal Duel"
+	line "Practice"
 	line "Rules"
 	line "Nothing"
 	done

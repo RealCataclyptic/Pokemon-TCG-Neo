@@ -29,7 +29,7 @@ CrossAttackEffect2:
 
 FinalBlowEffect2:
 	farcall CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
-	jr nz, .MoreThan31HP
+	jr nz, .MoreThan31HP ; is this line bugged?
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	add DUELVARS_ARENA_CARD_HP
 	farcall GetTurnDuelistVariable

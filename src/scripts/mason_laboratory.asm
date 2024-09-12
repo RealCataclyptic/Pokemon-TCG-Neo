@@ -1,8 +1,8 @@
 Script_BeginGame:
 	start_script
-	do_frames 60
+	do_frames 20
 	walk_player_to_mason_lab
-	do_frames 120
+	do_frames 20
 	enter_map $02, MASON_LABORATORY, 14, 26, NORTH
 	quit_script_fully
 
@@ -323,6 +323,30 @@ Script_EnterLabFirstTime:
 	move_player NORTH, 2
 	move_player NORTH, 2
 	print_npc_text Text05e3
+	print_text Text05f1 ; SKIP PRACTICE DUEL START
+	close_text_box
+	print_npc_text Text05f0
+	close_text_box
+	print_npc_text Text05f2
+.starter_loop
+	choose_starter_deck
+	close_text_box
+	ask_question_jump Text05f3, .finish_intro
+	script_jump .starter_loop
+.finish_intro
+	print_npc_text Text05f4
+	close_text_box
+	pause_song
+	play_song MUSIC_BOOSTER_PACK
+	print_text Text05f5
+	wait_for_song_to_finish
+	resume_song
+	close_text_box
+	set_event EVENT_MASON_LAB_STATE, MASON_LAB_RECEIVED_STARTER_DECK
+	give_stater_deck
+	print_npc_text Text05f6
+	save_game 0
+	quit_script_fully ; SKIP PRACTICE DUEL END
 	close_advanced_text_box
 	set_next_npc_and_script NPC_SAM, .ows_d779
 	end_script

@@ -50,7 +50,7 @@ Script_Daniel:
 Script_BeatDaniel:
 	start_script
 	print_npc_text Text0670
-	give_booster_packs BOOSTER_EVOLUTION_PSYCHIC, BOOSTER_EVOLUTION_PSYCHIC, NO_BOOSTER
+	give_booster_packs BOOSTER_EVOLUTION_PSYCHIC, BOOSTER_EVOLUTION_TRAINER, NO_BOOSTER
 	print_npc_text Text0671
 	quit_script_fully
 
@@ -129,7 +129,7 @@ Script_BeatMurray:
 	show_medal_received_screen EVENT_BEAT_MURRAY
 	record_master_win $06
 	print_npc_text Text0683
-	give_booster_packs BOOSTER_LABORATORY_PSYCHIC, BOOSTER_LABORATORY_PSYCHIC, NO_BOOSTER ; for some reason, Murray's boosters and down below
+	give_booster_packs BOOSTER_LABORATORY_PSYCHIC, BOOSTER_LABORATORY_PSYCHIC, BOOSTER_LABORATORY_TRAINER, NO_BOOSTER
 	print_npc_text Text0684
 	quit_script_fully
 
@@ -151,7 +151,7 @@ Script_LostToMurray:
 
 .ows_eb45
 	print_npc_text Text0689
-	give_booster_packs BOOSTER_LABORATORY_PSYCHIC, BOOSTER_LABORATORY_PSYCHIC, BOOSTER_LABORATORY_PSYCHIC, NO_BOOSTER
+	give_booster_packs BOOSTER_LABORATORY_PSYCHIC, BOOSTER_LABORATORY_PSYCHIC, BOOSTER_LABORATORY_TRAINER, NO_BOOSTER
 	print_npc_text Text068a
 	quit_script_fully
 

@@ -3395,3 +3395,6 @@ TextOffsets::
 	textpointer BoyText
 	textpointer GirlText
 	textpointer BubbleBombText
+	textpointer NewIntroText1                                      
+	textpointer NewIntroText2                                      
+	textpointer NewIntroText3                                      

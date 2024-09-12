@@ -1148,7 +1148,7 @@ PauseMenu:
 	ldh a, [hCurMenuItem]
 	cp e
 	jr nz, .exit
-	cp $5
+	cp $6
 	jr z, .exit
 	call Func_c2a3
 	ld a, [wSelectedPauseMenuItem]
@@ -1172,6 +1172,7 @@ PauseMenuPointerTable:
 	dw PauseMenu_Diary
 	dw PauseMenu_Deck
 	dw PauseMenu_Card
+	dw PauseMenu_Decklists
 	dw PauseMenu_Config
 	dw PauseMenu_Exit
 
@@ -1200,6 +1201,16 @@ PauseMenu_Card:
 	call Set_OBJ_8x16
 	farcall SetDefaultPalettes
 	farcall HandlePlayersCardsScreen
+	call Set_OBJ_8x8
+	ret
+
+PauseMenu_Decklists:
+	xor a
+	ldh [hSCX], a
+	ldh [hSCY], a
+	call Set_OBJ_8x16
+	farcall SetDefaultPalettes
+	farcall HandleDeckSaveMachineMenu
 	call Set_OBJ_8x8
 	ret
 

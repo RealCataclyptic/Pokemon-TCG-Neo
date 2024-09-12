@@ -208,10 +208,11 @@ AIProcessEnergyCards:
 	cp 2
 	jr z, .has_20_hp
 	; hp = 10
+	call ConductivityScenario
 	ld a, DUELVARS_ARENA_CARD_STATUS
 	call GetTurnDuelistVariable
 	and POISONED
-	jr z, .ConductivityScenario
+	jr z, .check_defending_can_ko
 	jr .poison_will_ko
 .has_20_hp
 	ld a, DUELVARS_ARENA_CARD_STATUS
@@ -222,17 +223,6 @@ AIProcessEnergyCards:
 	ld a, 10
 	call SubFromAIScore
 	jr .check_bench
-
-.ConductivityScenario ; I THINK this works but due to how rare this situation is, it's genuinely hard to tell.
-	call SwapTurn
-	ld a, AMPHAROS2
-	call CountPokemonIDInPlayArea ; counts pokemon in opp's play area only.
-	call SwapTurn
-	jr nc, .check_defending_can_ko
-	ld a, 40 ; it's just a massive number
-	call SubFromAIScore
-	jr .check_bench
-
 .check_defending_can_ko
 	call CheckIfDefendingPokemonCanKnockOut
 	jr nc, .ai_score_bonus
@@ -260,10 +250,16 @@ AIProcessEnergyCards:
 	cp 3
 	jr nc, .ai_score_bonus
 ; hp < 30
+	ld a, DUELVARS_ARENA_CARD_HP
+	call GetTurnDuelistVariable
+	call CalculateByteTensDigit
+	cp 1
+	call ConductivityScenario ; Checks for Conductivity for benched mons
 	ld b, a
 	ld a, 3
 	sub b
 	call SubFromAIScore
+
 
 ; check list in wAICardListEnergyBonus
 .ai_score_bonus
@@ -399,6 +395,19 @@ AIProcessEnergyCards:
 .no_carry
 	or a
 	ret
+
+ConductivityScenario:
+	ld a, FERALIGATR2 ; Checks if Scare is Active
+   	call CountPokemonIDInBothPlayAreas
+	ret c
+	call SwapTurn
+    	ld a, AMPHAROS2 ; checks for ampharos
+    	call CountPokemonIDInPlayArea ; counts pokemon in opp's play area only.
+   	call SwapTurn
+   	ret nc
+        ld a, 98 ; if yes, sub a massive number from AI scoring
+        call SubFromAIScore
+        ret
 
 ; checks score related to selected attack,
 ; in order to determine whether to play energy card.
@@ -737,7 +746,7 @@ GetEnergyCardForDiscardOrEnergyBoostAttack:
 ; for these to be treated differently.
 ; for both attacks, load its energy cost.
 	ld a, b
-	cp LUGIA
+	cp MAIL_FROM_BILL ; This is useless in my hack, so deleted
 	jr z, .zapdos2
 	cp ENTEI1
 	jr z, .charizard_or_exeggutor

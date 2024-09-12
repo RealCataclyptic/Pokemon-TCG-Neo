@@ -2514,7 +2514,7 @@ Houndour2Card: ; 31850 (c:5850)
 	gfx Houndour2CardGfx ; gfx
 	tx HoundourName ; name
 	db CIRCLE ; rarity
-	db MYSTERY | NONE ; sets
+	db LABORATORY | NONE ; sets
 	db HOUNDOUR2
 	db 50 ; hp
 	db BASIC ; stage
@@ -2565,7 +2565,7 @@ HoundoomCard: ; 31891 (c:5891)
 	gfx HoundoomCardGfx ; gfx
 	tx HoundoomName ; name
 	db STAR ; rarity
-	db MYSTERY | NONE ; sets
+	db LABORATORY | NONE ; sets
 	db HOUNDOOM
 	db 70 ; hp
 	db STAGE1 ; stage
@@ -5952,11 +5952,11 @@ Ampharos2Card: ; 32647 (c:6647)
 	db ATK_ANIM_GLOW_EFFECT ; animation
 
 	; attack 2
-	energy LIGHTNING, 3, COLORLESS, 1 ; energies
+	energy LIGHTNING, 2, COLORLESS, 2 ; energies
 	tx GigavoltName ; name
 	tx CFHPlus20orTPARDesc ; description
 	dw NONE ; description (cont)
-	db 40 ; damage
+	db 30 ; damage
 	db DAMAGE_PLUS ; category
 	dw MayDo20MoreOrPRZEffectCommands ; effect commands
 	db INFLICT_PARALYSIS ; flags 1
@@ -9463,7 +9463,7 @@ DragoniteCard: ; 333fd (c:73fd)
 	dw NONE ; description (cont)
 	db 0 ; damage
 	db POKEMON_POWER ; category
-	dw ReduceRCBy1EffectCommands ; effect commands
+	dw ReduceRCBy2EffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
@@ -9484,7 +9484,7 @@ DragoniteCard: ; 333fd (c:73fd)
 	db 0
 	db ATK_ANIM_HIT ; animation
 
-	db 2 ; retreat cost
+	db 3 ; retreat cost
 	db NONE ; weakness
 	db WR_FIGHTING ; resistance
 	tx DragonName ; category

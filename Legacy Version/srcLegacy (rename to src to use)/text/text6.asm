@@ -1060,34 +1060,33 @@ Tech5ChallengeMachineExplanationText:
 	done
 
 Text05cb:
-	text "The best card...? If only it were"
-	line "that simple, <RAMNAME>. Each"
-	line "card has its strengths and"
-	line "weaknesses."
+	text "OK, let's start using these"
+	line "practice decks."
+	line "Listen closely and try to follow"
+	line "Dr. Mason's instructions."
 	done
 
 Text05cc:
-
+	text "Practice with Sam?"
 	done
 
 Text05cd:
-	text "There are a wide variety of"
-	line "strategies to use. You should"
-	line "test out ones you find intriguing."
+	text "You should practice again if there"
+	line "is anything you don't understand."
 	done
 
 Text05ce:
-	text "Right now, I'm researching"
-	line "double type combinations."
+	text "OK, a 2-Prize duel using"
+	line "the practice deck!"
 	done
 
 Text05cf:
-
+	text "Would you like to duel Sam?"
 	done
 
 Text05d0:
-	
-	
+	text "Come see me any time."
+	line "The basics are very important!"
 	done
 
 Text05d1:
@@ -1100,15 +1099,14 @@ Text05d2:
 	done
 
 Text05d3:
-	text "I believe that if I focus on"
-	line "one type of Pokémon, but then"
-	line "supplement it with a type that"
-	line "covers its weaknesses, my deck"
-	line "will be much stronger."
+	text "You need to practice more. If you"
+	line "think things through, you should"
+	line "be able to win. Why don't you"
+	line "practice a little more?"
 	done
 
 Text05d4:
-	text "So, have you learned how to "
+	text "So, have you learned how to"
 	line "play the game?"
 	line "I hope you enjoy playing the"
 	line "Pokémon Trading Card Game!"

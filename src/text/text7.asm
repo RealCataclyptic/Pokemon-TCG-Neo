@@ -98,16 +98,14 @@ Text05e3:
 	line "What? "
 	line "You want to learn how to play"
 	line "the Pokémon Trading Card Game?"
-	line "So you, too, finally want to "
-	line "start playing the card game. "
-	line "Well, dueling is more fun than "
+	line "So you too finally want to"
+	line "start playing the card game."
+	line "Well, dueling is more fun than"
 	line "just collecting cards!"
-	line "First, you should ask my "
-	line "assistant, Sam, about any "
-	line "questions you might have."  
-	line "Hey, Sam!"
-	line "<RAMNAME> wants to learn"
-	line "how to play the game!"
+	line "I'm sure you'll have an exciting"
+	line "time on TCG Island!"
+	line "Do you have a deck to start playing?"
+	line "You need 60 cards to build one."
 	done
 	
 Text05e4:
@@ -147,7 +145,6 @@ Text05ea:
 	line "Sam is always here to help."
 	line "So let's skip that go straight to"
 	line "deckbuilding!"
-	done 
 	done
 
 Text05eb:
@@ -183,18 +180,18 @@ Text05ef:
 	done
 
 Text05f0:
-	text "Now then, let's build your deck."
-	line "Did you bring your cards?"
+	text "Hmm... it looks like you don't have"
+	line "enough cards..."
 	done
 
 Text05f1:
-	text "<RAMNAME> handed their cards to "
+	text "<RAMNAME> showed their cards to "
 	line "Dr. Mason."
 	done
 
 Text05f2:
-	text "Hmm...let me add some of my own "
-	line "cards to yours!"
+	text "But don't worry, I'm here to help!"
+	line "Let's add some of my cards to yours!"
 	line "Now, <RAMNAME>, what kind"
 	line "of Deck do you want?"
 	done
@@ -205,7 +202,7 @@ Text05f3:
 
 Text05f4:
 	text "OK, a <RAMTEXT>!"
-	line "Here are the remaining cards!"
+	line "Let's build your first deck!!"
 	done
 
 Text05f5:
@@ -217,12 +214,14 @@ Text05f5:
 	done
 
 Text05f6:
-	text "You should duel with many different "
-	line "people. Why don't you go to one of "
-	line "the Card Clubs. There are many "
-	line "people playing at the Clubs."
-	line "Collect new cards and try "
-	line "building a new Deck!"
+	text "You should duel with many different"
+	line "people. Why don't you go to one of"
+	line "the Card Clubs? There are many"
+	line "people playing at those."
+	line "Collect new cards and try"
+	line "building different decks! And if"
+	line "you need a refresher on the rules,"
+	line "talk to my assistant, Sam!"
 	done
 
 Text05f7:

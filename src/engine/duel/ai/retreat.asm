@@ -7,7 +7,11 @@ AIDecideWhetherToRetreat:
 	xor a
 	ld [wAIPlayEnergyCardForRetreat], a
 	call CheckCantRetreatDueToAcid ; THIS IS NEW CODE TO MAKE THE AI UNDERSTAND THE NO RETREAT EFFECT
-  	jr nc, .check2
+	jr nc, .check2
+	xor a
+  	ld [wAIScore], a
+  	ld [wAIRetreatScore], a ; affected by acid/Pokepower, set retreat score to zero and return no carry
+  	jp .no_carry
 .check2
 	call CheckCantRetreatDueToAbility
 	jr nc, .no_acid

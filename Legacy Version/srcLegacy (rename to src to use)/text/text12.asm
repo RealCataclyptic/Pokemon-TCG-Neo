@@ -869,7 +869,7 @@ HolyFlameName:
 TailwindDescription: 
 	text "As long as Dragonite is benched,"
 	line "reduce the retreat cost of your"
-	line "active Pokémon by <COLORLESS>."
+	line "active Pokémon by <COLORLESS><COLORLESS>."
 	done
 
 Heal2DamageDesc: 

@@ -67,7 +67,7 @@ Script_BeatMitch:
 	show_medal_received_screen EVENT_BEAT_MITCH
 	record_master_win $01
 	print_npc_text MitchPlayerWonInitial2Text
-	give_booster_packs BOOSTER_LABORATORY_NEUTRAL, BOOSTER_LABORATORY_NEUTRAL, BOOSTER_LABORATORY_NEUTRAL, NO_BOOSTER
+	give_booster_packs BOOSTER_LABORATORY_NEUTRAL, BOOSTER_LABORATORY_TRAINER, BOOSTER_LABORATORY_NEUTRAL, NO_BOOSTER
 	print_npc_text MitchPlayerWonInitial3Text
 	quit_script_fully
 
@@ -89,7 +89,7 @@ Script_Mitch_AlreadyHaveMedal:
 
 Script_Mitch_GiveBoosters:
 	print_npc_text MitchPlayerWonRepeat1Text
-	give_booster_packs BOOSTER_LABORATORY_NEUTRAL, BOOSTER_LABORATORY_NEUTRAL, BOOSTER_LABORATORY_NEUTRAL, NO_BOOSTER
+	give_booster_packs BOOSTER_LABORATORY_NEUTRAL, BOOSTER_LABORATORY_TRAINER, BOOSTER_LABORATORY_NEUTRAL, NO_BOOSTER
 	print_npc_text MitchPlayerWonRepeat2Text
 	quit_script_fully
 
@@ -146,7 +146,7 @@ Script_MichaelRematch:
 Script_BeatMichaelInFightingClub:
 	start_script
 	print_npc_text MichaelFightingClubPlayerWon1Text
-	give_booster_packs BOOSTER_COLOSSEUM_FIGHTING, BOOSTER_COLOSSEUM_FIGHTING, NO_BOOSTER
+	give_booster_packs BOOSTER_COLOSSEUM_FIGHTING, BOOSTER_COLOSSEUM_TRAINER, NO_BOOSTER
 	print_npc_text MichaelFightingClubPlayerWon2Text
 	quit_script_fully
 
@@ -174,7 +174,7 @@ Script_dead:
 Script_BeatJessicaInFightingClub:
 	start_script
 	print_npc_text JessicaFightingClubPlayerWon1Text
-	give_booster_packs BOOSTER_COLOSSEUM_FIGHTING, BOOSTER_COLOSSEUM_FIGHTING, NO_BOOSTER
+	give_booster_packs BOOSTER_COLOSSEUM_FIGHTING, BOOSTER_COLOSSEUM_TRAINER, NO_BOOSTER
 	print_npc_text JessicaFightingClubPlayerWon2Text
 	quit_script_fully
 

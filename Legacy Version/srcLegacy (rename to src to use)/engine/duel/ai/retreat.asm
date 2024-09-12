@@ -7,12 +7,19 @@ AIDecideWhetherToRetreat:
 	xor a
 	ld [wAIPlayEnergyCardForRetreat], a
 	call CheckCantRetreatDueToAcid ; THIS IS NEW CODE TO MAKE THE AI UNDERSTAND THE NO RETREAT EFFECT
-  	jr nc, .no_acid
+	jr nc, .check2
+	xor a
+  	ld [wAIScore], a
+  	ld [wAIRetreatScore], a ; affected by acid/Pokepower, set retreat score to zero and return no carry
+  	jp .no_carry
+.check2
+	call CheckCantRetreatDueToAbility
+	jr nc, .no_acid
   	xor a
   	ld [wAIScore], a
-  	ld [wAIRetreatScore], a ; affected by acid, set retreat score to zero and return no carry
+  	ld [wAIRetreatScore], a ; affected by acid/Pokepower, set retreat score to zero and return no carry
   	jp .no_carry
-.no_acid ; CODE ENDS HERE, IF AI UNAFFECTED BY NO RETREAT
+.no_acid ; CODE ENDS HERE IF THERE IS NO PREVENTION OF RETREAT
 	call LoadDefendingPokemonColorWRAndPrizeCards
 	ld a, $80 ; initial retreat score
 	ld [wAIScore], a

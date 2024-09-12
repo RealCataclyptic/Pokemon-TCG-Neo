@@ -106,16 +106,17 @@ UnnamedDeck2:
 
 PracticePlayerDeck:
 	deck_list_start
-	card_item WATER_ENERGY,		2
-	card_item PSYCHIC_ENERGY,	1
+	card_item FULL_HEAL,		2
+	card_item FIGHTING_ENERGY,	1
 	card_item HORSEA,		1
-	card_item SEADRA,		1
+	card_item MACHOKE,		1
+	card_item CROCONAW1,		1
+	card_item MACHOP,		1 ; 7 initial cards, drawn in reverse order from here
+	card_item WATER_ENERGY, 	1 ; PRIZE 1
+	card_item WATER_ENERGY,		1 ; PRIZE 2
 	card_item FULL_HEAL,		1
-	card_item MANTINE,		1
-	card_item WATER_ENERGY,		5
-	card_item CELEBI,		1
-	card_item POTION,		1
-	card_item HORSEA,		1
+	card_item DOUBLE_COLORLESS_ENERGY,		1
+	card_item WATER_ENERGY,		3
 	card_item KINGDRA,		1
 	card_item WATER_ENERGY,		1
 	card_item MAIL_FROM_BILL,	1
@@ -126,7 +127,7 @@ PracticePlayerDeck:
 	card_item TOTODILE2,		1
 	card_item WATER_ENERGY,		1
 	card_item PSYCHIC_ENERGY,	1
-	card_item CROCONAW1,		1
+	card_item CROCONAW1,		2
 	card_item MAIL_FROM_BILL,	1
 	card_item WATER_ENERGY,		1
 	card_item CROCONAW2,		1
@@ -166,12 +167,12 @@ PracticePlayerDeck:
 
 SamsPracticeDeck:
 	deck_list_start
-	card_item LIGHTNING_ENERGY,	2
-	card_item FIRE_ENERGY,	2
-	card_item HOUNDOUR2,	1
-	card_item TOGEPI1,	1
-	card_item PUPITAR,	1
-	card_item FIGHTING_ENERGY,	2
+	card_item PSYCHIC_ENERGY,	3
+	card_item DOUBLE_COLORLESS_ENERGY,	1
+	card_item PINECO,	1
+	card_item NATU,	1
+	card_item XATU,	1		; Initial 7 cards for sam
+	card_item DOUBLE_COLORLESS_ENERGY,	2 ; Two prize cards
 	card_item PUPITAR,	1
 	card_item WIGGLYTUFF,	1
 	card_item FIGHTING_ENERGY,	2
