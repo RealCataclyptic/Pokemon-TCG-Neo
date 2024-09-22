@@ -1369,9 +1369,20 @@ Func_161e::
 	jr z, .use_pokemon_power
 	ld a, $01 ; check only Muk
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
-	jr nc, .use_pokemon_power
+	jr c, .ToxicGas
+	jr nc, .check2
+.ToxicGas
 	call DisplayUsePokemonPowerScreen
 	ldtx hl, UnableToUsePkmnPowerDueToToxicGasText
+	call DrawWideTextBox_WaitForInput
+	call ExchangeRNG
+	ret
+
+.check2
+	call CheckCantUsePokepowers
+	jr nc, .use_pokemon_power 
+	call DisplayUsePokemonPowerScreen
+	ldtx hl, PokepowersDisabledText
 	call DrawWideTextBox_WaitForInput
 	call ExchangeRNG
 	ret
@@ -1582,17 +1593,6 @@ PlayAttackAnimation_DealAttackDamage::
 .skip_draw_huds
 	call PrintKnockedOutIfHLZero
 	jr HandleAfterDamageEffects
-
-; unreferenced
-Func_17ed::
-	call DrawWideTextBox_WaitForInput
-	xor a
-	ld hl, wDamage
-	ld [hli], a
-	ld [hl], a
-	ld a, NO_DAMAGE_OR_EFFECT_AGILITY
-	ld [wNoDamageOrEffect], a
-;	fallthrough
 
 HandleAfterDamageEffects::
 	ld a, [wTempNonTurnDuelistCardID]
@@ -1827,8 +1827,12 @@ DealConfusionDamageToSelf::
 	push af
 	ld a, [wTempTurnDuelistCardID]
 	ld [wTempNonTurnDuelistCardID], a
-	bank1call ApplyDamageModifiers_DamageToSelf ; this is at bank 0
-	ld a, [wDamageEffectiveness]
+	xor a
+	ld [wDamageEffectiveness], a
+	ld hl, wDamage
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
 	ld c, a
 	ld b, PLAY_AREA_ARENA
 	ld a, DUELVARS_ARENA_CARD_HP

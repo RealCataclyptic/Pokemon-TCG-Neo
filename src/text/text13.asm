@@ -124,8 +124,7 @@ FullHealName:
 FullHealDescription: 
 	text "Your Active Pokémon is no longer"
 	line "Asleep, Confused, Paralyzed, or"
-	line "Poisoned. Also, remove 1 damage"
-	line "counter from that Pokémon."
+	line "Poisoned. Then, draw 1 card."
 	done
 
 MiracleBerryName: 

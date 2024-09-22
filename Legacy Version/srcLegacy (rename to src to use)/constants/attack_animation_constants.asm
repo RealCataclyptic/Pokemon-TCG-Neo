@@ -68,7 +68,7 @@
 	const ATK_ANIM_SPIT_POISON            ; $3f
 	const ATK_ANIM_PERISH_SONG              ; $40
 	const ATK_ANIM_BUBBLES                ; $41
-	const ATK_ANIM_UNUSED_42              ; $42
+	const ATK_ANIM_LIGHT_PROTECT              ; $42
 	const ATK_ANIM_STRING_SHOT            ; $43
 	const ATK_ANIM_BOYFRIENDS_PROTECT              ; $44
 	const ATK_ANIM_BOYFRIENDS             ; $45

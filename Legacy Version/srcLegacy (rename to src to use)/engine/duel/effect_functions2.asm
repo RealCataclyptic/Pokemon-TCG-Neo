@@ -1372,3 +1372,31 @@ DiscardAllEnergyEffect2:
 	call PutCardInDiscardPile
 	jr .loop
 	ret
+
+SpecialTargetPokemonWithLowestHP_AISelection2:
+    call SwapTurn
+    ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+    call GetTurnDuelistVariable
+    ld c, a
+    lb de, PLAY_AREA_ARENA, $ff
+    ld b, d
+    ld a, DUELVARS_ARENA_CARD_HP
+    call GetTurnDuelistVariable
+
+; find the location of the Pokemon with the least amount of remaining HP
+.loop_bench
+    ld a, e
+    cp [hl]
+    jr c, .next ; skip if HP is higher
+    ld e, [hl]
+    ld d, b
+.next
+    inc hl
+    inc b
+    dec c
+    jr nz, .loop_bench
+
+    ld a, d
+    ldh [hTempPlayAreaLocation_ffa1], a
+    jp SwapTurn
+

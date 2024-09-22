@@ -68,9 +68,9 @@
 	const ATK_ANIM_SPIT_POISON            ; $3f
 	const ATK_ANIM_FLARE_BLITZ              ; $40
 	const ATK_ANIM_BUBBLES                ; $41
-	const ATK_ANIM_UNUSED_42              ; $42
+	const ATK_ANIM_POLLEN_SHIELD             ; $42
 	const ATK_ANIM_STRING_SHOT            ; $43
-	const ATK_ANIM_UNUSED_44              ; $44
+	const ATK_ANIM_MIST                   ; $44
 	const ATK_ANIM_BOYFRIENDS             ; $45
 	const ATK_ANIM_LURE                   ; $46
 	const ATK_ANIM_TOXIC                  ; $47
@@ -79,7 +79,7 @@
 	const ATK_ANIM_SING                   ; $4a
 	const ATK_ANIM_LULLABY                ; $4b
 	const ATK_ANIM_SUPERSONIC             ; $4c
-	const ATK_ANIM_UNUSED_4D              ; $4d
+	const ATK_ANIM_DARK_HOWL              ; $4d
 	const ATK_ANIM_PETAL_DANCE            ; $4e
 	const ATK_ANIM_PROTECT                ; $4f
 	const ATK_ANIM_BARRIER                ; $50
@@ -105,7 +105,7 @@
 	const ATK_ANIM_BIG_THUNDER            ; $64
 	const ATK_ANIM_SOLAR_POWER            ; $65
 	const ATK_ANIM_POISON_FANG            ; $66
-	const ATK_ANIM_UNUSED_67              ; $67
+	const ATK_ANIM_LIGHT_PROTECT          ; $67
 	const ATK_ANIM_UNUSED_68              ; $68
 	const ATK_ANIM_UNUSED_69              ; $69
 	const ATK_ANIM_FRIENDSHIP_SONG        ; $6a
@@ -121,7 +121,7 @@
 	const ATK_ANIM_LEER                   ; $74
 	const ATK_ANIM_CONFUSION_HIT          ; $75
 	const ATK_ANIM_UNUSED_76              ; $76
-	const ATK_ANIM_DRACO_METEOR              ; $77
+	const ATK_ANIM_DRACO_METEOR           ; $77
 	const ATK_ANIM_BENCH_HIT              ; $78
 	const ATK_ANIM_HEAL                   ; $79
 	const ATK_ANIM_RECOIL_HIT             ; $7a

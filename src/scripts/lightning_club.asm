@@ -155,6 +155,13 @@ Script_BeatIsaac:
 	record_master_win $04
 	print_npc_text Text0639
 	give_booster_packs BOOSTER_MYSTERY_LIGHTNING_COLORLESS, BOOSTER_MYSTERY_LIGHTNING_COLORLESS, BOOSTER_MYSTERY_TRAINER_COLORLESS, NO_BOOSTER
+	print_npc_text FirstWinIsaacGiveCardsText
+	give_card ENERGY_SEARCH
+	show_card_received_screen ENERGY_SEARCH
+	give_card ELECTRODE
+	show_card_received_screen ELECTRODE
+	give_card AMPHAROS1
+	show_card_received_screen AMPHAROS1
 	print_npc_text Text063a
 	quit_script_fully
 

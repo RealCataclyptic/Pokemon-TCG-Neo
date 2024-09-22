@@ -92,6 +92,13 @@ Script_BeatGene:
 	record_master_win $02
 	print_npc_text Text07a8
 	give_booster_packs BOOSTER_MYSTERY_FIGHTING_COLORLESS, BOOSTER_MYSTERY_FIGHTING_COLORLESS, BOOSTER_MYSTERY_TRAINER_COLORLESS, NO_BOOSTER
+	print_npc_text FirstWinGeneGiveCardsText
+	give_card CRYSTAL_SHARD
+	show_card_received_screen CRYSTAL_SHARD
+	give_card RUIN_WALL
+	show_card_received_screen RUIN_WALL
+	give_card STEELIX
+	show_card_received_screen STEELIX
 	print_npc_text Text07a9
 	quit_script_fully
 

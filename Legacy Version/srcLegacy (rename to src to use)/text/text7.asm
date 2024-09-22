@@ -140,14 +140,8 @@ Text05e9:
 	done
 
 Text05ea:
-	text "Now, normally we'd have you do a"
-	line "practice game with Sam... but we"
-	line "all know that you can play the game."
-	line "Plus, if you need any more advice,"
-	line "Sam is always here to help."
-	line "So let's skip that go straight to"
-	line "deckbuilding!"
-	done 
+	text "Alright! Let's play a practice"
+	line "game with Sam, then!"
 	done
 
 Text05eb:

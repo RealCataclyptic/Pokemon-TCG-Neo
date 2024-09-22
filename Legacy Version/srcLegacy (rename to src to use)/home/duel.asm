@@ -1369,9 +1369,20 @@ Func_161e::
 	jr z, .use_pokemon_power
 	ld a, $01 ; check only Muk
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
-	jr nc, .use_pokemon_power
+	jr c, .ToxicGas
+	jr nc, .check2
+.ToxicGas
 	call DisplayUsePokemonPowerScreen
 	ldtx hl, UnableToUsePkmnPowerDueToToxicGasText
+	call DrawWideTextBox_WaitForInput
+	call ExchangeRNG
+	ret
+
+.check2
+	call CheckCantUsePokepowers
+	jr nc, .use_pokemon_power 
+	call DisplayUsePokemonPowerScreen
+	ldtx hl, PokepowersDisabledText
 	call DrawWideTextBox_WaitForInput
 	call ExchangeRNG
 	ret
@@ -1742,6 +1753,7 @@ CheckSelfConfusionDamage::
 ; return nc if the card was played, carry if it wasn't.
 PlayTrainerCard::
 	call CheckCantUseTrainerDueToHeadache
+	jr c, .cant_use
 	call CheckMindGamesScenario
 	jr c, .cant_use
 	ldh a, [hWhoseTurn]

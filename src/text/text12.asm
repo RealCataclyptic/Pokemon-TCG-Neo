@@ -1377,12 +1377,10 @@ PokeBallName:
 	done
 
 PokeBallDescription: 
-	text "Flip a coin. If heads, you may"
-	line "search your deck for any Pokémon"
-	line "card. Show that card to your"
-	line "opponent, then put it into your"
-	line "hand. Shuffle your deck afterward."
-	line ""
+	text "You may search your deck for a Basic"
+	line "Pokémon card. Show that card to your"
+	line "opponent then put it into your hand." 
+	line "(Shuffle your deck afterwards)"
 	done
 
 SuperScoopUpName: 

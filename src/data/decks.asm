@@ -6,11 +6,11 @@ DeckPointers::
 	dw PracticePlayerDeck
 	dw SamsPracticeDeck
 	dw CharmanderAndFriendsDeck ; 'Cyndaquil Starter Deck'
-	dw CharmanderExtraDeck ; ^^ Extra
+	dw CharmanderExtraDeck ; ^^^ Extra
 	dw SquirtleAndFriendsDeck ; 'Totodile Starter Deck'
-	dw SquirtleExtraDeck ; ^^ Extra
+	dw SquirtleExtraDeck ; ^^^ Extra
 	dw BulbasaurAndFriendsDeck ; 'Chikorita Starter Deck'
-	dw BulbasaurExtraDeck ; ^^ Extra
+	dw BulbasaurExtraDeck ; ^^^ Extra
 	dw LightningAndFireDeck
 	dw WaterAndFightingDeck
 	dw GrassAndPsychicDeck
@@ -193,7 +193,7 @@ SamsPracticeDeck:
 	card_item LIGHTNING_ENERGY,	1
 	card_item STEELIX,	1
 	card_item FIGHTING_ENERGY,	1
-	card_item MEW,	1
+	card_item CHANSEY,	1
 	card_item LIGHTNING_ENERGY,	1
 	card_item PROFESSOR_ELM,	1
 	card_item FIGHTING_ENERGY,	1
@@ -700,7 +700,7 @@ WondersofScienceDeck: ; = Revolutionary Theory. Used by Science Club leader Rick
 	card_item FIRE_ENERGY, 6
 	card_item ZUBAT, 4
 	card_item GOLBAT, 3
-	card_item CROBAT, 2
+	card_item CROBAT, 1
 	card_item BULBASAUR, 3
 	card_item IVYSAUR, 2
 	card_item VENUSAUR, 2
@@ -710,7 +710,7 @@ WondersofScienceDeck: ; = Revolutionary Theory. Used by Science Club leader Rick
 	card_item MAGMAR, 2
 	card_item STAR_PIECE, 1
 	card_item TEAM_ROCKETS_EVIL_DEEDS, 3
-	card_item PROFESSOR_ELM, 3
+	card_item PROFESSOR_ELM, 4
 	card_item POKEMON_FAN_CLUB, 2
 	card_item MAIL_FROM_BILL, 3
 	card_item ENERGY_SEARCH, 3				 
@@ -746,7 +746,7 @@ ImRonaldDeck: ; The first deck used against you by Rival Ronald.
 	card_item FIGHTING_ENERGY, 13
 	card_item GASTLY, 3
 	card_item HAUNTER, 2
-	card_item MEW, 3
+	card_item JYNX, 3
 	card_item ESPEON2, 1
 	card_item EEVEE, 3
 	card_item DELIBIRD, 2
@@ -763,25 +763,25 @@ ImRonaldDeck: ; The first deck used against you by Rival Ronald.
 
 PowerfulRonaldDeck: ; The second deck used against you by Rival Ronald.
 	deck_list_start
-	card_item LIGHTNING_ENERGY, 7
+	card_item LIGHTNING_ENERGY, 8
 	card_item FIGHTING_ENERGY, 9
-	card_item PSYCHIC_ENERGY, 7
-	card_item DOUBLE_COLORLESS_ENERGY, 3
+	card_item PSYCHIC_ENERGY, 8
 	card_item ELECTABUZZ, 3
 	card_item HITMONLEE, 2
 	card_item HITMONCHAN, 2
 	card_item MISDREAVUS, 1
 	card_item JYNX, 2
-	card_item RAPIDASH, 1
+	card_item MAGNETON, 1
 	card_item TOGEPI1, 2
 	card_item TOGETIC2, 1
 	card_item ZAPDOS, 2
 	card_item MILTANK, 2
-	card_item PONYTA, 3
+	card_item MAGNEMITE, 3
+	card_item PROFESSOR_ELM, 2
 	card_item ENERGY_ARK, 2
 	card_item SUPER_ENERGY_RETRIEVAL, 1
 	card_item ENERGY_REMOVAL2, 2				 
-	card_item POKEMON_FAN_CLUB, 4
+	card_item POKEMON_FAN_CLUB, 3
 	card_item STRENGTH_CHARM, 2
 	card_item POKEMON_REVERSAL, 2
 	deck_list_end
@@ -821,14 +821,14 @@ LegendaryRonaldDeck: ; The final deck used against you by Rival Ronald.
 	card_item HITMONLEE, 2
 	card_item EEVEE, 3
 	card_item UMBREON, 2
-	card_item PROFESSOR_ELM, 4				  
+	card_item PROFESSOR_ELM, 3				  
 	card_item MAIL_FROM_BILL, 4
 	card_item ENERGY_SEARCH, 4
 	card_item SWITCH, 2
 	card_item POKEGEAR, 2
 	card_item MASTER_BALL, 3
 	card_item POTION, 2
-	card_item STRENGTH_CHARM, 2
+	card_item STRENGTH_CHARM, 3
 	deck_list_end
 	tx LegendaryRonaldDeckName
 
@@ -877,7 +877,7 @@ HeatedBattleDeck: ; = War and Peace. Used by Fighting Club member Michael.
 
 LovetoBattleDeck: ; Used by Fighting Club member Jessica.
 	deck_list_start
-	card_item FIGHTING_ENERGY, 26
+	card_item FIGHTING_ENERGY, 20
 	card_item TYROGUE, 3
 	card_item PHANPY1, 4
 	card_item HITMONLEE, 3
@@ -887,6 +887,8 @@ LovetoBattleDeck: ; Used by Fighting Club member Jessica.
 	card_item AIPOM, 2
 	card_item IGGLYBUFF, 1
 	card_item JIGGLYPUFF, 1
+	card_item PROFESSOR_ELM, 2
+	card_item MAIL_FROM_BILL, 4
 	card_item STRENGTH_CHARM, 4
 	card_item CRYSTAL_SHARD, 4
 	card_item POTION, 3
@@ -1067,18 +1069,18 @@ PowerGeneratorDeck: 			; Dragon Ball Deck, Used by Lightning club member Brandon
 	deck_list_start
 	card_item LIGHTNING_ENERGY, 15
 	card_item DOUBLE_COLORLESS_ENERGY, 4
-	card_item DRATINI, 4
+	card_item DRATINI, 3
 	card_item DRAGONAIR, 3
-	card_item DRAGONITE, 3
+	card_item DRAGONITE, 2
 	card_item VOLTORB, 4
 	card_item ELECTRODE, 3
 	card_item ELEKID, 2
-	card_item RAIKOU, 1
+	card_item POKE_BALL, 4
 	card_item JOLTEON, 2
 	card_item EEVEE, 4
 	card_item PROFESSOR_ELM, 2
 	card_item NEW_POKEDEX, 3		   
-	card_item MAIL_FROM_BILL, 4			   
+	card_item MAIL_FROM_BILL, 3			   
 	card_item SWITCH, 2
 	card_item STRENGTH_CHARM, 4
 	deck_list_end
@@ -1243,7 +1245,6 @@ FlyinPokemonDeck: 			; = Aerodynamics. Used by Science club member Joseph.
 LovelyNidoranDeck: 			; = Entomology. Used by Science Club member David.
 	deck_list_start
 	card_item GRASS_ENERGY, 18
-	card_item DOUBLE_COLORLESS_ENERGY, 2
 	card_item SCYTHER, 4
 	card_item SCIZOR, 2
 	card_item LEDYBA, 2
@@ -1256,10 +1257,10 @@ LovelyNidoranDeck: 			; = Entomology. Used by Science Club member David.
 	card_item HERACROSS, 4
 	card_item DUNSPARCE, 2
 	card_item PROFESSOR_ELM, 3
-	card_item MAIL_FROM_BILL, 2
+	card_item MAIL_FROM_BILL, 3
 	card_item BILLS_MAINTENANCE, 4
 	card_item SEER, 2
-	card_item SWITCH, 1
+	card_item SWITCH, 2
 	card_item POKE_BALL, 2
 	card_item ARCADE_GAME, 1
 	deck_list_end

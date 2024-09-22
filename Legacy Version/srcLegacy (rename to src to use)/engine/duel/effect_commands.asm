@@ -284,6 +284,10 @@ NoPokePowersEffectCommands:		; All pokepowers stop working. Same as base.
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, ToxicGasEffect
 	db  $00
 
+NoPokepowersNextTurnEffectCommands: ; Opponent can't use pokepowers next turn.
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, DisablePokepowersEffect
+	db  $00
+
 MukSludgeEffectCommands:		;CF, defending pokemon can't retreat next turn.
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, NewAcidCFEffect
 	db  $00
@@ -344,9 +348,7 @@ TangelaPoisonWhipEffectCommands:		; CFH, 10 to opps bench and switch DFP.
 	dbw EFFECTCMDTYPE_AI_SWITCH_DEFENDING_PKMN, ShockWaveSelectEffect
 	db  $00
 
-AromatherapyEffectCommands:		; Modified base Solar Power that only Full Heals your side.
-	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, SolarPower_CheckUse
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, SolarPower_RemoveStatusEffect
+AromatherapyEffectCommands:		; Not in Legacy
 	db  $00
 
 VenusaurMegaDrainEffectCommands:	;CFH, do a Lass effect to your opp only.
@@ -657,7 +659,7 @@ MoltresLv35DiveBombEffectCommands:		;; Modified Wildfire code. Discard any numbe
 FlareonQuickAttackEffectCommands:		; Does 20 damage to any target.
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, AnyTargetEffect
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, DealDamageToTargetEffect ; in functions, contains a special animation effect found in: DealDamageToPlayAreaPokemon_SpecialAnim.
-	dbw EFFECTCMDTYPE_AI_SELECTION, AnyTargetAIEffect
+	dbw EFFECTCMDTYPE_AI_SELECTION, SpecialTargetPokemonWithLowestHP_AISelection
 	db  $00
 
 FlareonFlamethrowerEffectCommands:		;Returns 1 energy to the hand as cost.
@@ -824,7 +826,7 @@ DamageSwapEffectCommands:		; Same as base.
 AlakazamConfuseRayEffectCommands:		;Deals 30 to any target. AI can only target the bench.
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, AnyTargetEffect
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, DealDamageToTargetEffect2 ; in functions, contains a special animation effect found in: DealDamageToPlayAreaPokemon_SpecialAnim.
-	dbw EFFECTCMDTYPE_AI_SELECTION, GengarDarkMind_AISelectEffect
+	dbw EFFECTCMDTYPE_AI_SELECTION, SpecialTargetPokemonWithLowestHP_AISelection
 	db  $00
 
 MewPsywaveEffectCommands:		;Does 10 per energy attached to the defending pokemon.
@@ -864,10 +866,10 @@ MewtwoBarrierEffectCommands:		; Same as base, unused to prevent degenerate explo
 	dbw EFFECTCMDTYPE_AI_SELECTION, Barrier_AISelectEffect
 	db  $00
 
-Do30moreIfDFPStatusedEffectCommands:	; Now does 10 damage per opponent energy, lets you target anything. AI can only target benched mons.
+Do30moreIfDFPStatusedEffectCommands:	; AI doesn't undersdtand this one
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, AnyTargetEffect
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Deal10DamageToTargetPerEnergy_DamageEffect
-	dbw EFFECTCMDTYPE_AI_SELECTION, GengarDarkMind_AISelectEffect
+	dbw EFFECTCMDTYPE_AI_SELECTION, SpecialTargetPokemonWithLowestHP_AISelection
 	db  $00
 
 Get2DiscardEnergyAttachToSelfEffectCommands:	; Does 30 to self, then gets 2 energy from the discard and attached them to self.
@@ -900,7 +902,6 @@ SlowpokeSpacingOutEffectCommands:	;CF, if heads, Gets 2 energy from the discard 
 ScavengeEffectCommands:		; pokepower get a trainer from the discard on a CFH.
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, Scavenge_CheckDiscardPile
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, ScavengeOPTCheck
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, Scavenge_AddToHandEffect
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, Scavenge_PlayerSelectTrainerEffect
 	db  $00
 
@@ -1027,6 +1028,10 @@ Do30ToABenchEffectCommands:		; Does 30 to a benched opp. Modified Stretch kick c
 SandshrewSandAttackEffectCommands:	;CFT, paralysis. CFT, nothing.
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, SandAttackEffect
 	db  $00
+
+NoSpecialConditionsEffectCommands: ; Makes the user invulnerable to special conditions next turn. 
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, StatusImmunityEffect
+	db $00
 
 CF20X3EffectCommands:	; Flip 3 coins, 20 per heads.
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, SandslashFurySwipes_MultiplierEffect

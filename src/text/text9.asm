@@ -235,20 +235,22 @@ Text0761:
 Text0762:
 	text "There are, at times, problems even"
 	line "science cannot answer."
-	line "Here, take this Medal."
-	line "It is the result of our research."
+	line "Here, take this Medal. It contains"
+	line "the results of our research."
 	done
 
 Text0763:
-	text "And let me give you this."
-	line "Please add this to your collection."
+	text "And let me give you these."
+	line "Please add them to your collection."
 	done
 
 Text0764:
-	text "Legendary Cards are but a Legend!"
-	line "Science is the only truth!"
-	line "I must continue my research"
-	line "of Science Pokémon!"
+	text "Give my regards to my old colleague,"
+	line "Professor Mason. You are proof that"
+	line "his teaching methods are suberb."
+	line ""
+	line "Now then, I must continue my own"
+	line "research into deckbuilding theory!"
 	done
 
 Text0765:
@@ -669,7 +671,7 @@ Text07a7:
 	done
 
 Text07a8:
-	text "And take this Booster Pack, too."
+	text "And take these Booster Pack, too."
 	done
 
 Text07a9:
@@ -703,7 +705,7 @@ Text07ad:
 
 Text07ae:
 	text "Yes! You are an worthy opponent!"
-	line "Here, take this Booster Pack."
+	line "Here, take these Booster Packs."
 	done
 
 Text07af:

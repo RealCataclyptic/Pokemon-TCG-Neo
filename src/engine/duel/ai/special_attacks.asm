@@ -53,8 +53,6 @@ HandleSpecialAIAttacks: ; TCG Neo note: Deleting the special AI handling flags i
 	jp z, .HyperBeam
 	cp SMOOCHUM
 	jp z, .HyperBeam
-	cp LUGIA_C
-	jp z, .HyperBeam
 	cp KINGDRA
 	jp z, .HyperBeam
 	cp FERALIGATR2
@@ -66,6 +64,8 @@ HandleSpecialAIAttacks: ; TCG Neo note: Deleting the special AI handling flags i
 	cp UMBREON
 	jp z, .AnyTargetAttack
 	cp MEW
+	jp z, .AnyTargetAttack
+	cp KINGDRA_S
 	jp z, .AnyTargetAttack
 
 ; return zero score.
@@ -170,7 +170,7 @@ HandleSpecialAIAttacks: ; TCG Neo note: Deleting the special AI handling flags i
 	ret
 
 .AnyTargetAttack:
-	ld a, $8a
+	ld a, $99
 	ret
 
 ; tests for the following conditions:

@@ -471,7 +471,7 @@ HandleAIPkmnPowers:
 	call HandleAIShift
 	jr .next_1
 .check_peek
-	cp ARCANINE ; is now Drive Off
+	cp ARCANINE; is now Drive Off
 	jr nz, .check_strange_behavior
 	call HandleAIPeek
 	jr .next_1

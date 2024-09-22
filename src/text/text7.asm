@@ -617,15 +617,15 @@ Text0637:
 	done
 
 Text0638:
-	text "How could my Lightning Deck lose!?!"
+	text "How could my Lightning Deck lose!?"
 	line "How shocking...!"
 	line "Here, take this Lightning Medal"
 	line "as proof of defeating me."
 	done
 
 Text0639:
-	text "And here, take this Booster "
-	line "Pack, too."
+	text "And here, take these Booster "
+	line "Packs, too."
 	done
 
 Text063a:
@@ -1114,8 +1114,8 @@ Text0682:
 	done
 
 Text0683:
-	text "And here, take this"
-	line "A DESTINY Booster Pack!"
+	text "And, have some Destiny"
+	line "Booster Packs!"
 	done
 
 	ds $29

@@ -3397,4 +3397,7 @@ TextOffsets::
 	textpointer BubbleBombText
 	textpointer NewIntroText1                                      
 	textpointer NewIntroText2                                      
-	textpointer NewIntroText3                                      
+	textpointer NewIntroText3           
+	textpointer PokepowersDisabledText
+	textpointer NoSpecialConditions1TurnDesc      
+	textpointer NoPokepowersNextTurnDesc                     

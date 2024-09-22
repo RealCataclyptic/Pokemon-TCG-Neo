@@ -90,7 +90,7 @@ PointerTable_AttackAnimation:
 	dw AttackAnimation_Goo                 ; ATK_ANIM_SPIT_POISON ;O But only in functions
 	dw AttackAnimation_PerishSong          ; ATK_ANIM_PERISH_SONG ;X
 	dw AttackAnimation_Bubbles             ; ATK_ANIM_BUBBLES ;X
-	dw AttackAnimation_Bubbles             ; ATK_ANIM_UNUSED_42 ;?
+	dw AttackAnimation_LightProtect        ; ATK_ANIM_LIGHT_PROTECT ; 
 	dw AttackAnimation_StringShot          ; ATK_ANIM_STRING_SHOT ;X
 	dw AttackAnimation_BoyfriendsProtect   ; ATK_ANIM_BOYFRIENDS_PROTECT
 	dw AttackAnimation_Boyfriends          ; ATK_ANIM_BOYFRIENDS ;X
@@ -1062,6 +1062,16 @@ AttackAnimation_PerishSong:
 	anim_opponent       DUEL_ANIM_DISTORT
 	anim_normal         DUEL_ANIM_SHAKE1
 	anim_opponent       DUEL_ANIM_SHOW_DAMAGE
+	anim_end
+
+AttackAnimation_LightProtect:
+	anim_player         DUEL_ANIM_GLOW
+	anim_normal         DUEL_ANIM_FLASH
+	anim_opponent       DUEL_ANIM_BORDER_SPARK
+	anim_normal         DUEL_ANIM_SHAKE1
+	anim_opponent       DUEL_ANIM_HIT
+	anim_opponent       DUEL_ANIM_SHOW_DAMAGE
+	anim_player         DUEL_ANIM_PROTECT
 	anim_end
 
 AttackAnimation_Stub2:

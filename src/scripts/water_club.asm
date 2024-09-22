@@ -292,7 +292,15 @@ Script_BeatAmy:
 	try_give_medal_pc_packs
 	show_medal_received_screen EVENT_BEAT_AMY
 	record_master_win $03
+	print_npc_text FirstWinAmyGiveCardsText
+	give_card SWITCH
+	show_card_received_screen SWITCH
+	give_card MANTINE
+	show_card_received_screen MANTINE
+	give_card POLITOED
+	show_card_received_screen POLITOED
 	print_npc_text AmyGivesMedal2Text
+
 .give_booster_packs
 	give_booster_packs BOOSTER_LABORATORY_WATER, BOOSTER_LABORATORY_WATER, BOOSTER_LABORATORY_TRAINER, NO_BOOSTER
 	print_npc_text AmyPlayerWon2Text

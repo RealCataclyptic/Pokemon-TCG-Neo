@@ -994,12 +994,34 @@ CheckSpecificDecksToAttachDoubleColorless:
 
 ; check if AI is playing any of the applicable decks.
 	ld a, [wOpponentDeckID]
-	cp LEGENDARY_DRAGONITE_DECK_ID
-	jr z, .legendary_dragonite_deck
-	cp STRANGE_POWER_DECK_ID ; changed from base	
-	jr z, .fire_charge_deck
+	cp FIRST_STRIKE_DECK_ID
+	jp z, .ghost_deck
+	ld a, [wOpponentDeckID]
+	cp BLISTERING_POKEMON_DECK_ID
+	jp z, .DCEGeneric
+	ld a, [wOpponentDeckID]
+	cp LONELY_FRIENDS_DECK_ID
+	jp z, .DCEGeneric
+	ld a, [wOpponentDeckID]
+	cp HEATED_BATTLE_DECK_ID
+	jp z, .DCEGeneric
+	ld a, [wOpponentDeckID]
+	cp ROCK_CRUSHER_DECK_ID
+	jp z, .DCEGeneric
+	ld a, [wOpponentDeckID]
+	cp MUSCLES_FOR_BRAINS_DECK_ID
+	jp z, .DCEGeneric
+	ld a, [wOpponentDeckID]
+	cp POWER_GENERATOR_DECK_ID ; changed from base	
+	jp z, .power_generator_deck
+	cp ETCETERA_DECK_ID
+	jp z, .etcetera_deck
+	cp GHOST_DECK_ID
+	jp z, .ghost_deck
+	cp STRANGE_POWER_DECK_ID
+	jp z, .strange_power_deck
 	cp FLYIN_POKEMON_DECK_ID
-	jr z, .legendary_ronald_deck
+	jp z, .strange_power_deck
 
 .no_carry
 	pop hl
@@ -1008,31 +1030,83 @@ CheckSpecificDecksToAttachDoubleColorless:
 	or a
 	ret
 
-; if playing Legendary Dragonite deck,
-; check for Charmander and Dratini.
-.legendary_dragonite_deck
+.ghost_deck
 	call .get_id
-	cp URSARING
-	jr z, .check_colorless_attached
 	cp TEDDIURSA
-	jr z, .check_colorless_attached
+	jp z, .check_colorless_attached
+	cp MURKROW
+	jp z, .check_colorless_attached
+	cp STANTLER
+	jp z, .check_colorless_attached
+	cp SKARMORY
 	jr .no_carry
 
-; if playing Fire Charge deck,
-; check for Growlithe.
-.fire_charge_deck
-	call .get_id
-	cp NOCTOWL
-	jr z, .check_colorless_attached
-	jr .no_carry
 
-; if playing Legendary Ronald deck,
-; check for Dratini.
-.legendary_ronald_deck
+.etcetera_deck
 	call .get_id
+	cp FOSSIL_EGG
+	jp z, .check_colorless_attached
+	cp HERACROSS
+	jp z, .check_colorless_attached
 	cp YANMA
-	jr z, .check_colorless_attached
+	jp z, .check_colorless_attached
 	jr .no_carry
+
+.power_generator_deck
+	call .get_id
+	cp DRATINI
+	jp z, .check_colorless_attached
+	cp DRAGONAIR
+	jp z, .check_colorless_attached
+	jr .no_carry
+
+.strange_power_deck
+	call .get_id
+	cp HOOTHOOT
+	jp z, .check_colorless_attached
+	cp TEDDIURSA
+	jp z, .check_colorless_attached
+	cp ARTICUNO
+	jp z, .check_colorless_attached
+	cp YANMA
+	jp z, .check_colorless_attached
+	jr .no_carry
+
+.DCEGeneric
+	call .get_id
+	cp LARVITAR
+	jp z, .check_colorless_attached
+	cp PUPITAR
+	jp z, .check_colorless_attached
+	cp MACHOP
+	jp z, .check_colorless_attached
+	cp MACHOKE
+	jp z, .check_colorless_attached
+	cp MILTANK
+	jp z, .check_colorless_attached
+	cp STANTLER
+	jp z, .check_colorless_attached
+	cp SKARMORY
+	jp z, .check_colorless_attached
+	cp SNUBBULL
+	jp z, .check_colorless_attached
+	cp POLIWAG
+	jp z, .check_colorless_attached
+	cp POLIWHIRL
+	jp z, .check_colorless_attached
+	cp TOGEPI1
+	jp z, .check_colorless_attached
+	cp SENTRET
+	jp z, .check_colorless_attached
+	cp MARILL1
+	jp z, .check_colorless_attached
+	cp SQUIRTLE
+	jp z, .check_colorless_attached
+	cp WOOPER
+	jp z, .check_colorless_attached
+	cp DUNSPARCE
+	jp z, .check_colorless_attached
+	jp .no_carry2
 
 ; check if card has any colorless energy cards attached,
 ; and if there are any, return no carry.
@@ -1042,13 +1116,13 @@ CheckSpecificDecksToAttachDoubleColorless:
 	call GetPlayAreaCardAttachedEnergies
 	ld a, [wAttachedEnergies + COLORLESS]
 	or a
-	jr nz, .no_carry
+	jr nz, .no_carry2
 
 ; card has no colorless energy, so look for double colorless
 ; in hand and if found, return carry and its card index.
 	ld a, DOUBLE_COLORLESS_ENERGY
 	call LookForCardIDInHand
-	jr c, .no_carry
+	jr c, .no_carry2
 	ldh [hTemp_ffa0], a
 	pop hl
 	pop de
@@ -1062,4 +1136,11 @@ CheckSpecificDecksToAttachDoubleColorless:
 	call GetTurnDuelistVariable
 	call GetCardIDFromDeckIndex
 	ld a, e
+	ret
+
+.no_carry2
+	pop hl
+	pop de
+	pop bc
+	or a
 	ret

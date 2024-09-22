@@ -50,6 +50,10 @@ QueueStatusCondition:
 	jr z, .cant_induce_status
 	; Snorlax's Thick Skinned prevents it from being statused...
 	cp SUICUNE
+	ld a, DUELVARS_ARENA_CARD_SUBSTATUS1
+	call GetNonTurnDuelistVariable
+	cp SUBSTATUS1_IMMUNITY
+	jr z, .cant_induce_status
 	jr nz, .can_induce_status
 	call SwapTurn
 	xor a
@@ -57,6 +61,7 @@ QueueStatusCondition:
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
 	call SwapTurn
 	jr c, .can_induce_status
+
 
 .cant_induce_status
 	ld a, c
@@ -2122,8 +2127,9 @@ SpecialParalysisEffect:
 	ret
 .heads
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
-	jr nz, .MoreThan21HP
-
+	jr c, .MoreThan21HP
+	call CheckCantUsePokepowers
+	jr c, .MoreThan21HP
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	add DUELVARS_ARENA_CARD_HP
 	call GetTurnDuelistVariable
@@ -2183,6 +2189,11 @@ Tumble_MultiplierEffect:
 	inc de
 	ld a, h
 	ld [de], a
+	ret
+
+StatusImmunityEffect: ; grants immunity from special conditions for 1 turn
+	ld a, SUBSTATUS1_IMMUNITY
+	call ApplySubstatus1ToDefendingCard
 	ret
 
 BoyfriendsEffect:
@@ -2276,6 +2287,8 @@ PsyDamage_MultiplierEffect:
 	ret
 
 NidoranFCallForFamily_CheckDeckAndPlayArea:
+	call CheckCantUsePokepowers
+	ret c
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	ldh [hTemp_ffa0], a
 	add DUELVARS_ARENA_CARD_FLAGS
@@ -2693,6 +2706,8 @@ VenomPowder_PoisonConfusion50PercentEffect:
 	ret
 
 JetStreamCheck:
+	call CheckCantUsePokepowers
+	ret c
 	call SwapTurn
 	xor a ; PLAY_AREA_ARENA
 	call CreateArenaOrBenchEnergyCardList
@@ -2715,7 +2730,15 @@ JetStreamCheck:
 	ldtx hl, NoEnergyAttachedToOpponentsActiveText
 	ret
 
+DisablePokepowersEffect: ; Disables Pokepowers for 1 turn
+	ld a, DUELVARS_ARENA_CARD_SUBSTATUS3
+	call GetNonTurnDuelistVariable
+	set SUBSTATUS3_POKEPOWERS_DISABLED, [hl]
+	ret
+
 Heal_OncePerTurnCheck:
+	call CheckCantUsePokepowers
+	ret c
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	ldh [hTemp_ffa0], a
 	add DUELVARS_ARENA_CARD_FLAGS
@@ -2783,6 +2806,8 @@ PetalDance_MultiplierEffect:
 	ret
 
 DriveOffCheck:
+	call CheckCantUsePokepowers
+	ret c
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	or a
 	jr nz, .not_arcanine
@@ -2872,56 +2897,6 @@ ShockwaveEffect:
 	call SwapTurn
 	ldh a, [hTemp_ffa0]
 	call HandleSwitchDefendingPokemonEffect
-	ret
-
-SolarPower_CheckUse:
-	ldh a, [hTempPlayAreaLocation_ff9d]
-	ldh [hTemp_ffa0], a
-	add DUELVARS_ARENA_CARD_FLAGS
-	call GetTurnDuelistVariable
-	and USED_PKMN_POWER_THIS_TURN
-	jr nz, .already_used
-
-	ldh a, [hTempPlayAreaLocation_ff9d]
-	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
-	ret c ; can't use PKMN due to status or Toxic Gas
-
-; return carry if none of the Arena cards have status conditions
-	ld a, DUELVARS_ARENA_CARD_STATUS
-	call GetTurnDuelistVariable
-	or a
-	jr nz, .has_status
-	jr z, .no_status
-.has_status
-	or a
-	ret
-.already_used
-	ldtx hl, OnlyOncePerTurnText
-	scf
-	ret
-.no_status
-	ldtx hl, NotAffectedByPoisonSleepParalysisOrConfusionText
-	scf
-	ret
-
-SolarPower_RemoveStatusEffect:
-	ld a, ATK_ANIM_HEAL
-	ld [wLoadedAttackAnimation], a
-	bank1call Func_7415
-	ldh a, [hTempPlayAreaLocation_ff9d]
-	ld b, a
-	ld c, $00
-	ldh a, [hWhoseTurn]
-	ld h, a
-	bank1call PlayAttackAnimation
-	bank1call WaitAttackAnimation
-	ldh a, [hTemp_ffa0]
-	add DUELVARS_ARENA_CARD_FLAGS
-	call GetTurnDuelistVariable
-	set USED_PKMN_POWER_THIS_TURN_F, [hl]
-	ld l, DUELVARS_ARENA_CARD_STATUS
-	ld [hl], NO_STATUS
-	bank1call DrawDuelHUDs
 	ret
 
 ; applies the damage bonus for attacks that get bonus
@@ -3069,6 +3044,8 @@ MagikarpFlail_HPCheck:
 	call SetDefiniteDamage
 	ret
 
+
+
 HeadacheEffect:
 	ld a, DUELVARS_ARENA_CARD_SUBSTATUS3
 	call GetNonTurnDuelistVariable
@@ -3109,8 +3086,10 @@ SeadraWaterGunEffect:
 	jp ImakuniEffect
 
 FloodlightCheckEffect:
+	call CheckCantUsePokepowers
+	jr c, .NoBoost
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
-	jr nz, .NoBoost
+	jr c, .NoBoost
 	jp FloodlightEffect
 .NoBoost
 	ret
@@ -3420,6 +3399,8 @@ Cowardice_Check:
 	ldh [hTemp_ffa0], a
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
 	ret c ; return if cannot use
+	call CheckCantUsePokepowers
+	ret c
 	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
 	call GetTurnDuelistVariable
 	ldtx hl, EffectNoPokemonOnTheBenchText
@@ -5498,9 +5479,8 @@ ThunderNeedleAIEffect:
 
 
 ScavengeOPTCheck:
-	ldh a, [hTempPlayAreaLocation_ff9d]
-	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
-	ret
+	call CheckCantUsePokepowers
+	ret c
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	ldh [hTemp_ffa0], a
 	add DUELVARS_ARENA_CARD_FLAGS
@@ -5526,6 +5506,9 @@ Scavenge_PlayerSelectTrainerEffect:
 	call GetTurnDuelistVariable
 	set USED_PKMN_POWER_THIS_TURN_F, [hl]
 	ldh a, [hAIPkmnPowerEffectParam]
+	ldtx de, GetATrainerCFText
+	call TossCoin_BankB
+	ret nc
 	call CreateTrainerCardListFromDiscardPile
 	bank1call Func_5591
 	ldtx hl, PleaseSelectCardText
@@ -5536,12 +5519,8 @@ Scavenge_PlayerSelectTrainerEffect:
 	jr c, .loop_input
 	ldh a, [hTempCardIndex_ff98]
 	ldh [hTempPlayAreaLocation_ffa1], a
-	ret
 
 Scavenge_AddToHandEffect:
-	ldtx de, GetATrainerCFText
-	call TossCoin_BankB
-	ret nc
 	ldh a, [hTempPlayAreaLocation_ffa1]
 	call MoveDiscardPileCardToHand
 	call AddCardToHand
@@ -5631,6 +5610,9 @@ RandomStatusEffect_AI:
 	lb de, 20, 20
 	jp SetExpectedAIDamage
 
+SpecialTargetPokemonWithLowestHP_AISelection:
+	farcall SpecialTargetPokemonWithLowestHP_AISelection2
+	ret
 
 MysteryAttack_AIEffect:
 	ld a, 20
@@ -6853,6 +6835,9 @@ Damage20AllBenchEffect:
 BountyOPTCheck:
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
+	ret c
+	call CheckCantUsePokepowers
+	ret c
 
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	ldh [hTemp_ffa0], a

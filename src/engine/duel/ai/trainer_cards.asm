@@ -1061,14 +1061,12 @@ AIDecide_GustOfWind:
 	jr c, .no_carry ; if energy card is in hand
 
 .check_id
-	; skip if current active card is NOCTOWL or DRAGONAIR
+	; skip if current active card is ARCANINE
 	ld a, DUELVARS_ARENA_CARD
 	call GetTurnDuelistVariable
 	call GetCardIDFromDeckIndex
 	ld a, e
-	cp NOCTOWL
-	jr z, .no_carry
-	cp DRAGONAIR
+	cp ARCANINE
 	jr z, .no_carry
 
 	call .FindBenchCardToKnockOut
@@ -4809,17 +4807,8 @@ AIDecide_ClefairyDollOrMysteriousFossil:
 AIPlay_Pokeball:
 	ld a, [wAITrainerCardToPlay]
 	ldh [hTempCardIndex_ff9f], a
-	ldtx de, TrainerCardSuccessCheckText
-	bank1call TossCoin
-	ldh [hTemp_ffa0], a
-	jr nc, .asm_219bc
 	ld a, [wAITrainerCardParameter]
 	ldh [hTempPlayAreaLocation_ffa1], a
-	jr .asm_219c0
-.asm_219bc
-	ld a, $ff
-	ldh [hTempPlayAreaLocation_ffa1], a
-.asm_219c0
 	ld a, OPPACTION_EXECUTE_TRAINER_EFFECTS
 	bank1call AIMakeDecision
 	ret
@@ -4833,8 +4822,8 @@ AIDecide_Pokeball:
 	jr z, .hard_pokemon
 	cp PIKACHU_DECK_ID ; SAME
 	jr z, .pikachu
-	cp ETCETERA_DECK_ID ; UNUSED
-	jr z, .etcetera
+	cp POWER_GENERATOR_DECK_ID ; IS NOW POWER GENERATOR
+	jr z, .power_generator
 	cp ETCETERA_DECK_ID ; changed to Etcetera
 	jp z, .lovely_nidoran
 	or a
@@ -4847,7 +4836,7 @@ AIDecide_Pokeball:
 	ld a, CARD_LOCATION_DECK
 	call LookForCardIDInLocation
 	ret c
-	ld e, JUMPLUFF
+	ld e, BULBASAUR
 	ld a, CARD_LOCATION_DECK
 	call LookForCardIDInLocation
 	ret c
@@ -4877,7 +4866,7 @@ AIDecide_Pokeball:
 ; this deck runs a deck check for specific
 ; card IDs in order of decreasing priority
 .pikachu
-	ld e, PICHU
+	ld e, PIKACHU
 	ld a, CARD_LOCATION_DECK
 	call LookForCardIDInLocation
 	ret c
@@ -4885,143 +4874,39 @@ AIDecide_Pokeball:
 	ld a, CARD_LOCATION_DECK
 	call LookForCardIDInLocation
 	ret c
-	ld e, PIKACHU
-	ld a, CARD_LOCATION_DECK
-	call LookForCardIDInLocation
-	ret c
-	ld e, RAICHU
-	ld a, CARD_LOCATION_DECK
-	call LookForCardIDInLocation
-	ret c
-	ld e, RAICHU_S
+	ld e, PICHU
 	ld a, CARD_LOCATION_DECK
 	call LookForCardIDInLocation
 	ret c
 	ret
 
-; this deck runs a deck check for specific
-; card IDs in order of decreasing priority
-; given a specific energy card in hand.
-; also it avoids redundancy, so if it already
-; has that card ID in the hand, it is skipped.
-.etcetera
-; fire
-	ld a, GRASS_ENERGY
-	call LookForCardIDInHandList_Bank8
-	jr nc, .lightning
-	ld a, SUNKERN
-	call LookForCardIDInHandList_Bank8
-	jr c, .lightning
-	ld a, SUNFLORA
-	call LookForCardIDInHandList_Bank8
-	jr c, .lightning
-	ld e, CHIKORITA1
-	ld a, CARD_LOCATION_DECK
-	call LookForCardIDInLocation
-	ret c
-	ld e, BAYLEEF2
-	ld a, CARD_LOCATION_DECK
-	call LookForCardIDInLocation
-	ret c
-
-.lightning
-	ld a, LIGHTNING_ENERGY
-	call LookForCardIDInHandList_Bank8
-	jr nc, .fighting
-	ld a, PIKACHU
-	call LookForCardIDInHandList_Bank8
-	jr c, .fighting
-	ld a, ELECTABUZZ
-	call LookForCardIDInHandList_Bank8
-	jr c, .fighting
-	ld e, PIKACHU
-	ld a, CARD_LOCATION_DECK
-	call LookForCardIDInLocation
-	ret c
-	ld e, ELECTABUZZ
-	ld a, CARD_LOCATION_DECK
-	call LookForCardIDInLocation
-	ret c
-
-.fighting
-	ld a, FIGHTING_ENERGY
-	call LookForCardIDInHandList_Bank8
-	jr nc, .psychic
-	ld a, DONPHAN2
-	call LookForCardIDInHandList_Bank8
-	jr c, .psychic
-	ld a, HITMONTOP
-	call LookForCardIDInHandList_Bank8
-	jr c, .psychic
-	ld e, DONPHAN2
-	ld a, CARD_LOCATION_DECK
-	call LookForCardIDInLocation
-	ret c
-	ld e, HITMONTOP
-	ld a, CARD_LOCATION_DECK
-	call LookForCardIDInLocation
-	ret c
-
-.psychic
-	ld a, PSYCHIC_ENERGY
-	call LookForCardIDInHandList_Bank8
-	jr nc, .done_etcetera
-	ld a, UNOWN_J
-	call LookForCardIDInHandList_Bank8
-	jr c, .done_etcetera
-	ld a, DRATINI
-	call LookForCardIDInHandList_Bank8
-	jr c, .done_etcetera
-	ld e, UNOWN_J
-	ld a, CARD_LOCATION_DECK
-	call LookForCardIDInLocation
-	ret c
+.power_generator
 	ld e, DRATINI
 	ld a, CARD_LOCATION_DECK
 	call LookForCardIDInLocation
 	ret c
-.done_etcetera
-	or a
+	ld e, VOLTORB
+	ld a, CARD_LOCATION_DECK
+	call LookForCardIDInLocation
+	ret c
+	ld e, ELEKID
+	ld a, CARD_LOCATION_DECK
+	call LookForCardIDInLocation
+	ret c
 	ret
 
-; this deck looks for card evolutions if
-; its pre-evolution is in hand or in Play Area.
-; if none of these are found, it looks for pre-evolutions
-; of cards it has in hand.
-; it does this for both the NidoranM (first)
-; and NidoranF (second) families.
 .lovely_nidoran
-	ld b, CHIKORITA1
-	ld a, BAYLEEF2
-	call LookForCardIDInDeck_GivenCardIDInHandAndPlayArea
+	ld e, YANMA
+	ld a, CARD_LOCATION_DECK
+	call LookForCardIDInLocation
 	ret c
-	ld b, BAYLEEF2
-	ld a, MEGANIUM1
-	call LookForCardIDInDeck_GivenCardIDInHandAndPlayArea
+	ld e, HERACROSS
+	ld a, CARD_LOCATION_DECK
+	call LookForCardIDInLocation
 	ret c
-	ld a, CHIKORITA1
-	ld b, BAYLEEF2
-	call LookForCardIDInDeck_GivenCardIDInHand
-	ret c
-	ld a, BAYLEEF2
-	ld b, MEGANIUM1
-	call LookForCardIDInDeck_GivenCardIDInHand
-	ret c
-	ld b, BULBASAUR
-	ld a, IVYSAUR
-	call LookForCardIDInDeck_GivenCardIDInHandAndPlayArea
-	ret c
-	ld b, IVYSAUR
-	ld a, VENUSAUR
-	call LookForCardIDInDeck_GivenCardIDInHandAndPlayArea
-	ret c
-	ld a, BULBASAUR
-	ld b, IVYSAUR
-	call LookForCardIDInDeck_GivenCardIDInHand
-	ret c
-	ld a, IVYSAUR
-	ld b, VENUSAUR
-	call LookForCardIDInDeck_GivenCardIDInHand
+	ld e, SUDOWOODO
+	ld a, CARD_LOCATION_DECK
+	call LookForCardIDInLocation
 	ret c
 	ret
 

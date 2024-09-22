@@ -586,7 +586,10 @@ PlayEnergyCard:
 	cp TYPE_ENERGY_GRASS
 	jr nz, .not_water_energy
 	call IsRainDanceActive
-	jr c, .rain_dance_active
+	jr nc, .not_water_energy
+	call CheckCantUsePokepowers
+	jr nc, .rain_dance_active 
+	;fallthrough
 
 .not_water_energy
 	ld a, [wAlreadyPlayedEnergy]
@@ -7018,6 +7021,8 @@ HandleSleepCheck:
 	jr nc, .tails
 
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
+	jr c, .not_GengarOrScareActive
+	call CheckCantUsePokepowers
 	jr c, .not_GengarOrScareActive
 	ld a, DUELVARS_ARENA_CARD
 	call GetTurnDuelistVariable

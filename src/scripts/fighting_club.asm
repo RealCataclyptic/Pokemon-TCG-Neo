@@ -68,6 +68,13 @@ Script_BeatMitch:
 	record_master_win $01
 	print_npc_text MitchPlayerWonInitial2Text
 	give_booster_packs BOOSTER_LABORATORY_NEUTRAL, BOOSTER_LABORATORY_TRAINER, BOOSTER_LABORATORY_NEUTRAL, NO_BOOSTER
+	print_npc_text FirstWinMitchGiveCardsText
+	give_card STRENGTH_CHARM
+	show_card_received_screen STRENGTH_CHARM
+	give_card DOUBLE_COLORLESS_ENERGY
+	show_card_received_screen DOUBLE_COLORLESS_ENERGY
+	give_card MACHAMP
+	show_card_received_screen MACHAMP
 	print_npc_text MitchPlayerWonInitial3Text
 	quit_script_fully
 

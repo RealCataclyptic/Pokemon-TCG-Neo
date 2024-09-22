@@ -95,7 +95,7 @@ HandleEnergyBurn::
 	call GetTurnDuelistVariable
 	call GetCardIDFromDeckIndex
 	ld a, e
-	cp ENTEI1
+	cp PROFESSOR_ELM ; removed from legacy
 	ret nz
 	xor a
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0

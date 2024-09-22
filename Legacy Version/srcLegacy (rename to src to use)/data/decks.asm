@@ -194,7 +194,7 @@ SamsPracticeDeck:
 	card_item LIGHTNING_ENERGY,	1
 	card_item STEELIX,	1
 	card_item FIGHTING_ENERGY,	1
-	card_item MEW,	1
+	card_item SENTRET,	1
 	card_item LIGHTNING_ENERGY,	1
 	card_item PROFESSOR_ELM,	1
 	card_item FIGHTING_ENERGY,	1
@@ -519,7 +519,7 @@ LegendaryArticunoDeck: ; = Legendary Suicune. Used by Grand Master Jack.
 	card_item EEVEE, 3
 	card_item UMBREON, 2
 	card_item ESPEON1, 1
-	card_item MEW, 3
+	card_item MANTINE, 3
 	card_item NATU, 2
 	card_item XATU, 2
 	card_item SUICUNE, 4
@@ -739,7 +739,7 @@ ImRonaldDeck: ; The first deck used against you by Rival Ronald.
 	card_item FIGHTING_ENERGY, 13
 	card_item GASTLY, 3
 	card_item HAUNTER, 2
-	card_item MEW, 3
+	card_item JYNX, 3
 	card_item ESPEON2, 1
 	card_item EEVEE, 3
 	card_item DELIBIRD, 2
@@ -756,25 +756,25 @@ ImRonaldDeck: ; The first deck used against you by Rival Ronald.
 
 PowerfulRonaldDeck: ; The second deck used against you by Rival Ronald.
 	deck_list_start
-	card_item LIGHTNING_ENERGY, 7
+	card_item LIGHTNING_ENERGY, 8
 	card_item FIGHTING_ENERGY, 9
-	card_item PSYCHIC_ENERGY, 7
-	card_item DOUBLE_COLORLESS_ENERGY, 3
+	card_item PSYCHIC_ENERGY, 8
 	card_item ELECTABUZZ, 3
 	card_item HITMONLEE, 2
 	card_item HITMONCHAN, 2
 	card_item MISDREAVUS, 1
 	card_item JYNX, 2
-	card_item RAPIDASH, 1
+	card_item MAGNETON, 1
 	card_item TOGEPI1, 2
-	card_item TOGETIC1, 1
+	card_item TOGETIC2, 1
 	card_item ZAPDOS, 2
 	card_item MILTANK, 2
-	card_item PONYTA, 3
+	card_item MAGNEMITE, 3
+	card_item PROFESSOR_ELM, 2
 	card_item ENERGY_ARK, 2
 	card_item SUPER_ENERGY_RETRIEVAL, 1
 	card_item ENERGY_REMOVAL2, 2				 
-	card_item POKEMON_FAN_CLUB, 4
+	card_item POKEMON_FAN_CLUB, 3
 	card_item STRENGTH_CHARM, 2
 	card_item POKEMON_REVERSAL, 2
 	deck_list_end

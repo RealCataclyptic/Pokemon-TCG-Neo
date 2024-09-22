@@ -125,6 +125,13 @@ Script_BeatNikki:
 	try_give_medal_pc_packs
 	show_medal_received_screen EVENT_BEAT_NIKKI
 	record_master_win $05
+	print_npc_text FirstWinMikkiGiveCardsText
+	give_card SUNFLORA
+	show_card_received_screen SUNFLORA
+	give_card STAR_PIECE
+	show_card_received_screen STAR_PIECE
+	give_card BELLOSSOM
+	show_card_received_screen BELLOSSOM
 	print_npc_text Text0721
 .ows_e7eb
 	give_booster_packs BOOSTER_LABORATORY_GRASS, BOOSTER_LABORATORY_NEUTRAL, BOOSTER_LABORATORY_TRAINER, NO_BOOSTER

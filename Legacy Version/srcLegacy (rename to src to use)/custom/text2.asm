@@ -492,3 +492,22 @@ NewIntroText3:
 	line "Sam can usually be found near "
 	line "the card table to your left."
 	done
+
+PokepowersDisabledText:
+	text "All Pokémon Powers have"
+	line "been disabled this turn."
+	done
+
+NoSpecialConditions1TurnDesc:
+	text "During your opponent's next turn,"
+	line "this Pokémon can't become affected"
+	line "by special conditions."
+	done
+
+NoPokepowersNextTurnDesc:
+	text "After using this attack, during"
+	line "your opponent's next turn, all"
+	line "of your opponent's Pokémon powers"
+	line "cannot be used until the end of"
+	line "that turn."
+	done

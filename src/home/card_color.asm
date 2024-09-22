@@ -100,6 +100,8 @@ HandleEnergyBurn::
 	xor a
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
 	ret c
+	call CheckCantUsePokepowers
+	ret c
 	ld hl, wAttachedEnergies
 	ld c, NUM_COLORED_TYPES
 	xor a

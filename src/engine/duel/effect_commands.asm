@@ -43,6 +43,9 @@ TimeLoopEffectCommands: ;Discards a Psychic then applies the MrFuji effect.
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, MrFuji_ReturnToDeckEffect
 	db  $00
 
+OverpoweredAttackEffectCommands: ; Destroys the opponent. Used for testing purposes only.
+	dbw EFFECTCMDTYPE_AFTER_DAMAGE, OverpoweredAttackEffect
+	db  $00
 
 EkansWrapEffectCommands:
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, Paralysis50PercentEffect
@@ -272,10 +275,9 @@ EnergyTransEffectCommands:		;Same as base, but does lightning energy instead.
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, EnergyTrans_PrintProcedure
 	db  $00
 
-AnyTarget10PerEnergyEffectCommands:		; Target any pkmn, deal 10 to it for every energy attached to it. 
+AnyTarget10PerEnergyEffectCommands:		; Target any pkmn, deal 10 to it for every energy attached to it. AI does not understand this code.
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, AnyTargetEffect
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Deal10DamageToTargetPerEnergy_DamageEffect
-	dbw EFFECTCMDTYPE_AI_SELECTION, AnyTargetAIEffect
 	db  $00
 
 ReduceBy20AfterAttackEffectCommands:		;Reduces damage by 20. Damage reduction is found in substatus.
@@ -297,6 +299,10 @@ MayDo20MoreOrPRZEffectCommands:		; 20 more damage on heads, paralysis if tails. 
 	dbw EFFECTCMDTYPE_AI, BellsproutCallForFamily_AISelectEffect
 	db  $00
 
+NoSpecialConditionsEffectCommands: ; Makes the user invulnerable to special conditions next turn. 
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, StatusImmunityEffect
+	db $00
+
 WeezingSmogEffectCommands:		; Free, was an experiment for... something. Is now a base Stretch Kick clone?
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, PikachuLv16GrowlEffect
 	db  $00
@@ -308,7 +314,7 @@ Do20ToAllBenchAnd50ToSelfEffectCommands:	; 20 damage to all player's benches, 50
 Do40AnyTargetEffectCommands:		;Does 40 damage to any target.
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, AnyTargetEffect
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, FeintAttackDamageEffect
-	dbw EFFECTCMDTYPE_AI_SELECTION, AnyTargetAIEffect
+	dbw EFFECTCMDTYPE_AI_SELECTION, SpecialTargetPokemonWithLowestHP_AISelection
 	dbw EFFECTCMDTYPE_AI, FeintAttackAIEffect
 	db  $00
 
@@ -419,6 +425,10 @@ Do10XPerSelfDamageEffectCommands:	; Does 10 damage for every 10 damage on you.
 
 NoOppTrainersEffectCommands:		; Opponent can't play trainers next turn. Same as base.
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, HeadacheEffect
+	db  $00
+
+NoPokepowersNextTurnEffect: ; Opponent can't use pokepowers next turn.
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, DisablePokepowersEffect
 	db  $00
 
 CFCFNOrNoTrainersEffectCommands:		;free, was an experiment
@@ -1522,7 +1532,7 @@ MysteriousFossilEffectCommands:		; Is a fossil than can evolve or be discarded f
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, MysteriousFossil_PlaceInPlayAreaEffect
 	db  $00
 
-FullHealEffectCommands:		; Heals all status from your poke. Same as base.
+FullHealEffectCommands:		; Heals all status from your poke. Then, draws 1 card.
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, FullHeal_StatusCheck
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, FullHeal_ClearStatusEffect
 	db  $00

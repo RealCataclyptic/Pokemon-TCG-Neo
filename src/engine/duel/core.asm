@@ -473,44 +473,11 @@ DuelMenu_Done:
 
 ; triggered by selecting the "Retreat" item in the duel menu
 DuelMenu_Retreat:
-	ld a, DUELVARS_ARENA_CARD_STATUS
-	call GetTurnDuelistVariable
-	and CNF_SLP_PRZ
-	cp CONFUSED
-	ldh [hTemp_ffa0], a
-	jr nz, .not_confused
-	ld a, [wGotHeadsFromConfusionCheckDuringRetreat]
-	or a
-	jr nz, .unable_due_to_confusion
-	call CheckAbleToRetreat
-	jr c, .unable_to_retreat
-	call DisplayRetreatScreen
-	jr c, .done
-	ldtx hl, SelectPkmnOnBenchToSwitchWithActiveText
-	call DrawWideTextBox_WaitForInput
-	call OpenPlayAreaScreenForSelection
-	jr c, .done
-	ld [wBenchSelectedPokemon], a
-	ld a, [wBenchSelectedPokemon]
-	ldh [hTempPlayAreaLocation_ffa1], a
-	ld a, OPPACTION_ATTEMPT_RETREAT
-	call SetOppAction_SerialSendDuelData
-	call AttemptRetreat
-	jr nc, .done
-	call DrawDuelMainScene
-
-.unable_due_to_confusion
-	ldtx hl, UnableToRetreatText
-	call DrawWideTextBox_WaitForInput
-	jp PrintDuelMenuAndHandleInput
-
-.not_confused
 	; note that the energy cards are discarded (DiscardRetreatCostCards), then returned
 	; (ReturnRetreatCostCardsToArena), then discarded again for good (AttemptRetreat).
 	; It's done this way so that the retreating Pokemon is listed with its energies updated
-	; when the Play Area screen is shown to select the Pokemon to switch to. The reason why
-	; AttemptRetreat is responsible for discarding the energy cards is because, if the
-	; Pokemon is confused, it may not be able to retreat, so they cannot be discarded earlier.
+	; when the Play Area screen is shown to select the Pokemon to switch to.
+
 	call CheckAbleToRetreat
 	jr c, .unable_to_retreat
 	call DisplayRetreatScreen
@@ -586,7 +553,10 @@ PlayEnergyCard:
 	cp TYPE_ENERGY_WATER
 	jr nz, .not_water_energy
 	call IsRainDanceActive
-	jr c, .rain_dance_active
+	jr nc, .not_water_energy
+	call CheckCantUsePokepowers
+	jr nc, .rain_dance_active 
+	;fallthrough
 
 .not_water_energy
 	ld a, [wAlreadyPlayedEnergy]
@@ -5801,29 +5771,12 @@ ReturnRetreatCostCardsToArena:
 	pop hl
 	jr .loop
 
-; discard retreat cost energy cards and attempt retreat of the arena card.
-; return carry if unable to retreat this turn due to unsuccessful confusion check
-; if successful, the retreated card is replaced with a bench Pokemon card
+; discard retreat cost energy cards and retreat the arena card.
 AttemptRetreat:
 	call DiscardRetreatCostCards
-	ldh a, [hTemp_ffa0]
-	and CNF_SLP_PRZ
-	cp CONFUSED
-	jr nz, .success
-	ldtx de, ConfusionCheckRetreatText
-	call TossCoin
-	jr c, .success
-	ld a, 1
-	ld [wGotHeadsFromConfusionCheckDuringRetreat], a
-	scf
-	ret
-.success
 	ldh a, [hTempPlayAreaLocation_ffa1]
 	ld e, a
-	call SwapArenaWithBenchPokemon
-	xor a
-	ld [wGotHeadsFromConfusionCheckDuringRetreat], a
-	ret
+	jp SwapArenaWithBenchPokemon
 
 ; given a number between 0-255 in a, converts it to TX_SYMBOL format,
 ; and writes it to wStringBuffer + 2 and to the BGMap0 address at bc.
@@ -7033,6 +6986,8 @@ HandleSleepCheck:
 
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
 	jr c, .not_GengarOrScareActive
+	call CheckCantUsePokepowers
+	jr c, .not_GengarOrScareActive
 	ld a, DUELVARS_ARENA_CARD
 	call GetTurnDuelistVariable
 	ld a, GENGAR ; Pokemon, counted anywhere.
@@ -7676,7 +7631,6 @@ InitVariablesToBeginDuel:
 InitVariablesToBeginTurn:
 	xor a
 	ld [wAlreadyPlayedEnergy], a
-	ld [wGotHeadsFromConfusionCheckDuringRetreat], a
 	ld [wGotHeadsFromSandAttackOrSmokescreenCheck], a
 	ldh a, [hWhoseTurn]
 	ld [wWhoseTurn], a

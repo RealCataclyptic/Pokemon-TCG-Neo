@@ -38,7 +38,7 @@ Text0689:
 	line "Maybe my Deck isn't well balanced?"
 	line "I must change some of the cards"
 	line "and try again."
-	line "Oh yeah, take this."
+	line "Oh yeah, take these."
 	done
 
 Text068a:
@@ -393,14 +393,12 @@ Text06c0:
 
 Text06c1:
 	text "That was a great Duel!"
-	line "Here, let me give you this!!!"
+	line "Here, let me give you these!!!"
 	done
 
 Text06c2:
-	text "With this, you're a little closer"
-	line "to the Legendary Pokémon Cards!"
-	line "Here, take this, too!"
-	line "I hope it will help you out!"
+	text "With those, you'll be a closer"
+	line "to your goal!"
 	done
 
 Text06c3:
@@ -971,8 +969,6 @@ Text071e:
 Text071f:
 	text "Oh, no! I lost!"
 	line "Well, you truly are skilled."
-	line "Maybe one day you will inherit"
-	line "the Legendary Pokémon Cards."
 	line "Please allow me to give you"
 	line "this Grass Medal."
 	done
@@ -981,12 +977,12 @@ Text0720:
 	text "Oh, no!"
 	line "How could I lose?"
 	line "Please allow me to give you"
-	line "this Booster Pack."
+	line "these Booster Packs."
 	done
 
 Text0721:
 	text "Please"
-	line "take this, too."
+	line "take these, too."
 	done
 
 Text0722:

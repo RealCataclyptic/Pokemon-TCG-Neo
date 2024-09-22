@@ -393,17 +393,17 @@ Bayleef1Card: ; 30eaa (c:4eaa)
 
 	; attack 2
 	energy GRASS, 2, COLORLESS, 1 ; energies
-	tx RazorLeafName ; name
-	dw NONE ; description
+	tx PollenShieldName ; name
+	tx NoSpecialConditions1TurnDesc ; description
 	dw NONE ; description (cont)
-	db 40 ; damage
+	db 30 ; damage
 	db DAMAGE_NORMAL ; category
-	dw NONE ; effect commands
+	dw NoSpecialConditionsEffectCommands ; effect commands
 	db NONE ; flags 1
-	db NONE ; flags 2
+	db NULLIFY_OR_WEAKEN_ATTACK ; flags 2
 	db NONE ; flags 3
 	db 0
-	db ATK_ANIM_WHIP ; animation
+	db ATK_ANIM_POLLEN_SHIELD ; animation
 
 	db 1 ; retreat cost
 	db WR_FIRE ; weakness
@@ -2573,12 +2573,12 @@ HoundoomCard: ; 31891 (c:5891)
 
 	; attack 1
 	energy FIRE, 1, COLORLESS, 1 ; energies
-	tx BurnName ; name
-	tx Mill3IfSuccessDesc ; description
+	tx DarkHowlName ; name
+	tx NoPokepowersNextTurnDesc ; description
 	dw NONE ; description (cont)
 	db 20 ; damage
 	db DAMAGE_NORMAL ; category
-	dw Mill3OppCardsEffectCommands ; effect commands
+	dw NoPokepowersNextTurnEffect ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
@@ -3999,19 +3999,19 @@ VaporeonCard: ; 31c1f (c:5c1f)
 	db STAGE1 ; stage
 	tx EeveeName ; pre-evo name
 
-	; attack 1
+	; attack 2
 	energy COLORLESS, 1 ; energies
-	tx SandAttackName ; name
-	tx OpponentAttackMayDoNothingDescription ; description
+	tx MistName ; name
+	tx NoSpecialConditions1TurnDesc ; description
 	dw NONE ; description (cont)
 	db 10 ; damage
 	db DAMAGE_NORMAL ; category
-	dw SandshrewSandAttackEffectCommands ; effect commands
+	dw NoSpecialConditionsEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NULLIFY_OR_WEAKEN_ATTACK ; flags 2
 	db NONE ; flags 3
 	db 0
-	db ATK_ANIM_DARK_GAS ; animation
+	db ATK_ANIM_MIST ; animation
 
 	; attack 2
 	energy WATER, 2 ; energies
@@ -5851,13 +5851,13 @@ Flaaffy2Card: ; 325c5 (c:65c5)
 
 	; attack 2
 	energy LIGHTNING, 1, COLORLESS, 1 ; energies
-	tx ThunderWaveName ; name
-	tx MayInflictParalysisDescription ; description
+	tx StunWaveName ; name
+	tx NoPokepowersNextTurnDesc ; description
 	dw NONE ; description (cont)
 	db 30 ; damage
 	db DAMAGE_NORMAL ; category
-	dw MayInflictParalysisEffectCommands ; effect commands
-	db INFLICT_PARALYSIS ; flags 1
+	dw NoPokepowersNextTurnEffect ; effect commands
+	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
 	db 0
@@ -6055,13 +6055,13 @@ MagnetonCard:
 	
 	; attack 2
 	energy LIGHTNING, 2, COLORLESS, 1 ; energies
-	tx SteelWaveName ; name
-	tx Do10ToAllOppBenchDesc ; description
+	tx EMPName ; name
+	tx NoPokepowersNextTurnDesc ; description
 	dw NONE ; description (cont)
 	db 30 ; damage
 	db DAMAGE_NORMAL ; category
-	dw Do10ToAllOppBenchedEffectCommands ; effect commands
-	db DAMAGE_TO_OPPONENT_BENCH ; flags 1
+	dw NoPokepowersNextTurnEffect ; effect commands
+	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
 	db 0
@@ -6717,7 +6717,7 @@ SteelixCard: ; 328d1 (c:68d1)
 	db ATK_ANIM_HIT ; animation
 
 	; attack 2
-	energy FIGHTING, 2, COLORLESS, 2 ; energies
+	energy FIGHTING, 3, COLORLESS, 1 ; energies
 	tx IronTailName ; name
 	tx ReduceDamageby20Desc ; description
 	dw NONE ; description (cont)
@@ -8154,9 +8154,9 @@ MewCard: ; 32ea8 (c:6ea8)
 	dw AnyTarget10PerEnergyEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
-	db SPECIAL_AI_HANDLING; flags 3
+	db NONE; flags 3
 	db 10
-	db ATK_ANIM_PSYCHIC_HIT ; animation
+	db ATK_ANIM_NONE ; animation
 
 	db 1 ; retreat cost
 	db WR_PSYCHIC ; weakness
@@ -8409,7 +8409,7 @@ UmbreonCard: ; 32fed (c:6fed)
 	dw Do40AnyTargetEffectCommands ; effect commands
 	db NONE; flags 1
 	db NONE ; flags 2
-	db SPECIAL_AI_HANDLING ; flags 3
+	db NONE ; flags 3
 	db 0
 	db ATK_ANIM_NONE ; animation
 
@@ -9420,18 +9420,18 @@ DragonairCard: ; 333bc (c:73bc)
 	db ATK_ANIM_NONE ; animation
 
 	; attack 2
-	energy COLORLESS, 3 ; energies
-	tx AgilityName ; name
-	tx MayGetImmunityDesc ; description
+	energy COLORLESS, 2 ; energies
+	tx ProtectiveWaveName ; name
+	tx NoSpecialConditions1TurnDesc ; description
 	dw NONE ; description (cont)
 	db 20 ; damage
 	db DAMAGE_NORMAL ; category
-	dw MayGetImmunityEffectCommands ; effect commands
+	dw NoSpecialConditionsEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NULLIFY_OR_WEAKEN_ATTACK ; flags 2
 	db NONE ; flags 3
 	db 0
-	db ATK_ANIM_QUICK_ATTACK ; animation
+	db ATK_ANIM_LIGHT_PROTECT ; animation
 
 	db 2 ; retreat cost
 	db NONE ; weakness

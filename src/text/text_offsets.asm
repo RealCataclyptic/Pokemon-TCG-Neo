@@ -249,7 +249,6 @@ TextOffsets::
 	textpointer AcidCheckText                                      ; 0x00f5
 	textpointer TransparencyCheckText                              ; 0x00f6
 	textpointer ConfusionCheckDamageText                           ; 0x00f7
-	textpointer ConfusionCheckRetreatText                          ; 0x00f8
 	textpointer PokemonsSleepCheckText                             ; 0x00f9
 	textpointer PoisonedIfHeadsConfusedIfTailsText                 ; 0x00fa
 	textpointer IfHeadsDoNotReceiveDamageOrEffectText              ; 0x00fb
@@ -3190,3 +3189,25 @@ TextOffsets::
 	textpointer AreYouBoyOrGirlText
 	textpointer BoyText
 	textpointer GirlText
+	textpointer ImmunityText
+	textpointer PokepowersDisabledText
+	textpointer NoSpecialConditions1TurnDesc      
+	textpointer NoPokepowersNextTurnDesc 
+	textpointer AlreadyRetreatedThisTurnText
+	textpointer DarkHowlName
+	textpointer EMPName
+	textpointer StunWaveName
+	textpointer PollenShieldName
+	textpointer ProtectiveWaveName
+	textpointer MistName
+	textpointer FirstWinMitchGiveCardsText
+	textpointer FirstWinKenGiveCardsText
+	textpointer FirstWinMikkiGiveCardsText
+	textpointer BeatKenFixText
+	textpointer FirstWinIsaacGiveCardsText
+	textpointer FirstWinMurrayGiveCardsText
+	textpointer FirstWinGeneGiveCardsText
+	textpointer FirstWinRickGiveCardsText
+	textpointer FirstWinAmyGiveCardsText
+	textpointer ChooseBasicPokemonCardFromDeckText
+	textpointer ChooseBasicPokemonCardText

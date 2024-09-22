@@ -97,6 +97,13 @@ Script_BeatRick:
 	record_master_win $07
 	print_npc_text Text0763
 	give_booster_packs BOOSTER_LABORATORY_GRASS, BOOSTER_LABORATORY_TRAINER, BOOSTER_LABORATORY_TRAINER, NO_BOOSTER
+	print_npc_text FirstWinRickGiveCardsText
+	give_card PROFESSOR_ELM
+	show_card_received_screen PROFESSOR_ELM
+	give_card POKEGEAR
+	show_card_received_screen POKEGEAR
+	give_card CROBAT_S
+	show_card_received_screen CROBAT_S
 	print_npc_text Text0764
 	quit_script_fully
 

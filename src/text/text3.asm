@@ -1270,12 +1270,14 @@ Mail15Text:
 
 NewGameText:
 	text "NEW GAME"
+	line "Version 1.4"
 	done
 
 CardPopContinueDiaryNewGameText:
 	text "CARD POP!"
 	line "CONTINUE FROM DIARY"
 	line "NEW GAME"
+	line "Version 1.4"
 	done
 
 CardPopContinueDiaryNewGameContinueDuelText:

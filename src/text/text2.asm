@@ -13,11 +13,6 @@ ConfusionCheckDamageText:
 	line "If Tails, damage to yourself!"
 	done
 
-ConfusionCheckRetreatText:
-	text "Confusion check!"
-	line "If Tails, unable to Retreat."
-	done
-
 PokemonsSleepCheckText:
 	text "<RAMTEXT>'s Sleep check."
 	done
@@ -107,6 +102,10 @@ UnableToUseAttackDueToNShieldText:
 NoDamageOrEffectDueToNShieldText:
 	text "No damage or effect on next Attack"
 	line "due to the effects of Cuteness."
+	done
+
+ImmunityText:
+	text "Cannot be affected by SpecialXXX"
 	done
 
 NoDamageOrEffectDueToTransparencyText:
@@ -813,8 +812,8 @@ ReceivedCardText:
 	done
 
 ReceivedPromotionalCardText:
-	text "<RAMNAME> received a Promotional"
-	line "card <RAMTEXT>!"
+	text "<RAMNAME> received"
+	line "a <RAMTEXT>!"
 	done
 
 ReceivedLegendaryCardText:

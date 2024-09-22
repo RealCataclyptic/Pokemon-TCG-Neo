@@ -50,6 +50,10 @@ QueueStatusCondition:
 	jr z, .cant_induce_status
 	; Snorlax's Thick Skinned prevents it from being statused...
 	cp SUICUNE
+	ld a, DUELVARS_ARENA_CARD_SUBSTATUS1
+	call GetNonTurnDuelistVariable
+	cp SUBSTATUS1_IMMUNITY
+	jr z, .cant_induce_status
 	jr nz, .can_induce_status
 	call SwapTurn
 	xor a
@@ -2208,6 +2212,8 @@ NidoranFFurySwipes_MultiplierEffect:
 	ret
 
 NidoranFCallForFamily_CheckDeckAndPlayArea:
+	call CheckCantUsePokepowers
+	ret c
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	ldh [hTemp_ffa0], a
 	add DUELVARS_ARENA_CARD_FLAGS
@@ -2335,6 +2341,8 @@ EnergyTrans_CheckPlayArea:
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
 	ret c ; cannot use Pkmn Power
+	call CheckCantUsePokepowers
+	ret c
 
 ; search in Play Area for at least 1 Grass Energy type
 	ld a, DUELVARS_CARD_LOCATIONS
@@ -2516,16 +2524,15 @@ PoisonAcidEffect:
 	call PoisonEffect
 	ret
 
-; returns carry if no cards in Deck
-; or if Play Area is full already.
-BellsproutCallForFamily_CheckDeckAndPlayArea:
-	ldtx de, IfHeadsDoNotReceiveDamageOrEffectText
-	call TossCoin_BankB
-	ret nc ; return if tails
-	ld a, ATK_ANIM_STONE_BARRAGE
-	ld [wLoadedAttackAnimation], a
-	ld a, SUBSTATUS1_AGILITY
+StatusImmunityEffect: ; grants immunity from special conditions for 1 turn
+	ld a, SUBSTATUS1_IMMUNITY
 	call ApplySubstatus1ToDefendingCard
+	ret
+
+DisablePokepowersEffect: ; Disables Pokepowers for 1 turn
+	ld a, DUELVARS_ARENA_CARD_SUBSTATUS3
+	call GetNonTurnDuelistVariable
+	set SUBSTATUS3_POKEPOWERS_DISABLED, [hl]
 	ret
 
 BellsproutCallForFamily_PlayerSelectEffect:
@@ -2694,6 +2701,8 @@ SolarPower_CheckUse:
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
 	ret c ; can't use PKMN due to status or Toxic Gas
+	call CheckCantUsePokepowers
+	ret c
 
 ; return carry if none of the Arena cards have status conditions
 	ld a, DUELVARS_ARENA_CARD_STATUS
@@ -3028,6 +3037,8 @@ ShellderSupersonicEffect:
 	ret
 
 DriveOffCheck:
+	call CheckCantUsePokepowers
+	ret c
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	or a
 	jr nz, .not_arcanine
@@ -3061,7 +3072,6 @@ DriveOffCheck:
 	ldtx hl, OnlyOncePerTurnText
 	scf
 	ret
-
 
 DriveOffSetFlag:
 	ldh a, [hTemp_ffa0]
@@ -3982,27 +3992,6 @@ FireSpin_DiscardEffect:
 	call PutCardInDiscardPile
 	ld a, [hli]
 	call PutCardInDiscardPile
-	ret
-
-; returns carry if Pkmn Power cannot be used
-; or if Arena card is not Charizard.
-; this is unused.
-EnergyBurnCheck_Unreferenced:
-	xor a
-	bank1call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
-	ret c
-	ld a, DUELVARS_ARENA_CARD
-	push de
-	call GetTurnDuelistVariable
-	call GetCardIDFromDeckIndex
-	ld a, e
-	pop de
-	cp ENTEI1
-	jr nz, .not_charizard
-	or a
-	ret
-.not_charizard
-	scf
 	ret
 
 FlareonRage_AIEffect:
@@ -4998,6 +4987,8 @@ MrMimeMeditate_DamageBoostEffect:
 
 ; returns carry if Damage Swap cannot be used.
 DamageSwap_CheckDamage:
+	call CheckCantUsePokepowers
+	ret c
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	ldh [hTemp_ffa0], a
 	call CheckIfPlayAreaHasAnyDamage
@@ -5480,6 +5471,8 @@ MewtwoLv60EnergyAbsorption_AddToHandEffect:
 
 ; returns carry if Strange Behavior cannot be used.
 StrangeBehavior_CheckDamage:
+	call CheckCantUsePokepowers
+	ret c
 ; does Play Area have any damage counters?
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	ldh [hTemp_ffa0], a
@@ -6388,7 +6381,9 @@ Thunderpunch_RecoilEffect:
 
 FloodlightCheckEffect:
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
-	jr nz, .NoBoost
+	jr c, .NoBoost
+	call CheckCantUsePokepowers
+	jr c, .NoBoost
 	jp FloodlightEffect
 .NoBoost
 	ret
@@ -6614,6 +6609,9 @@ ThunderstormEffect:
 
 	xor a
 	ld [wDuelDisplayedScreen], a
+	ret
+SpecialTargetPokemonWithLowestHP_AISelection:
+	farcall SpecialTargetPokemonWithLowestHP_AISelection2
 	ret
 
 PresentEffect:
@@ -7208,7 +7206,7 @@ Gigashock_BenchDamageEffect:
 	call SwapTurn
 	ret
 
-MagnetonLv28SelfdestructEffect:
+MagnetonLv28SelfdestructEffect: ; 10 to opp's bench only
 	; opponent's bench
 	call SwapTurn
 	xor a
@@ -7216,6 +7214,10 @@ MagnetonLv28SelfdestructEffect:
 	ld a, 10
 	call DealDamageToAllBenchedPokemon
 	call SwapTurn
+	ret
+
+OverpoweredAttackEffect:
+	farcall OverpoweredAttackEffect2
 	ret
 
 MagnetonSonicboom_UnaffectedByColorEffect:
@@ -7789,7 +7791,9 @@ StepIn_BenchCheck:
 
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
-	ret
+	ret c
+	call CheckCantUsePokepowers
+	ret c
 
 .set_carry
 	scf
@@ -8760,34 +8764,6 @@ DragoniteLv41Slam_MultiplierEffect:
 	call SetDefiniteDamage
 	ret
 
-CopyPlayAreaHPToBackup_Unreferenced:
-	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
-	call GetTurnDuelistVariable
-	ld c, a
-	ld l, DUELVARS_ARENA_CARD_HP
-	ld de, wBackupPlayerAreaHP
-.loop_play_area
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .loop_play_area
-	ret
-
-CopyPlayAreaHPFromBackup_Unreferenced:
-	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
-	call GetTurnDuelistVariable
-	ld c, a
-	ld l, DUELVARS_ARENA_CARD_HP
-	ld de, wBackupPlayerAreaHP
-.asm_2efd9
-	ld a, [de]
-	inc de
-	ld [hli], a
-	dec c
-	jr nz, .asm_2efd9
-	ret
-
 CatPunchEffect:
 	call SwapTurn
 	call PickRandomPlayAreaCard
@@ -9566,9 +9542,7 @@ FullHeal_ClearStatusEffect:
 	call GetTurnDuelistVariable
 	ld [hl], NO_STATUS
 	bank1call DrawDuelHUDs
-	lb de, 0, 10
-	call ApplyAndAnimateHPRecovery
-	ret
+	jp FetchEffect
 
 ImposterProfessorOakEffect:
 	call SwapTurn
@@ -10652,14 +10626,10 @@ PokeBall_DeckCheck:
 	ret
 
 PokeBall_PlayerSelection:
-	ldtx de, TrainerCardSuccessCheckText
-	call Func_2c08a
-	ldh [hTempList], a ; store coin result
-	ret nc
 
 ; create list of all Pokemon cards in deck to search for
 	call CreateDeckCardList
-	ldtx hl, ChooseBasicOrEvolutionPokemonCardFromDeckText
+	ldtx hl, ChooseBasicPokemonCardFromDeckText
 	ldtx bc, EvolutionCardText
 	lb de, SEARCHEFFECT_POKEMON, 0
 	call LookForCardsInDeck
@@ -10667,7 +10637,7 @@ PokeBall_PlayerSelection:
 
 ; handle input
 	bank1call Func_5591
-	ldtx hl, ChoosePokemonCardText
+	ldtx hl, ChooseBasicPokemonCardText
 	ldtx de, DuelistDeckText
 	bank1call SetCardListHeaderText
 .read_input
@@ -10678,6 +10648,9 @@ PokeBall_PlayerSelection:
 	ld a, [wLoadedCard2Type]
 	cp TYPE_ENERGY
 	jr nc, .play_sfx ; can't select non-Pokemon card
+	ld a, [wLoadedCard2Stage]
+	or a
+	jr nz, .play_sfx
 	ldh a, [hTempCardIndex_ff98]
 	ldh [hTempList + 1], a
 	or a
@@ -10704,13 +10677,12 @@ PokeBall_PlayerSelection:
 	ld a, [wLoadedCard2Type]
 	cp TYPE_ENERGY
 	jr nc, .loop
+	ld a, [wLoadedCard2Stage]
+	or a
+	jr nc, .loop
 	jr .read_input
 
 PokeBall_AddToHandEffect:
-	ldh a, [hTempList]
-	or a
-	ret z ; return if coin toss was tails
-
 	ldh a, [hTempList + 1]
 	cp $ff
 	jr z, .done ; skip if no Pokemon was chosen

@@ -1,9 +1,6 @@
 ; determine AI score for retreating
 ; return carry if AI decides to retreat
 AIDecideWhetherToRetreat:
-	ld a, [wGotHeadsFromConfusionCheckDuringRetreat]
-	or a
-	jp nz, .no_carry
 	xor a
 	ld [wAIPlayEnergyCardForRetreat], a
 	call CheckCantRetreatDueToAcid ; THIS IS NEW CODE TO MAKE THE AI UNDERSTAND THE NO RETREAT EFFECT
@@ -46,7 +43,7 @@ AIDecideWhetherToRetreat:
 	and CNF_SLP_PRZ
 	cp CONFUSED
 	jr nz, .check_ko_1
-	ld a, 1
+	ld a, 3
 	call AddToAIScore
 
 .check_ko_1

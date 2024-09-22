@@ -235,15 +235,13 @@ HandleStrikesBack_AgainstDamagingAttack::
 
 ; return carry if NShield or Transparency activate (if Pichu or NONE is
 ; the turn holder's arena Pokemon), and print their corresponding text if so
-HandleNShieldAndTransparency::
+HandleNShieldAndTransparency:: ;Neutralizing shield not present in legacy, deleted to make room
 	push de
 	ld a, DUELVARS_ARENA_CARD
 	add e
 	call GetTurnDuelistVariable
 	call GetCardIDFromDeckIndex
 	ld a, e
-	cp PROFESSOR_ELM
-	jr z, .nshield
 	cp MAGBY
 	jr z, .transparency 
 	cp PICHU
@@ -262,14 +260,6 @@ HandleNShieldAndTransparency::
 	pop de
 	or a
 	ret
-.nshield
-	ld a, DUELVARS_ARENA_CARD_STAGE
-	call GetNonTurnDuelistVariable
-	or a
-	jr z, .done
-	ld a, NO_DAMAGE_OR_EFFECT_NSHIELD
-	ld [wNoDamageOrEffect], a
-	ldtx hl, NoDamageOrEffectDueToNShieldText
 .print_text
 	call DrawWideTextBox_WaitForInput
 	pop de
@@ -298,9 +288,6 @@ HandleCantAttackSubstatus::
 	jr z, .return_with_cant_attack
 	ldtx hl, UnableToAttackDueToLeerText
 	cp SUBSTATUS2_LEER
-	jr z, .return_with_cant_attack
-	ldtx hl, UnableToAttackDueToBoneAttackText
-	cp SUBSTATUS2_BONE_ATTACK
 	jr z, .return_with_cant_attack
 	or a
 	ret
@@ -627,6 +614,8 @@ GetLoadedCard1RetreatCost::
 	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	jr c, .muk_found
+	call CheckCantUsePokepowers
+	jr c, .muk_found
 	ld a, [wLoadedCard1RetreatCost]
 	sub c ; apply Retreat Aid for each Pkmn Power-capable DRAGONITE
 	ret nc
@@ -680,7 +669,19 @@ CheckCantUseTrainerDueToHeadache::
 	scf
 	ret
 
+CheckCantUsePokepowers::
+	ld a, DUELVARS_ARENA_CARD_SUBSTATUS3
+	call GetTurnDuelistVariable
+	or a
+	bit SUBSTATUS3_POKEPOWERS_DISABLED, [hl]
+	ret z
+	ldtx hl, PokepowersDisabledText
+	scf
+	ret
+
 CheckMindGamesScenario::
+	call CheckCantUsePokepowers
+	jr c, .Disabled
 	call CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
 	ccf
 	ret nc
@@ -690,6 +691,8 @@ CheckMindGamesScenario::
 	ldtx hl, UnableToUseTrainerDueMindGamesText
 	scf
 	ret
+.Disabled
+	ret nc
 
 ; return carry if any duelist has Aerodactyl and its Prehistoric Power Pkmn Power is active
 IsPrehistoricPowerActive:: ; Effectively deleted to save space, also it's not even in this version
@@ -705,8 +708,6 @@ ClearDamageReductionSubstatus2::
 	or a
 	ret z
 	cp SUBSTATUS2_REDUCE_BY_20
-	jr z, .zero
-	cp SUBSTATUS2_POUNCE
 	jr z, .zero
 	cp SUBSTATUS2_GROWL
 	jr z, .zero
@@ -738,6 +739,7 @@ UpdateSubstatusConditions_EndOfTurn::
 	ld a, DUELVARS_ARENA_CARD_SUBSTATUS3
 	call GetTurnDuelistVariable
 	res SUBSTATUS3_HEADACHE, [hl]
+	res SUBSTATUS3_POKEPOWERS_DISABLED, [hl]
 	push hl
 	ld a, DUELVARS_ARENA_CARD_SUBSTATUS2
 	call GetTurnDuelistVariable
@@ -781,41 +783,7 @@ CheckRainDanceScenario::
 
 ; if the defending (non-turn) card's HP is 0 and the attacking (turn) card's HP
 ;  is not, the attacking card faints if it was affected by destiny bond
-HandleDestinyBondSubstatus::
-	ld a, DUELVARS_ARENA_CARD_SUBSTATUS1
-	call GetNonTurnDuelistVariable
-	cp SUBSTATUS1_DESTINY_BOND
-	jr z, .check_hp
-	ret
-
-.check_hp
-	ld a, DUELVARS_ARENA_CARD
-	call GetNonTurnDuelistVariable
-	cp -1
-	ret z
-	ld a, DUELVARS_ARENA_CARD_HP
-	call GetNonTurnDuelistVariable
-	or a
-	ret nz
-	ld a, DUELVARS_ARENA_CARD_HP
-	call GetTurnDuelistVariable
-	or a
-	ret z
-	ld [hl], 0
-	push hl
-	call DrawDuelMainScene
-	call DrawDuelHUDs
-	pop hl
-	ld l, DUELVARS_ARENA_CARD
-	ld a, [hl]
-	call LoadCardDataToBuffer2_FromDeckIndex
-	ld hl, wLoadedCard2Name
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	call LoadTxRam2
-	ldtx hl, KnockedOutDueToDestinyBondText
-	call DrawWideTextBox_WaitForInput
+HandleDestinyBondSubstatus:: ; Not in Legacy
 	ret
 
 ; when WOBBUFFET is damaged, if its Strikes Back is active, the

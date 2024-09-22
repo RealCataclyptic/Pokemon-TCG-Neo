@@ -645,10 +645,6 @@ wGotHeadsFromSandAttackOrSmokescreenCheck:: ; cc0a
 wAlreadyPlayedEnergy:: ; cc0b
 	ds $1
 
-; set to 1 if the confusion check coin toss in AttemptRetreat is heads
-wGotHeadsFromConfusionCheckDuringRetreat:: ; cc0c
-	ds $1
-
 ; DUELIST_TYPE_* of the turn holder
 wDuelistType:: ; cc0d
 	ds $1

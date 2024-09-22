@@ -394,11 +394,11 @@ Bayleef1Card: ; 30eaa (c:4eaa)
 	; attack 2
 	energy GRASS, 2, COLORLESS, 1 ; energies
 	tx PollenShieldName ; name
-	tx MayGetImmunityDesc ; description
+	tx NoSpecialConditions1TurnDesc ; description
 	dw NONE ; description (cont)
 	db 30 ; damage
 	db DAMAGE_NORMAL ; category
-	dw MayGetImmunityEffectCommands ; effect commands
+	dw NoSpecialConditionsEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NULLIFY_OR_WEAKEN_ATTACK ; flags 2
 	db NONE ; flags 3
@@ -2281,13 +2281,13 @@ MagbyCard: ; 31585 (c:5585)
 	; attack 2
 	energy COLORLESS, 1 ; energies
 	tx SputterName ; name
-	dw NONE ; description
+	tx NoPokepowersNextTurnDesc ; description
 	dw NONE ; description (cont)
 	db 10 ; damage
 	db DAMAGE_NORMAL ; category
-	dw NONE; effect commands
+	dw NoPokepowersNextTurnEffectCommands; effect commands
 	db NONE ; flags 1
-	db FLAG_2_BIT_5 ; flags 2
+	db NONE ; flags 2
 	db NONE ; flags 3
 	db 10
 	db ATK_ANIM_SMALL_FLAME; animation
@@ -5902,12 +5902,12 @@ Flaaffy2Card: ; 325c5 (c:65c5)
 	; attack 2
 	energy LIGHTNING, 1, COLORLESS, 1 ; energies
 	tx StunWaveName ; name
-	tx MayInflictParalysisDescription ; description
+	tx NoPokepowersNextTurnDesc ; description
 	dw NONE ; description (cont)
 	db 30 ; damage
 	db DAMAGE_NORMAL ; category
-	dw MayInflictParalysisEffectCommands ; effect commands
-	db INFLICT_PARALYSIS ; flags 1
+	dw NoPokepowersNextTurnEffectCommands; effect commands
+	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
 	db 0
@@ -8137,7 +8137,7 @@ MewCard: ; 32ea8 (c:6ea8)
 	db 0 ; damage
 	db DAMAGE_NORMAL ; category
 	dw Do30moreIfDFPStatusedEffectCommands ; effect commands
-	db DAMAGE_TO_OPPONENT_BENCH ; flags 1
+	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
 	db 10

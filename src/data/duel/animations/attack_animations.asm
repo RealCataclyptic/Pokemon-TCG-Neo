@@ -90,9 +90,9 @@ PointerTable_AttackAnimation:
 	dw AttackAnimation_Goo                 ; ATK_ANIM_SPIT_POISON ;O But only in functions
 	dw AttackAnimation_FlareBlitz          ; ATK_ANIM_FLARE_BLITZ ;X
 	dw AttackAnimation_Bubbles             ; ATK_ANIM_BUBBLES ;X
-	dw AttackAnimation_Bubbles             ; ATK_ANIM_UNUSED_42 ;?
+	dw AttackAnimation_PollenShield             ; ATK_ANIM_POLLEN_SHIELD  ;X
 	dw AttackAnimation_StringShot          ; ATK_ANIM_STRING_SHOT ;X
-	dw AttackAnimation_StringShot          ; ATK_ANIM_UNUSED_44 ;?
+	dw AttackAnimation_Mist                ; ATK_ANIM_MIST ;X
 	dw AttackAnimation_Boyfriends          ; ATK_ANIM_BOYFRIENDS ;X
 	dw AttackAnimation_Lure                ; ATK_ANIM_LURE ;X
 	dw AttackAnimation_Toxic               ; ATK_ANIM_TOXIC ;X
@@ -101,7 +101,7 @@ PointerTable_AttackAnimation:
 	dw AttackAnimation_Sing                ; ATK_ANIM_SING ;X
 	dw AttackAnimation_Sing                ; ATK_ANIM_LULLABY ;X
 	dw AttackAnimation_Supersonic          ; ATK_ANIM_SUPERSONIC ;X
-	dw AttackAnimation_Supersonic          ; ATK_ANIM_UNUSED_4D ;X
+	dw AttackAnimation_DarkHowl            ; ATK_ANIM_DARK_HOWL ;X
 	dw AttackAnimation_PetalDance          ; ATK_ANIM_PETAL_DANCE ;X
 	dw AttackAnimation_Protect             ; ATK_ANIM_PROTECT ;X
 	dw AttackAnimation_Barrier             ; ATK_ANIM_BARRIER ;X
@@ -127,7 +127,7 @@ PointerTable_AttackAnimation:
 	dw AttackAnimation_BigThunder          ; ATK_ANIM_BIG_THUNDER ;X
 	dw AttackAnimation_SolarPower          ; ATK_ANIM_SOLAR_POWER ;X
 	dw AttackAnimation_Hit2                ; ATK_ANIM_POISON_FANG ;X
-	dw AttackAnimation_Hit2                ; ATK_ANIM_UNUSED_67 ;?
+	dw AttackAnimation_LightProtect        ; ATK_ANIM_LIGHT_PROTECT ;X
 	dw AttackAnimation_Hit2                ; ATK_ANIM_UNUSED_68 ;?
 	dw AttackAnimation_Needles2            ; ATK_ANIM_UNUSED_69 ;?
 	dw AttackAnimation_FriendshipSong      ; ATK_ANIM_FRIENDSHIP_SONG ;X
@@ -167,7 +167,7 @@ PointerTable_AttackAnimation:
 	dw AttackAnimation_SpitPoisonSuccess   ; ATK_ANIM_SPIT_POISON_SUCCESS ;X But only in functions
 	dw AttackAnimation_GustOfWind          ; ATK_ANIM_GUST_OF_WIND ;X
 	dw AttackAnimation_HealBothSides       ; ATK_ANIM_HEAL_BOTH_SIDES ;O
-	dw AttackAnimation_Stub2               ; ATK_ANIM_UNUSED_8F ;?
+	dw AttackAnimation_Stub2               ; ATK_ANIM_UNUSED ;?
 	dw AttackAnimation_Stub2               ; ATK_ANIM_UNUSED_90 ;?
 	assert_table_length NUM_ATK_ANIMS
 
@@ -1028,17 +1028,17 @@ AttackAnimation_ScreenPsy:
 	anim_end
 
 AttackAnimation_Psysplash:
-	anim_screen         SET_ANIM_SCREEN_PLAY_AREA
+	anim_screen          SET_ANIM_SCREEN_PLAY_AREA
 	anim_play_area       DUEL_ANIM_PSYCHIC
 	anim_play_area       DUEL_ANIM_HIT
-	anim_play_area         DUEL_ANIM_SHAKE1
+	anim_play_area       DUEL_ANIM_SHAKE1
 	anim_play_area       DUEL_ANIM_SHOW_DAMAGE
 	anim_end
 
 AttackAnimation_HealOpp:
 	anim_opponent         DUEL_ANIM_HEAL
 	anim_opponent         DUEL_ANIM_SHOW_DAMAGE
-	anim_screen           SET_ANIM_SCREEN_MAIN ; to prevent a second heal from happening, IDK why but it does
+	anim_screen           SET_ANIM_SCREEN_MAIN ; to prevent a second heal from happening, IDK why but it works
 	anim_end
 
 AttackAnimation_FlareBlitz:
@@ -1049,6 +1049,42 @@ AttackAnimation_FlareBlitz:
 	anim_normal         DUEL_ANIM_SHAKE1
 	anim_opponent       DUEL_ANIM_SHOW_DAMAGE
 	anim_end
+
+AttackAnimation_LightProtect:
+	anim_player         DUEL_ANIM_GLOW
+	anim_normal         DUEL_ANIM_FLASH
+	anim_opponent       DUEL_ANIM_BORDER_SPARK
+	anim_normal         DUEL_ANIM_SHAKE1
+	anim_opponent       DUEL_ANIM_HIT
+	anim_opponent       DUEL_ANIM_SHOW_DAMAGE
+	anim_player         DUEL_ANIM_PROTECT
+	anim_end
+
+AttackAnimation_PollenShield:
+	anim_player         DUEL_ANIM_GLOW
+	anim_player         DUEL_ANIM_POWDER
+	anim_player         DUEL_ANIM_PROTECT
+	anim_normal         DUEL_ANIM_SHAKE1
+	anim_opponent       DUEL_ANIM_HIT
+	anim_opponent       DUEL_ANIM_SHOW_DAMAGE
+
+AttackAnimation_DarkHowl:
+	anim_player         DUEL_ANIM_GLOW
+	anim_player         DUEL_ANIM_LEER
+	anim_opponent       DUEL_ANIM_SUPERSONIC
+	anim_opponent       DUEL_ANIM_HIT
+	anim_normal         DUEL_ANIM_SHAKE1
+	anim_opponent       DUEL_ANIM_SHOW_DAMAGE
+	anim_end
+
+AttackAnimation_Mist:
+	anim_player         DUEL_ANIM_GLOW
+	anim_player         DUEL_ANIM_WHITE_GAS
+	anim_opponent       DUEL_ANIM_WHITE_GAS
+	anim_opponent       DUEL_ANIM_HIT
+	anim_normal         DUEL_ANIM_SHAKE1
+	anim_opponent       DUEL_ANIM_SHOW_DAMAGE
+	anim_player         DUEL_ANIM_PROTECT
 
 AttackAnimation_Stub2:
 	anim_end

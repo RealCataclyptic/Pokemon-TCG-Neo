@@ -130,6 +130,14 @@ Script_BeatMurray:
 	record_master_win $06
 	print_npc_text Text0683
 	give_booster_packs BOOSTER_LABORATORY_PSYCHIC, BOOSTER_LABORATORY_PSYCHIC, BOOSTER_LABORATORY_TRAINER, NO_BOOSTER
+	print_npc_text FirstWinMurrayGiveCardsText
+	give_card SNORLAX
+	show_card_received_screen SNORLAX
+	give_card TEAM_ROCKETS_EVIL_DEEDS
+	show_card_received_screen TEAM_ROCKETS_EVIL_DEEDS
+	give_card SLOWKING
+	show_card_received_screen SLOWKING
+
 	print_npc_text Text0684
 	quit_script_fully
 

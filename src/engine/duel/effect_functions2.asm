@@ -29,7 +29,9 @@ CrossAttackEffect2:
 
 FinalBlowEffect2:
 	farcall CheckCannotUseDueToStatus_OnlyToxicGasIfANon0
-	jr nz, .MoreThan31HP ; is this line bugged?
+	jr c, .MoreThan31HP 
+	farcall CheckCantUsePokepowers
+	jr c, .MoreThan31HP
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	add DUELVARS_ARENA_CARD_HP
 	farcall GetTurnDuelistVariable
@@ -566,3 +568,40 @@ Hooh_AISelectEffect2:
 	ld a, 0 ; =yes, loaded again for the after damage effect.
 	ldh [hTemp_ffa0], a
 	ret
+
+OverpoweredAttackEffect2:
+	; opponent's bench
+	farcall SwapTurn
+	xor a
+	ld [wIsDamageToSelf], a
+	ld a, 150
+	farcall DealDamageToAllBenchedPokemon
+	farcall SwapTurn
+	ret
+
+SpecialTargetPokemonWithLowestHP_AISelection2:
+    call SwapTurn
+    ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+    call GetTurnDuelistVariable
+    ld c, a
+    lb de, PLAY_AREA_ARENA, $ff
+    ld b, d
+    ld a, DUELVARS_ARENA_CARD_HP
+    call GetTurnDuelistVariable
+
+; find the location of the Pokemon with the least amount of remaining HP
+.loop_bench
+    ld a, e
+    cp [hl]
+    jr c, .next ; skip if HP is higher
+    ld e, [hl]
+    ld d, b
+.next
+    inc hl
+    inc b
+    dec c
+    jr nz, .loop_bench
+
+    ld a, d
+    ldh [hTempPlayAreaLocation_ffa1], a
+    jp SwapTurn

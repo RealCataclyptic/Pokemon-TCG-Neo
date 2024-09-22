@@ -121,14 +121,22 @@ Script_Ken:
 
 Script_BeatKen:
 	start_script
-	print_npc_text Text06c1
 	jump_if_event_true EVENT_BEAT_KEN, .give_booster_packs
+	print_npc_text BeatKenFixText
 	max_out_event_value EVENT_BEAT_KEN
 	try_give_medal_pc_packs
 	show_medal_received_screen EVENT_BEAT_KEN
 	record_master_win $08
+	print_npc_text FirstWinKenGiveCardsText
+	give_card ENERGY_ARK
+	show_card_received_screen ENERGY_ARK
+	give_card HYPER_POTION
+	show_card_received_screen HYPER_POTION
+	give_card TYPHLOSION2
+	show_card_received_screen TYPHLOSION2
 	print_npc_text Text06c2
 .give_booster_packs
+	print_npc_text Text06c1
 	give_booster_packs BOOSTER_MYSTERY_TRAINER_COLORLESS, BOOSTER_EVOLUTION_FIRE, BOOSTER_COLOSSEUM_FIRE, NO_BOOSTER
 	print_npc_text Text06c3
 	quit_script_fully

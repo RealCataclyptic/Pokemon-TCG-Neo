@@ -483,9 +483,13 @@ IsClairvoyanceActive::
 	call CountPokemonIDInBothPlayAreas
 	ccf
 	ret nc
+	call CheckCantUsePokepowers
+	jr c, .disabled
 	ld a, ESPEON1
 	call CountPokemonIDInPlayArea
 	ret
+.disabled
+	ret z
 
 ; returns carry if turn holder's arena card is paralyzed, asleep, confused,
 ; and/or toxic gas in play, meaning that attack and/or pkmn power cannot be used
@@ -503,6 +507,8 @@ CheckCannotUseDueToStatus_OnlyToxicGasIfANon0::
 	scf
 	jr nz, .done ; return carry
 .check_toxic_gas
+	call CheckCantUsePokepowers
+	jr c, .done
 	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	ldtx hl, UnableDueToToxicGasText
@@ -610,6 +616,8 @@ GetLoadedCard1RetreatCost::
 	ld a, FERALIGATR2
 	call CountPokemonIDInBothPlayAreas
 	jr c, .muk_found
+	call CheckCantUsePokepowers
+	jr c, .muk_found
 	ld a, [wLoadedCard1RetreatCost]
 	sub c ; apply Retreat Aid for each Pkmn Power-capable DRAGONITE
 	ret nc
@@ -663,8 +671,20 @@ CheckCantUseTrainerDueToHeadache::
 	scf
 	ret
 
+CheckCantUsePokepowers::
+	ld a, DUELVARS_ARENA_CARD_SUBSTATUS3
+	call GetTurnDuelistVariable
+	or a
+	bit SUBSTATUS3_POKEPOWERS_DISABLED, [hl]
+	ret z
+	ldtx hl, PokepowersDisabledText
+	scf
+	ret
+
 ; return carry if any duelist has Aerodactyl and its Prehistoric Power Pkmn Power is active
 IsPrehistoricPowerActive::
+	call CheckCantUsePokepowers
+	jr c, .disabled
 	ld a, KABUTOPS_S
 	call CountPokemonIDInBothPlayAreas
 	ret nc
@@ -673,6 +693,9 @@ IsPrehistoricPowerActive::
 	ldtx hl, UnableToEvolveDueToPrehistoricPowerText
 	ccf
 	ret
+
+.disabled
+	ret z
 
 ; clears some SUBSTATUS2 conditions from the turn holder's active Pokemon.
 ; more specifically, those conditions that reduce the damage from an attack
@@ -716,6 +739,7 @@ UpdateSubstatusConditions_EndOfTurn::
 	ld a, DUELVARS_ARENA_CARD_SUBSTATUS3
 	call GetTurnDuelistVariable
 	res SUBSTATUS3_HEADACHE, [hl]
+	res SUBSTATUS3_POKEPOWERS_DISABLED, [hl]
 	push hl
 	ld a, DUELVARS_ARENA_CARD_SUBSTATUS2
 	call GetTurnDuelistVariable
