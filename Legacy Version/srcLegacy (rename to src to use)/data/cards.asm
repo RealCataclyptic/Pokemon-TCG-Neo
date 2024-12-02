@@ -6416,8 +6416,8 @@ RaikouCard: ; 3270a (c:670a)
 	dw NONE ; description (cont)
 	db 50 ; damage
 	db DAMAGE_NORMAL ; category
-	dw GazeEffectCommands ; effect commands
-	db NONE ; flags 1
+	dw CFTRecoil20Effect ; effect commands
+	db LOW_RECOIL ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
 	db 0
@@ -10649,7 +10649,7 @@ SkarmoryCard: ; 339d4 (c:79d4)
 	dw NONE ; description (cont)
 	db 30 ; damage
 	db DAMAGE_NORMAL ; category
-	dw ReduceDamageBy20EffectCommands ; effect commands
+	dw CFHReduceDamageBy20EffectCommands ; effect commands
 	db NONE ; flags 1
 	db NULLIFY_OR_WEAKEN_ATTACK ; flags 2
 	db NONE ; flags 3

@@ -114,7 +114,7 @@
 	const ATK_ANIM_MAGNETIC_STORM         ; $6d
 	const ATK_ANIM_POISON_WHIP            ; $6e
 	const ATK_ANIM_THUNDER_WAVE           ; $6f
-	const ATK_ANIM_UNUSED_70              ; $70
+	const ATK_ANIM_STEP_IN                ; $70
 	const ATK_ANIM_SPORE                  ; $71
 	const ATK_ANIM_HYPNOSIS               ; $72
 	const ATK_ANIM_ENERGY_CONVERSION      ; $73

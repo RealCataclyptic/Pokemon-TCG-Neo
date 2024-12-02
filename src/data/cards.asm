@@ -7066,7 +7066,7 @@ Donphan1Card: ; 32a98 (c:6a98)
 	dw NONE ; description (cont)
 	db 10 ; damage
 	db DAMAGE_X ; category
-	dw Do10XPerSelfDamageEffectCommands ; effect commands
+	dw CanSwitchOppBeforeDamageEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
 	db BOOST_IF_TAKEN_DAMAGE ; flags 3

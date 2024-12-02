@@ -126,10 +126,10 @@ HeracrossDoubleDamageEffectCommands:		;Specific to Heracross. Attacks from Herac
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, SwordsDanceEffect
 	db  $00
 
-CanSwitchOppBeforeDamageEffectCommands: 	;Gives player the option to switch Opp before or after dealing damage. Brute force coded so need B to exit.
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, ElectrodeSonicboom_UnaffectedByColorEffect
-	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, ElectrodeSonicboom_NullEffect
-	dbw EFFECTCMDTYPE_AI_SELECTION, NinetalesLure_AISelectEffect
+CanSwitchOppBeforeDamageEffectCommands: 	;Gives player the option to switch DFP before or after dealing damage. 
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, SwitchDFPSwitchEffect
+	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, SwitchDFP_PlayerSelectEffect
+	dbw EFFECTCMDTYPE_AI_SELECTION, SwitchDFP_AISelectEffect
 	db  $00
 
 Do10MorePerInjuredPokesEffectCommands:		;Does +10 per injured pokemon on your side of the field.
@@ -180,7 +180,7 @@ NoRetreatEffectCommands:		;Adds an effect to make the DFP unable to retreat. No 
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, NewAcidEffect
 	db  $00
 
-CanSwitchSelfAfterDamageEffectCommands:		; Gives player the option to switch self after dealing damage. Brute force coded, so B needed to exit. AI will switch randomly.
+CanSwitchSelfAfterDamageEffectCommands:		; Gives player the option to switch self after dealing damage. AI will switch randomly. 
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Teleport_SwitchEffect
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, Teleport_PlayerSelectEffect
 	dbw EFFECTCMDTYPE_AI_SELECTION, Teleport_AISelectEffect
@@ -499,9 +499,7 @@ NoRetreatAbilityEffectCommands:		; Does nothing, just here to prevent game crash
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, SuctionCupsEffect
 	db  $00
 
-TentacruelJellyfishStingEffectCommands:		;Free
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, PoisonEffect
-	dbw EFFECTCMDTYPE_AI, JellyfishSting_AIEffect
+TentacruelJellyfishStingEffectCommands:		;Free, deleted to make room.
 	db  $00
 
 OppCantUse1AttackEffectCommands:		; Choose an attack and Opp can't use it next turn. Same as base Amnesia.
@@ -517,8 +515,6 @@ MoreDamageIfDFPInjuredEffectCommands:		;Does 20 more damage if the DFP has damag
 	db  $00
 
 PoliwrathWaterGunEffectCommands:		;Free
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, PoliwrathWaterGunEffect
-	dbw EFFECTCMDTYPE_AI, PoliwrathWaterGunEffect
 	db  $00
 
 Discard1EnergyFromTargetEffectCommands:		;Discards 1 energy from Opp if damage is successful. Same as base Whirlpool, Hyper Beam, and the rest.
@@ -565,8 +561,6 @@ TentacoolCowardiceEffectCommands:
 	db  $00
 
 LaprasWaterGunEffectCommands:		;Free
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, LaprasWaterGunEffect
-	dbw EFFECTCMDTYPE_AI, LaprasWaterGunEffect
 	db  $00
 
 LaprasConfuseRayEffectCommands:		;Free
@@ -588,10 +582,6 @@ SelfDoubleDamageEffectCommands:		; Specific to Crystal Charizard. Next turn, all
 	db  $00
 
 ArcanineFlamethrowerEffectCommands:		;Free
-	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, ArcanineFlamethrower_CheckEnergy
-	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, ArcanineFlamethrower_PlayerSelectEffect
-	dbw EFFECTCMDTYPE_DISCARD_ENERGY, ArcanineFlamethrower_DiscardEffect
-	dbw EFFECTCMDTYPE_AI_SELECTION, ArcanineFlamethrower_AISelectEffect
 	db  $00
 
 Do40ToSelfEffectCommands:		; Does 40 damage to self. Modified Take Down code.
@@ -613,8 +603,6 @@ Discard2FThenPlus10PerSelfDamageEffectCommands:		; Discards 1 fire, then +10 dam
 	db  $00
 
 RapidashStompEffectCommands:		;Free
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, RapidashStomp_DamageBoostEffect
-	dbw EFFECTCMDTYPE_AI, RapidashStomp_AIEffect
 	db  $00
 
 RapidashAgilityEffectCommands:		;Free
@@ -622,10 +610,10 @@ RapidashAgilityEffectCommands:		;Free
 	db  $00
 
 SwitchAndPoisonEffectCommands:		; Can switch the opp out (or not) then poisons it and makes it unable to retreat next turn. Modifed Lure code.
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, ElectrodeSonicboom_UnaffectedByColorEffect
-	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, ElectrodeSonicboom_NullEffect
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, SwitchDFPSwitchEffect
+	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, SwitchDFP_PlayerSelectEffect
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, PoisonAcidEffect
-	dbw EFFECTCMDTYPE_AI_SELECTION, NinetalesLure_AISelectEffect
+	dbw EFFECTCMDTYPE_AI_SELECTION, SwitchDFP_AISelectEffect
 	db  $00
 
 NinetalesFireBlastEffectCommands:		;Free
@@ -1018,11 +1006,11 @@ NoMoreEvosBothPlayersEffectCommands:		; No more evolutions can be played. Same a
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, PrehistoricPowerEffect
 	db  $00
 
-SwitchAndNoRetreatEffectCommands:		; Can switch DFP, then does damage and can't retreat.
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, ElectrodeSonicboom_UnaffectedByColorEffect
-	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, ElectrodeSonicboom_NullEffect
+SwitchAndNoRetreatEffectCommands:		; Can switch DFP, then does damage and then DFP can't retreat next turn.
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, SwitchDFPSwitchEffect
+	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, SwitchDFP_PlayerSelectEffect
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, NewAcidEffect
-	dbw EFFECTCMDTYPE_AI_SELECTION, NinetalesLure_AISelectEffect
+	dbw EFFECTCMDTYPE_AI_SELECTION, SwitchDFP_AISelectEffect
 	db  $00
 
 MarowakBoneAttackEffectCommands:		;Free
@@ -1183,11 +1171,7 @@ ShinyFeatherEffectCommands:		; Enters the field to trigger the pokepower. Gets a
 	dbw EFFECTCMDTYPE_PKMN_POWER_TRIGGER, MagneticStormEffect
 	db  $00
 
-CanSwitchOppBeforeDamageAndSLPEffectCommands:	; Can switch the opp before doing damage. After damage, sleep. Modified Ram effect. Unused in game.
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, ElectrodeSonicboom_UnaffectedByColorEffect
-	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, ElectrodeSonicboom_NullEffect
-	dbw EFFECTCMDTYPE_AFTER_DAMAGE, SleepEffect
-	dbw EFFECTCMDTYPE_AI_SWITCH_DEFENDING_PKMN, ElectrodeSonicboom_UnaffectedByColorEffect
+CanSwitchOppBeforeDamageAndSLPEffectCommands:	; Can switch the opp before doing damage. After damage, sleep. Unused in game (was Gengar's Pull In)
 	db  $00
 
 SearchAndAttachEnergyEffectCommands:	; Same as base energy spike, except in SRC>Duel>AI> Core and Special Attacks, the AI can get Lightning or Grass energy.

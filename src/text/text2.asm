@@ -209,7 +209,7 @@ ChooseAndDiscard2FireEnergyCardsText:
 	line "2 Fire Energy cards."
 	done
 
-DiscardOppDeckAsManyFireEnergyCardsText:
+SelectPkmnOnBenchToSwitchWithText:
 	text "Select a Pokémon on the bench to"
 	line "switch with. (Press B to cancel)"
 	done
@@ -786,9 +786,9 @@ AreYouBothReadyToCardPopText:
 	line "to Card Pop! ?"
 	done
 
-ThePopWasntSuccessfulText:
-	text "You may choose a benched Pokémon to"
-	line "switch in. (Press B to not switch)"
+SelectNewActivePokemonText:
+	text "Select 1 of your Benched Pokémon to"
+	line "become your new Active Pokémon."
 	done
 
 CannotCardPopWithFriendPreviouslyPoppedWithText:

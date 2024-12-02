@@ -80,20 +80,23 @@ HeatedBattleCardList:
 	
 FirstStrikeCardList:
 	deck_list_start
-	card_item FIGHTING_ENERGY, 19
-	card_item HITMONLEE,           4
-	card_item HITMONCHAN,          4
-	card_item HITMONTOP,          4
-	card_item AERODACTYL,       3
-	card_item STANTLER,        2
-	card_item SKARMORY,           3
-	card_item FOSSIL_EGG,         4
-	card_item POKEMON_FAN_CLUB,           2
-	card_item POTION,         2
-	card_item STRENGTH_CHARM,        4
-	card_item SWITCH,           2
-	card_item POKEMON_REVERSAL,     3
-	card_item MAIL_FROM_BILL,             4
+	card_item FIGHTING_ENERGY, 15
+	card_item DOUBLE_COLORLESS_ENERGY, 4
+	card_item HITMONLEE, 4
+	card_item HITMONCHAN, 2
+	card_item HITMONTOP, 2
+	card_item TEDDIURSA, 3
+	card_item URSARING, 2
+	card_item STANTLER, 3
+	card_item MURKROW, 2
+	card_item MILTANK, 3
+	card_item PROFESSOR_ELM, 4
+	card_item POKEMON_FAN_CLUB, 2
+	card_item POTION, 2
+	card_item STRENGTH_CHARM, 4
+	card_item SWITCH, 1
+	card_item POKEMON_REVERSAL, 4
+	card_item MAIL_FROM_BILL, 3
 	deck_list_end
 
 SqueakingMouseCardList:
@@ -286,19 +289,19 @@ RainDancerCardList:
 	card_item POLIWAG, 4
 	card_item POLIWHIRL, 3
 	card_item POLITOED, 3
-	card_item KABUTO, 3
-	card_item KABUTOPS, 3
+	card_item SQUIRTLE, 3
+	card_item WARTORTLE, 3
 	card_item SUICUNE, 2
 	card_item MANTINE, 2
-	card_item AERODACTYL, 2
 	card_item ARTICUNO, 1
 	card_item PROFESSOR_ELM, 4
 	card_item MAIL_FROM_BILL, 2
+	card_item STRENGTH_CHARM, 2
 	card_item STAR_PIECE, 1
 	card_item ENERGY_ARK, 1					 
 	card_item SUPER_ENERGY_RETRIEVAL, 2
 	card_item POKEMON_FAN_CLUB, 4
-	card_item FOSSIL_EGG, 4
+	card_item ENERGY_REMOVAL2, 4
 	deck_list_end
 
 CutePokemonCardList:
@@ -615,18 +618,17 @@ StrangePsyshockCardList:
 	card_item WATER_ENERGY, 9
 	card_item SLOWPOKE, 3
 	card_item SLOWKING, 3
-	card_item MEW_S, 2
+	card_item CELEBI, 2
 	card_item CHANSEY, 3
 	card_item BLISSEY, 2
 	card_item TOTODILE1, 3
 	card_item CROCONAW2, 2
-	card_item FERALIGATR1, 2
+	card_item FERALIGATR2, 2
 	card_item MISDREAVUS, 2
 	card_item SNORLAX, 2
-	card_item PROFESSOR_ELM, 2
-	card_item ENERGY_SEARCH, 2
+	card_item PROFESSOR_ELM, 3
+	card_item ENERGY_SEARCH, 3
 	card_item POKEMON_FAN_CLUB, 3
-	card_item HYPER_POTION, 2
 	card_item ENERGY_REMOVAL2, 4
 	card_item SUPER_SCOOP_UP, 2
 	card_item SWITCH, 3
@@ -728,10 +730,9 @@ WondersOfScienceCardList:
 	card_item ZUBAT, 4
 	card_item GOLBAT, 3
 	card_item CROBAT, 2
-	card_item BULBASAUR, 3
-	card_item IVYSAUR, 2
-	card_item VENUSAUR, 2
-	card_item CROBAT_S, 1
+	card_item CHIKORITA1, 3
+	card_item BAYLEEF1, 2
+	card_item MEGANIUM1, 2
 	card_item VULPIX, 3
 	card_item NINETALES, 2
 	card_item MAGMAR, 2
@@ -740,7 +741,7 @@ WondersOfScienceCardList:
 	card_item POKEMON_FAN_CLUB, 2
 	card_item MAIL_FROM_BILL, 3
 	card_item ENERGY_SEARCH, 3				 
-	card_item SWITCH, 1
+	card_item SWITCH, 2
 	card_item POKEGEAR, 3
 	deck_list_end
 
@@ -1002,12 +1003,11 @@ LegendaryMoltresCardList:
 	deck_list_start
 	card_item FIRE_ENERGY, 8
 	card_item FIGHTING_ENERGY, 12
-	card_item HOOH_C, 4
-	card_item RHYDON, 1
-	card_item RHYHORN, 2
+	card_item RHYHORN, 3
+	card_item RHYDON, 2
 	card_item HITMONCHAN, 3
 	card_item MAGMAR, 2
-	card_item ENTEI1, 2
+	card_item ENTEI2, 4
 	card_item HITMONTOP, 2
 	card_item PROFESSOR_ELM, 2
 	card_item POKEMON_REVERSAL, 3
@@ -1021,44 +1021,45 @@ LegendaryMoltresCardList:
 
 LegendaryZapdosCardList:
 	deck_list_start
-	card_item GRASS_ENERGY, 12
-	card_item PSYCHIC_ENERGY, 6
-	card_item CELEBI_C, 4
-	card_item CHIKORITA2, 4
-	card_item BAYLEEF1, 3
-	card_item MEGANIUM2, 3
-	card_item MEWTWO, 2
-	card_item SNORLAX, 2
-	card_item CHANSEY, 2
-	card_item BLISSEY, 2
+	card_item LIGHTNING_ENERGY, 12
+	card_item GRASS_ENERGY, 6
+	card_item RAIKOU, 4
+	card_item PIKACHU2, 4
+	card_item RAICHU, 3
+	card_item ZAPDOS, 3
+	card_item PINECO, 2
+	card_item FORRETRESS, 2
+	card_item SCYTHER, 2
+	card_item SCIZOR, 2
 	card_item PROFESSOR_ELM, 3
 	card_item MAIL_FROM_BILL, 4
 	card_item POTION, 3
-	card_item HYPER_POTION, 3
-	card_item FULL_HEAL, 1
+	card_item POKEMON_REVERSAL, 3
+	card_item FULL_HEAL, 2
 	card_item ENERGY_REMOVAL2, 3
-	card_item MASTER_BALL, 3
+	card_item MASTER_BALL, 2
 	deck_list_end
 
 LegendaryArticunoCardList:
 	deck_list_start
-	card_item WATER_ENERGY, 11
+	card_item FIRE_ENERGY, 7
 	card_item LIGHTNING_ENERGY, 7
-	card_item LUGIA_C, 4
-	card_item POLIWAG, 3
-	card_item POLIWHIRL, 3
-	card_item POLITOED, 2
-	card_item PIKACHU2, 3
-	card_item RAICHU_S, 2
-	card_item SUICUNE, 2
-	card_item ARTICUNO, 2
+	card_item WATER_ENERGY, 7
+	card_item LUGIA, 3
+	card_item REMORAID, 4
+	card_item OCTILLERY, 3
+	card_item GYARADOS_S, 1
+	card_item VULPIX, 2
+	card_item NINETALES, 1
+	card_item VOLTORB, 3
+	card_item ELECTRODE, 2
+	card_item STANTLER, 3
+	card_item PROFESSOR_ELM, 4
+	card_item MAIL_FROM_BILL, 4
+	card_item ENERGY_SEARCH, 4
+	card_item MASTER_BALL, 1
+	card_item SUPER_ENERGY_RETRIEVAL, 2
 	card_item SWITCH, 2
-	card_item PROFESSOR_ELM, 3
-	card_item POKEMON_REVERSAL, 2
-	card_item TEAM_ROCKETS_EVIL_DEEDS, 4
-	card_item ENERGY_SEARCH, 3
-	card_item MASTER_BALL, 4
-	card_item ENERGY_REMOVAL2, 3
 	deck_list_end
 
 LegendaryDragoniteCardList:

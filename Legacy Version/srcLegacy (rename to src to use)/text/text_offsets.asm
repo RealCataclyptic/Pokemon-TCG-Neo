@@ -3400,4 +3400,9 @@ TextOffsets::
 	textpointer NewIntroText3           
 	textpointer PokepowersDisabledText
 	textpointer NoSpecialConditions1TurnDesc      
-	textpointer NoPokepowersNextTurnDesc                     
+	textpointer NoPokepowersNextTurnDesc
+	textpointer IfHReduce20Text
+	textpointer CFT20RecoilText
+	textpointer SwitchSelfYesNoText
+	textpointer SelectNewActivePokemonText  
+	textpointer SwitchDFPYesNoText                   

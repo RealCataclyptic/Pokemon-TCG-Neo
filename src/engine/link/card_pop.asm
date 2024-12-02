@@ -166,7 +166,7 @@ HandleCardPopCommunications:
 	ret
 
 .fail
-	ldtx hl, ThePopWasntSuccessfulText
+	ldtx hl, SelectNewActivePokemonText
 	scf
 	ret
 

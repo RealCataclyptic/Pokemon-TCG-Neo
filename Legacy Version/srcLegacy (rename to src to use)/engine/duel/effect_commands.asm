@@ -114,10 +114,10 @@ HeracrossDoubleDamageEffectCommands:		;Specific to Machoke. Attacks from Machoke
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, SwordsDanceEffect
 	db  $00
 
-CanSwitchOppBeforeDamageEffectCommands: 	;Gives player the option to switch Opp before dealing damage. Brute force coded so need B to exit.
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, ElectrodeSonicboom_UnaffectedByColorEffect
-	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, ElectrodeSonicboom_NullEffect
-	dbw EFFECTCMDTYPE_AI_SELECTION, NinetalesLure_AISelectEffect
+CanSwitchOppBeforeDamageEffectCommands: 	;Gives player the option to switch Opp before dealing damage.
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, SwitchDFPSwitchEffect
+	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, SwitchDFP_PlayerSelectEffect
+	dbw EFFECTCMDTYPE_AI_SELECTION, SwitchDFP_AISelectEffect
 	db  $00
 
 Do10MorePerInjuredPokesEffectCommands:		;Does +10 per injured pokemon on your side of the field.
@@ -620,10 +620,10 @@ RapidashAgilityEffectCommands:		;CF, if H, sleep. If T, no retreat.
 	db  $00
 
 SwitchAndPoisonEffectCommands:		; Can switch the opp out (or not) then poisons it and makes it unable to retreat next turn. Modifed Lure code.
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, ElectrodeSonicboom_UnaffectedByColorEffect
-	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, ElectrodeSonicboom_NullEffect
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, SwitchDFPSwitchEffect
+	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, SwitchDFP_PlayerSelectEffect
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, PoisonAcidEffect
-	dbw EFFECTCMDTYPE_AI_SELECTION, NinetalesLure_AISelectEffect
+	dbw EFFECTCMDTYPE_AI_SELECTION, SwitchDFP_AISelectEffect
 	db  $00
 
 NinetalesFireBlastEffectCommands:		;Can Discard 1 T to use this attack. If yes, +20 damage. AI only picks the discard option.
@@ -976,8 +976,12 @@ HealHalfDamageEffectCommands:		; Heals damage equal to half the damage done to o
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, AbsorbEffect
 	db  $00
 
-ReduceDamageBy20EffectCommands:		; CFH, Reduce damage by 20 next turn.
+ReduceDamageBy20EffectCommands:		; Reduce damage by 20 next turn.
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, SnivelEffect
+	db  $00
+
+CFHReduceDamageBy20EffectCommands:		; CFH, Reduce damage by 20 next turn.
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, SteelWingEffect
 	db  $00
 
 Do10MorePerSelfDamageEffectCommands:	; Does 10 more damage per self damage counters.
@@ -1049,6 +1053,10 @@ NoMoreEvosBothPlayersEffectCommands:		; No more evolutions can be played. Same a
 GazeEffectCommands:		; Does +10 per damage counter on you, then does 20 to self.
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, CuboneRage_DamageBoostEffect
 	dbw EFFECTCMDTYPE_AI, CuboneRage_AIEffect
+	dbw EFFECTCMDTYPE_AFTER_DAMAGE, SubmissionEffect
+	db  $00
+
+CFTRecoil20Effect:
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Maydo20ToSelfEffect
 	db  $00
 
@@ -1165,7 +1173,6 @@ PsylinkBlastEffectCommands:	; does damage to every opp's pokemon equal to the en
 	db  $00
 
 RaichuAgilityEffectCommands:	;Free
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, RaichuAgilityEffect
 	db  $00
 
 CFT30ToSelfEffectCommands:	; Tails = 30 to self.
@@ -1210,10 +1217,10 @@ ShinyFeatherEffectCommands: 	;Flip 3 coins, inflict a status condition on the DF
 	db  $00
 
 CanSwitchOppBeforeDamageAndSLPEffectCommands:	; Can switch the opp before doing damage. After damage, sleep. Modified Ram effect. gengar only
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, ElectrodeSonicboom_UnaffectedByColorEffect
-	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, ElectrodeSonicboom_NullEffect
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, SwitchDFPSwitchEffect
+	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, SwitchDFP_PlayerSelectEffect
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, SleepEffect
-	dbw EFFECTCMDTYPE_AI_SWITCH_DEFENDING_PKMN, ElectrodeSonicboom_UnaffectedByColorEffect
+	dbw EFFECTCMDTYPE_AI_SELECTION, SwitchDFP_AISelectEffect
 	db  $00
 
 SearchAndAttachEnergyEffectCommands:	; Same as base energy spike, except in SRC>Duel>AI> Core and Special Attacks, the AI can get Lightning or Grass energy.
@@ -1427,7 +1434,6 @@ MayGetImmunityNoDMGEffectCommands:		; CF, if H, get immunity effect. This one is
 	db  $00
 
 ChanseyDoubleEdgeEffectCommands:		;Free
-	dbw EFFECTCMDTYPE_AFTER_DAMAGE, ChanseyDoubleEdgeEffect
 	db  $00
 
 PainSplitEffectCommands:		; KO's DFP if DFP is asleep
@@ -1655,10 +1661,7 @@ OLD_RODEffectCommands:		; Searches for any pokemon on an attack
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, SuperEnergyRemoval_PlayerSelection
 	db  $00
 
-ReviveEffectCommands:		; same as gust of wind, but now as an attack essentially.
-	dbw EFFECTCMDTYPE_AFTER_DAMAGE, ElectrodeSonicboom_UnaffectedByColorEffect
-	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, ElectrodeSonicboom_NullEffect
-	dbw EFFECTCMDTYPE_AI_SELECTION, NinetalesLure_AISelectEffect
+ReviveEffectCommands:
 	db  $00
 
 DevolutionSprayEffectCommands:	;Return the highest stage evolution of one of your pokes to your hand. Same as base.

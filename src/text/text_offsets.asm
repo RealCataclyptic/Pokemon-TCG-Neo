@@ -288,7 +288,7 @@ TextOffsets::
 	textpointer ChoosePokemonToAttachEnergyCardText                ; 0x011d
 	textpointer UnusedText011e                                     ; 0x011e
 	textpointer ChooseAndDiscard2FireEnergyCardsText               ; 0x011f
-	textpointer DiscardOppDeckAsManyFireEnergyCardsText            ; 0x0120
+	textpointer SelectPkmnOnBenchToSwitchWithText            ; 0x0120
 	textpointer ChooseAndDiscard2EnergyCardsText                   ; 0x0121
 	textpointer ChooseAKrabbyFromDeckText                          ; 0x0122
 	textpointer ChooseDiscardEnergyCardFromOpponentText            ; 0x0123
@@ -395,7 +395,7 @@ TextOffsets::
 	textpointer PleaseWaitDecidingNumberOfPrizesText               ; 0x0188
 	textpointer BeginAPrizeDuelWithText                            ; 0x0189
 	textpointer AreYouBothReadyToCardPopText                       ; 0x018a
-	textpointer ThePopWasntSuccessfulText                          ; 0x018b
+	textpointer SelectNewActivePokemonText                          ; 0x018b
 	textpointer CannotCardPopWithFriendPreviouslyPoppedWithText    ; 0x018c
 	textpointer PositionGameBoyColorsAndPressAButtonText           ; 0x018d
 	textpointer ReceivedThroughCardPopText                         ; 0x018e
@@ -3211,3 +3211,4 @@ TextOffsets::
 	textpointer FirstWinAmyGiveCardsText
 	textpointer ChooseBasicPokemonCardFromDeckText
 	textpointer ChooseBasicPokemonCardText
+	textpointer SwitchSelfYesNoText

@@ -1816,32 +1816,52 @@ Teleport_CheckBench:
 	ret
 
 Teleport_PlayerSelectEffect:
-	ldtx hl, DiscardOppDeckAsManyFireEnergyCardsText
+	ld a, -1
+   	ldh [hTemp_ffa0], a
+   	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+   	call GetTurnDuelistVariable
+  	dec a ; cp 1
+    	ret z ; return with the default variable if the turn holder's Bench is empty
+    	ldtx hl, SwitchSelfYesNoText
+   	call YesOrNoMenuWithText
+   	ret c
+  	;fallthrough
+
+	ldtx hl, SelectNewActivePokemonText
 	call DrawWideTextBox_WaitForInput
 	bank1call HasAlivePokemonInBench
 	ld a, $01
-	ld [wcbd4], a
-.loop
+	ld [wcbd4], a ; =ld [wPlayAreaSelectAction], a
+.loop_input
 	bank1call OpenPlayAreaScreenForSelection
+	jr c, .loop_input ; must choose, B button can't be used to exit
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	ldh [hTemp_ffa0], a
 	ret
+
 
 Teleport_AISelectEffect:
 	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
 	call GetTurnDuelistVariable
 	call Random
+	or a
+	jr z, .no_bench
+	ldh [hTemp_ffa0], a
+	ret
+.no_bench
+	ld a, -1
 	ldh [hTemp_ffa0], a
 	ret
 
 Teleport_SwitchEffect:
 	ldh a, [hTemp_ffa0]
-	ld e, a
-	call SwapArenaWithBenchPokemon
-	xor a
-	ld [wDuelDisplayedScreen], a
-	ret
-
+ 	ld e, a
+  	inc a ; cp -1
+  	ret z ; return if no Benched Pokemon was selected
+   	call SwapArenaWithBenchPokemon
+   	xor a
+   	ld [wDuelDisplayedScreen], a
+    	ret
 
 BatonPass_SelectionEffect:
 	ldtx hl, DiscardOppDeckAsManyFireEnergyCardsText
@@ -5741,6 +5761,11 @@ AbsorbEffect:
 	call ApplyAndAnimateHPRecovery
 	ret
 
+SteelWingEffect:
+	ldtx de, IfHReduce20Text
+	call TossCoin_BankB
+	ret nc
+
 SnivelEffect:
 	ld a, SUBSTATUS2_REDUCE_BY_20
 	call ApplySubstatus2ToDefendingCard
@@ -6478,16 +6503,6 @@ ChainLightningEffect:
 	jr nz, .check_damage
 	ret
 
-RaichuAgilityEffect:
-	ldtx de, IfHeadsDoNotReceiveDamageOrEffectText
-	call TossCoin_BankB
-	ret nc ; skip if got tails
-	ld a, ATK_ANIM_BOYFRIENDS_PROTECT
-	ld [wLoadedAttackAnimation], a
-	ld a, SUBSTATUS1_AGILITY
-	call ApplySubstatus1ToDefendingCard
-	ret
-
 RaichuThunder_Recoil50PercentEffect:
 	ld hl, 30
 	call LoadTxRam3
@@ -6956,7 +6971,12 @@ SpitPoison_AIEffect:
 	farcall SpitPoison_AIEffect_2
 	ret
 
-ElectrodeSonicboom_UnaffectedByColorEffect:
+SwitchDFPSwitchEffect:
+	ldh a, [hTemp_ffa0]
+ 	ld e, a
+  	inc a ; cp -1
+  	ret z ; return if no Benched Pokemon was selected
+
 	call SwapTurn
 	ldh a, [hTemp_ffa0]
 	ld e, a
@@ -6967,28 +6987,45 @@ ElectrodeSonicboom_UnaffectedByColorEffect:
 	ld [wDuelDisplayedScreen], a
 	ret
 
-ElectrodeSonicboom_NullEffect:
-	ldh a, [hTemp_ffa0]
-	ldtx hl, ThePopWasntSuccessfulText
-	call DrawWideTextBox_WaitForInput
+
+SwitchDFP_PlayerSelectEffect:
+	ld a, -1
+   	ldh [hTemp_ffa0], a
+   	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+   	call GetNonTurnDuelistVariable
+  	dec a ; cp 1
+    	ret z ; return with the default variable if the turn holder's Bench is empty
+    	ldtx hl, SwitchDFPYesNoText
+   	call YesOrNoMenuWithText
+   	ret c
+  	;fallthrough
 	call SwapTurn
+	ldtx hl, ChooseAPokemonToSwitchWithActivePokemonText
+	call DrawWideTextBox_WaitForInput
 	bank1call HasAlivePokemonInBench
+	ld a, $01
+	ld [wcbd4], a ; =ld [wPlayAreaSelectAction], a
+.loop_input
 	bank1call OpenPlayAreaScreenForSelection
+	jr c, .loop_input ; must choose, B button can't be used to exit
 	ldh a, [hTempPlayAreaLocation_ff9d]
 	ldh [hTemp_ffa0], a
 	call SwapTurn
 	ret
 
+SwitchDFP_AISelectEffect:
 	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
-	call GetNonTurnDuelistVariable
-	cp 2
-	jr c, .no_bench
+	call GetTurnDuelistVariable
+	call GetBenchPokemonWithLowestHP
+	or a
+	jr z, .no_bench
+	ldh [hTemp_ffa0], a
+	ret
+.no_bench
+	ld a, -1
+	ldh [hTemp_ffa0], a
 	ret
 
-.no_bench
-	ld a, $ff
-	ldh [hTemp_ffa0], a
-	ret 
 
 ; return carry if no cards in Deck
 EnergySpike_DeckCheck:
@@ -8549,11 +8586,6 @@ ScrunchEffect:
 	ld [wLoadedAttackAnimation], a
 	ld a, SUBSTATUS1_AGILITY
 	call ApplySubstatus1ToDefendingCard
-	ret
-
-ChanseyDoubleEdgeEffect:
-	ld a, 80
-	call DealRecoilDamageToSelf
 	ret
 
 ; return carry if no Pokemon in Bench

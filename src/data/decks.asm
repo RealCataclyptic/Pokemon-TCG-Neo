@@ -468,7 +468,7 @@ GrassAndPsychicDeck: ; Used by Mason Laboratory's Aaron.
 	deck_list_end
 	tx GrassAndPsychicDeckName
 
-LegendaryMoltresDeck: ; = Legendary Hooh. Used by Grand Master Courtney.
+LegendaryMoltresDeck: ; = Legendary Ho-oh. Used by Grand Master Courtney.
 	deck_list_start
 	card_item FIRE_ENERGY, 8
 	card_item LIGHTNING_ENERGY, 10

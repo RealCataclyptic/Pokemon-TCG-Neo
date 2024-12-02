@@ -511,3 +511,29 @@ NoPokepowersNextTurnDesc:
 	line "cannot be used until the end of"
 	line "that turn."
 	done
+
+IfHReduce20Text:
+	text "If heads, reduce damage"
+	line "next turn by 20!"
+	done
+
+CFT20RecoilText:
+	text "If tails, deal 20"
+	line "damage to yourself."
+	done
+
+SwitchSelfYesNoText:
+	text "Switch this Pokémon after damage?"
+	line "            Yes     No"
+	done
+
+SelectNewActivePokemonText:
+	text "Select 1 of your Benched Pokémon to"
+	line "become your new Active Pokémon."
+	done 
+
+SwitchDFPYesNoText:
+	text "Switch the Defending Pokémon?"
+	line "            Yes     No"
+	done
+	

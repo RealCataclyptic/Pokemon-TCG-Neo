@@ -1085,6 +1085,7 @@ AttackAnimation_Mist:
 	anim_normal         DUEL_ANIM_SHAKE1
 	anim_opponent       DUEL_ANIM_SHOW_DAMAGE
 	anim_player         DUEL_ANIM_PROTECT
+	anim_end
 
 AttackAnimation_Stub2:
 	anim_end

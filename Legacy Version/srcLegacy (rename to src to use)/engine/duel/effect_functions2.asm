@@ -702,6 +702,9 @@ PP_NoDamage50PercentEffect2:
 	ret
 
 Maydo20ToSelfEffect2:
+	ldtx de, CFT20RecoilText
+	farcall TossCoin_BankB
+	ret c
 	ld a, 20
 	call DealRecoilDamageToSelf
 	ret

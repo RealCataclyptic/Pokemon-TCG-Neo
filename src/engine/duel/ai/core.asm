@@ -2050,14 +2050,6 @@ AISelectSpecialAttackParameters:
 	jr z, .EnergySpikeLI
 	cp JOLTEON
 	jr z, .EnergySpikeLI
-	cp AZUMARILL2
-	jp z, .Teleport
-	cp DONPHAN1
-	jr z, .Teleport
-	cp HORSEA
-	jr z, .Teleport
-	cp SCYTHER
-	jp z, .Teleport
 	cp SUNFLORA
 	jr z, .EnergySpikeGR
 	cp CELEBI_C
@@ -2128,24 +2120,11 @@ AISelectSpecialAttackParameters:
 	scf
 	ret
 
-.Teleport
-; in case selected attack is Teleport
-; decide Bench card to switch to.
-	ld a, [wSelectedAttack]
-	or a
-	jp nz, .no_carry  ; can be jr
-	call AIDecideBenchPokemonToSwitchTo
-	jr c, .no_carry
-	ldh [hTemp_ffa0], a
-	scf
-	ret
-
 .EnergySpikeLI
 ; in case selected attack is Energy Spike
 ; decide basic energy card to fetch from Deck.
 	ld a, [wSelectedAttack]
 	or a
-	
 	ld a, CARD_LOCATION_DECK
 	ld e, LIGHTNING_ENERGY
 

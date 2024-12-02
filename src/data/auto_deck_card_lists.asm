@@ -80,20 +80,23 @@ HeatedBattleCardList:
 	
 FirstStrikeCardList:
 	deck_list_start
-	card_item FIGHTING_ENERGY, 19
-	card_item HITMONLEE,           4
-	card_item HITMONCHAN,          4
-	card_item HITMONTOP,          4
-	card_item AERODACTYL,       3
-	card_item STANTLER,        2
-	card_item SKARMORY,           3
-	card_item FOSSIL_EGG,         4
-	card_item POKEMON_FAN_CLUB,           2
-	card_item POTION,         2
-	card_item STRENGTH_CHARM,        4
-	card_item SWITCH,           2
-	card_item POKEMON_REVERSAL,     3
-	card_item MAIL_FROM_BILL,             4
+	card_item FIGHTING_ENERGY, 15
+	card_item DOUBLE_COLORLESS_ENERGY, 4
+	card_item WOOPER, 3
+	card_item QUAGSIRE, 2
+	card_item HITMONTOP, 2
+	card_item MACHOP, 4
+	card_item MACHOKE, 3
+	card_item MACHAMP, 3
+	card_item STANTLER, 1
+	card_item MILTANK, 3
+	card_item PROFESSOR_ELM, 4
+	card_item POKEMON_FAN_CLUB, 2
+	card_item POTION, 2
+	card_item STRENGTH_CHARM, 4
+	card_item SWITCH, 2
+	card_item POKEMON_REVERSAL, 3
+	card_item MAIL_FROM_BILL, 3
 	deck_list_end
 
 SqueakingMouseCardList:
@@ -616,13 +619,14 @@ StrangePsyshockCardList:
 	card_item SLOWPOKE, 3
 	card_item SLOWKING, 3
 	card_item MEW_S, 2
-	card_item CHANSEY, 3
-	card_item BLISSEY, 2
+	card_item SNUBBULL, 2
+	card_item GRANBULL, 2
 	card_item TOTODILE1, 3
 	card_item CROCONAW2, 2
 	card_item FERALIGATR1, 2
 	card_item MISDREAVUS, 2
 	card_item SNORLAX, 2
+	card_item SUICUNE, 1
 	card_item PROFESSOR_ELM, 2
 	card_item ENERGY_SEARCH, 2
 	card_item POKEMON_FAN_CLUB, 3
@@ -727,16 +731,17 @@ WondersOfScienceCardList:
 	card_item FIRE_ENERGY, 6
 	card_item ZUBAT, 4
 	card_item GOLBAT, 3
-	card_item CROBAT, 2
+	card_item CROBAT, 1
 	card_item BULBASAUR, 3
 	card_item IVYSAUR, 2
 	card_item VENUSAUR, 2
 	card_item CROBAT_S, 1
-	card_item VULPIX, 3
+	card_item VULPIX, 2
 	card_item NINETALES, 2
 	card_item MAGMAR, 2
+	card_item STAR_PIECE, 1
 	card_item TEAM_ROCKETS_EVIL_DEEDS, 3
-	card_item PROFESSOR_ELM, 3
+	card_item PROFESSOR_ELM, 4
 	card_item POKEMON_FAN_CLUB, 2
 	card_item MAIL_FROM_BILL, 3
 	card_item ENERGY_SEARCH, 3				 
@@ -849,7 +854,7 @@ FireChargeCardList:
 	card_item POKEMON_FAN_CLUB, 3				  
 	card_item POKEGEAR, 3
 	card_item HYPER_POTION, 2					  
-	card_item POTION, 4
+	card_item STRENGTH_CHARM, 4
 	deck_list_end
 
 CharmanderAndFriendsCardList:
@@ -1001,22 +1006,24 @@ WaterBeetleCardList:
 LegendaryMoltresCardList:
 	deck_list_start
 	card_item FIRE_ENERGY, 8
-	card_item FIGHTING_ENERGY, 12
-	card_item HOOH_C, 4
-	card_item RHYDON, 1
-	card_item RHYHORN, 2
-	card_item HITMONCHAN, 3
-	card_item MAGMAR, 2
-	card_item ENTEI1, 2
-	card_item HITMONTOP, 2
-	card_item PROFESSOR_ELM, 2
+	card_item LIGHTNING_ENERGY, 10
+	card_item HOOH_C, 3
+	card_item VOLTORB, 2
+	card_item ELECTRODE, 2
+	card_item GROWLITHE, 3
+	card_item ARCANINE, 2
+	card_item MAGNEMITE, 2
+	card_item MAGNETON, 1
+	card_item SENTRET, 1
+	card_item PROFESSOR_ELM, 3
 	card_item POKEMON_REVERSAL, 3
 	card_item MAIL_FROM_BILL, 4
 	card_item SEER, 2
 	card_item ENERGY_SEARCH, 4
 	card_item SWITCH, 3
 	card_item MASTER_BALL, 3
-	card_item STRENGTH_CHARM, 3
+	card_item STRENGTH_CHARM, 2
+	card_item FULL_HEAL, 2
 	deck_list_end
 
 LegendaryZapdosCardList:
@@ -1042,8 +1049,8 @@ LegendaryZapdosCardList:
 
 LegendaryArticunoCardList:
 	deck_list_start
-	card_item WATER_ENERGY, 11
-	card_item LIGHTNING_ENERGY, 7
+	card_item WATER_ENERGY, 12
+	card_item LIGHTNING_ENERGY, 6
 	card_item LUGIA_C, 4
 	card_item POLIWAG, 3
 	card_item POLIWHIRL, 3
@@ -1063,24 +1070,24 @@ LegendaryArticunoCardList:
 
 LegendaryDragoniteCardList:
 	deck_list_start
-	card_item FIRE_ENERGY, 8
-	card_item LIGHTNING_ENERGY, 6
+	card_item FIRE_ENERGY, 9
+	card_item FIGHTING_ENERGY, 6
 	card_item DOUBLE_COLORLESS_ENERGY, 2
 	card_item CHARMANDER, 4
 	card_item CHARMELEON, 3
-	card_item CHARIZARD_C, 3
-	card_item ZAPDOS, 1
-	card_item GROWLITHE, 2
-	card_item ARCANINE, 1
-	card_item VOLTORB, 3
-	card_item ELECTRODE, 2
-	card_item TOGEPI2, 3
-	card_item TOGETIC2, 2
+	card_item CHARIZARD_C, 2
+	card_item MOLTRES, 1
+	card_item PONYTA, 3
+	card_item RAPIDASH, 2
+	card_item GLIGAR, 2
+	card_item RHYHORN, 3
+	card_item RHYDON, 2
+	card_item SKARMORY, 2
 	card_item PROFESSOR_ELM, 4
 	card_item MAIL_FROM_BILL, 4
 	card_item ENERGY_SEARCH, 4
 	card_item MASTER_BALL, 4
-	card_item SUPER_ENERGY_RETRIEVAL, 2
+	card_item SUPER_ENERGY_RETRIEVAL, 1
 	card_item SWITCH, 2
 	deck_list_end
 
@@ -1095,11 +1102,10 @@ MysteriousPokemonCardList:
 	card_item CLEFAIRY,		4
 	card_item CLEFABLE,		3
 	card_item LUGIA,		4
-	card_item TOGEPI2,		2
 	card_item PROFESSOR_ELM,	3
 	card_item MAIL_FROM_BILL,	3
-	card_item MASTER_BALL,		2
+	card_item MASTER_BALL,		3
 	card_item ENERGY_REMOVAL2,	1
-	card_item SWITCH,		2
+	card_item SWITCH,		3
 	card_item ENERGY_SEARCH,	4
 	deck_list_end

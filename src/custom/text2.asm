@@ -130,3 +130,8 @@ ChooseBasicPokemonCardText:
 	text "Choose a basic"
 	line "Pokémon."
 	done
+
+SwitchSelfYesNoText:
+	text "Switch this Pokémon after damage?"
+	line "            Yes     No"
+	done

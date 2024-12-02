@@ -2062,12 +2062,6 @@ AISelectSpecialAttackParameters:
 	jp z, .EnergySpikeFR
 	cp ENTEI1
 	jp z, .EnergySpikeFR
-	cp AZUMARILL2
-	jp z, .Teleport
-	cp DONPHAN1
-	jr z, .Teleport
-	cp HORSEA
-	jr z, .Teleport
 	cp LEDIAN
 	jp z, .Teleport
 	; fallthrough
